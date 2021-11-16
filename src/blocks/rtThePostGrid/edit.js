@@ -47,6 +47,9 @@ import {
     Head_color,
     Head_border,
     Head_border_style1,
+	MetaStyle_align,
+	Content_wrap,
+    Content_padding,
 } from './Style_component';
 
 const {__} = wp.i18n;
@@ -68,7 +71,10 @@ export default function Edit(props) {
         Head_title,
         Head_color,
         Head_border,
-        Head_border_style1
+        Head_border_style1,
+		MetaStyle_align,
+		Content_wrap,
+        Content_padding,
     }
 
     const colors = [
@@ -328,7 +334,7 @@ export default function Edit(props) {
 															} 
 
 															{/* Section */}
-															<Style_Section attr={global_attr}/>
+															{/* <Style_Section attr={global_attr}/> */}
 
 															{/* Content Wrap */}
 

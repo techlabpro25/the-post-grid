@@ -215,14 +215,11 @@ const attributes = {
 	content_wrap: {
 		type: "object",
 		default: {
-			["background-color"]: "",
-			["box-shadow-color"]: "",
-			["box-shadow"]: "0px 0px 1px #jhjh",
+			["background-color"]: "lightgray",
+			["box-shadow-color"]: "#fff",
 			radius: "",
-			["border-radius"]: "",
 			["border-color"]: "gray",
-			["border-width"]: "1px",
-			["border-style"]: "solid",
+			["border-width"]: "1px"
 		},
 	},
 	constent_box_padding: {

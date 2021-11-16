@@ -6,7 +6,7 @@ export const Titlea = styled.a`
 	font-weight: ${props => props.css['font-weight']} !important;
 `;
 
-export const Titletag = styled.span`
+export const Titletag = styled.div`
 	text-align: ${props => props.css['text-align']} !important;
 `;
 
@@ -30,6 +30,9 @@ export const MetaStyle = styled.span`
 	color: ${props => props.css.color} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
+`;
+
+export const MetaStyle_align = styled.div`
 	text-align: ${props => props.css['text-align']} !important;
 `;
 
@@ -56,7 +59,7 @@ export const Head_title = styled.div`
 	background-color: ${props => props.css['background-color']} !important;
 	:before{
 	    background-color: ${props => props.css.color} !important;
-	},
+	}
 	:after{
 	    border-color: ${props => (props.css != undefined)? props.css['background-color']: "#1e73be"} transparent !important;
 	}
@@ -73,5 +76,17 @@ export const Head_border = styled.div`
 export const Head_border_style1 = styled.div`
 	border: ${props => props.css['border-width']+" "+props.css['border-style']+" "+props.css['border-color'] } !important;
 
+`;
+
+export const Content_wrap = styled.div`
+	background-color: ${props => props.css['background-color']} !important;
+	border-radius: ${props => props.css.radius}px !important;
+	border: ${props => props.css['border-width']+" solid "+props.css['border-color']} !important;
+	box-shadow: ${props => '0px 0px 5px 0px '+props.css['box-shadow-color']} !important;
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;;
+`;
+
+export const Content_padding = styled.div`
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;;
 `;
 

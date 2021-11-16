@@ -114,6 +114,22 @@ class RtThePostGrid extends Block
                     "border-width" => "1px",
                     "border-style" => "solid",
                 ]
+        ],
+        'content_wrap' =>[
+            'type' =>"object",
+            'default' =>[
+                'background-color' => "lightgray",
+                'box-shadow-color' => '#fff',
+                'radius' => '5',
+                'border-color' => 'gray',
+                'border-width' => '1px'
+            ]
+        ],
+        'constent_box_padding' =>[
+            'type' => "object",
+        ],
+        'content_padding' =>[
+            'type' => "object",
         ]
 
 	];

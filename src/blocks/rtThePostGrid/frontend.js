@@ -11,6 +11,9 @@ import {
     Head_color,
     Head_border,
     Head_border_style1,
+    MetaStyle_align,
+    Content_wrap,
+    Content_padding,
 } from './Style_component';
 
 const {render, useState, useEffect} = wp.element;
@@ -37,6 +40,9 @@ const RtThePostGrid = (props) => {
         Head_color,
         Head_border,
         Head_border_style1,
+        MetaStyle_align,
+        Content_wrap,
+        Content_padding,
     }
 
 

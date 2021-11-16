@@ -30,7 +30,7 @@ function Style_Content_wrap(props) {
                 label = "Select Color"
                 colors={ props.attr.colors }
                 value={ content_wrap["box-shadow-color"] }
-                onChange={ ( color ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "box-shadow-color": color, "box-shadow":`0px 0px 1px ${color}`}} ) }
+                onChange={ ( color ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "box-shadow-color": color}} ) }
             />
             
 
@@ -57,7 +57,7 @@ function Style_Content_wrap(props) {
             <NumberControl
                 label="Border Radius"
                 value={content_wrap["radius"]}
-                onChange={ ( value ) =>  props.attr.setAttributes( { content_wrap: {...content_wrap, "radius": value, "border-radius": `${value}px`} })}
+                onChange={ ( value ) =>  props.attr.setAttributes( { content_wrap: {...content_wrap, "radius": value} })}
             />
 
             <BoxControl
