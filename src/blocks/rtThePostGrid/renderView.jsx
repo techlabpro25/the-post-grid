@@ -1,7 +1,7 @@
 import Layout1 from "./layout/grid/Layout1";
 
 const RenderView = (props) => {
-    const {layout, data} = props;
+    const {layout, data, css} = props;
     
     // if(layout == "grid1"){
         
@@ -10,7 +10,7 @@ const RenderView = (props) => {
     // console.log(props)
     return(
         <>
-            <Layout1 {...props} data={data}/>
+            <Layout1 {...props} data={data} css={css}/>
         </>
     )
 }

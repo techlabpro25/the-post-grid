@@ -133,27 +133,35 @@ class All_Post{
                 $get_cat = get_the_category($id);
                 $get_tags = get_the_tags($id);
 
-                foreach($get_cat as $cat){
-                    $category[]=[
-                        "cat_id" => $cat->term_id,
-                        "cat_name" => $cat->name, 
-                        "cat_link" => get_term_link($cat->term_id),
-                    ];
-                }
 
-                foreach($get_tags as $tag){
-                    $tags[]=[
-                        "tag_id" => $tag->term_id,
-                        "tag_name" => $tag->name, 
-                        "tag_link" => get_term_link($tag->term_id)
-                    ];
-                }
+				if(!empty($get_cat)){
+					foreach($get_cat as $cat){
+						$category[]=[
+							"cat_id" => $cat->term_id,
+							"cat_name" => $cat->name, 
+							"cat_link" => get_term_link($cat->term_id),
+						];
+					}
+				}
+                
+
+				if(!empty($get_tags)){
+					foreach($get_tags as $tag){
+						$tags[]=[
+							"tag_id" => $tag->term_id,
+							"tag_name" => $tag->name, 
+							"tag_link" => get_term_link($tag->term_id)
+						];
+					}
+				}
+
+				
 
                 $data[]=[
                     'id' => $id,
                     "title" => get_the_title(),
                     "excerpt" => get_the_excerpt(),
-                    "comment_count" => $query->comment_count,
+                    "comment_count" => wp_count_comments($id)->all,
                     "post_date" => get_the_date('M d, y'),
                     "image_url" => get_the_post_thumbnail_url(null, 'full'),
                     "author_name" => get_the_author_meta( 'display_name', $author_id ),
@@ -168,7 +176,7 @@ class All_Post{
         }
 
         wp_reset_postdata();
-        // print_r($args);
+
 
         return rest_ensure_response($data);
     }

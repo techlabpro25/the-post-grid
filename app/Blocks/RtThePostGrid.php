@@ -13,12 +13,26 @@ class RtThePostGrid extends Block
 			'type'=> "string",
 			'default' => "grid2"
 		],
+        'general' =>[
+            'type' => "object",
+            'default' => [
+                    'heading' => true,
+                    'title' => true,
+                    'excerpt' => true,
+                    'category' => true,
+                    'author' => true,
+                    'post_date' => true,
+                    'tag' => true,
+                    'comment_count' => true,
+                    'see_more' => true,
+            ]
+        ],
 		'title_style' => [
 			'type'=> "object",
 			'default'=> [
 				"text-align"=> "left",
 				"color"=> "#000",
-				"font-size"=> "",
+				"font-size"=> "22px",
 				"font-weight"=> 400,
 			],
 		],
@@ -26,9 +40,9 @@ class RtThePostGrid extends Block
 			'type' => "object",
 			'default' => [
 				'color' => "#000",
-				"background-color" => "",
+				"background-color" => "#fff",
 				'font-size' => '12px',
-				'border-radius' => "",
+				'border-radius' => "5",
 			],
 		],
 		'category_padding' =>[
@@ -36,7 +50,42 @@ class RtThePostGrid extends Block
 		],
 		'category_margin' =>[
 			'type' => "object",
-		]
+		],
+        'meta_style' =>[
+            'type' => "object",
+            'default' => [
+                'color' => "#000",
+                "text-align" => "left",
+                'font-size' => '12px',
+                'font-weight' => "400",
+            ],
+        ],
+        'button' =>[
+            'type' => "object",
+            'default' => [
+                'border-radius' => "5",
+                "text-align" => "left"
+            ],
+        ],
+        'button_style' =>[
+            'type' => "object",
+            'default' => [
+                'color' => '#fff',
+                'h_color' => "#fff",
+                'background-color' => "#000",
+                'h_bg_color' => "#000",
+                'active_color' => "#000",
+            ],
+        ],
+        'excerpt_style' =>[
+            'type' => "object",
+            'default' => [
+                'color' => "#000",
+                "text-align" => "left",
+                'font-size' => '12px',
+                'font-weight' => "400",
+            ],
+        ],
 
 	];
 

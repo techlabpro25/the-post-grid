@@ -17,7 +17,7 @@ export const Excerpts = styled.div`
 	text-align: ${props => props.css['text-align']} !important;
 `;
 
-export const Category = styled.a`
+export const Cat_style = styled.a`
 	color: ${props => props.css.color} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;

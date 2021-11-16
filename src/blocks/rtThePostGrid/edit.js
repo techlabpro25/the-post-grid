@@ -34,6 +34,16 @@ import Style_Read_More from './components/style/Style_Read_More';
 import Style_Content_wrap from './components/style/Style_Content_wrap';
 import Style_Section from './components/style/Style_Section';
 
+import {
+    Titlea,
+    Titletag,
+    Excerpts,
+    Cat_style,
+    MetaStyle,
+    Button_style,
+    Btn_align
+} from './Style_component';
+
 const {__} = wp.i18n;
 const {InspectorControls} = wp.blockEditor
 const {useState, useEffect} = wp.element;
@@ -42,6 +52,15 @@ export default function Edit(props) {
     const {attributes, setAttributes} = props;
     const [data, setData] = useState([]);
     const { general, parent_class, primary_color } = attributes
+    const style_sheet ={
+        Titlea,
+        Titletag,
+        Excerpts,
+        Cat_style,
+        MetaStyle,
+        Button_style,
+        Btn_align
+    }
 
     const colors = [
         { name: 'red', color: '#f00' },
@@ -92,10 +111,11 @@ export default function Edit(props) {
         if (!attributes.limit) {
             return;
         }
-        apiFetch({path: '/rt/v1/query?post_type=post&post_per_page&include=628,629,630&exclude=625,626&order_by=ID&order=ASC&status=publish&author=1'}).then((posts) => {
+        apiFetch({path: '/rt/v1/query?post_type=post'}).then((posts) => {
             setData(posts);
         });
     }, []);
+
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
     return (
@@ -339,7 +359,7 @@ export default function Edit(props) {
                 
             </InspectorControls>
             <div className="rt-postsreact-editor">
-                <RenderView {...attributes} data={data}/>
+                <RenderView {...attributes} data={data} css={style_sheet}/>
             </div>
         </>
     );
