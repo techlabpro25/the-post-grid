@@ -6,7 +6,11 @@ import {
     Cat_style,
     MetaStyle,
     Button_style,
-    Btn_align
+    Btn_align,
+    Head_title,
+    Head_color,
+    Head_border,
+    Head_border_style1,
 } from './Style_component';
 
 const {render, useState, useEffect} = wp.element;
@@ -28,7 +32,11 @@ const RtThePostGrid = (props) => {
         Cat_style,
         MetaStyle,
         Button_style,
-        Btn_align
+        Btn_align,
+        Head_title,
+        Head_color,
+        Head_border,
+        Head_border_style1,
     }
 
 

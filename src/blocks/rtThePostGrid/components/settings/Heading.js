@@ -16,12 +16,12 @@ function Heading(props) {
                 label="Tag:"
                 value={ heading["tag"] }
                 options={ [
-                    { label: 'H1', value: 'h1' },
-                    { label: 'H2', value: 'h2' },
-                    { label: 'H3', value: 'h3' },
-                    { label: 'H4', value: 'h4' },
-                    { label: 'H5', value: 'h5' },
-                    { label: 'H6', value: 'h6' },
+                    { label: 'H1', value: '1' },
+                    { label: 'H2', value: '2' },
+                    { label: 'H3', value: '3' },
+                    { label: 'H4', value: '4' },
+                    { label: 'H5', value: '5' },
+                    { label: 'H6', value: '6' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {heading: {...heading, "tag": value} } ) }
             />
@@ -30,9 +30,9 @@ function Heading(props) {
                 label="Style"
                 value={ heading["style"] }
                 options={ [
-                    { label: 'Style 1', value: "style_1" },
-                    { label: 'Style 2', value: "style_2" },
-                    { label: 'Style 3', value: "style_3" },
+                    { label: 'Style 1', value: "1" },
+                    { label: 'Style 2', value: "2" },
+                    { label: 'Style 3', value: "3" },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {heading: {...heading, "style": value} } ) }
             />
@@ -41,11 +41,11 @@ function Heading(props) {
                 Text Alignment:
             </Text>
             <RadioGroup defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({heading_style: {...heading_style, "text-align": val}}) } checked={ heading_style["text-align"] }>
-                <Radio value="Left"></Radio>
-                <Radio value="Center"></Radio>
-                <Radio value="Right"></Radio>
+                <Radio value="left"></Radio>
+                <Radio value="center"></Radio>
+                <Radio value="right"></Radio>
             </RadioGroup>
-            
+
 
             <TextControl
                 label='Link:'

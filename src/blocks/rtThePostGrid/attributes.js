@@ -76,18 +76,21 @@ const attributes = {
 	heading: {
 		type: "object",
 		default: {
-			title: "",
-			tag: "h2",
-			style: "Style_1",
+			tag: "1",
+			style: "1",
 			link: "",
 		},
+	},
+	heading_title:{
+		type: "string",
+		default: ""
 	},
 	heading_style: {
 		type: "object",
 		default: {
 			["text-align"]: "left",
 			color: "#000",
-			["background-color"]: "#000",
+			["background-color"]: "#fff",
 			["border-color"]: "gray",
 			["border-width"]: "1px",
 			["border-style"]: "solid",

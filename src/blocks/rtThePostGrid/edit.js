@@ -33,6 +33,7 @@ import Style_Meta from './components/style/Style_Meta';
 import Style_Read_More from './components/style/Style_Read_More';
 import Style_Content_wrap from './components/style/Style_Content_wrap';
 import Style_Section from './components/style/Style_Section';
+import $ from 'jquery';
 
 import {
     Titlea,
@@ -41,7 +42,11 @@ import {
     Cat_style,
     MetaStyle,
     Button_style,
-    Btn_align
+    Btn_align,
+    Head_title,
+    Head_color,
+    Head_border,
+    Head_border_style1,
 } from './Style_component';
 
 const {__} = wp.i18n;
@@ -51,7 +56,7 @@ const {useState, useEffect} = wp.element;
 export default function Edit(props) {
     const {attributes, setAttributes} = props;
     const [data, setData] = useState([]);
-    const { general, parent_class, primary_color } = attributes
+    const { general, parent_class, primary_color, heading } = attributes
     const style_sheet ={
         Titlea,
         Titletag,
@@ -59,7 +64,11 @@ export default function Edit(props) {
         Cat_style,
         MetaStyle,
         Button_style,
-        Btn_align
+        Btn_align,
+        Head_title,
+        Head_color,
+        Head_border,
+        Head_border_style1
     }
 
     const colors = [
@@ -116,6 +125,10 @@ export default function Edit(props) {
         });
     }, []);
 
+    $('.editor-post-title__input').on('change', function(){
+        var heading = $(this).text();
+        setAttributes({heading_title: heading})
+    })
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
     return (

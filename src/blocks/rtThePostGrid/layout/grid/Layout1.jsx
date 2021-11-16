@@ -1,7 +1,9 @@
+import {Head_border_style1, Head_title} from "../../Style_component";
 
 
 const Layout1 = (props) => {
     const {
+		title,
 		title_style, 
 		data, 
 		excerpt_style, 
@@ -12,6 +14,11 @@ const Layout1 = (props) => {
 		button,
 		button_style,
 		general,
+		heading,
+		heading_style,
+		heading_title,
+		heading_padding_object,
+		heading_margin_object,
 	} = props
 
 	const {
@@ -21,12 +28,44 @@ const Layout1 = (props) => {
 		Cat_style,
 		MetaStyle,
 		Button_style,
-		Btn_align
+		Btn_align,
+		Head_title,
+		Head_color,
+		Head_border,
+		Head_border_style1
 	} = props.css
 
-	
+	let Heading ="";
+	let Title ="";
+	if(heading.tag === undefined){
+		Heading = 'h2'
+	}else{
+		Heading = 'h'+heading.tag
+	}
+
+	if(title.tag === undefined){
+		Title = 'h2'
+	}else{
+		Title = 'h'+title.tag
+	}
+
+
+	// console.log(props)
     return (
         <>
+			<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
+
+				{
+					(heading.style == "1")?(<Head_border_style1 css={heading_style} className="tpg-widget-heading-line line-left"></Head_border_style1>):("")
+				}
+				<Head_title css={heading_style} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widget-heading">
+					<Head_color css={heading_style} href={heading.link}>{heading_title}</Head_color>
+				</Head_title>
+				{
+					(heading.style == "1")?(<Head_border_style1 css={heading_style} className="tpg-widget-heading-line"></Head_border_style1>):("")
+				}
+
+			</Head_border>
             <div className="rt-container-fluid rt-tpg-container ">
                 {
                     data.length && data.map((post) =>{
@@ -43,11 +82,13 @@ const Layout1 = (props) => {
                                         <div className="rt-detail">
 											{
 												general.title? (
-													<Titletag css={title_style} className="entry-title">
-														<Titlea css={title_style} data-id={post.id} className="" href={post.post_link}>
-															{post.title}
-														</Titlea>
-													</Titletag>
+													<Title className="entry-title">
+														<Titletag css={title_style}>
+															<Titlea css={title_style} data-id={post.id} className="" href={post.post_link}>
+																{post.title}
+															</Titlea>
+														</Titletag>
+													</Title>
 												):('')
 											}
 

@@ -27,6 +27,16 @@ class RtThePostGrid extends Block
                     'see_more' => true,
             ]
         ],
+        'title'=> [
+            'type'=> "object",
+            'default'=> [
+                'tag'=> "2",
+                'position'=> "bottom_left",
+                'word_limit'=> 100,
+                'type'=> "full",
+                'more_text'=> "...",
+            ],
+        ],
 		'title_style' => [
 			'type'=> "object",
 			'default'=> [
@@ -86,6 +96,25 @@ class RtThePostGrid extends Block
                 'font-weight' => "400",
             ],
         ],
+        'heading' =>[
+            'type' => 'object',
+            'default' => [
+                'tag' => '1',
+                'style' => '1',
+                'link' => '#'
+            ]
+        ],
+        'heading_style' =>[
+                'type' => "object",
+                'default' =>[
+                    'color' => "#000",
+                    "text-align" => "left",
+                    'background-color' => '#fff',
+                    "border-color" => "gray",
+                    "border-width" => "1px",
+                    "border-style" => "solid",
+                ]
+        ]
 
 	];
 

@@ -15,12 +15,12 @@ function Title(props) {
                 label="Tag:"
                 value={ title["tag"] }
                 options={ [
-                    { label: 'H1', value: 'h1' },
-                    { label: 'H2', value: 'h2' },
-                    { label: 'H3', value: 'h3' },
-                    { label: 'H4', value: 'h4' },
-                    { label: 'H5', value: 'h5' },
-                    { label: 'H6', value: 'h6' },
+                    { label: 'H1', value: '1' },
+                    { label: 'H2', value: '2' },
+                    { label: 'H3', value: '3' },
+                    { label: 'H4', value: '4' },
+                    { label: 'H5', value: '5' },
+                    { label: 'H6', value: '6' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "tag": value} } ) }
             />

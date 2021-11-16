@@ -6,7 +6,7 @@ export const Titlea = styled.a`
 	font-weight: ${props => props.css['font-weight']} !important;
 `;
 
-export const Titletag = styled.h3`
+export const Titletag = styled.span`
 	text-align: ${props => props.css['text-align']} !important;
 `;
 
@@ -49,3 +49,29 @@ export const Button_style = styled.a`
 export const Btn_align = styled.div`
 	text-align: ${props => props.css_btn['text-align']} !important;
 `;
+
+export const Head_title = styled.div`
+    padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '15px'} !important;
+	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
+	background-color: ${props => props.css['background-color']} !important;
+	:before{
+	    background-color: ${props => props.css.color} !important;
+	},
+	:after{
+	    border-color: ${props => (props.css != undefined)? props.css['background-color']: "#1e73be"} transparent !important;
+	}
+	
+`;
+
+export const Head_color = styled.a`
+	color: ${props => props.css.color} !important;
+`;
+
+export const Head_border = styled.div`
+	border-bottom: ${props => (props.css_head.style != '1')? props.css['border-width']+" "+props.css['border-style']+" "+props.css['border-color'] : ""} !important;
+`;
+export const Head_border_style1 = styled.div`
+	border: ${props => props.css['border-width']+" "+props.css['border-style']+" "+props.css['border-color'] } !important;
+
+`;
+
