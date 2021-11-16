@@ -1,4 +1,5 @@
 import {Head_border_style1, Head_title} from "../../Style_component";
+import { trimbychar, trimbyword } from './../../Helper';
 
 
 const Layout1 = (props) => {
@@ -6,6 +7,7 @@ const Layout1 = (props) => {
 		title,
 		title_style, 
 		data, 
+		excerpt,
 		excerpt_style, 
 		category_style, 
 		category_padding, 
@@ -21,7 +23,7 @@ const Layout1 = (props) => {
 		heading_margin_object,
 		content_wrap,
 		constent_box_padding,
-		content_padding
+		content_padding,
 	} = props
 
 	const {
@@ -76,6 +78,25 @@ const Layout1 = (props) => {
 				<Content_padding css_pad={content_padding} className="rt-container-fluid rt-tpg-container ">
 					{
 						data.length && data.map((post) =>{
+							var postexcerpt = post.excerpt;
+							var post_title = post.title;
+
+							if(title.type == "char"){
+								post_title = trimbychar(post_title, title.word_limit, title.more_text)
+							}
+
+							if(title.type == "word"){
+								post_title = trimbyword(post_title, title.word_limit, title.more_text)
+							}
+
+							if(excerpt.type == "char"){
+								postexcerpt = trimbychar(postexcerpt, excerpt.limit, excerpt.more_text)
+							}
+
+							if(excerpt.type == "word"){
+								postexcerpt = trimbyword(postexcerpt, excerpt.limit, excerpt.more_text)
+							}
+
 							return(
 								<>
 									<div className="rt-col-md-4 rt-col-sm-6 rt-col-xs-12 rt-equal-height  rt-grid-item even-grid-item">
@@ -91,7 +112,7 @@ const Layout1 = (props) => {
 													general.title? (
 														<Titletag as={Title} css={title_style} className="entry-title">
 															<Titlea css={title_style} data-id={post.id} className="" href={post.post_link}>
-																{post.title}
+																{post_title}
 															</Titlea>
 														</Titletag>
 													):('')
@@ -183,7 +204,7 @@ const Layout1 = (props) => {
 												{
 													general.excerpt?(
 														<Excerpts css={excerpt_style} className="tpg-excerpt">
-															{post.excerpt}
+															{postexcerpt}
 														</Excerpts>
 													):("")
 												}

@@ -1939,6 +1939,9 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 }
 .rt-container-fluid {
   position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 #bottom-script-loader {

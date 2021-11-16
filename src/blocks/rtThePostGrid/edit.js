@@ -33,6 +33,7 @@ import Style_Meta from './components/style/Style_Meta';
 import Style_Read_More from './components/style/Style_Read_More';
 import Style_Content_wrap from './components/style/Style_Content_wrap';
 import Style_Section from './components/style/Style_Section';
+import {limit_by_word} from './Helper';
 import $ from 'jquery';
 
 import {
