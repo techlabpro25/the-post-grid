@@ -142,7 +142,7 @@ const attributes = {
 		type: "object",
 		default: {
 			position: "",
-			style: "style_1",
+			style: "style1",
 			icon: true,
 		},
 	},
@@ -166,7 +166,7 @@ const attributes = {
 		default: {
 			position: "between",
 			icon: true,
-			seperator: "|",
+			seperator: "",
 		},
 	},
 	meta_style: {

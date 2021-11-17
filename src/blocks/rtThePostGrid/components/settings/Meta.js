@@ -44,6 +44,7 @@ function Meta(props) {
                 label="Seperator"
                 value={ meta.seperator }
                 options={ [
+                    { label: 'Default', value: '' },
                     { label: 'Dot(.)', value: '.' },
                     { label: 'Single Slash ( / )', value: '/' },
                     { label: 'Double Slash ( // )', value: '//' },

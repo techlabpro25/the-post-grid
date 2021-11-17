@@ -9,9 +9,11 @@ const Layout1 = (props) => {
 		data, 
 		excerpt,
 		excerpt_style, 
+		category,
 		category_style, 
 		category_padding, 
 		category_margin, 
+		meta,
 		meta_style,
 		button,
 		button_style,
@@ -58,7 +60,7 @@ const Layout1 = (props) => {
 	}
 
 
-	// console.log(props)
+	console.log(category.position)
     return (
         <>
 			<Content_wrap css={content_wrap} css_pad={constent_box_padding}>
@@ -105,9 +107,30 @@ const Layout1 = (props) => {
 												<a data-id={post.id} className="" href={post.post_link}>
 													<img width="" height="150" src={post.image_url} className="rt-img-responsive" alt=""/>
 												</a>
+												{
+													(category.position.includes('over-image'))?(
+														<div class={`cat-${category.position} ${category.style}`}>
+															<span class="categories-links">
+																<i class="fas fa-folder-open"></i>
+																<Cat_style css={category_style} css_pad={category_padding} css_mar={category_margin} href="https://grid.test/category/block/" rel="tag">Block</Cat_style>
+															</span>
+														</div>
+													):("")
+												}
 											</div>
 
 											<div className="rt-detail">
+												{
+													(category.position == "above-title")?(
+														<div class={`cat-above-title ${category.style}`}>
+															<span class="categories-links">
+																<i class="fas fa-folder-open"></i>
+																<Cat_style css={category_style} css_pad={category_padding} css_mar={category_margin} href="https://grid.test/category/block/" rel="tag">Block</Cat_style>
+															</span>
+														</div>
+													):('')
+												}
+
 												{
 													general.title? (
 														<Titletag as={Title} css={title_style} className="entry-title">
@@ -126,6 +149,7 @@ const Layout1 = (props) => {
 																<a href={post.author_url}>
 																	<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
 																</a>
+																{meta.seperator}
 															</span>
 														):("")
 													}
@@ -136,13 +160,14 @@ const Layout1 = (props) => {
 															<span className="date">
 																<i className="far fa-calendar-alt"></i>
 																<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
+																{meta.seperator}
 															</span>
 														):('')
 													}
 
 													{/*Category*/}
 													{
-														general.category?(
+														(category.position.length == 0) && general.category?(
 															<span className="categories-links">
 																<i className="fas fa-folder-open"></i>
 																	{
@@ -159,9 +184,12 @@ const Layout1 = (props) => {
 																			)
 																		})
 																	}
+																	{" "+meta.seperator}
 															</span>
 														):("")
 													}
+														
+													
 
 													{/*Tag*/}
 													{
@@ -182,6 +210,7 @@ const Layout1 = (props) => {
 																			)
 																		})
 																	}
+																	{" "+meta.seperator}
 															</span>
 														):("")
 													}
@@ -194,6 +223,7 @@ const Layout1 = (props) => {
 																<a href={`${post.post_link}/#respond`}>
 																	<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
 																</a>
+																
 															</span>
 														):("")
 													}

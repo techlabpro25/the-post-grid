@@ -138,8 +138,23 @@ class RtThePostGrid extends Block
                 'type' => 'full',
                 'more_text' => '...',
             ]
+        ],
+        'category' =>[
+            'type' =>'object',
+            'default' =>[
+                'position' => "",
+                'style' => "style1",
+                'icon' => true
+            ]
+        ],
+        'meta' =>[
+            'type' => 'object',
+            'default' =>[
+                'position' => 'between',
+                'icon' => true,
+                'seperator' => ''
+            ]
         ]
-
 	];
 
 	public function __construct()
