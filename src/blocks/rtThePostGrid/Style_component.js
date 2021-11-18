@@ -96,10 +96,20 @@ export const Content_wrap = styled.div`
 	border-radius: ${props => props.css.radius}px !important;
 	border: ${props => props.css['border-width']+" solid "+props.css['border-color']} !important;
 	box-shadow: ${props => '0px 0px 5px 0px '+props.css['box-shadow-color']} !important;
-	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;;
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
 `;
 
 export const Content_padding = styled.div`
-	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;;
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
+`;
+
+export const ImgAnimation = styled.img`
+	width: ${props => props.css.size}px !important;
+	height: ${props => (props.css.size == "150")? "150px": (props.css.size == "300")? "300px": "auto"} !important;
+	
+`;
+
+export const ImgParent = styled.div`
+	border-radius: ${props => props.css['border-radius']}px !important;	
 `;
 

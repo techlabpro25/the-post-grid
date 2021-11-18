@@ -74,7 +74,8 @@ class RtThePostGrid extends Block
             'type' => "object",
             'default' => [
                 'border-radius' => "5",
-                "text-align" => "left"
+                "text-align" => "left",
+                'text' => 'View More',
             ],
         ],
         'button_style' =>[
@@ -154,7 +155,17 @@ class RtThePostGrid extends Block
                 'icon' => true,
                 'seperator' => ''
             ]
-        ]
+            ],
+            'image' => [
+                'type' => 'object',
+                'default' => [
+                    'show_hide' => true,
+                    'size'=> "1024",
+                    'shape'=> "normal",
+                    'animation'=> "none",
+                    'border-radius'=> "5",
+                ]
+            ]
 	];
 
 	public function __construct()

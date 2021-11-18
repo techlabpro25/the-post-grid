@@ -30,11 +30,11 @@ function Image(props) {
                         label="Featured Image Size:"
                         value={ image.size }
                         options={ [
-                            { label: 'Thumbnail (150 x 150)', value: "150x150" },
-                            { label: 'Medium (300 x 300)', value: "300x300" },
-                            { label: 'Large (1024 x 1024)', value: "1024x1024" },
-                            { label: '1536 x 1536 (1536 x 1536)', value: "1536x1536" },
-                            { label: '2048 x 2048 (2048 x 2048)', value: "2048x2048" },
+                            { label: 'Thumbnail (150 x 150)', value: "150" },
+                            { label: 'Medium (300 x 300)', value: "300" },
+                            { label: 'Large (1024 x 1024)', value: "1024" },
+                            { label: '1536 x 1536 (1536 x 1536)', value: "1536" },
+                            { label: '2048 x 2048 (2048 x 2048)', value: "2048" },
                         ] }
                         onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "size": value} } ) }
                     />
@@ -59,8 +59,8 @@ function Image(props) {
                 value={ image.animation }
                 options={ [
                     { label: 'None', value: "none" },
-                    { label: 'Zoom In', value: "anim_zoom_in" },
-                    { label: 'Zoom Out', value: "anim_zoom_out" },
+                    { label: 'Zoom In', value: "zoom_in" },
+                    { label: 'Zoom Out', value: "zoom_out" },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "animation": value} } ) }
             />

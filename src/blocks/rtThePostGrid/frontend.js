@@ -14,7 +14,9 @@ import {
     MetaStyle_align,
     Content_wrap,
     Content_padding,
-    Cat_style_non_default
+    Cat_style_non_default,
+    ImgAnimation,
+    ImgParent
 } from './Style_component';
 
 const {render, useState, useEffect} = wp.element;
@@ -44,7 +46,9 @@ const RtThePostGrid = (props) => {
         MetaStyle_align,
         Content_wrap,
         Content_padding,
-        Cat_style_non_default
+        Cat_style_non_default,
+        ImgAnimation,
+        ImgParent
     }
 
 

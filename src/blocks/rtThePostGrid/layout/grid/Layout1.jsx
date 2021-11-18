@@ -26,6 +26,7 @@ const Layout1 = (props) => {
 		content_wrap,
 		constent_box_padding,
 		content_padding,
+		image
 	} = props
 
 	const {
@@ -43,7 +44,9 @@ const Layout1 = (props) => {
 		MetaStyle_align,
 		Content_wrap,
 		Content_padding,
-		Cat_style_non_default
+		Cat_style_non_default,
+		ImgAnimation,
+		ImgParent
 	} = props.css
 
 	let Heading = "";
@@ -104,10 +107,14 @@ const Layout1 = (props) => {
 								<>
 									<div className="rt-col-md-4 rt-col-sm-6 rt-col-xs-12 rt-equal-height  rt-grid-item even-grid-item">
 										<div className="rt-holder">
-											<div className="rt-img-holder">
-												<a data-id={post.id} className="" href={post.post_link}>
-													<img width="" height="150" src={post.image_url} className="rt-img-responsive" alt="" />
-												</a>
+											<ImgParent css={image} className="rt-img-holder">
+												{
+													image.show_hide?(
+														<a data-id={post.id} className="" href={post.post_link}>
+															<ImgAnimation css={image} width="" height="150" src={post.image_url} className={`rt-img-responsive ${image.animation}`} alt="" />
+														</a>
+													):("")
+												}
 												{
 													(category.position.includes('over-image')) ? (
 														<div class={`cat-${category.position} ${category.style}`}>
@@ -131,7 +138,7 @@ const Layout1 = (props) => {
 														</div>
 													) : ("")
 												}
-											</div>
+											</ImgParent>
 
 											<div className="rt-detail">
 												{
@@ -464,7 +471,7 @@ const Layout1 = (props) => {
 														<Btn_align css_btn={button} className="post-meta ">
 															<span className="read-more">
 																<Button_style css={button_style} css_btn={button} data-id={post.id} className="" href={post.post_link}>
-																	Read More
+																	{button.text}
 																</Button_style>
 															</span>
 														</Btn_align>

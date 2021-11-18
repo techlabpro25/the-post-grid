@@ -105,7 +105,7 @@ const attributes = {
 	title: {
 		type: "object",
 		default: {
-			tag: "h2",
+			tag: "2",
 			position: "",
 			word_limit: 100,
 			type: "full",
@@ -200,10 +200,10 @@ const attributes = {
 		type: "object",
 		default: {
 			show_hide: true,
-			size: "1024x1024",
+			size: "1024",
 			shape: "normal",
 			animation: "none",
-			["border-radius"]: "",
+			["border-radius"]: "5",
 		},
 	},
 	parent_class: {

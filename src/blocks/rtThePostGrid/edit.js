@@ -52,6 +52,8 @@ import {
 	Content_wrap,
     Content_padding,
 	Cat_style_non_default,
+	ImgAnimation,
+	ImgParent
 } from './Style_component';
 
 const {__} = wp.i18n;
@@ -77,7 +79,9 @@ export default function Edit(props) {
 		MetaStyle_align,
 		Content_wrap,
         Content_padding,
-		Cat_style_non_default
+		Cat_style_non_default,
+		ImgAnimation,
+		ImgParent
     }
 
     const colors = [
