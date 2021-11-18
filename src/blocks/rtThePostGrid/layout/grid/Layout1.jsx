@@ -125,7 +125,12 @@ const Layout1 = (props) => {
 													(category.position.includes('over-image')) ? (
 														<div class={`cat-${category.position} ${category.style}`}>
 															<span class="categories-links">
-															<FontAwesomeIcon icon={faFolderOpen} /> &nbsp;
+																{
+																	category.icon?(
+																		<FontAwesomeIcon icon={faFolderOpen} />
+																	):("")
+																}
+															 	&nbsp;
 																{
 																	post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -151,7 +156,12 @@ const Layout1 = (props) => {
 													(category.position == "above-title") ? (
 														<div class={`cat-above-title ${category.style}`}>
 															<span class="categories-links">
-																<FontAwesomeIcon icon={faFolderOpen} /> &nbsp;
+																{
+																	category.icon?(
+																		<FontAwesomeIcon icon={faFolderOpen} />
+																	):("")
+																}
+															 	&nbsp;
 																{
 																	post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -177,7 +187,12 @@ const Layout1 = (props) => {
 															{
 																general.author ? (
 																	<span className="author">
-																		<FontAwesomeIcon icon={faUser} /> &nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faUser} />
+																			):("")
+																		}
+																		&nbsp;
 																		<a href={post.author_url}>
 																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
 																		</a>
@@ -190,7 +205,12 @@ const Layout1 = (props) => {
 															{
 																general.post_date ? (
 																	<span className="date">
-																		<FontAwesomeIcon icon={faCalendarAlt} /> &nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faCalendarAlt} />
+																			):("")
+																		}
+																		&nbsp;
 																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
@@ -201,7 +221,12 @@ const Layout1 = (props) => {
 															{
 																(category.position.length == 0) && general.category ? (
 																	<span className="categories-links">
-																		<FontAwesomeIcon icon={faFolderOpen} /> &nbsp;
+																		{
+																			category.icon?(
+																				<FontAwesomeIcon icon={faFolderOpen} />
+																			):("")
+																		}
+																		&nbsp;
 																		{
 																			post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -227,7 +252,12 @@ const Layout1 = (props) => {
 															{
 																general.tag ? (
 																	<span className="post-tags-links">
-																		<FontAwesomeIcon icon={faTags} /> &nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faTags} />
+																			):("")
+																		}
+																		&nbsp;
 																		{
 																			post?.tags?.length && post.tags.map((tag_item, i) => {
 
@@ -251,7 +281,12 @@ const Layout1 = (props) => {
 															{
 																general.comment_count ? (
 																	<span className="comment-count">
-																		<FontAwesomeIcon icon={faComments} /> &nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faComments} />
+																			):("")
+																		}
+																		&nbsp;
 																		<a href={`${post.post_link}/#respond`}>
 																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
 																		</a>
@@ -280,7 +315,12 @@ const Layout1 = (props) => {
 															{
 																general.author ? (
 																	<span className="author">
-																		<FontAwesomeIcon icon={faUser} /> &nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faUser} />
+																			):("")
+																		}
+																		&nbsp;
 																		<a href={post.author_url}>
 																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
 																		</a>
@@ -293,7 +333,12 @@ const Layout1 = (props) => {
 															{
 																general.post_date ? (
 																	<span className="date">
-																		<FontAwesomeIcon icon={faCalendarAlt} /> &nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faCalendarAlt} />
+																			):("")
+																		}
+																		&nbsp;
 																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
@@ -304,7 +349,12 @@ const Layout1 = (props) => {
 															{
 																(category.position.length == 0) && general.category ? (
 																	<span className="categories-links">
-																		<FontAwesomeIcon icon={faFolderOpen} /> &nbsp;
+																		{
+																			category.icon?(
+																				<FontAwesomeIcon icon={faFolderOpen} />
+																			):("")
+																		}
+																		&nbsp;
 																		{
 																			post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -330,7 +380,12 @@ const Layout1 = (props) => {
 															{
 																general.tag ? (
 																	<span className="post-tags-links">
-																		<FontAwesomeIcon icon={faTags} /> &nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faTags} />
+																			):("")
+																		}
+																		&nbsp;
 																		{
 																			post?.tags?.length && post.tags.map((tag_item, i) => {
 
@@ -354,7 +409,12 @@ const Layout1 = (props) => {
 															{
 																general.comment_count ? (
 																	<span className="comment-count">
-																		<FontAwesomeIcon icon={faComments} />&nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faComments} />
+																			):("")
+																		}
+																		&nbsp;
 																		<a href={`${post.post_link}/#respond`}>
 																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
 																		</a>
@@ -384,7 +444,12 @@ const Layout1 = (props) => {
 															{
 																general.author ? (
 																	<span className="author">
-																		<FontAwesomeIcon icon={faUser} />&nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faUser} />
+																			):("")
+																		}
+																		&nbsp;
 																		<a href={post.author_url}>
 																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
 																		</a>
@@ -397,7 +462,12 @@ const Layout1 = (props) => {
 															{
 																general.post_date ? (
 																	<span className="date">
-																		<FontAwesomeIcon icon={faCalendarAlt} />&nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faCalendarAlt} />
+																			):("")
+																		}
+																		&nbsp;
 																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
@@ -408,7 +478,12 @@ const Layout1 = (props) => {
 															{
 																(category.position.length == 0) && general.category ? (
 																	<span className="categories-links">
-																		<FontAwesomeIcon icon={faFolderOpen} />&nbsp;
+																		{
+																			category.icon?(
+																				<FontAwesomeIcon icon={faFolderOpen} />
+																			):("")
+																		}
+																		&nbsp;
 																		{
 																			post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -434,7 +509,12 @@ const Layout1 = (props) => {
 															{
 																general.tag ? (
 																	<span className="post-tags-links">
-																		<FontAwesomeIcon icon={faTags} />&nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faTags} />
+																			):("")
+																		}
+																		&nbsp;
 																		{
 																			post?.tags?.length && post.tags.map((tag_item, i) => {
 
@@ -458,7 +538,12 @@ const Layout1 = (props) => {
 															{
 																general.comment_count ? (
 																	<span className="comment-count">
-																		<FontAwesomeIcon icon={faComments} />&nbsp;
+																		{
+																			meta.icon?(
+																				<FontAwesomeIcon icon={faComments} />
+																			):("")
+																		}
+																		&nbsp;
 																		<a href={`${post.post_link}/#respond`}>
 																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
 																		</a>
