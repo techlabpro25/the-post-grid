@@ -43,6 +43,7 @@ const Layout1 = (props) => {
 		MetaStyle_align,
 		Content_wrap,
         Content_padding,
+		Cat_style_non_default
 	} = props.css
 
 	let Heading ="";
@@ -112,7 +113,20 @@ const Layout1 = (props) => {
 														<div class={`cat-${category.position} ${category.style}`}>
 															<span class="categories-links">
 																<i class="fas fa-folder-open"></i>
-																<Cat_style css={category_style} css_pad={category_padding} css_mar={category_margin} href="https://grid.test/category/block/" rel="tag">Block</Cat_style>
+																{
+																	post?.category?.length && post.category.map((cat_item, i) =>{
+
+																		return(
+																			<>
+																				{(i>0)? " , ":""}
+																				<Cat_style_non_default css={category_style} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
+																					{cat_item.cat_name}
+																				</Cat_style_non_default>
+																			</>
+
+																		)
+																	})
+																}
 															</span>
 														</div>
 													):("")
@@ -125,7 +139,20 @@ const Layout1 = (props) => {
 														<div class={`cat-above-title ${category.style}`}>
 															<span class="categories-links">
 																<i class="fas fa-folder-open"></i>
-																<Cat_style css={category_style} css_pad={category_padding} css_mar={category_margin} href="https://grid.test/category/block/" rel="tag">Block</Cat_style>
+																{
+																	post?.category?.length && post.category.map((cat_item, i) =>{
+
+																		return(
+																			<>
+																				{(i>0)? " , ":""}
+																				<Cat_style_non_default css={category_style} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
+																					{cat_item.cat_name}
+																				</Cat_style_non_default>
+																			</>
+
+																		)
+																	})
+																}
 															</span>
 														</div>
 													):('')
