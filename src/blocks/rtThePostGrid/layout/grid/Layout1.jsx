@@ -1,6 +1,7 @@
 import { Head_border_style1, Head_title } from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faCalendarAlt, faFolderOpen, faTags, faComments } from '@fortawesome/free-solid-svg-icons'
 
 const Layout1 = (props) => {
 	const {
@@ -68,19 +69,24 @@ const Layout1 = (props) => {
 	return (
 		<>
 			<Content_wrap css={content_wrap} css_pad={constent_box_padding}>
-				<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
+				{
+					general.heading?(
+						<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
 
-					{
-						(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line line-left"></Head_border_style1>) : ("")
-					}
-					<Head_title css={heading_style} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widget-heading">
-						<Head_color css={heading_style} href={heading.link}>{heading_title}</Head_color>
-					</Head_title>
-					{
-						(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line"></Head_border_style1>) : ("")
-					}
+							{
+								(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line line-left"></Head_border_style1>) : ("")
+							}
+							<Head_title css={heading_style} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widget-heading">
+								<Head_color css={heading_style} href={heading.link}>{heading_title}</Head_color>
+							</Head_title>
+							{
+								(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line"></Head_border_style1>) : ("")
+							}
 
-				</Head_border>
+						</Head_border>
+					):("")
+				}
+				
 				<Content_padding css_pad={content_padding} className="rt-container-fluid rt-tpg-container ">
 					{
 						data.length && data.map((post) => {
@@ -119,7 +125,7 @@ const Layout1 = (props) => {
 													(category.position.includes('over-image')) ? (
 														<div class={`cat-${category.position} ${category.style}`}>
 															<span class="categories-links">
-																<i class="fas fa-folder-open"></i>
+															<FontAwesomeIcon icon={faFolderOpen} /> &nbsp;
 																{
 																	post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -145,7 +151,7 @@ const Layout1 = (props) => {
 													(category.position == "above-title") ? (
 														<div class={`cat-above-title ${category.style}`}>
 															<span class="categories-links">
-																<i class="fas fa-folder-open"></i>
+																<FontAwesomeIcon icon={faFolderOpen} /> &nbsp;
 																{
 																	post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -171,7 +177,7 @@ const Layout1 = (props) => {
 															{
 																general.author ? (
 																	<span className="author">
-																		<i className="fa fa-user"></i>
+																		<FontAwesomeIcon icon={faUser} /> &nbsp;
 																		<a href={post.author_url}>
 																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
 																		</a>
@@ -184,7 +190,7 @@ const Layout1 = (props) => {
 															{
 																general.post_date ? (
 																	<span className="date">
-																		<i className="far fa-calendar-alt"></i>
+																		<FontAwesomeIcon icon={faCalendarAlt} /> &nbsp;
 																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
@@ -195,7 +201,7 @@ const Layout1 = (props) => {
 															{
 																(category.position.length == 0) && general.category ? (
 																	<span className="categories-links">
-																		<i className="fas fa-folder-open"></i>
+																		<FontAwesomeIcon icon={faFolderOpen} /> &nbsp;
 																		{
 																			post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -221,7 +227,7 @@ const Layout1 = (props) => {
 															{
 																general.tag ? (
 																	<span className="post-tags-links">
-																		<i className="fa fa-tags"></i>
+																		<FontAwesomeIcon icon={faTags} /> &nbsp;
 																		{
 																			post?.tags?.length && post.tags.map((tag_item, i) => {
 
@@ -245,7 +251,7 @@ const Layout1 = (props) => {
 															{
 																general.comment_count ? (
 																	<span className="comment-count">
-																		<i className="fas fa-comments"></i>
+																		<FontAwesomeIcon icon={faComments} /> &nbsp;
 																		<a href={`${post.post_link}/#respond`}>
 																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
 																		</a>
@@ -274,7 +280,7 @@ const Layout1 = (props) => {
 															{
 																general.author ? (
 																	<span className="author">
-																		<i className="fa fa-user"></i>
+																		<FontAwesomeIcon icon={faUser} /> &nbsp;
 																		<a href={post.author_url}>
 																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
 																		</a>
@@ -287,7 +293,7 @@ const Layout1 = (props) => {
 															{
 																general.post_date ? (
 																	<span className="date">
-																		<i className="far fa-calendar-alt"></i>
+																		<FontAwesomeIcon icon={faCalendarAlt} /> &nbsp;
 																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
@@ -298,7 +304,7 @@ const Layout1 = (props) => {
 															{
 																(category.position.length == 0) && general.category ? (
 																	<span className="categories-links">
-																		<i className="fas fa-folder-open"></i>
+																		<FontAwesomeIcon icon={faFolderOpen} /> &nbsp;
 																		{
 																			post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -324,7 +330,7 @@ const Layout1 = (props) => {
 															{
 																general.tag ? (
 																	<span className="post-tags-links">
-																		<i className="fa fa-tags"></i>
+																		<FontAwesomeIcon icon={faTags} /> &nbsp;
 																		{
 																			post?.tags?.length && post.tags.map((tag_item, i) => {
 
@@ -348,7 +354,7 @@ const Layout1 = (props) => {
 															{
 																general.comment_count ? (
 																	<span className="comment-count">
-																		<i className="fas fa-comments"></i>
+																		<FontAwesomeIcon icon={faComments} />&nbsp;
 																		<a href={`${post.post_link}/#respond`}>
 																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
 																		</a>
@@ -378,7 +384,7 @@ const Layout1 = (props) => {
 															{
 																general.author ? (
 																	<span className="author">
-																		<i className="fa fa-user"></i>
+																		<FontAwesomeIcon icon={faUser} />&nbsp;
 																		<a href={post.author_url}>
 																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
 																		</a>
@@ -391,7 +397,7 @@ const Layout1 = (props) => {
 															{
 																general.post_date ? (
 																	<span className="date">
-																		<i className="far fa-calendar-alt"></i>
+																		<FontAwesomeIcon icon={faCalendarAlt} />&nbsp;
 																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
@@ -402,7 +408,7 @@ const Layout1 = (props) => {
 															{
 																(category.position.length == 0) && general.category ? (
 																	<span className="categories-links">
-																		<i className="fas fa-folder-open"></i>
+																		<FontAwesomeIcon icon={faFolderOpen} />&nbsp;
 																		{
 																			post?.category?.length && post.category.map((cat_item, i) => {
 
@@ -428,7 +434,7 @@ const Layout1 = (props) => {
 															{
 																general.tag ? (
 																	<span className="post-tags-links">
-																		<i className="fa fa-tags"></i>
+																		<FontAwesomeIcon icon={faTags} />&nbsp;
 																		{
 																			post?.tags?.length && post.tags.map((tag_item, i) => {
 
@@ -452,7 +458,7 @@ const Layout1 = (props) => {
 															{
 																general.comment_count ? (
 																	<span className="comment-count">
-																		<i className="fas fa-comments"></i>
+																		<FontAwesomeIcon icon={faComments} />&nbsp;
 																		<a href={`${post.post_link}/#respond`}>
 																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
 																		</a>
