@@ -24,10 +24,12 @@ import apiFetch from '@wordpress/api-fetch';
 
 const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
+    const [isloading, setIsloading] = useState(true);
     const [perPage, setPerPage] = useState(props.limit || 10);
     useEffect(() => {
         apiFetch({path: '/rt/v1/query?post_type=post'}).then((posts) => {
             setData(posts);
+            setIsloading(false)
         });
     }, [perPage]);
 
@@ -54,7 +56,14 @@ const RtThePostGrid = (props) => {
 
     return (
         <div className="rt-thepostgrid-frontend">
-            <RenderView {...props} data={data} css={style_sheet}/>
+            {
+                isloading?(
+                    <div class="lds-dual-ring"></div>
+                ):(
+                    <RenderView {...props} data={data} css={style_sheet}/>
+                )
+            }
+            
         </div>
     )
 }

@@ -1,12 +1,7 @@
 const attributes = {
-	limit: {
-		type: "number",
-		default: 10,
-	},
 	query: {
 		type: "object",
 		default: {
-			tt: "sdfsdf",
 			post_type: "post",
 			limit: -1,
 			include: "",

@@ -33,7 +33,6 @@ import Style_Meta from './components/style/Style_Meta';
 import Style_Read_More from './components/style/Style_Read_More';
 import Style_Content_wrap from './components/style/Style_Content_wrap';
 import Style_Section from './components/style/Style_Section';
-import {limit_by_word} from './Helper';
 import $ from 'jquery';
 
 import {
@@ -63,7 +62,8 @@ const {useState, useEffect} = wp.element;
 export default function Edit(props) {
     const {attributes, setAttributes} = props;
     const [data, setData] = useState([]);
-    const { general, parent_class, primary_color, heading } = attributes
+	const [isloading, setIsloading] = useState(true);
+    const { query, general, parent_class, primary_color, heading } = attributes
     const style_sheet ={
         Titlea,
         Titletag,
@@ -128,13 +128,12 @@ export default function Edit(props) {
 		},
 		
 	]
+	console.log(query);
 
     useEffect(() => {
-        if (!attributes.limit) {
-            return;
-        }
-        apiFetch({path: '/rt/v1/query?post_type=post'}).then((posts) => {
+        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&posts_per_page='+query.limit}).then((posts) => {
             setData(posts);
+			setIsloading(false);
         });
     }, []);
 
@@ -385,7 +384,13 @@ export default function Edit(props) {
                 
             </InspectorControls>
             <div className="rt-postsreact-editor">
-                <RenderView {...attributes} data={data} css={style_sheet}/>
+				{
+					isloading?(
+						<div class="lds-dual-ring"></div>
+					):(
+						<RenderView {...attributes} data={data} css={style_sheet}/>
+					)
+				}
             </div>
         </>
     );
