@@ -41,7 +41,7 @@ class RtThePostGrid extends Block
 			'type'=> "object",
 			'default'=> [
 				"text-align"=> "left",
-				"color"=> "#000",
+				"color"=> "",
 				"font-size"=> "22px",
 				"font-weight"=> 400,
 			],
@@ -49,9 +49,9 @@ class RtThePostGrid extends Block
 		'category_style' =>[
 			'type' => "object",
 			'default' => [
-				'color' => "#000",
-				"background-color" => "#fff",
-				'font-size' => '12px',
+				'color' => "",
+				"background-color" => "transparent",
+				'font-size' => '15px',
 				'border-radius' => "5",
 			],
 		],
@@ -64,9 +64,9 @@ class RtThePostGrid extends Block
         'meta_style' =>[
             'type' => "object",
             'default' => [
-                'color' => "#000",
+                'color' => "",
                 "text-align" => "left",
-                'font-size' => '12px',
+                'font-size' => '15px',
                 'font-weight' => "400",
             ],
         ],
@@ -81,9 +81,9 @@ class RtThePostGrid extends Block
         'button_style' =>[
             'type' => "object",
             'default' => [
-                'color' => '#fff',
+                'color' => '',
                 'h_color' => "#fff",
-                'background-color' => "#000",
+                'background-color' => "#fff",
                 'h_bg_color' => "#000",
                 'active_color' => "#000",
             ],
@@ -91,9 +91,9 @@ class RtThePostGrid extends Block
         'excerpt_style' =>[
             'type' => "object",
             'default' => [
-                'color' => "#000",
+                'color' => "",
                 "text-align" => "left",
-                'font-size' => '12px',
+                'font-size' => '15px',
                 'font-weight' => "400",
             ],
         ],
@@ -108,9 +108,9 @@ class RtThePostGrid extends Block
         'heading_style' =>[
                 'type' => "object",
                 'default' =>[
-                    'color' => "#000",
+                    'color' => "",
                     "text-align" => "left",
-                    'background-color' => '#fff',
+                    'background-color' => 'transparent',
                     "border-color" => "gray",
                     "border-width" => "1px",
                     "border-style" => "solid",
@@ -155,17 +155,56 @@ class RtThePostGrid extends Block
                 'icon' => true,
                 'seperator' => ''
             ]
-            ],
-            'image' => [
-                'type' => 'object',
-                'default' => [
-                    'show_hide' => true,
-                    'size'=> "1024",
-                    'shape'=> "normal",
-                    'animation'=> "none",
-                    'border-radius'=> "5",
-                ]
+        ],
+        'image' => [
+            'type' => 'object',
+            'default' => [
+                'show_hide' => true,
+                'size'=> "1024",
+                'shape'=> "normal",
+                'animation'=> 1,
+                'border-radius'=> "5",
             ]
+        ],
+        'query' =>[
+            'type' =>'object',
+            'default' => [
+                'post_type'  => "post",
+                'limit'  => -1,
+                'include'  => "",
+                'exclude'  => "",
+                'offset'  => 0,
+                'taxonomy_bool'  => false,
+                'category_bool'  => false,
+                'taxonomy'  => [],
+                'tax_term'  => [
+                    'category'  => ["aa", "bb"],
+                ],
+                'category'  => [],
+                'category_operator'  => "",
+                'tag_bool'  => false,
+                'tag'  => [],
+                'tag_operator'  => "",
+                'relation'  => "",
+                'order_bool'  => false,
+                'order_by'  => "",
+                'order'  => "",
+                'author_bool'  => false,
+                'author'  => [],
+                'status_bool'  => false,
+                'status'  => ["publish"],
+                'keyword_bool'  => false,
+                'keyword'  => "",
+            ]
+        ],
+        'primary_color' =>[
+            'type' => 'string',
+            'default' => '#000'
+        ],
+        'parent_class' =>[
+            'type'=> "string",
+		    'default'=> "default"
+        ]
 	];
 
 	public function __construct()

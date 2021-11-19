@@ -58,9 +58,9 @@ function Image(props) {
                 label="Hover Animation:"
                 value={ image.animation }
                 options={ [
-                    { label: 'None', value: "none" },
-                    { label: 'Zoom In', value: "zoom_in" },
-                    { label: 'Zoom Out', value: "zoom_out" },
+                    { label: 'None', value: 1 },
+                    { label: 'Zoom In', value: 1.1 },
+                    { label: 'Zoom Out', value: 0.96 },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "animation": value} } ) }
             />

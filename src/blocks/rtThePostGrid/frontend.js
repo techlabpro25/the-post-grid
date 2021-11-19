@@ -25,13 +25,20 @@ import apiFetch from '@wordpress/api-fetch';
 const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
-    const [perPage, setPerPage] = useState(props.limit || 10);
+    const [author, setAuthor] = useState("");
+    const [status, setStatus] = useState("");
+    const {query} = props
+
+
     useEffect(() => {
-        apiFetch({path: '/rt/v1/query?post_type=post'}).then((posts) => {
+        setAuthor(Object.values(query.author).join(","))
+        setStatus(Object.values(query.status).join(","))
+        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+query.limit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+query.offset+'&order_by='+query.order_by+'&order='+query.order+'&author='+author+'&status='+status+'&keyword='+query.keyword}).then((posts) => {
             setData(posts);
             setIsloading(false)
         });
-    }, [perPage]);
+    }, [query]);
+
 
     const style_sheet ={
         Titlea,

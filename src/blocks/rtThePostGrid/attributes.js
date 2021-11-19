@@ -84,8 +84,8 @@ const attributes = {
 		type: "object",
 		default: {
 			["text-align"]: "left",
-			color: "#000",
-			["background-color"]: "#fff",
+			color: "",
+			["background-color"]: "transparent",
 			["border-color"]: "gray",
 			["border-width"]: "1px",
 			["border-style"]: "solid",
@@ -111,7 +111,7 @@ const attributes = {
 		type: "object",
 		default: {
 			["text-align"]: "center",
-			color: "#000",
+			color: "",
 			["font-size"]: "",
 			["font-weight"]: 400,
 		},
@@ -128,8 +128,8 @@ const attributes = {
 		type: "object",
 		default: {
 			["text-align"]: "left",
-			color: "#000",
-			["font-size"]: "",
+			color: "",
+			["font-size"]: "15px",
 			["font-weight"]: 400,
 		},
 	},
@@ -168,8 +168,8 @@ const attributes = {
 		type: "object",
 		default: {
 			["text-align"]: "left",
-			color: "#000",
-			["font-size"]: "",
+			color: "",
+			["font-size"]: "15px",
 			["font-weight"]: 400,
 		},
 	},
@@ -197,15 +197,17 @@ const attributes = {
 			show_hide: true,
 			size: "1024",
 			shape: "normal",
-			animation: "none",
+			animation: 1,
 			["border-radius"]: "5",
 		},
 	},
 	parent_class: {
 		type: "string",
+		default: "default"
 	},
 	primary_color: {
 		type: "string",
+		default: "#000",
 	},
 	content_wrap: {
 		type: "object",

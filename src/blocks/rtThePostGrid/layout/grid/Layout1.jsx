@@ -27,7 +27,9 @@ const Layout1 = (props) => {
 		content_wrap,
 		constent_box_padding,
 		content_padding,
-		image
+		image,
+		primary_color,
+		parent_class
 	} = props
 
 	const {
@@ -64,11 +66,10 @@ const Layout1 = (props) => {
 		Title = 'h' + title.tag
 	}
 
-
-	console.log(meta.position)
+	console.log(title_style.color)
 	return (
 		<>
-			<Content_wrap css={content_wrap} css_pad={constent_box_padding}>
+			<Content_wrap css={content_wrap} css_pad={constent_box_padding} className={`${parent_class}`}>
 				{
 					general.heading?(
 						<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
@@ -76,8 +77,8 @@ const Layout1 = (props) => {
 							{
 								(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line line-left"></Head_border_style1>) : ("")
 							}
-							<Head_title css={heading_style} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widget-heading">
-								<Head_color css={heading_style} href={heading.link}>{heading_title}</Head_color>
+							<Head_title css={heading_style} primary={primary_color} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widget-heading">
+								<Head_color css={heading_style} primary={primary_color} href={heading.link}>{heading_title}</Head_color>
 							</Head_title>
 							{
 								(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line"></Head_border_style1>) : ("")
@@ -137,7 +138,7 @@ const Layout1 = (props) => {
 																		return (
 																			<>
 																				{(i > 0) ? " , " : ""}
-																				<Cat_style_non_default css={category_style} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
+																				<Cat_style_non_default css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
 																					{cat_item.cat_name}
 																				</Cat_style_non_default>
 																			</>
@@ -168,7 +169,7 @@ const Layout1 = (props) => {
 																		return (
 																			<>
 																				{(i > 0) ? " , " : ""}
-																				<Cat_style_non_default css={category_style} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
+																				<Cat_style_non_default css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
 																					{cat_item.cat_name}
 																				</Cat_style_non_default>
 																			</>
@@ -194,7 +195,7 @@ const Layout1 = (props) => {
 																		}
 																		&nbsp;
 																		<a href={post.author_url}>
-																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
+																			<MetaStyle css={meta_style} primary={primary_color} >{post.author_name}</MetaStyle>
 																		</a>
 																		{meta.seperator}
 																	</span>
@@ -211,7 +212,7 @@ const Layout1 = (props) => {
 																			):("")
 																		}
 																		&nbsp;
-																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
+																		<MetaStyle css={meta_style} primary={primary_color} >{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
 																) : ('')
@@ -233,7 +234,7 @@ const Layout1 = (props) => {
 																				return (
 																					<>
 																						{(i > 0) ? ", " : ""}
-																						<Cat_style css={category_style} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
+																						<Cat_style css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
 																							{cat_item.cat_name}
 																						</Cat_style>
 																					</>
@@ -288,7 +289,7 @@ const Layout1 = (props) => {
 																		}
 																		&nbsp;
 																		<a href={`${post.post_link}/#respond`}>
-																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
+																			<MetaStyle css={meta_style} primary={primary_color} >{post.comment_count}</MetaStyle>
 																		</a>
 
 																	</span>
@@ -302,7 +303,7 @@ const Layout1 = (props) => {
 												{
 													general.title ? (
 														<Titletag as={Title} css={title_style} className="entry-title">
-															<Titlea css={title_style} data-id={post.id} className="" href={post.post_link}>
+															<Titlea css={title_style} primary={primary_color} data-id={post.id} className="" href={post.post_link}>
 																{post_title}
 															</Titlea>
 														</Titletag>
@@ -322,7 +323,7 @@ const Layout1 = (props) => {
 																		}
 																		&nbsp;
 																		<a href={post.author_url}>
-																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
+																			<MetaStyle css={meta_style} primary={primary_color}>{post.author_name}</MetaStyle>
 																		</a>
 																		{meta.seperator}
 																	</span>
@@ -339,7 +340,7 @@ const Layout1 = (props) => {
 																			):("")
 																		}
 																		&nbsp;
-																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
+																		<MetaStyle css={meta_style} primary={primary_color} >{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
 																) : ('')
@@ -361,7 +362,7 @@ const Layout1 = (props) => {
 																				return (
 																					<>
 																						{(i > 0) ? ", " : ""}
-																						<Cat_style css={category_style} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
+																						<Cat_style css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
 																							{cat_item.cat_name}
 																						</Cat_style>
 																					</>
@@ -416,7 +417,7 @@ const Layout1 = (props) => {
 																		}
 																		&nbsp;
 																		<a href={`${post.post_link}/#respond`}>
-																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
+																			<MetaStyle css={meta_style} primary={primary_color} >{post.comment_count}</MetaStyle>
 																		</a>
 
 																	</span>
@@ -432,7 +433,7 @@ const Layout1 = (props) => {
 												{/*Excerpt*/}
 												{
 													general.excerpt ? (
-														<Excerpts css={excerpt_style} className="tpg-excerpt">
+														<Excerpts css={excerpt_style} primary={primary_color} className="tpg-excerpt">
 															{postexcerpt}
 														</Excerpts>
 													) : ("")
@@ -451,7 +452,7 @@ const Layout1 = (props) => {
 																		}
 																		&nbsp;
 																		<a href={post.author_url}>
-																			<MetaStyle css={meta_style}>{post.author_name}</MetaStyle>
+																			<MetaStyle css={meta_style} primary={primary_color}>{post.author_name}</MetaStyle>
 																		</a>
 																		{meta.seperator}
 																	</span>
@@ -468,7 +469,7 @@ const Layout1 = (props) => {
 																			):("")
 																		}
 																		&nbsp;
-																		<MetaStyle css={meta_style}>{post.post_date}</MetaStyle>
+																		<MetaStyle css={meta_style} primary={primary_color} >{post.post_date}</MetaStyle>
 																		{meta.seperator}
 																	</span>
 																) : ('')
@@ -490,7 +491,7 @@ const Layout1 = (props) => {
 																				return (
 																					<>
 																						{(i > 0) ? ", " : ""}
-																						<Cat_style css={category_style} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
+																						<Cat_style css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
 																							{cat_item.cat_name}
 																						</Cat_style>
 																					</>
@@ -545,7 +546,7 @@ const Layout1 = (props) => {
 																		}
 																		&nbsp;
 																		<a href={`${post.post_link}/#respond`}>
-																			<MetaStyle css={meta_style}>{post.comment_count}</MetaStyle>
+																			<MetaStyle css={meta_style} primary={primary_color} >{post.comment_count}</MetaStyle>
 																		</a>
 
 																	</span>
@@ -561,7 +562,7 @@ const Layout1 = (props) => {
 													general.see_more ? (
 														<Btn_align css_btn={button} className="post-meta ">
 															<span className="read-more">
-																<Button_style css={button_style} css_btn={button} data-id={post.id} className="" href={post.post_link}>
+																<Button_style css={button_style} primary={primary_color} css_btn={button} data-id={post.id} className="" href={post.post_link}>
 																	{button.text}
 																</Button_style>
 															</span>

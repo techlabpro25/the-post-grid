@@ -63,6 +63,8 @@ export default function Edit(props) {
     const {attributes, setAttributes} = props;
     const [data, setData] = useState([]);
 	const [isloading, setIsloading] = useState(true);
+	const [author, setAuthor] = useState("");
+	const [status, setStatus] = useState("");
     const { query, general, parent_class, primary_color, heading } = attributes
     const style_sheet ={
         Titlea,
@@ -124,18 +126,19 @@ export default function Edit(props) {
 		},
 		{
 			label: "Over Image (Center)" ,
-			value:"over-image center"
+			value:"over-image image_center"
 		},
 		
 	]
-	console.log(query);
 
     useEffect(() => {
-        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&posts_per_page='+query.limit}).then((posts) => {
+        setAuthor(Object.values(query.author).join(","))
+        setStatus(Object.values(query.status).join(","))
+        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+query.limit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+query.offset+'&order_by='+query.order_by+'&order='+query.order+'&author='+author+'&status='+status+'&keyword='+query.keyword}).then((posts) => {
             setData(posts);
 			setIsloading(false);
         });
-    }, []);
+    }, [query]);
 
     $('.editor-post-title__input').on('change', function(){
         var heading = $(this).text();
@@ -298,7 +301,7 @@ export default function Edit(props) {
 															<TextControl
 																label="Parent Class:"
 																value={parent_class}
-																onChange={(val) =>props.attr.setAttributes({parent_class: val})}	
+																onChange={(val) =>props.setAttributes({parent_class: val})}
 															/>
 															
 															<Text>
@@ -307,7 +310,7 @@ export default function Edit(props) {
 																	label="Primary"
 																	value={primary_color}
 																	colors={colors}
-																	onChange={(val) =>props.attr.setAttributes({primary_color: val})}
+																	onChange={(val) =>props.setAttributes({primary_color: val})}
 																/>
 															</Text>
 															<br/>

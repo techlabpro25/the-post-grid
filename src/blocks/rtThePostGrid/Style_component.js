@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Titlea = styled.a`
-	color: ${props => props.css.color} !important;
+	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 `;
@@ -11,14 +11,14 @@ export const Titletag = styled.div`
 `;
 
 export const Excerpts = styled.div`
-	color: ${props => props.css.color} !important;
+	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	text-align: ${props => props.css['text-align']} !important;
 `;
 
 export const Cat_style = styled.a`
-	color: ${props => props.css.color} !important;
+	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
@@ -27,7 +27,7 @@ export const Cat_style = styled.a`
 `;
 
 export const Cat_style_non_default = styled.a`
-	color: ${props => props.css.color} !important;
+	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
@@ -40,7 +40,7 @@ export const Cat_style_non_default = styled.a`
 `;
 
 export const MetaStyle = styled.span`
-	color: ${props => props.css.color} !important;
+	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 `;
@@ -50,7 +50,7 @@ export const MetaStyle_align = styled.div`
 `;
 
 export const Button_style = styled.a`
-	color: ${props => props.css.color} !important;
+	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	border-radius: ${props => props.css_btn['border-radius']}px !important;
 	background-color: ${props => props.css['background-color']} !important;
 	&:hover{
@@ -71,7 +71,7 @@ export const Head_title = styled.div`
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	:before{
-	    background-color: ${props => props.css.color} !important;
+	    background-color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	}
 	:after{
 	    border-color: ${props => (props.css != undefined)? props.css['background-color']: "#1e73be"} transparent !important;
@@ -80,7 +80,7 @@ export const Head_title = styled.div`
 `;
 
 export const Head_color = styled.a`
-	color: ${props => props.css.color} !important;
+	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 `;
 
 export const Head_border = styled.div`
@@ -106,7 +106,9 @@ export const Content_padding = styled.div`
 export const ImgAnimation = styled.img`
 	width: ${props => props.css.size}px !important;
 	height: ${props => (props.css.size == "150")? "150px": (props.css.size == "300")? "300px": "auto"} !important;
-	
+	&:hover{
+	    transform: scale(${props => props.css.animation})
+	}
 `;
 
 export const ImgParent = styled.div`

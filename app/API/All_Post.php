@@ -38,6 +38,7 @@ class All_Post{
 
         $args = array(
             'post_type' => $post_type,
+            'posts_per_page' => $post_per_page
         );
 
         if(!empty($include) && isset($include) && array_filter($include)){

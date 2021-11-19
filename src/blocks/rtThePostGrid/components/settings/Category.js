@@ -13,7 +13,7 @@ function Category(props) {
     return (
         <PanelBody title="Category" initialOpen={false}>
             <SelectControl
-                label="Title Position:"
+                label="Category Position:"
                 value={ category.position }
                 options={ props.attr.matrix_position }
                 onChange={ ( val ) => props.attr.setAttributes( {category: {...category, "position": val}} ) }
