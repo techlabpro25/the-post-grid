@@ -20,6 +20,7 @@ class Get_Title{
         }
         $data = [
             'title' => get_the_title($id),
+            'path' => plugins_url()
         ];
       return rest_ensure_response($data);
     }

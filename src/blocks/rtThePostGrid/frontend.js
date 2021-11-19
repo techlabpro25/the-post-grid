@@ -6,16 +6,14 @@ import apiFetch from '@wordpress/api-fetch';
 const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
-    const [author, setAuthor] = useState("");
-    const [status, setStatus] = useState("");
     const {query} = props
 
 
     useEffect(() => {
 
-        setAuthor(Object.values(query.author).join(","))
-        setStatus(Object.values(query.status).join(","))
-        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+query.limit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+query.offset+'&order_by='+query.order_by+'&order='+query.order+'&author='+author+'&status='+status+'&keyword='+query.keyword}).then((posts) => {
+        let nawauthor = query.author.toString();
+        let newstatus = query.status.toString();
+        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+query.limit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+query.offset+'&order_by='+query.order_by+'&order='+query.order+'&author='+nawauthor+'&status='+newstatus+'&keyword='+query.keyword}).then((posts) => {
             setData(posts);
             setIsloading(false)
         });

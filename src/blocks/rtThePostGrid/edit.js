@@ -44,8 +44,6 @@ export default function Edit(props) {
     const {attributes, setAttributes} = props;
     const [data, setData] = useState([]);
 	const [isloading, setIsloading] = useState(true);
-	const [author, setAuthor] = useState("");
-	const [status, setStatus] = useState("");
     const { query, general, parent_class, primary_color, heading } = attributes
 
     const colors = [
@@ -94,14 +92,14 @@ export default function Edit(props) {
 	]
 
     useEffect(() => {
-        setAuthor(Object.values(query.author).join(","))
-        setStatus(Object.values(query.status).join(","))
-        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+query.limit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+query.offset+'&order_by='+query.order_by+'&order='+query.order+'&author='+author+'&status='+status+'&keyword='+query.keyword}).then((posts) => {
+        let nawauthor = query.author.toString();
+        let newstatus = query.status.toString();
+
+        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+query.limit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+query.offset+'&order_by='+query.order_by+'&order='+query.order+'&author='+nawauthor+'&status='+newstatus+'&keyword='+query.keyword}).then((posts) => {
             setData(posts);
 			setIsloading(false);
         });
     }, [query]);
-
 
     useEffect(() => {
         var url_string = window.location.href
@@ -109,11 +107,14 @@ export default function Edit(props) {
         var id = url.searchParams.get("post");
 
         apiFetch({path: '/rt/v1/post_title?id='+id}).then((data) => {
+            const pluginPath= data.path+"/radius-blocks-main/images/list.png";
             setAttributes({heading_title: data.title})
+            setAttributes({plugin_path: pluginPath})
         });
     }, [])
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
+    console.log(attributes.plugin_path)
     return (
         <>
             <InspectorControls>

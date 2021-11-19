@@ -243,6 +243,9 @@ const attributes = {
 	layout: {
 		type: "string",
 		default: "grid1",
+	},
+	plugin_path:{
+		type: 'text'
 	}
 };
 
