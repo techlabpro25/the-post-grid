@@ -1,4 +1,22 @@
-import { Head_border_style1, Head_title } from "../../Style_component";
+import {
+	Titlea,
+	Titletag,
+	Excerpts,
+	Cat_style,
+	MetaStyle,
+	Button_style,
+	Btn_align,
+	Head_title,
+	Head_color,
+	Head_border,
+	Head_border_style1,
+	MetaStyle_align,
+	Content_wrap,
+	Content_padding,
+	Cat_style_non_default,
+	ImgAnimation,
+	ImgParent
+} from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCalendarAlt, faFolderOpen, faTags, faComments } from '@fortawesome/free-solid-svg-icons'
@@ -29,28 +47,11 @@ const Layout1 = (props) => {
 		content_padding,
 		image,
 		primary_color,
-		parent_class
+		parent_class,
+		columns,
+		linking
 	} = props
 
-	const {
-		Titlea,
-		Titletag,
-		Excerpts,
-		Cat_style,
-		MetaStyle,
-		Button_style,
-		Btn_align,
-		Head_title,
-		Head_color,
-		Head_border,
-		Head_border_style1,
-		MetaStyle_align,
-		Content_wrap,
-		Content_padding,
-		Cat_style_non_default,
-		ImgAnimation,
-		ImgParent
-	} = props.css
 
 	let Heading = "";
 	let Title = "";
@@ -66,7 +67,6 @@ const Layout1 = (props) => {
 		Title = 'h' + title.tag
 	}
 
-	console.log(title_style.color)
 	return (
 		<>
 			<Content_wrap css={content_wrap} css_pad={constent_box_padding} className={`${parent_class}`}>
@@ -112,12 +112,12 @@ const Layout1 = (props) => {
 
 							return (
 								<>
-									<div className="rt-col-md-4 rt-col-sm-6 rt-col-xs-12 rt-equal-height  rt-grid-item even-grid-item">
+									<div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height  rt-grid-item even-grid-item`}>
 										<div className="rt-holder">
 											<ImgParent css={image} className="rt-img-holder">
 												{
 													image.show_hide?(
-														<a data-id={post.id} className="" href={post.post_link}>
+														<a data-id={post.id} className="" href={post.post_link} target={linking.target}>
 															<ImgAnimation css={image} width="" height="150" src={post.image_url} className={`rt-img-responsive ${image.animation}`} alt="" />
 														</a>
 													):("")
@@ -303,7 +303,7 @@ const Layout1 = (props) => {
 												{
 													general.title ? (
 														<Titletag as={Title} css={title_style} className="entry-title">
-															<Titlea css={title_style} primary={primary_color} data-id={post.id} className="" href={post.post_link}>
+															<Titlea css={title_style} primary={primary_color} data-id={post.id} target={linking.target} className="" href={post.post_link}>
 																{post_title}
 															</Titlea>
 														</Titletag>
@@ -562,7 +562,7 @@ const Layout1 = (props) => {
 													general.see_more ? (
 														<Btn_align css_btn={button} className="post-meta ">
 															<span className="read-more">
-																<Button_style css={button_style} primary={primary_color} css_btn={button} data-id={post.id} className="" href={post.post_link}>
+																<Button_style css={button_style} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="" href={post.post_link}>
 																	{button.text}
 																</Button_style>
 															</span>

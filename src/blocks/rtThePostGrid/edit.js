@@ -35,25 +35,6 @@ import Style_Content_wrap from './components/style/Style_Content_wrap';
 import Style_Section from './components/style/Style_Section';
 import $ from 'jquery';
 
-import {
-    Titlea,
-    Titletag,
-    Excerpts,
-    Cat_style,
-    MetaStyle,
-    Button_style,
-    Btn_align,
-    Head_title,
-    Head_color,
-    Head_border,
-    Head_border_style1,
-	MetaStyle_align,
-	Content_wrap,
-    Content_padding,
-	Cat_style_non_default,
-	ImgAnimation,
-	ImgParent
-} from './Style_component';
 
 const {__} = wp.i18n;
 const {InspectorControls} = wp.blockEditor
@@ -66,25 +47,6 @@ export default function Edit(props) {
 	const [author, setAuthor] = useState("");
 	const [status, setStatus] = useState("");
     const { query, general, parent_class, primary_color, heading } = attributes
-    const style_sheet ={
-        Titlea,
-        Titletag,
-        Excerpts,
-        Cat_style,
-        MetaStyle,
-        Button_style,
-        Btn_align,
-        Head_title,
-        Head_color,
-        Head_border,
-        Head_border_style1,
-		MetaStyle_align,
-		Content_wrap,
-        Content_padding,
-		Cat_style_non_default,
-		ImgAnimation,
-		ImgParent
-    }
 
     const colors = [
         { name: 'red', color: '#f00' },
@@ -140,10 +102,16 @@ export default function Edit(props) {
         });
     }, [query]);
 
-    $('.editor-post-title__input').on('change', function(){
-        var heading = $(this).text();
-        setAttributes({heading_title: heading})
-    })
+
+    useEffect(() => {
+        var url_string = window.location.href
+        var url = new URL(url_string);
+        var id = url.searchParams.get("post");
+
+        apiFetch({path: '/rt/v1/post_title?id='+id}).then((data) => {
+            setAttributes({heading_title: data.title})
+        });
+    }, [])
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
     return (
@@ -391,7 +359,7 @@ export default function Edit(props) {
 					isloading?(
 						<div class="lds-dual-ring"></div>
 					):(
-						<RenderView {...attributes} data={data} css={style_sheet}/>
+						<RenderView {...attributes} data={data}/>
 					)
 				}
             </div>

@@ -28,6 +28,7 @@ const attributes = {
 			status: ["publish"],
 			keyword_bool: false,
 			keyword: "",
+			test: []
 		},
 	},
 	columns: {
@@ -212,7 +213,7 @@ const attributes = {
 	content_wrap: {
 		type: "object",
 		default: {
-			["background-color"]: "lightgray",
+			["background-color"]: "transparent",
 			["box-shadow-color"]: "#fff",
 			radius: "",
 			["border-color"]: "gray",
@@ -242,7 +243,7 @@ const attributes = {
 	layout: {
 		type: "string",
 		default: "grid1",
-	},
+	}
 };
 
 export default attributes;

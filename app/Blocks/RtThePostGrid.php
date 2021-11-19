@@ -119,7 +119,7 @@ class RtThePostGrid extends Block
         'content_wrap' =>[
             'type' =>"object",
             'default' =>[
-                'background-color' => "lightgray",
+                'background-color' => "transparent",
                 'box-shadow-color' => '#fff',
                 'radius' => '5',
                 'border-color' => 'gray',
@@ -204,7 +204,23 @@ class RtThePostGrid extends Block
         'parent_class' =>[
             'type'=> "string",
 		    'default'=> "default"
-        ]
+        ],
+        'columns' =>[
+            'type' => 'object',
+            'default' =>[
+                'desktop' => 4,
+                'tablet' => 6,
+                'mobile' => 12
+            ]
+        ],
+        'linking'=> [
+            'type'=> "object",
+            'default'=> [
+                'link_to_page'=> true,
+                'link_type'=> "",
+                'target'=> "",
+            ],
+        ],
 	];
 
 	public function __construct()

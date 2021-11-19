@@ -44,6 +44,7 @@
 		"@fortawesome/react-fontawesome": "^0.1.16",
 		"@wordpress/api-fetch": "^5.2.4",
 		"jquery": "^3.6.0",
+		"react-select": "^5.2.1",
 		"styled-components": "^5.3.3"
 	}
 }

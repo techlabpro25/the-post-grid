@@ -24,6 +24,10 @@ function Columns(props) {
             value: "3"
         },
         {
+            label: "Column 5",
+            value: "24"
+        },
+        {
             label: "Column 6",
             value: "2"
         }

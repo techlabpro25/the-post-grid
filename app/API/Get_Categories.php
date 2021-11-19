@@ -37,4 +37,5 @@ class Get_Categories{
      
         return rest_ensure_response($data);
     }
+
 }
