@@ -138,3 +138,26 @@ div.tax_second_child .components-base-control {
 .post_grid_blocks .post-meta-user {
   text-align: center;
 }
+
+.parent input.active + img, .child input.active + img {
+  border: solid 2px #4c6fff;
+  border-radius: 5px;
+}
+
+.parent .layout img:hover {
+  border-color: #4c6fff;
+}
+
+/* HIDE RADIO */
+.parent [type=radio], .child [type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+.parent [type=radio] + img, .child [type=radio] + img {
+  cursor: pointer;
+  width: 50%;
+}

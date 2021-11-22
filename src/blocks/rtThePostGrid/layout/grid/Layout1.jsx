@@ -21,6 +21,14 @@ import { trimbychar, trimbyword } from './../../Helper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faCalendarAlt, faFolderOpen, faTags, faComments } from '@fortawesome/free-solid-svg-icons'
 
+import {Titles} from "../elements/Titles";
+import {Image} from "../elements/Image";
+import {Author} from "../elements/Author";
+import {Date} from "../elements/Date";
+import {CommentCount} from "../elements/CommentCount";
+import {Category_Default, Non_Category_Default} from "../elements/Category";
+import {Tags} from "../elements/Tags";
+
 const Layout1 = (props) => {
 	const {
 		title,
@@ -110,6 +118,15 @@ const Layout1 = (props) => {
 								postexcerpt = trimbyword(postexcerpt, excerpt.limit, excerpt.more_text)
 							}
 
+							// Title
+							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.terget, link: post.post_link, post_title }
+							const image_props = { id:post.id, link: post.post_link, target:linking.terget, image, image_url:post.image_url }
+							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name}
+							const date_props = { meta, meta_style, primary_color, date: post.post_date}
+							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
+							const category_props = { meta, primary_color, category, post_cat: post?.category, category_style, category_padding, category_margin }
+							const tag_props = { meta, primary_color, post_tags: post?.tags, category_style, category_padding, category_margin }
+
 							return (
 								<>
 									<div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height  rt-grid-item even-grid-item`}>
@@ -117,36 +134,13 @@ const Layout1 = (props) => {
 											<ImgParent css={image} className="rt-img-holder">
 												{
 													image.show_hide?(
-														<a data-id={post.id} className="" href={post.post_link} target={linking.target}>
-															<ImgAnimation css={image} width="" height="150" src={post.image_url} className={`rt-img-responsive ${image.animation}`} alt="" />
-														</a>
+														<Image data={image_props}/>
 													):("")
 												}
 												{
 													(category.position.includes('over-image')) ? (
 														<div class={`cat-${category.position} ${category.style}`}>
-															<span class="categories-links">
-																{
-																	category.icon?(
-																		<FontAwesomeIcon icon={faFolderOpen} />
-																	):("")
-																}
-															 	&nbsp;
-																{
-																	post?.category?.length && post.category.map((cat_item, i) => {
-
-																		return (
-																			<>
-																				{(i > 0) ? " , " : ""}
-																				<Cat_style_non_default css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
-																					{cat_item.cat_name}
-																				</Cat_style_non_default>
-																			</>
-
-																		)
-																	})
-																}
-															</span>
+															<Non_Category_Default data={category_props}/>
 														</div>
 													) : ("")
 												}
@@ -156,28 +150,7 @@ const Layout1 = (props) => {
 												{
 													(category.position == "above-title") ? (
 														<div class={`cat-above-title ${category.style}`}>
-															<span class="categories-links">
-																{
-																	category.icon?(
-																		<FontAwesomeIcon icon={faFolderOpen} />
-																	):("")
-																}
-															 	&nbsp;
-																{
-																	post?.category?.length && post.category.map((cat_item, i) => {
-
-																		return (
-																			<>
-																				{(i > 0) ? " , " : ""}
-																				<Cat_style_non_default css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
-																					{cat_item.cat_name}
-																				</Cat_style_non_default>
-																			</>
-
-																		)
-																	})
-																}
-															</span>
+															<Non_Category_Default data={category_props}/>
 														</div>
 													) : ('')
 												}
@@ -187,63 +160,21 @@ const Layout1 = (props) => {
 														<MetaStyle_align css={meta_style} className="post-meta-user  ">
 															{
 																general.author ? (
-																	<span className="author">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faUser} />
-																			):("")
-																		}
-																		&nbsp;
-																		<a href={post.author_url}>
-																			<MetaStyle css={meta_style} primary={primary_color} >{post.author_name}</MetaStyle>
-																		</a>
-																		{meta.seperator}
-																	</span>
+																	<Author data={author_props}/>
 																) : ("")
 															}
 
 															{/*Post date*/}
 															{
 																general.post_date ? (
-																	<span className="date">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faCalendarAlt} />
-																			):("")
-																		}
-																		&nbsp;
-																		<MetaStyle css={meta_style} primary={primary_color} >{post.post_date}</MetaStyle>
-																		{meta.seperator}
-																	</span>
+																	<Date data={date_props}/>
 																) : ('')
 															}
 
 															{/*Category*/}
 															{
 																(category.position.length == 0) && general.category ? (
-																	<span className="categories-links">
-																		{
-																			category.icon?(
-																				<FontAwesomeIcon icon={faFolderOpen} />
-																			):("")
-																		}
-																		&nbsp;
-																		{
-																			post?.category?.length && post.category.map((cat_item, i) => {
-
-																				return (
-																					<>
-																						{(i > 0) ? ", " : ""}
-																						<Cat_style css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
-																							{cat_item.cat_name}
-																						</Cat_style>
-																					</>
-
-																				)
-																			})
-																		}
-																		{" " + meta.seperator}
-																	</span>
+																	<Category_Default data={category_props}/>
 																) : ("")
 															}
 
@@ -252,47 +183,14 @@ const Layout1 = (props) => {
 															{/*Tag*/}
 															{
 																general.tag ? (
-																	<span className="post-tags-links">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faTags} />
-																			):("")
-																		}
-																		&nbsp;
-																		{
-																			post?.tags?.length && post.tags.map((tag_item, i) => {
-
-																				return (
-																					<>
-																						{(i > 0) ? ", " : ""}
-																						<a href={tag_item.tag_link} rel="tag">
-																							{tag_item.tag_name}
-																						</a>
-																					</>
-
-																				)
-																			})
-																		}
-																		{" " + meta.seperator}
-																	</span>
+																	<Tags data={tag_props}/>
 																) : ("")
 															}
 
 															{/*Comment count*/}
 															{
 																general.comment_count ? (
-																	<span className="comment-count">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faComments} />
-																			):("")
-																		}
-																		&nbsp;
-																		<a href={`${post.post_link}/#respond`}>
-																			<MetaStyle css={meta_style} primary={primary_color} >{post.comment_count}</MetaStyle>
-																		</a>
-
-																	</span>
+																	<CommentCount data={comment_count_props}/>
 																) : ("")
 															}
 
@@ -302,11 +200,7 @@ const Layout1 = (props) => {
 
 												{
 													general.title ? (
-														<Titletag as={Title} css={title_style} className="entry-title">
-															<Titlea css={title_style} primary={primary_color} data-id={post.id} target={linking.target} className="" href={post.post_link}>
-																{post_title}
-															</Titlea>
-														</Titletag>
+														<Titles data={title_props} />
 													) : ('')
 												}
 
@@ -315,63 +209,21 @@ const Layout1 = (props) => {
 														<MetaStyle_align css={meta_style} className="post-meta-user  ">
 															{
 																general.author ? (
-																	<span className="author">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faUser} />
-																			):("")
-																		}
-																		&nbsp;
-																		<a href={post.author_url}>
-																			<MetaStyle css={meta_style} primary={primary_color}>{post.author_name}</MetaStyle>
-																		</a>
-																		{meta.seperator}
-																	</span>
+																	<Author data={author_props}/>
 																) : ("")
 															}
 
 															{/*Post date*/}
 															{
 																general.post_date ? (
-																	<span className="date">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faCalendarAlt} />
-																			):("")
-																		}
-																		&nbsp;
-																		<MetaStyle css={meta_style} primary={primary_color} >{post.post_date}</MetaStyle>
-																		{meta.seperator}
-																	</span>
+																	<Date data={date_props}/>
 																) : ('')
 															}
 
 															{/*Category*/}
 															{
 																(category.position.length == 0) && general.category ? (
-																	<span className="categories-links">
-																		{
-																			category.icon?(
-																				<FontAwesomeIcon icon={faFolderOpen} />
-																			):("")
-																		}
-																		&nbsp;
-																		{
-																			post?.category?.length && post.category.map((cat_item, i) => {
-
-																				return (
-																					<>
-																						{(i > 0) ? ", " : ""}
-																						<Cat_style css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
-																							{cat_item.cat_name}
-																						</Cat_style>
-																					</>
-
-																				)
-																			})
-																		}
-																		{" " + meta.seperator}
-																	</span>
+																	<Category_Default data={category_props}/>
 																) : ("")
 															}
 
@@ -380,47 +232,14 @@ const Layout1 = (props) => {
 															{/*Tag*/}
 															{
 																general.tag ? (
-																	<span className="post-tags-links">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faTags} />
-																			):("")
-																		}
-																		&nbsp;
-																		{
-																			post?.tags?.length && post.tags.map((tag_item, i) => {
-
-																				return (
-																					<>
-																						{(i > 0) ? ", " : ""}
-																						<a href={tag_item.tag_link} rel="tag">
-																							{tag_item.tag_name}
-																						</a>
-																					</>
-
-																				)
-																			})
-																		}
-																		{" " + meta.seperator}
-																	</span>
+																	<Tags data={tag_props}/>
 																) : ("")
 															}
 
 															{/*Comment count*/}
 															{
 																general.comment_count ? (
-																	<span className="comment-count">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faComments} />
-																			):("")
-																		}
-																		&nbsp;
-																		<a href={`${post.post_link}/#respond`}>
-																			<MetaStyle css={meta_style} primary={primary_color} >{post.comment_count}</MetaStyle>
-																		</a>
-
-																	</span>
+																	<CommentCount data={comment_count_props}/>
 																) : ("")
 															}
 
@@ -444,63 +263,21 @@ const Layout1 = (props) => {
 														<MetaStyle_align css={meta_style} className="post-meta-user  ">
 															{
 																general.author ? (
-																	<span className="author">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faUser} />
-																			):("")
-																		}
-																		&nbsp;
-																		<a href={post.author_url}>
-																			<MetaStyle css={meta_style} primary={primary_color}>{post.author_name}</MetaStyle>
-																		</a>
-																		{meta.seperator}
-																	</span>
+																	<Author data={author_props}/>
 																) : ("")
 															}
 
 															{/*Post date*/}
 															{
 																general.post_date ? (
-																	<span className="date">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faCalendarAlt} />
-																			):("")
-																		}
-																		&nbsp;
-																		<MetaStyle css={meta_style} primary={primary_color} >{post.post_date}</MetaStyle>
-																		{meta.seperator}
-																	</span>
+																	<Date data={date_props}/>
 																) : ('')
 															}
 
 															{/*Category*/}
 															{
 																(category.position.length == 0) && general.category ? (
-																	<span className="categories-links">
-																		{
-																			category.icon?(
-																				<FontAwesomeIcon icon={faFolderOpen} />
-																			):("")
-																		}
-																		&nbsp;
-																		{
-																			post?.category?.length && post.category.map((cat_item, i) => {
-
-																				return (
-																					<>
-																						{(i > 0) ? ", " : ""}
-																						<Cat_style css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={cat_item.cat_link} rel="category">
-																							{cat_item.cat_name}
-																						</Cat_style>
-																					</>
-
-																				)
-																			})
-																		}
-																		{" " + meta.seperator}
-																	</span>
+																	<Category_Default data={category_props}/>
 																) : ("")
 															}
 
@@ -509,47 +286,14 @@ const Layout1 = (props) => {
 															{/*Tag*/}
 															{
 																general.tag ? (
-																	<span className="post-tags-links">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faTags} />
-																			):("")
-																		}
-																		&nbsp;
-																		{
-																			post?.tags?.length && post.tags.map((tag_item, i) => {
-
-																				return (
-																					<>
-																						{(i > 0) ? ", " : ""}
-																						<a href={tag_item.tag_link} rel="tag">
-																							{tag_item.tag_name}
-																						</a>
-																					</>
-
-																				)
-																			})
-																		}
-																		{" " + meta.seperator}
-																	</span>
+																	<Tags data={tag_props}/>
 																) : ("")
 															}
 
 															{/*Comment count*/}
 															{
 																general.comment_count ? (
-																	<span className="comment-count">
-																		{
-																			meta.icon?(
-																				<FontAwesomeIcon icon={faComments} />
-																			):("")
-																		}
-																		&nbsp;
-																		<a href={`${post.post_link}/#respond`}>
-																			<MetaStyle css={meta_style} primary={primary_color} >{post.comment_count}</MetaStyle>
-																		</a>
-
-																	</span>
+																	<CommentCount data={comment_count_props}/>
 																) : ("")
 															}
 

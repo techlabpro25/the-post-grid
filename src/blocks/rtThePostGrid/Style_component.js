@@ -34,7 +34,7 @@ export const Cat_style_non_default = styled.a`
 	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
 
-	&:after{
+	&::after{
 		border-top-color: ${props => props.css['background-color']} !important;;
 	}
 `;

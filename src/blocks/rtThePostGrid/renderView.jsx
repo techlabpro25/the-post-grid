@@ -2,15 +2,14 @@ import Layout1 from "./layout/grid/Layout1";
 
 const RenderView = (props) => {
     const {layout, data} = props;
-    
-    // if(layout == "grid1"){
-        
-    // }
 
-    // console.log(props)
     return(
         <>
-            <Layout1 {...props} data={data}/>
+            {
+                (layout.value == "grid1")?(
+                    <Layout1 {...props} data={data}/>
+                ):("")
+            }
         </>
     )
 }

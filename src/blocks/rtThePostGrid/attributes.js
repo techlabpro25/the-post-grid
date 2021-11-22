@@ -241,8 +241,11 @@ const attributes = {
 		type: "object",
 	},
 	layout: {
-		type: "string",
-		default: "grid1",
+		type: "object",
+		default: {
+			type: 'grid',
+			value: "grid1"
+		},
 	},
 	plugin_path:{
 		type: 'text'

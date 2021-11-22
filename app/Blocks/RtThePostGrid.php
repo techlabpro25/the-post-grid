@@ -9,10 +9,13 @@ class RtThePostGrid extends Block
 	protected $name = 'rt-radius-blocks/thepostgrid';
 
 	protected $attributes = [
-		'layout' => [
-			'type'=> "string",
-			'default' => "grid2"
-		],
+        'layout'=>[
+            'type'=> "object",
+            'default'=> [
+                'type'=> 'grid',
+                'value'=> "grid1"
+            ],
+        ],
         'general' =>[
             'type' => "object",
             'default' => [
