@@ -122,7 +122,7 @@ const Layout1 = (props) => {
 								<>
 									<div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height  rt-grid-item even-grid-item`}>
 										<Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
-											<ImgParent css={image} className="rt-img-holder">
+											<div className="rt-img-holder">
 												{
 													image.show_hide?(
 														<Image data={image_props}/>
@@ -135,7 +135,7 @@ const Layout1 = (props) => {
 														</div>
 													) : ("")
 												}
-											</ImgParent>
+											</div>
 
 											<Content_padding css_pad={content_padding} className="rt-detail">
 												{

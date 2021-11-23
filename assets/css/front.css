@@ -2297,3 +2297,7 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 .pagination span.pagination_number:hover, .pagination span.pagination_number.active {
   background-color: #1c2f7a;
 }
+
+a, .rt-thepostgrid a {
+  text-decoration: none;
+}

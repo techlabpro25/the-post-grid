@@ -106,13 +106,14 @@ export const Content_padding = styled.div`
 export const ImgAnimation = styled.img`
 	width: ${props => props.css.size}px !important;
 	height: ${props => (props.css.size == "150")? "150px": (props.css.size == "300")? "300px": "auto"} !important;
+	border-radius: ${props => props.css['border-radius']}px !important;
 	&:hover{
 	    transform: scale(${props => props.css.animation})
 	}
 `;
 
 export const ImgParent = styled.div`
-	border-radius: ${props => props.css['border-radius']}px !important;	
+		
 `;
 
 export const MetaIcon = styled.div`

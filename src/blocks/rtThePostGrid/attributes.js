@@ -111,7 +111,7 @@ const attributes = {
 	title_style: {
 		type: "object",
 		default: {
-			["text-align"]: "center",
+			["text-align"]: "left",
 			color: "",
 			["font-size"]: "",
 			["font-weight"]: 400,

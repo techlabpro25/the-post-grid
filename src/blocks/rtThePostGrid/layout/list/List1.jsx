@@ -160,57 +160,194 @@ export const List1 = (props) =>{
 
                             return(
                                 <>
-                                    <div className="rt-col-md-4 rt-col-sm-6 rt-col-xs-12 rt-equal-height even-grid-item rt-grid-item" data-id="631">
-                                        <div className="rt-holder">
+                                    <div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item rt-grid-item`} data-id={post.id}>
+                                        <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className="rt-row">
                                                 <div className="rt-col-sm-4 rt-col-xs-12 ">
                                                     <div className="rt-img-holder">
-                                                        <a data-id="631" className="" href="http://gutenberg.local/creating-students-who-solve-problems/">
-                                                            <img
-                                                            width="150" height="150"
-                                                            src="http://gutenberg.local/wp-content/uploads/2021/10/water-drops-around-football-player-150x150.jpg"
-                                                            className="rt-img-responsive" alt=""/>
-                                                        </a>
+                                                        {
+                                                            image.show_hide?(
+                                                                <Image data={image_props}/>
+                                                            ):("")
+                                                        }
+
+                                                        {
+                                                            (category.position.includes('over-image')) ? (
+                                                                <div class={`cat-${category.position} ${category.style}`}>
+                                                                    <Non_Category_Default data={category_props}/>
+                                                                </div>
+                                                            ) : ("")
+                                                        }
                                                     </div>
                                                 </div>
                                                 <div className="rt-col-sm-8 rt-col-xs-12 ">
-                                                    <div className="rt-detail">
-                                                        <h3 className="entry-title">
-                                                            <a data-id="631" className="" href="http://gutenberg.local/creating-students-who-solve-problems/">
-                                                                Creating Students Who Solve Problems
-                                                            </a>
-                                                        </h3>
-                                                        <div className="post-meta-user ">
-                                                            <span className="date-meta">
-                                                                <i className="far fa-calendar-alt"></i>
-                                                                October 13, 2021
-                                                            </span>
-                                                            <span className="author">
-                                                                <i className="fa fa-user"></i>
-                                                                <a href="http://gutenberg.local/author/a/">Alex Harber</a>
-                                                            </span>
-                                                            <span className="categories-links">
-                                                                <i className="fas fa-folder-open"></i><a href="http://gutenberg.local/category/geometry/" rel="tag">Geometry</a>
-                                                            <span className="rt-separator">,</span>
-                                                                <a href="http://gutenberg.local/category/mathematics/" rel="tag">Mathematics</a>
-                                                            </span>
-                                                            <span className="comment-count">
-                                                                <i className="fas fa-comments"></i>
-                                                                <a href="http://gutenberg.local/creating-students-who-solve-problems/#respond">0 </a>
-                                                            </span>
-                                                        </div>
-                                                        <div className="tpg-excerpt">
-                                                            Vesti at bulum nec odio the that
-                                                            ads dolocons rsus mal suada and that as fadolorit
-                                                            consectetur elit. ...
-                                                        </div>
-                                                        <span className="read-more ">
-                                                            <a data-id="631" className="" href="http://gutenberg.local/creating-students-who-solve-problems/">Read More</a>
-                                                        </span>
-                                                    </div>
+                                                    <Content_padding css_pad={content_padding} className="rt-detail">
+                                                        {
+                                                            (category.position == "above-title") ? (
+                                                                <div class={`cat-above-title ${category.style}`}>
+                                                                    <Non_Category_Default data={category_props}/>
+                                                                </div>
+                                                            ) : ('')
+                                                        }
+
+                                                        {
+                                                            (meta.position == "above") ? (
+                                                                <MetaStyle_align css={meta_style} className="post-meta-user  ">
+                                                                    {
+                                                                        general.author ? (
+                                                                            <Author data={author_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                    {/*Post date*/}
+                                                                    {
+                                                                        general.post_date ? (
+                                                                            <Date data={date_props}/>
+                                                                        ) : ('')
+                                                                    }
+
+                                                                    {/*Category*/}
+                                                                    {
+                                                                        (category.position.length == 0) && general.category ? (
+                                                                            <Category_Default data={category_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+
+
+                                                                    {/*Tag*/}
+                                                                    {
+                                                                        general.tag ? (
+                                                                            <Tags data={tag_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                    {/*Comment count*/}
+                                                                    {
+                                                                        general.comment_count ? (
+                                                                            <CommentCount data={comment_count_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                </MetaStyle_align>
+                                                            ) : ("")
+                                                        }
+
+                                                        {
+                                                            general.title ? (
+                                                                <Titles data={title_props} />
+                                                            ) : ('')
+                                                        }
+
+                                                        {
+                                                            (meta.position == "between") ? (
+                                                                <MetaStyle_align css={meta_style} className="post-meta-user  ">
+                                                                    {
+                                                                        general.author ? (
+                                                                            <Author data={author_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                    {/*Post date*/}
+                                                                    {
+                                                                        general.post_date ? (
+                                                                            <Date data={date_props}/>
+                                                                        ) : ('')
+                                                                    }
+
+                                                                    {/*Category*/}
+                                                                    {
+                                                                        (category.position.length == 0) && general.category ? (
+                                                                            <Category_Default data={category_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+
+
+                                                                    {/*Tag*/}
+                                                                    {
+                                                                        general.tag ? (
+                                                                            <Tags data={tag_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                    {/*Comment count*/}
+                                                                    {
+                                                                        general.comment_count ? (
+                                                                            <CommentCount data={comment_count_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                </MetaStyle_align>
+                                                            ) : ('')
+                                                        }
+                                                        {
+                                                            general.excerpt ? (
+                                                                <Excerpts css={excerpt_style} primary={primary_color} className="tpg-excerpt">
+                                                                    {postexcerpt}
+                                                                </Excerpts>
+                                                            ) : ("")
+                                                        }
+
+                                                        {
+                                                            (meta.position == "below") ? (
+                                                                <MetaStyle_align css={meta_style} className="post-meta-user  ">
+                                                                    {
+                                                                        general.author ? (
+                                                                            <Author data={author_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                    {/*Post date*/}
+                                                                    {
+                                                                        general.post_date ? (
+                                                                            <Date data={date_props}/>
+                                                                        ) : ('')
+                                                                    }
+
+                                                                    {/*Category*/}
+                                                                    {
+                                                                        (category.position.length == 0) && general.category ? (
+                                                                            <Category_Default data={category_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+
+
+                                                                    {/*Tag*/}
+                                                                    {
+                                                                        general.tag ? (
+                                                                            <Tags data={tag_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                    {/*Comment count*/}
+                                                                    {
+                                                                        general.comment_count ? (
+                                                                            <CommentCount data={comment_count_props}/>
+                                                                        ) : ("")
+                                                                    }
+
+                                                                </MetaStyle_align>
+                                                            ) : ('')
+                                                        }
+
+                                                        {/*See more button*/}
+                                                        {
+                                                            general.see_more ? (
+                                                                <Btn_align css_btn={button} className="post-meta ">
+															<span className="read-more">
+																<Button_style css={button_style} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="" href={post.post_link}>
+																	{button.text}
+																</Button_style>
+															</span>
+                                                                </Btn_align>
+                                                            ) : ("")
+                                                        }
+                                                    </Content_padding>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </Content_wrap>
                                     </div>
                                 </>
                             )
