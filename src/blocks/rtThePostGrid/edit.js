@@ -94,7 +94,6 @@ export default function Edit(props) {
     useEffect(() => {
         let nawauthor = query.author.toString();
         let newstatus = query.status.toString();
-
         apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+query.limit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+query.offset+'&order_by='+query.order_by+'&order='+query.order+'&author='+nawauthor+'&status='+newstatus+'&keyword='+query.keyword}).then((posts) => {
             setData(posts);
 			setIsloading(false);

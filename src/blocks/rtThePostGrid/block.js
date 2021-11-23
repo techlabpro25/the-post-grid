@@ -11,5 +11,6 @@ registerBlockType("rt-radius-blocks/thepostgrid", {
     ],
     attributes,
     edit,
-    save: () => null
+    save: () => null,
+    example: {},
 });

@@ -115,3 +115,11 @@ export const ImgParent = styled.div`
 	border-radius: ${props => props.css['border-radius']}px !important;	
 `;
 
+export const MetaIcon = styled.div`
+    color: ${props => (props.css.color)? props.css.color: props.primary}
+`
+export const CatIcon = styled.div`
+    color: ${props => (props.css.color)? props.css.color: props.primary}
+`
+
+

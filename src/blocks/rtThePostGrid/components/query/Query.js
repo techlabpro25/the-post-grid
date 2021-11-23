@@ -107,6 +107,7 @@ const Query = (props) => {
 			setPt(
 				newarrobj.map((item_key) => {
 					if (!typefilter.includes(item_key)) {
+
 						return {
 							label: types[item_key].name,
 							value: types[item_key].slug,
@@ -320,11 +321,11 @@ const Query = (props) => {
 				<>
 					<SelectControl
 						label="Order BY:"
-						value={query.order_bool}
+						value={query.order_by}
 						options={order_type}
 						onChange={(value) =>
 							props.attr.setAttributes({
-								query: { ...query, order_bool: value },
+								query: { ...query, order_by: value },
 							})
 						}
 					/>

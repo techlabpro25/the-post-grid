@@ -1,6 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faFolderOpen} from "@fortawesome/free-solid-svg-icons";
-import {Cat_style} from "../../Style_component";
+import {Cat_style, MetaIcon} from "../../Style_component";
 
 
 // For Default
@@ -10,7 +10,7 @@ export const Category_Default = (props) =>{
         <span className="categories-links">
             {
                 category.icon?(
-                    <FontAwesomeIcon icon={faFolderOpen} />
+                    <MetaIcon as={FontAwesomeIcon} css={category_style} primary={primary_color} icon={faFolderOpen} />
                 ):("")
             }
             &nbsp;
@@ -41,7 +41,7 @@ export const Non_Category_Default = (props) =>{
         <span className="categories-links">
             {
                 category.icon?(
-                    <FontAwesomeIcon icon={faFolderOpen} />
+                    <MetaIcon as={FontAwesomeIcon} css={category_style} primary={primary_color} icon={faFolderOpen} />
                 ):("")
             }
             &nbsp;

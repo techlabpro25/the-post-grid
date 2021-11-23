@@ -1,7 +1,5 @@
 import { PanelBody, RadioControl } from "@wordpress/components";
 import { useState, useEffect } from "@wordpress/element";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
 
 function Layout(props) {
@@ -42,16 +40,6 @@ function Layout(props) {
 
     return (
 			<PanelBody title="Layout Type" initialOpen={true}>
-				<RadioControl
-					label="Layouts:"
-					selected={option}
-					options={[
-						{ label: "Grid", value: "a" },
-						{ label: "List", value: "e" },
-						{ label: "Isotope", value: "i" },
-					]}
-					onChange={(value) => setOption(value)}
-				/>
 				<div className="parent">
 					<label>Layout Type: </label>
 					<br/>

@@ -1,9 +1,5 @@
 import {
-	Titlea,
-	Titletag,
 	Excerpts,
-	Cat_style,
-	MetaStyle,
 	Button_style,
 	Btn_align,
 	Head_title,
@@ -13,14 +9,9 @@ import {
 	MetaStyle_align,
 	Content_wrap,
 	Content_padding,
-	Cat_style_non_default,
-	ImgAnimation,
 	ImgParent
 } from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faCalendarAlt, faFolderOpen, faTags, faComments } from '@fortawesome/free-solid-svg-icons'
-
 import {Titles} from "../elements/Titles";
 import {Image} from "../elements/Image";
 import {Author} from "../elements/Author";
