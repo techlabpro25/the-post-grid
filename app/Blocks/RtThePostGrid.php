@@ -126,7 +126,7 @@ class RtThePostGrid extends Block
                 'box-shadow-color' => '#fff',
                 'radius' => '5',
                 'border-color' => 'gray',
-                'border-width' => '1px'
+                'border-width' => '0px'
             ]
         ],
         'constent_box_padding' =>[
@@ -222,6 +222,14 @@ class RtThePostGrid extends Block
                 'link_to_page'=> true,
                 'link_type'=> "",
                 'target'=> "",
+            ],
+        ],
+        'pagination'=> [
+            'type'=> "object",
+            'default'=> [
+                'show'=> false,
+                'post_per_page'=> 5,
+                'pagination_type'=> "",
             ],
         ],
 	];

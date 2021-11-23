@@ -38,7 +38,7 @@ class All_Post{
 
         $args = array(
             'post_type' => $post_type,
-            'posts_per_page' => $post_per_page
+            'posts_per_page' => $post_per_page,
         );
 
         if(!empty($include) && isset($include) && array_filter($include)){
@@ -118,6 +118,7 @@ class All_Post{
 
         $query = new WP_Query($args);
 
+
         if (empty($query )) {
             return new WP_Error( 'empty_category', 'There are no terms to display', array('status' => 404) );
         }
@@ -170,6 +171,7 @@ class All_Post{
                     "category" => $category,
                     "tags" => $tags,
                     "post_link" => get_post_permalink(),
+                    "total_post" => $query->found_posts
                 ];
             }
         } else {

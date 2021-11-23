@@ -3,7 +3,6 @@ import { useState, useEffect } from "@wordpress/element";
 import $ from 'jquery'
 
 function Layout(props) {
-	const [option, setOption] = useState("a");
 	const  {layout, plugin_path} = props.attr.attributes;
 
 	const clickHandler = (e) =>{

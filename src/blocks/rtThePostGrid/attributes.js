@@ -28,7 +28,7 @@ const attributes = {
 			status: ["publish"],
 			keyword_bool: false,
 			keyword: "",
-			test: []
+			test: [],
 		},
 	},
 	columns: {
@@ -217,7 +217,7 @@ const attributes = {
 			["box-shadow-color"]: "#fff",
 			radius: "",
 			["border-color"]: "gray",
-			["border-width"]: "1px"
+			["border-width"]: "0px"
 		},
 	},
 	constent_box_padding: {

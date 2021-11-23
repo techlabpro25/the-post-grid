@@ -68,7 +68,7 @@ const Layout1 = (props) => {
 
 	return (
 		<>
-			<Content_wrap css={content_wrap} css_pad={constent_box_padding} className={`${parent_class}`}>
+			<div css={content_wrap} css_pad={constent_box_padding} className={`${parent_class}`}>
 				{
 					general.heading?(
 						<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
@@ -87,7 +87,7 @@ const Layout1 = (props) => {
 					):("")
 				}
 				
-				<Content_padding css_pad={content_padding} className="rt-container-fluid rt-tpg-container ">
+				<div className="rt-container-fluid rt-tpg-container ">
 					{
 						data.length && data.map((post) => {
 							var postexcerpt = post.excerpt;
@@ -121,7 +121,7 @@ const Layout1 = (props) => {
 							return (
 								<>
 									<div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height  rt-grid-item even-grid-item`}>
-										<div className="rt-holder">
+										<Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
 											<ImgParent css={image} className="rt-img-holder">
 												{
 													image.show_hide?(
@@ -137,7 +137,7 @@ const Layout1 = (props) => {
 												}
 											</ImgParent>
 
-											<div className="rt-detail">
+											<Content_padding css_pad={content_padding} className="rt-detail">
 												{
 													(category.position == "above-title") ? (
 														<div class={`cat-above-title ${category.style}`}>
@@ -305,15 +305,15 @@ const Layout1 = (props) => {
 													) : ("")
 												}
 
-											</div>
-										</div>
+											</Content_padding>
+										</Content_wrap>
 									</div>
 								</>
 							)
 						})
 					}
-				</Content_padding>
-			</Content_wrap>
+				</div>
+			</div>
 		</>
 	);
 }

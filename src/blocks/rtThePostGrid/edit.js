@@ -44,7 +44,9 @@ export default function Edit(props) {
     const {attributes, setAttributes} = props;
     const [data, setData] = useState([]);
 	const [isloading, setIsloading] = useState(true);
-    const { query, general, parent_class, primary_color, heading } = attributes
+	const [pagestate, setPagestate] = useState(0);
+	const [pageindex, setPageindex] = useState(1);
+    const { query, general, parent_class, primary_color, heading,pagination } = attributes
 
     const colors = [
         { name: 'red', color: '#f00' },
@@ -94,11 +96,30 @@ export default function Edit(props) {
     useEffect(() => {
         let nawauthor = query.author.toString();
         let newstatus = query.status.toString();
-        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+query.limit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+query.offset+'&order_by='+query.order_by+'&order='+query.order+'&author='+nawauthor+'&status='+newstatus+'&keyword='+query.keyword}).then((posts) => {
+        $(document).on('click', '.pagination .pagination_number', function (){
+            setPageindex(parseInt($(this).attr('data-value')))
+            $('.pagination .pagination_number').removeClass('active')
+            $(this).addClass('active')
+        })
+        let newOffset = 0;
+        let newLimit = 0;
+        let paginationLimit = 0;
+        if(pagination.show){
+            newLimit = pagination.post_per_page
+            newOffset = (pageindex * newLimit)-newLimit
+            paginationLimit = newLimit
+        }else{
+            newLimit = query.limit
+            newOffset = query.offset
+            paginationLimit = query.limit
+        }
+        // console.log(newOffset)
+        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+newLimit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+newOffset+'&order_by='+query.order_by+'&order='+query.order+'&author='+nawauthor+'&status='+newstatus+'&keyword='+query.keyword}).then((posts) => {
             setData(posts);
 			setIsloading(false);
+            setPagestate(Math.ceil(posts[0].total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
         });
-    }, [query]);
+    }, [query, pagination, pageindex]);
 
     useEffect(() => {
         var url_string = window.location.href
@@ -112,7 +133,11 @@ export default function Edit(props) {
         });
     }, [])
 
+
     const global_attr = {attributes, setAttributes, colors, matrix_position}
+
+
+
     return (
         <>
             <InspectorControls>
@@ -358,7 +383,24 @@ export default function Edit(props) {
 					isloading?(
 						<div class="lds-dual-ring"></div>
 					):(
-						<RenderView {...attributes} data={data}/>
+                        <>
+                            <RenderView {...attributes} data={data}/>
+                            {
+                                pagination.show?(
+                                    <div className={"pagination"}>
+                                        {Array.from(Array(pagestate), (e, i) => {
+                                            if(i == 0){
+                                                return <span className={"pagination_number active"} data-value={i+1} key={i}>{i+1}</span>
+                                            }else{
+                                                return <span className={"pagination_number"} data-value={i+1} key={i}>{i+1}</span>
+                                            }
+
+                                        })}
+                                    </div>
+                                ):("")
+                            }
+                        </>
+
 					)
 				}
             </div>
