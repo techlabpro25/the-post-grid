@@ -10,9 +10,7 @@ const attributes = {
 			taxonomy_bool: false,
 			category_bool: false,
 			taxonomy: [],
-			tax_term: {
-				category: ["aa", "bb"],
-			},
+			tax_term: {},
 			category: [],
 			category_operator: "",
 			tag_bool: false,
@@ -196,10 +194,10 @@ const attributes = {
 		type: "object",
 		default: {
 			show_hide: true,
-			size: "1024",
+			size: "150",
 			shape: "normal",
 			animation: 1,
-			["border-radius"]: "5",
+			["border-radius"]: "",
 		},
 	},
 	parent_class: {

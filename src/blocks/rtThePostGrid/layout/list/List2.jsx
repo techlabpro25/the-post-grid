@@ -20,7 +20,7 @@ import {CommentCount} from "../elements/CommentCount";
 import {Category_Default, Non_Category_Default} from "../elements/Category";
 import {Tags} from "../elements/Tags";
 
-export const List1 = (props) =>{
+export const List2 = (props) =>{
     const {
         title,
         title_style,
@@ -166,7 +166,7 @@ export const List1 = (props) =>{
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className="rt-row">
                                                 <div className="rt-col-sm-4 rt-col-xs-12 ">
-                                                    <div className="rt-img-holder">
+                                                    <div className="rt-img-holder" id={"circle"}>
                                                         {
                                                             image.show_hide?(
                                                                 <Image data={image_props}/>

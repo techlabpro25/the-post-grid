@@ -258,13 +258,13 @@ const Query = (props) => {
 					}
 				})}
 
-			{query.taxonomy.length > 0 &&
-				query.taxonomy.map((taxonomy) => {
+			{query.taxonomy.length > 0 && query.taxonomy.map((taxonomy) => {
+				return(
 					<div className="tax_second_child">
 						<SelectControl
 							label={taxonomy}
 							value={[]}
-							options={operator}
+							options={term_cat}
 							multiple={true}
 							onChange={(value) => {
 								const tax_term = { ...query.tax_term };
@@ -285,8 +285,9 @@ const Query = (props) => {
 								})
 							}
 						/> */}
-					</div>;
-				})}
+					</div>
+				)
+			})}
 
 			{query.taxonomy_bool && query.category_bool && query.tag_bool ? (
 				<SelectControl

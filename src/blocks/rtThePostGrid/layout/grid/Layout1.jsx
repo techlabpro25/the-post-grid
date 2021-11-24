@@ -48,7 +48,8 @@ const Layout1 = (props) => {
 		primary_color,
 		parent_class,
 		columns,
-		linking
+		linking,
+		layout
 	} = props
 
 
@@ -111,7 +112,7 @@ const Layout1 = (props) => {
 
 							// Title
 							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.terget, link: post.post_link, post_title }
-							const image_props = { id:post.id, link: post.post_link, target:linking.terget, image, image_url:post.image_url }
+							const image_props = { id:post.id, link: post.post_link, target:linking.terget, image, image_url:post.image_url, layout: layout.value }
 							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name}
 							const date_props = { meta, meta_style, primary_color, date: post.post_date}
 							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
