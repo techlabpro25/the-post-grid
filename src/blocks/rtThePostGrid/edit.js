@@ -113,7 +113,6 @@ export default function Edit(props) {
             newOffset = query.offset
             paginationLimit = query.limit
         }
-        // console.log(newOffset)
         apiFetch({
             path: '/rt/v1/query',
             method:'POST',
@@ -127,7 +126,9 @@ export default function Edit(props) {
                 order: query.order,
                 author: nawauthor,
                 status:newstatus,
-                keyword: query.keyword
+                keyword: query.keyword,
+                terms: query.tax_term,
+                relation: "AND"
             }
         }).then((posts) => {
             setData(posts);

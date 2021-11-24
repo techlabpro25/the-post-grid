@@ -167,7 +167,6 @@ const Query = (props) => {
 		});
 	}, []);
 
-	console.log(query.tax_term)
 
 	return (
 		<>

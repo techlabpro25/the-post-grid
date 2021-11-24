@@ -17,6 +17,7 @@ class All_Post{
     public function get_all_posts($request){
 
         $terms = $request['terms'];
+
         $post_type = $request["post_type"];
         $post_per_page = $request["post_per_page"];
         $include = explode(",",$request["include"]);
@@ -80,48 +81,22 @@ class All_Post{
             $args['post_status'] = $status;
         }
 
-//        if(!empty($terms)){
-//            print_r(sizeof($terms));
-//        }else{
-//            print_r("Hello");
-//        }
-//        die();
-        
-        if(!empty($category) && isset($category) && array_filter($category) && !empty($taxonomy_cat) && !empty($cat_operator) && !empty($tag) && isset($tag) && array_filter($tag) && !empty($taxonomy_tag) && !empty($tag_operator) && !empty($relation)){
-            $args['tax_query'] = array(
-                'relation' => $relation,
-                array(
-                    'taxonomy' => $taxonomy_cat,
-                    'field'    => 'term_id',
-                    'terms'    => $category,
-                    'operator' => $cat_operator,
-                ),
-                array(
-                    'taxonomy' => $taxonomy_tag,
-                    'field'    => 'term_id',
-                    'terms'    => $tag,
-                    'operator' => $tag_operator,
-                ),
-
-            );
-        }else if(!empty($category) && isset($category) && array_filter($category) && !empty($taxonomy_cat) && !empty($cat_operator)){
-            $args['tax_query'] = array(
-                array(
-                    'taxonomy' => $taxonomy_cat,
-                    'field'    => 'term_id',
-                    'terms'    => $category,
-                    'operator' => $cat_operator,
-                ),
-            );
-        }else if(!empty($tag) && isset($tag) && array_filter($tag) && !empty($taxonomy_tag) && !empty($tag_operator)){
-            $args['tax_query'] = array(
-                array(
-                    'taxonomy' => $taxonomy_tag,
-                    'field'    => 'term_id',
-                    'terms'    => $tag,
-                    'operator' => $tag_operator,
-                ),
-            );
+        if(!empty($terms)){
+            if(sizeof($terms) > 0){
+                foreach ($terms as $key => $term){
+                    if(!empty($term['data'])){
+                        $args['tax_query'][]= array(
+                          'taxonomy' => $key,
+                          'field' => 'term_id',
+                          'terms' => $term['data'],
+                          'operator' => $term['operator'],
+                        );
+                    }
+                }
+                if(isset($relation) && $relation){
+                    $args['tax_query']['relation'] = $relation;
+                }
+            }
         }
 
 
