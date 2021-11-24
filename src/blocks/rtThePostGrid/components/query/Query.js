@@ -155,19 +155,25 @@ const Query = (props) => {
 
 	// Get Categories by Taxonomy
 	useEffect(() => {
-		apiFetch({ path: "/rt/v1/categories/category" }).then((category) => {
-			setTerm_cat(
-				category.map((item_key) => {
+		query.taxonomy.map((tax) =>{
+			apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
+				const tax_item = {...query.tax_item};
+				tax_item[tax] = category.map((item_key) => {
 					return {
 						label: item_key.name,
 						value: item_key.id,
 					};
 				})
-			);
-		});
-	}, []);
+				props.attr.setAttributes({
+					query:{ ...query, tax_item:tax_item}
+				})
 
+			});
+		})
 
+	}, [query.taxonomy]);
+
+	// console.log(query.tax_item)
 	return (
 		<>
 			<SelectControl
@@ -239,6 +245,7 @@ const Query = (props) => {
 										label={term_item.label}
 										checked={query.taxonomy.includes(term_item.value)}
 										onChange={(value) => {
+											console.log(term_item.value)
 											let taxonomy = [...query.taxonomy];
 											if (value) {
 												taxonomy.push(term_item.value);
@@ -259,15 +266,15 @@ const Query = (props) => {
 				})}
 
 			{query.taxonomy.length > 0 && query.taxonomy.map((taxonomy) => {
+
 				return(
 					<div className="tax_second_child">
 						<SelectControl
 							label={taxonomy}
 							value={query.tax_term[taxonomy]?.data || []}
-							options={term_cat}
+							options={query.tax_item?.[taxonomy] || []}
 							multiple={true}
 							onChange={(value) => {
-								console.log(value)
 								const tax_term = { ...query.tax_term };
 								if(tax_term[taxonomy]){
 									tax_term[taxonomy].data = value
@@ -284,7 +291,7 @@ const Query = (props) => {
 						/>
 
 						 <SelectControl
-							label={`Category Operator:`}
+							label={`${taxonomy} Operator:`}
 							value={query.tax_term[taxonomy]?.operator}
 							options={operator}
 							onChange={(value) =>
@@ -308,7 +315,7 @@ const Query = (props) => {
 				)
 			})}
 
-			{query.taxonomy_bool && query.category_bool && query.tag_bool ? (
+			{(query.tax_term > 1) ? (
 				<SelectControl
 					label="Relation:"
 					value={query.relation}

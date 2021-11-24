@@ -27,6 +27,7 @@ const attributes = {
 			keyword_bool: false,
 			keyword: "",
 			test: [],
+			tax_item: {}
 		},
 	},
 	columns: {
@@ -112,7 +113,7 @@ const attributes = {
 			["text-align"]: "left",
 			color: "",
 			["font-size"]: "",
-			["font-weight"]: 400,
+			["font-weight"]: 500,
 		},
 	},
 	excerpt: {

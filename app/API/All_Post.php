@@ -17,18 +17,11 @@ class All_Post{
     public function get_all_posts($request){
 
         $terms = $request['terms'];
-
         $post_type = $request["post_type"];
         $post_per_page = $request["post_per_page"];
         $include = explode(",",$request["include"]);
         $exclude = explode(",", $request["exclude"]);
         $offset = $request["offset"];
-        $taxonomy_cat = $request["tax_cat"];
-        $category = explode(",",$request["category"]);
-        $cat_operator = $request["cat_operator"];
-        $taxonomy_tag = $request["tax_tag"];
-        $tag = explode(",",$request["tag"]);
-        $tag_operator = $request["tag_operator"];
         $relation = $request["relation"];
         $order_by = $request["order_by"];
         $order = $request["order"];

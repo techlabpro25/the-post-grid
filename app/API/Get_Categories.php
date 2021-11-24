@@ -8,15 +8,16 @@ class Get_Categories{
     }
 
     public function register_catagory_route(){
-        register_rest_route( 'rt/v1', 'categories/(?P<taxonomy>[a-zA-Z0-9-]+)',array(
+        register_rest_route( 'rt/v1', 'categories',array(
             'methods'  => 'GET',
             'callback' => [$this, 'get_posts_categories']
         ));
     }
 
     public function get_posts_categories($request){
-        $taxonomy = $request["taxonomy"];
+        $taxonomy = $request["tax_type"];
         $term_objects = get_terms( $taxonomy );
+
         
         $data = [];
     
