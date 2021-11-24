@@ -9,12 +9,14 @@ class All_Post{
 
     public function register_post_route(){
         register_rest_route( 'rt/v1', 'query',array(
-            'methods'  => 'GET',
+            'methods'  => 'POST',
             'callback' => [$this, 'get_all_posts']
         ));
     }
 
     public function get_all_posts($request){
+
+        $terms = $request['terms'];
         $post_type = $request["post_type"];
         $post_per_page = $request["post_per_page"];
         $include = explode(",",$request["include"]);
@@ -77,7 +79,13 @@ class All_Post{
         if(!empty($status) && isset($status) && array_filter($status)){
             $args['post_status'] = $status;
         }
-        
+
+//        if(!empty($terms)){
+//            print_r(sizeof($terms));
+//        }else{
+//            print_r("Hello");
+//        }
+//        die();
         
         if(!empty($category) && isset($category) && array_filter($category) && !empty($taxonomy_cat) && !empty($cat_operator) && !empty($tag) && isset($tag) && array_filter($tag) && !empty($taxonomy_tag) && !empty($tag_operator) && !empty($relation)){
             $args['tax_query'] = array(
@@ -115,6 +123,7 @@ class All_Post{
                 ),
             );
         }
+
 
         $query = new WP_Query($args);
 

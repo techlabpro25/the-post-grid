@@ -2458,3 +2458,20 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 a, .rt-thepostgrid a{
     text-decoration: none ;
 }
+
+.tpg-iso-filter{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.tpg-iso-filter button {
+    padding: 8px 20px;
+    background-color: #8e8e8e;
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+}
+.tpg-iso-filter button.selected, .tpg-iso-filter button:hover{
+    background-color: #0367bf;
+}

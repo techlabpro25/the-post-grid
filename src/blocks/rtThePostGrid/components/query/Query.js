@@ -167,6 +167,7 @@ const Query = (props) => {
 		});
 	}, []);
 
+	console.log(query.tax_term)
 
 	return (
 		<>
@@ -263,28 +264,47 @@ const Query = (props) => {
 					<div className="tax_second_child">
 						<SelectControl
 							label={taxonomy}
-							value={[]}
+							value={query.tax_term[taxonomy]?.data || []}
 							options={term_cat}
 							multiple={true}
 							onChange={(value) => {
+								console.log(value)
 								const tax_term = { ...query.tax_term };
-								tax_term[taxonomy] = value;
+								if(tax_term[taxonomy]){
+									tax_term[taxonomy].data = value
+								}else{
+									tax_term[taxonomy] ={
+										data:value,
+										operator: null
+									}
+								}
 								props.attr.setAttributes({
 									query: { ...query, tax_term: tax_term },
 								});
 							}}
 						/>
 
-						{/* <SelectControl
+						 <SelectControl
 							label={`Category Operator:`}
-							value={query.category_operator}
+							value={query.tax_term[taxonomy]?.operator}
 							options={operator}
 							onChange={(value) =>
-								props.attr.setAttributes({
-									query: { ...query, category_operator: value },
-								})
+								{
+									const tax_term = { ...query.tax_term };
+									if(tax_term[taxonomy]){
+										tax_term[taxonomy].operator = value
+									}else{
+										tax_term[taxonomy] ={
+											data:[],
+											operator: value
+										}
+									}
+									props.attr.setAttributes({
+										query: { ...query, tax_term: tax_term },
+									});
+								}
 							}
-						/> */}
+						/>
 					</div>
 				)
 			})}

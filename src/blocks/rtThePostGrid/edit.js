@@ -114,7 +114,22 @@ export default function Edit(props) {
             paginationLimit = query.limit
         }
         // console.log(newOffset)
-        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+newLimit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+newOffset+'&order_by='+query.order_by+'&order='+query.order+'&author='+nawauthor+'&status='+newstatus+'&keyword='+query.keyword}).then((posts) => {
+        apiFetch({
+            path: '/rt/v1/query',
+            method:'POST',
+            data:{
+                post_type: query.post_type,
+                post_per_page: newLimit,
+                include: query.include,
+                exclude: query.exclude,
+                offset: newOffset,
+                order_by: query.order_by,
+                order: query.order,
+                author: nawauthor,
+                status:newstatus,
+                keyword: query.keyword
+            }
+        }).then((posts) => {
             setData(posts);
 			setIsloading(false);
             setPagestate(Math.ceil(posts[0].total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
