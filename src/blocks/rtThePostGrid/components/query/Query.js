@@ -159,26 +159,44 @@ const Query = (props) => {
 	}, []);
 
 	// Get Categories by Taxonomy
-	useEffect(() => {
-		query.taxonomy.map((tax) =>{
-			apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
-				const tax_item = {...query.tax_item};
-				tax_item[tax] = category.map((item_key) => {
-					return {
-						label: item_key.name,
-						value: item_key.id,
-					};
-				})
-				props.attr.setAttributes({
-					query:{ ...query, tax_item:tax_item}
-				})
+	// useEffect(() => {
+	// 	query.taxonomy.map((tax) =>{
+	// 		console.log(tax)
+	// 		apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
+	// 			console.log(category)
+	// 			let tax_item = {...query.tax_item};
+	// 			tax_item[tax] = category.map((item_key) => {
+	// 				return {
+	// 					label: item_key.name,
+	// 					value: item_key.id,
+	// 				};
+	// 			})
+	// 			props.attr.setAttributes({
+	// 				query:{ ...query, tax_item:tax_item}
+	// 			})
+	// 		});
+	//
+	// 	})
+	//
+	// }, [query.taxonomy]);
 
-			});
-		})
+	const termHandler = (tax) =>{
+		apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
+			const tax_item = {...query.tax_item};
+			tax_item[tax] = category.map((item_key) => {
+				return {
+					label: item_key.name,
+					value: item_key.id,
+				};
+			})
+			props.attr.setAttributes({
+				query:{ ...query, tax_item:tax_item}
+			})
 
-	}, [query.taxonomy]);
+		});
+	}
 
-	// console.log(query.tax_item)
+	console.log(query.taxonomy)
 	return (
 		<>
 			<SelectControl
@@ -250,7 +268,8 @@ const Query = (props) => {
 										label={term_item.label}
 										checked={query.taxonomy.includes(term_item.value)}
 										onChange={(value) => {
-											console.log(term_item.value)
+											// console.log(term_item.value)
+											termHandler(term_item.value)
 											let taxonomy = [...query.taxonomy];
 											if (value) {
 												taxonomy.push(term_item.value);
@@ -259,9 +278,11 @@ const Query = (props) => {
 													return i !== term_item.value;
 												});
 											}
+
 											props.attr.setAttributes({
 												query: { ...query, taxonomy: taxonomy },
 											});
+
 										}}
 									/>
 								</div>

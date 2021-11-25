@@ -10,6 +10,7 @@ const RtThePostGrid = (props) => {
     const {query, pagination} = props
     const [pagestate, setPagestate] = useState(0);
     const [pageindex, setPageindex] = useState(1);
+    const [message, setMessage] = useState("");
 
     useEffect(() => {
 
@@ -32,10 +33,33 @@ const RtThePostGrid = (props) => {
             newOffset = query.offset
             paginationLimit = query.limit
         }
-        apiFetch({path: '/rt/v1/query?post_type='+query.post_type+'&post_per_page='+newLimit+'&include='+query.include+'&exclude='+query.exclude+'&offset='+newOffset+'&order_by='+query.order_by+'&order='+query.order+'&author='+nawauthor+'&status='+newstatus+'&keyword='+query.keyword}).then((posts) => {
-            setData(posts);
-            setIsloading(false)
-            setPagestate(Math.ceil(posts[0].total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
+        apiFetch({
+            path: '/rt/v1/query',
+            method:'POST',
+            data:{
+                post_type: query.post_type,
+                post_per_page: newLimit,
+                include: query.include,
+                exclude: query.exclude,
+                offset: newOffset,
+                order_by: query.order_by,
+                order: query.order,
+                author: nawauthor,
+                status:newstatus,
+                keyword: query.keyword,
+                terms: query.tax_term,
+                relation: "AND"
+            }
+        }).then((posts) => {
+            if(posts.length == 0){
+                setMessage(__("Sorry! No Post Found.", "radius-blocks"))
+            }else{
+                setMessage("")
+                setData(posts);
+            }
+
+            setIsloading(false);
+            setPagestate(Math.ceil(posts?.[0]?.total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
         });
     }, [query, pagination, pageindex]);
 
@@ -47,7 +71,17 @@ const RtThePostGrid = (props) => {
                 ):(
 
                     <>
-                        <RenderView {...props} data={data}/>
+                        {
+                            (message.length )?(
+                                <>
+                                    {message}
+                                </>
+
+                            ):(
+                                <RenderView {...props} data={data}/>
+                            )
+                        }
+
                         {
                             pagination.show?(
                                 <div className={"pagination"}>
