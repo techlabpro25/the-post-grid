@@ -27,7 +27,7 @@ function Read_More(props) {
     };
 
     return (
-        <PanelBody title="View More Button" initialOpen={false}>
+        <PanelBody title="Read More Button" initialOpen={false}>
             <NumberControl
                 label="Border Radius"
                 value={button["border-radius"]}

@@ -23,7 +23,7 @@ function Read_More(props) {
     };
 
     return (
-        <PanelBody title="View More Button" initialOpen={false}>
+        <PanelBody title="Read More Button" initialOpen={false}>
             <Button className="popovercomponent com_1" variant="secondary" onClick={ btncolorpopover }>
                 Select Text Color
                 { colortoggle && 

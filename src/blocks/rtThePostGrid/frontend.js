@@ -48,7 +48,7 @@ const RtThePostGrid = (props) => {
                 status:newstatus,
                 keyword: query.keyword,
                 terms: query.tax_term,
-                relation: "AND"
+                relation: query.relation
             }
         }).then((posts) => {
             if(posts.length == 0){

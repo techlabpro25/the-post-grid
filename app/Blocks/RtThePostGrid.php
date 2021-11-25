@@ -163,7 +163,7 @@ class RtThePostGrid extends Block
             'type' => 'object',
             'default' => [
                 'show_hide' => true,
-                'size'=> "1024",
+                'size'=> "150",
                 'shape'=> "normal",
                 'animation'=> 1,
                 'border-radius'=> "5",
@@ -188,7 +188,7 @@ class RtThePostGrid extends Block
                 'tag_bool'  => false,
                 'tag'  => [],
                 'tag_operator'  => "",
-                'relation'  => "",
+                'relation'  => "AND",
                 'order_bool'  => false,
                 'order_by'  => "",
                 'order'  => "",

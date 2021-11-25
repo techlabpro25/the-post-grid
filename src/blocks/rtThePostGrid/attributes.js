@@ -16,7 +16,7 @@ const attributes = {
 			tag_bool: false,
 			tag: [],
 			tag_operator: "",
-			relation: "",
+			relation: "AND",
 			order_bool: false,
 			order_by: "",
 			order: "",
