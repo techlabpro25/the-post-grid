@@ -1,6 +1,5 @@
 import RenderView from "./renderView";
 import apiFetch from "@wordpress/api-fetch";
-
 import {  
 	PanelBody, 
 	ColorPalette,
@@ -46,6 +45,7 @@ export default function Edit(props) {
 	const [isloading, setIsloading] = useState(true);
 	const [pagestate, setPagestate] = useState(0);
 	const [pageindex, setPageindex] = useState(1);
+	const [message, setMessage] = useState("");
     const { query, general, parent_class, primary_color, heading,pagination } = attributes
 
     const colors = [
@@ -131,9 +131,15 @@ export default function Edit(props) {
                 relation: "AND"
             }
         }).then((posts) => {
-            setData(posts);
+            if(posts.length == 0){
+                setMessage(__("Sorry! No Post Found.", "radius-blocks"))
+            }else{
+                setMessage("")
+                setData(posts);
+            }
+
 			setIsloading(false);
-            setPagestate(Math.ceil(posts[0].total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
+            setPagestate(Math.ceil(posts?.[0]?.total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
         });
     }, [query, pagination, pageindex]);
 
@@ -151,8 +157,6 @@ export default function Edit(props) {
 
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
-
-
 
     return (
         <>
@@ -400,7 +404,17 @@ export default function Edit(props) {
 						<div class="lds-dual-ring"></div>
 					):(
                         <>
-                            <RenderView {...attributes} data={data}/>
+                            {
+                                (message.length )?(
+                                    <>
+                                        {message}
+                                    </>
+
+                                ):(
+                                    <RenderView {...attributes} data={data}/>
+                                )
+                            }
+
                             {
                                 pagination.show?(
                                     <div className={"pagination"}>

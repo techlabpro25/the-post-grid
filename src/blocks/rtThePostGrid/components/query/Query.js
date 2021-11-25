@@ -22,6 +22,11 @@ const Query = (props) => {
 	const operator = [
 		{
 			label:
+				"--Select--",
+			value: "",
+		},
+		{
+			label:
 				"IN — show posts which associate with one or more of selected terms",
 			value: "IN",
 		},

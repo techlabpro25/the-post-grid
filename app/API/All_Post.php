@@ -95,12 +95,12 @@ class All_Post{
 
         $query = new WP_Query($args);
 
-
         if (empty($query )) {
             return new WP_Error( 'empty_category', 'There are no terms to display', array('status' => 404) );
         }
         
         $data = [];
+
 
         if ( $query->have_posts() ) {
             while ( $query->have_posts() ) {
@@ -113,28 +113,26 @@ class All_Post{
                 $get_tags = get_the_tags($id);
 
 
-				if(!empty($get_cat)){
-					foreach($get_cat as $cat){
-						$category[]=[
-							"cat_id" => $cat->term_id,
-							"cat_name" => $cat->name, 
-							"cat_link" => get_term_link($cat->term_id),
-						];
-					}
-				}
-                
+                if(!empty($get_cat)){
+                    foreach($get_cat as $cat){
+                        $category[]=[
+                            "cat_id" => $cat->term_id,
+                            "cat_name" => $cat->name,
+                            "cat_link" => get_term_link($cat->term_id),
+                        ];
+                    }
+                }
 
-				if(!empty($get_tags)){
-					foreach($get_tags as $tag){
-						$tags[]=[
-							"tag_id" => $tag->term_id,
-							"tag_name" => $tag->name, 
-							"tag_link" => get_term_link($tag->term_id)
-						];
-					}
-				}
 
-				
+                if(!empty($get_tags)){
+                    foreach($get_tags as $tag){
+                        $tags[]=[
+                            "tag_id" => $tag->term_id,
+                            "tag_name" => $tag->name,
+                            "tag_link" => get_term_link($tag->term_id)
+                        ];
+                    }
+                }
 
                 $data[]=[
                     'id' => $id,
@@ -148,7 +146,7 @@ class All_Post{
                     "category" => $category,
                     "tags" => $tags,
                     "post_link" => get_post_permalink(),
-                    "total_post" => $query->found_posts
+                    "total_post" => $query->found_posts,
                 ];
             }
         } else {
@@ -156,7 +154,6 @@ class All_Post{
         }
 
         wp_reset_postdata();
-
 
         return rest_ensure_response($data);
     }

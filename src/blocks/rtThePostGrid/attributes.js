@@ -27,7 +27,7 @@ const attributes = {
 			keyword_bool: false,
 			keyword: "",
 			test: [],
-			tax_item: {}
+			tax_item: {},
 		},
 	},
 	columns: {
