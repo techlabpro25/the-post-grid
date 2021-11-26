@@ -52,7 +52,7 @@ const RtThePostGrid = (props) => {
             }
         }).then((posts) => {
             if(posts.length == 0){
-                setMessage(__("Sorry! No Post Found.", "radius-blocks"))
+                setMessage("Sorry! No Post Found.")
             }else{
                 setMessage("")
                 setData(posts);
