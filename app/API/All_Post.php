@@ -10,7 +10,8 @@ class All_Post{
     public function register_post_route(){
         register_rest_route( 'rt/v1', 'query',array(
             'methods'  => 'POST',
-            'callback' => [$this, 'get_all_posts']
+            'callback' => [$this, 'get_all_posts'],
+            'permission_callback' => function() { return true; }
         ));
     }
 

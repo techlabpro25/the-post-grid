@@ -164,40 +164,40 @@ const Query = (props) => {
 	}, []);
 
 	// Get Categories by Taxonomy
-	useEffect(() => {
-		query.taxonomy.map((tax) =>{
-			apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
-				let tax_item = {...query.tax_item};
-				tax_item[tax] = category.map((item_key) => {
-					return {
-						label: item_key.name,
-						value: item_key.id,
-					};
-				})
-				props.attr.setAttributes({
-					query:{ ...query, tax_item:tax_item}
-				})
-			});
-
-		})
-
-	}, [query.taxonomy]);
-
-	// const termHandler = (tax) =>{
-	// 	apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
-	// 		const tax_item = {...query.tax_item};
-	// 		tax_item[tax] = category.map((item_key) => {
-	// 			return {
-	// 				label: item_key.name,
-	// 				value: item_key.id,
-	// 			};
-	// 		})
-	// 		props.attr.setAttributes({
-	// 			query:{ ...query, tax_item:tax_item}
-	// 		})
+	// useEffect(() => {
+	// 	query.taxonomy.map((tax) =>{
+	// 		apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
+	// 			let tax_item = {...query.tax_item};
+	// 			tax_item[tax] = category.map((item_key) => {
+	// 				return {
+	// 					label: item_key.name,
+	// 					value: item_key.id,
+	// 				};
+	// 			})
+	// 			props.attr.setAttributes({
+	// 				query:{ ...query, tax_item:tax_item}
+	// 			})
+	// 		});
 	//
-	// 	});
-	// }
+	// 	})
+	//
+	// }, [query.taxonomy]);
+
+	const termHandler = (tax) =>{
+		apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
+			const tax_item = {...query.tax_item};
+			tax_item[tax] = category.map((item_key) => {
+				return {
+					label: item_key.name,
+					value: item_key.id,
+				};
+			})
+			props.attr.setAttributes({
+				query:{ ...query, tax_item:tax_item}
+			})
+
+		});
+	}
 
 	return (
 		<>
@@ -309,7 +309,7 @@ const Query = (props) => {
 													props.attr.setAttributes({
 														query: { ...query, taxonomy: taxonomy, tax_term: newTaxItem, tax_item: newTermItem},
 													});
-													// termHandler(term_item.value)
+													termHandler(term_item.value)
 												}}
 											/>
 										</div>

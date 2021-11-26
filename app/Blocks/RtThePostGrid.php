@@ -252,7 +252,7 @@ class RtThePostGrid extends Block
 		$_attributes = array_merge(
 			array_map(
 				function ($attribute) {
-					return $attribute['default'];
+					return $attribute;
 				}, 
 				$this->getAttributes()
 			), 

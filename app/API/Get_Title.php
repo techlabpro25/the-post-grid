@@ -9,7 +9,8 @@ class Get_Title{
     public function register_title_route(){
         register_rest_route( 'rt/v1', 'post_title',array(
             'methods'  => 'GET',
-            'callback' => [$this, 'get_page_title']
+            'callback' => [$this, 'get_page_title'],
+            'permission_callback' => function() { return true; }
         ));
     }
 

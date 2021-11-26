@@ -10,7 +10,8 @@ class Get_Terms{
     public function register_term_route(){
         register_rest_route( 'rt/v1', 'taxonomy',array(
             'methods'  => 'GET',
-            'callback' => [$this, 'get_posts_terms']
+            'callback' => [$this, 'get_posts_terms'],
+            'permission_callback' => function() { return true; }
         ));
     }
 
