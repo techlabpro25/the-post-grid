@@ -116,7 +116,6 @@ export default function Edit(props) {
             newOffset = query.offset
             paginationLimit = query.limit
         }
-        console.log(newOffset)
         apiFetch({
             path: '/rt/v1/query',
             method:'POST',

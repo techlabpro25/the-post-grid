@@ -21,6 +21,16 @@ function Title(props) {
                 value={ title_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {title_style: {...title_style, "color": color}} ) }
             />
+            <Text>
+                Hover Color:
+            </Text>
+            <ColorPalette
+                label = "Select Color"
+                colors={ props.attr.colors }
+                value={ title_style.h_color }
+                onChange={ ( color ) => props.attr.setAttributes( {title_style: {...title_style, "h_color": color}} ) }
+            />
+
             
 
             <Text>

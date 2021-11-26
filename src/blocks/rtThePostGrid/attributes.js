@@ -112,6 +112,7 @@ const attributes = {
 		default: {
 			["text-align"]: "left",
 			color: "",
+			h_color: "",
 			["font-size"]: "",
 			["font-weight"]: 500,
 		},

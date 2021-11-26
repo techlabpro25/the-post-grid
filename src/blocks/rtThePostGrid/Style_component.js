@@ -4,6 +4,9 @@ export const Titlea = styled.a`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
+	&:hover{
+	    color: ${props => (props.css.h_color)? props.css.h_color: props.primary} !important;
+	}
 `;
 
 export const Titletag = styled.div`
