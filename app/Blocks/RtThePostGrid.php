@@ -140,6 +140,7 @@ class RtThePostGrid extends Block
             'status'  => ["publish"],
             'keyword_bool'  => false,
             'keyword'  => "",
+            'filter'=> true,
         ],
         'primary_color' =>'#000',
         'parent_class' =>"default",

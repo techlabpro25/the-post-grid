@@ -255,8 +255,8 @@ const Query = (props) => {
 				}
 			/>
 			{
-				tax_warning.length?(
-					<div className={'notice'}>
+				(tax_warning.length && query.taxonomy_bool)?(
+					<div className={'no_notice'}>
 						{tax_warning}
 					</div>
 				):(
@@ -347,7 +347,7 @@ const Query = (props) => {
 										}
 									}
 									props.attr.setAttributes({
-										query: { ...query, tax_term: tax_term },
+										query: { ...query, tax_term: tax_term, filter: true },
 									});
 								}
 							}
@@ -383,7 +383,22 @@ const Query = (props) => {
 				label="Order"
 				checked={query.order_bool}
 				onChange={(value) =>
-					props.attr.setAttributes({ query: { ...query, order_bool: value } })
+					{
+						let order_by ={...query.order_by}
+						let order ={...query.order}
+						if(!value){
+							order_by = "";
+							order = "";
+						}
+						props.attr.setAttributes({ query: {
+							...query,
+								order_bool: value,
+								order_by: order_by,
+								order: order,
+								filter: true
+						} })
+					}
+
 				}
 			/>
 
@@ -419,8 +434,17 @@ const Query = (props) => {
 			<CheckboxControl
 				label="Author"
 				checked={query.author_bool}
-				onChange={(value) =>
-					props.attr.setAttributes({ query: { ...query, author_bool: value } })
+				onChange={(value) => {
+					let author  = [...query.author]
+					if(!value){
+						author = []
+					}
+						props.attr.setAttributes({query: {
+							...query,
+								author: author,
+								author_bool: value
+						}})
+					}
 				}
 			/>
 
@@ -431,7 +455,7 @@ const Query = (props) => {
 					multiple={true}
 					options={authors}
 					onChange={(value) =>
-						props.attr.setAttributes({ query: { ...query, author: value } })
+						props.attr.setAttributes({ query: { ...query, author: value, filter: true } })
 					}
 				/>
 			) : (
@@ -442,7 +466,14 @@ const Query = (props) => {
 				label="Status"
 				checked={query.status_bool}
 				onChange={(value) =>
-					props.attr.setAttributes({ query: { ...query, status_bool: value } })
+					{
+						let status = [...query.status]
+						if (!value){
+							status = []
+						}
+						props.attr.setAttributes({ query: { ...query, status_bool: value, status: status } })
+					}
+
 				}
 			/>
 
@@ -453,7 +484,7 @@ const Query = (props) => {
 					multiple={true}
 					options={publish_type}
 					onChange={(value) =>
-						props.attr.setAttributes({ query: { ...query, status: value } })
+						props.attr.setAttributes({ query: { ...query, status: value, filter: true } })
 					}
 				/>
 			) : (
@@ -463,8 +494,14 @@ const Query = (props) => {
 			<CheckboxControl
 				label="Keyword"
 				checked={query.keyword_bool}
-				onChange={(value) =>
-					props.attr.setAttributes({ query: { ...query, keyword_bool: value } })
+				onChange={(value) =>{
+					let keyword = query.keyword
+					if(!value){
+						keyword = ""
+					}
+					props.attr.setAttributes({ query: { ...query, keyword_bool: value, keyword:keyword } })
+				}
+
 				}
 			/>
 
@@ -473,7 +510,7 @@ const Query = (props) => {
 					label="Enter Keyword:"
 					value={query.keyword}
 					onChange={(value) =>
-						props.attr.setAttributes({ query: { ...query, keyword: value } })
+						props.attr.setAttributes({ query: { ...query, keyword: value, filter: true } })
 					}
 				/>
 			) : (

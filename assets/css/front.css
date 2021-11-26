@@ -2319,3 +2319,14 @@ a, .rt-thepostgrid a {
 .tpg-iso-filter button.selected, .tpg-iso-filter button:hover {
   background-color: #0367bf;
 }
+
+.no_notice {
+  text-align: center;
+  border: 0;
+  box-shadow: none;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 15px 0;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}

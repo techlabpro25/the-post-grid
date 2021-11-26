@@ -95,66 +95,67 @@ class All_Post{
 
 
         $query = new WP_Query($args);
-
-        if (empty($query )) {
-            return new WP_Error( 'empty_category', 'There are no terms to display', array('status' => 404) );
-        }
         
         $data = [];
 
 
-        if ( $query->have_posts() ) {
-            while ( $query->have_posts() ) {
-                $query->the_post();
-                $category = [];
-                $tags = [];
-                $id = get_the_id();
-                $author_id = $query->post_author;
-                $get_cat = get_the_category($id);
-                $get_tags = get_the_tags($id);
+        if ($query->found_posts == 0){
+            $data['message'] = "No Post Found";
+        }else{
+            if ( $query->have_posts() ) {
+                while ( $query->have_posts() ) {
+                    $query->the_post();
+                    $category = [];
+                    $tags = [];
+                    $id = get_the_id();
+                    $author_id = $query->post_author;
+                    $get_cat = get_the_category($id);
+                    $get_tags = get_the_tags($id);
 
 
-                if(!empty($get_cat)){
-                    foreach($get_cat as $cat){
-                        $category[]=[
-                            "cat_id" => $cat->term_id,
-                            "cat_name" => $cat->name,
-                            "cat_link" => get_term_link($cat->term_id),
-                        ];
+                    if(!empty($get_cat)){
+                        foreach($get_cat as $cat){
+                            $category[]=[
+                                "cat_id" => $cat->term_id,
+                                "cat_name" => $cat->name,
+                                "cat_link" => get_term_link($cat->term_id),
+                            ];
+                        }
                     }
-                }
 
 
-                if(!empty($get_tags)){
-                    foreach($get_tags as $tag){
-                        $tags[]=[
-                            "tag_id" => $tag->term_id,
-                            "tag_name" => $tag->name,
-                            "tag_link" => get_term_link($tag->term_id)
-                        ];
+                    if(!empty($get_tags)){
+                        foreach($get_tags as $tag){
+                            $tags[]=[
+                                "tag_id" => $tag->term_id,
+                                "tag_name" => $tag->name,
+                                "tag_link" => get_term_link($tag->term_id)
+                            ];
+                        }
                     }
-                }
 
-                $data[]=[
-                    'id' => $id,
-                    "title" => get_the_title(),
-                    "excerpt" => get_the_excerpt(),
-                    "comment_count" => wp_count_comments($id)->all,
-                    "post_date" => get_the_date('M d, y'),
-                    "image_url" => get_the_post_thumbnail_url(null, 'full'),
-                    "author_name" => get_the_author_meta( 'display_name', $author_id ),
-                    "author_url" => get_author_posts_url(get_the_author_meta('ID')),
-                    "category" => $category,
-                    "tags" => $tags,
-                    "post_link" => get_post_permalink(),
-                    "total_post" => $query->found_posts,
-                ];
+                    $data[]=[
+                        'id' => $id,
+                        "title" => get_the_title(),
+                        "excerpt" => get_the_excerpt(),
+                        "comment_count" => wp_count_comments($id)->all,
+                        "post_date" => get_the_date('M d, y'),
+                        "image_url" => get_the_post_thumbnail_url(null, 'full'),
+                        "author_name" => get_the_author_meta( 'display_name', $author_id ),
+                        "author_url" => get_author_posts_url(get_the_author_meta('ID')),
+                        "category" => $category,
+                        "tags" => $tags,
+                        "post_link" => get_post_permalink(),
+                        "total_post" => $query->found_posts,
+                    ];
+                }
+            } else {
+                // no posts found
             }
-        } else {
-            // no posts found
+
+            wp_reset_postdata();
         }
 
-        wp_reset_postdata();
 
         return rest_ensure_response($data);
     }

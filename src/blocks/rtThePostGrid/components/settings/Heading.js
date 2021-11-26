@@ -11,7 +11,7 @@ import {useState} from '@wordpress/element';
 function Heading(props) {
     const {heading, heading_style} = props.attr.attributes
     return (
-        <PanelBody title="Heading" initialOpen={true}>
+        <PanelBody title="Block Heading" initialOpen={true}>
             <SelectControl
                 label="Tag:"
                 value={ heading["tag"] }

@@ -19,7 +19,7 @@ function General(props) {
     return (
         <PanelBody title="General" className="general_tab" initialOpen={true}>
             <ToggleControl
-                label="Heading"
+                label="Block Heading"
                 checked={ general.heading }
                 onChange={ (val) => {
                     useHasheading( ( state ) => ! state );

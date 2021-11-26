@@ -10,7 +10,7 @@ import {useState} from '@wordpress/element';
 function Heading(props) {
     const { heading_style, heading_padding_object, heading_margin_object} = props.attr.attributes
     return (
-        <PanelBody title="Heading" initialOpen={false}>
+        <PanelBody title="Block Heading" initialOpen={false}>
             <Text>
                 Color:
             </Text>

@@ -26,7 +26,7 @@ const attributes = {
 			status: ["publish"],
 			keyword_bool: false,
 			keyword: "",
-			test: [],
+			filter: true,
 			tax_item: {},
 		},
 	},

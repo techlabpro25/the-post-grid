@@ -55,10 +55,11 @@ const RtThePostGrid = (props) => {
             }else{
                 setMessage("")
                 setData(posts);
+                setPagestate(Math.ceil(posts?.[0]?.total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
             }
 
             setIsloading(false);
-            setPagestate(Math.ceil(posts?.[0]?.total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
+
         });
     }, [query, pagination, pageindex]);
 

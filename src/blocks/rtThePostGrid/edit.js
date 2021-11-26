@@ -97,6 +97,7 @@ export default function Edit(props) {
         let nawauthor = query.author.toString();
         let newstatus = query.status.toString();
         $(document).on('click', '.pagination .pagination_number', function (){
+            setAttributes({query: {...query, 'filter': false}})
             setPageindex(parseInt($(this).attr('data-value')))
             $('.pagination .pagination_number').removeClass('active')
             $(this).addClass('active')
@@ -106,13 +107,16 @@ export default function Edit(props) {
         let paginationLimit = 0;
         if(pagination.show){
             newLimit = pagination.post_per_page
-            newOffset = (pageindex * newLimit)-newLimit
+            if(!query.filter){
+                newOffset = (pageindex * newLimit)-newLimit
+            }
             paginationLimit = newLimit
         }else{
             newLimit = query.limit
             newOffset = query.offset
             paginationLimit = query.limit
         }
+        console.log(newOffset)
         apiFetch({
             path: '/rt/v1/query',
             method:'POST',
@@ -131,15 +135,16 @@ export default function Edit(props) {
                 relation: query.relation
             }
         }).then((posts) => {
-            if(posts.length == 0){
+            if('message' in posts){
                 setMessage(__("Sorry! No Post Found.", "radius-blocks"))
+                setPagestate(0)
             }else{
                 setMessage("")
                 setData(posts);
+                setPagestate(Math.ceil(posts?.[0]?.total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
             }
-
 			setIsloading(false);
-            setPagestate(Math.ceil(posts?.[0]?.total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
+
         });
     }, [query, pagination, pageindex]);
 
@@ -406,9 +411,9 @@ export default function Edit(props) {
                         <>
                             {
                                 (message.length )?(
-                                    <>
+                                    <div className={"no_notice"}>
                                         {message}
-                                    </>
+                                    </div>
 
                                 ):(
                                     <RenderView {...attributes} data={data}/>
