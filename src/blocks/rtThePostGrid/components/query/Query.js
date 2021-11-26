@@ -22,8 +22,7 @@ const Query = (props) => {
 
 	const operator = [
 		{
-			label:
-				"--Select--",
+			label: "--Select--",
 			value: "",
 		},
 		{
@@ -110,41 +109,42 @@ const Query = (props) => {
 	useEffect(() => {
 		apiFetch({ path: "/wp/v2/types" }).then((types) => {
 			var newarrobj = Object.keys(types);
-				let loop_var= newarrobj.map((item_key) => {
-					if (!typefilter.includes(item_key)) {
-						return {
-							label: types[item_key].name,
-							value: types[item_key].slug,
-						};
-					}
-					return false
-				})
-			setPt(loop_var.filter(e => e))
+			let loop_var = newarrobj.map((item_key) => {
+				if (!typefilter.includes(item_key)) {
+					return {
+						label: types[item_key].name,
+						value: types[item_key].slug,
+					};
+				}
+				return false;
+			});
+			setPt(loop_var.filter((e) => e));
 		});
 		setLoading(false);
 	}, []);
 
 	// Get terms by post
 	useEffect(() => {
-		apiFetch({ path: "/rt/v1/taxonomy?post_type="+query.post_type }).then((term) => {
-			if("message" in term){
-				setTax_warning(term.message)
-			}else{
-				setTax_warning('');
-				setPost_term(
-					term.map((item_key) => {
-						if (!typefilter.includes(item_key)) {
-							return {
-								label: item_key.label,
-								value: item_key.name,
-							};
-						}
-						return false;
-					})
-				);
+		apiFetch({ path: "/rt/v1/taxonomy?post_type=" + query.post_type }).then(
+			(term) => {
+				if ("message" in term) {
+					setTax_warning(term.message);
+				} else {
+					setTax_warning("");
+					setPost_term(
+						term.map((item_key) => {
+							if (!typefilter.includes(item_key)) {
+								return {
+									label: item_key.label,
+									value: item_key.name,
+								};
+							}
+							return false;
+						})
+					);
+				}
 			}
-
-		});
+		);
 	}, [query.post_type, query.taxonomy_bool]);
 
 	// console.log(post_term);
@@ -183,21 +183,20 @@ const Query = (props) => {
 	//
 	// }, [query.taxonomy]);
 
-	const termHandler = (tax) =>{
-		apiFetch({ path: "/rt/v1/categories?tax_type="+tax }).then((category) => {
-			const tax_item = {...query.tax_item};
+	const termHandler = (tax, taxonomy) => {
+		apiFetch({ path: "/rt/v1/categories?tax_type=" + tax }).then((category) => {
+			const tax_item = { ...query.tax_item };
 			tax_item[tax] = category.map((item_key) => {
 				return {
 					label: item_key.name,
 					value: item_key.id,
 				};
-			})
+			});
 			props.attr.setAttributes({
-				query:{ ...query, tax_item:tax_item}
-			})
-
+				query: { ...query, taxonomy, tax_item },
+			});
 		});
-	}
+	};
 
 	return (
 		<>
@@ -205,14 +204,22 @@ const Query = (props) => {
 				label="Post Type:"
 				value={query.post_type}
 				options={pt}
-				onChange={(value) =>{
+				onChange={(value) => {
 					const taxonomy = [];
 					const tax_term = {};
 					const tax_item = {};
 
-					props.attr.setAttributes({ query: { ...query, post_type: value, taxonomy_bool: false, taxonomy:taxonomy, tax_term:tax_term, tax_item:tax_item } })
-				}
-				}
+					props.attr.setAttributes({
+						query: {
+							...query,
+							post_type: value,
+							taxonomy_bool: false,
+							taxonomy: taxonomy,
+							tax_term: tax_term,
+							tax_item: tax_item,
+						},
+					});
+				}}
 			/>
 
 			<RangeControl
@@ -258,30 +265,32 @@ const Query = (props) => {
 			<CheckboxControl
 				label="Taxonomy"
 				checked={query.taxonomy_bool}
-				onChange={(value) =>{
-					let tax_term = {...query.tax_term}
-					let tax_item = {...query.tax_item}
-					let taxonomy = [...query.taxonomy]
+				onChange={(value) => {
+					let tax_term = { ...query.tax_term };
+					let tax_item = { ...query.tax_item };
+					let taxonomy = [...query.taxonomy];
 
-					if(!value){
+					if (!value) {
 						taxonomy = [];
 						tax_term = {};
 						tax_item = {};
 					}
 					props.attr.setAttributes({
-						query: {...query, taxonomy_bool: value, taxonomy:taxonomy, tax_term:tax_term, tax_item:tax_item},
-					})
-				}
-				}
+						query: {
+							...query,
+							taxonomy_bool: value,
+							taxonomy: taxonomy,
+							tax_term: tax_term,
+							tax_item: tax_item,
+						},
+					});
+				}}
 			/>
-			{
-				tax_warning.length?(
-					<div className={'notice'}>
-						{tax_warning}
-					</div>
-				):(
-					<>
-						{post_term?.length &&
+			{tax_warning.length ? (
+				<div className={"notice"}>{tax_warning}</div>
+			) : (
+				<>
+					{post_term?.length &&
 						post_term?.map((term_item) => {
 							if (query.taxonomy_bool) {
 								return (
@@ -292,8 +301,10 @@ const Query = (props) => {
 												checked={query.taxonomy.includes(term_item.value)}
 												onChange={(value) => {
 													let taxonomy = [...query.taxonomy];
-													let newTaxItem  = {...query.tax_term}
-													let newTermItem  = {...query.tax_item}
+													let newTaxItem = { ...query.tax_term };
+													let newTermItem = { ...query.tax_item };
+													console.log(value);
+													console.log(term_item.value);
 													if (value) {
 														taxonomy.push(term_item.value);
 													} else {
@@ -302,14 +313,20 @@ const Query = (props) => {
 														});
 
 														// Remove from array if not checked
-														delete newTaxItem[term_item.value]
-														delete newTermItem[term_item.value]
+														delete newTaxItem[term_item.value];
+														delete newTermItem[term_item.value];
 													}
-
 													props.attr.setAttributes({
-														query: { ...query, taxonomy: taxonomy, tax_term: newTaxItem, tax_item: newTermItem},
+														query: {
+															...query,
+															taxonomy,
+															tax_term: newTaxItem,
+															tax_item: newTermItem,
+														},
 													});
-													termHandler(term_item.value)
+													if (value) {
+														termHandler(term_item.value, taxonomy);
+													}
 												}}
 											/>
 										</div>
@@ -317,62 +334,58 @@ const Query = (props) => {
 								);
 							}
 						})}
-					</>
-				)
-			}
+				</>
+			)}
 
-
-			{query.taxonomy.length > 0 && query.taxonomy.map((taxonomy) => {
-
-				return(
-					<div className="tax_second_child">
-						<SelectControl
-							label={taxonomy}
-							value={query.tax_term[taxonomy]?.data || []}
-							options={query.tax_item?.[taxonomy] || []}
-							multiple={true}
-							onChange={(value) => {
-								const tax_term = { ...query.tax_term };
-								if(tax_term[taxonomy]){
-									tax_term[taxonomy].data = value
-								}else{
-									tax_term[taxonomy] ={
-										data:value,
-										operator: null
-									}
-								}
-								props.attr.setAttributes({
-									query: { ...query, tax_term: tax_term },
-								});
-							}}
-						/>
-
-						 <SelectControl
-							label={`${taxonomy} Operator:`}
-							value={query.tax_term[taxonomy]?.operator}
-							options={operator}
-							onChange={(value) =>
-								{
+			{query.taxonomy.length > 0 &&
+				query.taxonomy.map((taxonomy) => {
+					return (
+						<div className="tax_second_child">
+							<SelectControl
+								label={taxonomy}
+								value={query.tax_term[taxonomy]?.data || []}
+								options={query.tax_item?.[taxonomy] || []}
+								multiple={true}
+								onChange={(value) => {
 									const tax_term = { ...query.tax_term };
-									if(tax_term[taxonomy]){
-										tax_term[taxonomy].operator = value
-									}else{
-										tax_term[taxonomy] ={
-											data:[],
-											operator: value
-										}
+									if (tax_term[taxonomy]) {
+										tax_term[taxonomy].data = value;
+									} else {
+										tax_term[taxonomy] = {
+											data: value,
+											operator: null,
+										};
 									}
 									props.attr.setAttributes({
 										query: { ...query, tax_term: tax_term },
 									});
-								}
-							}
-						/>
-					</div>
-				)
-			})}
+								}}
+							/>
 
-			{(query.taxonomy.length > 1) ? (
+							<SelectControl
+								label={`${taxonomy} Operator:`}
+								value={query.tax_term[taxonomy]?.operator}
+								options={operator}
+								onChange={(value) => {
+									const tax_term = { ...query.tax_term };
+									if (tax_term[taxonomy]) {
+										tax_term[taxonomy].operator = value;
+									} else {
+										tax_term[taxonomy] = {
+											data: [],
+											operator: value,
+										};
+									}
+									props.attr.setAttributes({
+										query: { ...query, tax_term: tax_term },
+									});
+								}}
+							/>
+						</div>
+					);
+				})}
+
+			{query.taxonomy.length > 1 ? (
 				<div className="tax_second_child">
 					<SelectControl
 						label="Relation:"
