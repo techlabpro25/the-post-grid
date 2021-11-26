@@ -154,11 +154,10 @@ export const List2 = (props) =>{
                             }
                             const tag_props = {
                                 meta,
+                                meta_style,
                                 primary_color,
-                                post_tags: post?.tags,
-                                category_style,
-                                category_padding,
-                                category_margin
+                                post_tags:
+                                post?.tags
                             }
 
                             return(
@@ -212,7 +211,10 @@ export const List2 = (props) =>{
                                                                     {/*Category*/}
                                                                     {
                                                                         (category.position.length == 0) && general.category ? (
-                                                                            <Category_Default data={category_props}/>
+                                                                            <>
+                                                                                <Category_Default data={category_props}/>
+                                                                                {" " + meta.seperator}
+                                                                            </>
                                                                         ) : ("")
                                                                     }
 
@@ -261,7 +263,10 @@ export const List2 = (props) =>{
                                                                     {/*Category*/}
                                                                     {
                                                                         (category.position.length == 0) && general.category ? (
-                                                                            <Category_Default data={category_props}/>
+                                                                            <>
+                                                                                <Category_Default data={category_props}/>
+                                                                                {" " + meta.seperator}
+                                                                            </>
                                                                         ) : ("")
                                                                     }
 
@@ -311,7 +316,10 @@ export const List2 = (props) =>{
                                                                     {/*Category*/}
                                                                     {
                                                                         (category.position.length == 0) && general.category ? (
-                                                                            <Category_Default data={category_props}/>
+                                                                            <>
+                                                                                <Category_Default data={category_props}/>
+                                                                                {" " + meta.seperator}
+                                                                            </>
                                                                         ) : ("")
                                                                     }
 

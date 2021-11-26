@@ -18,7 +18,7 @@ export const Excerpts = styled.div`
 `;
 
 export const Cat_style = styled.a`
-	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
@@ -27,7 +27,7 @@ export const Cat_style = styled.a`
 `;
 
 export const Cat_style_non_default = styled.a`
-	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
@@ -40,6 +40,11 @@ export const Cat_style_non_default = styled.a`
 `;
 
 export const MetaStyle = styled.span`
+	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	font-size: ${props => props.css['font-size']} !important;
+	font-weight: ${props => props.css['font-weight']} !important;
+`;
+export const MetaTagStyle = styled.a`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
@@ -119,6 +124,9 @@ export const ImgParent = styled.div`
 
 export const MetaIcon = styled.div`
     color: ${props => (props.css.color)? props.css.color: props.primary}
+`
+export const MetaCatIcon = styled.div`
+    color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
 `
 export const CatIcon = styled.div`
     color: ${props => (props.css.color)? props.css.color: props.primary}

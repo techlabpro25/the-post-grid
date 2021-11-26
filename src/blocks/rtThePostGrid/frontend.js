@@ -13,9 +13,8 @@ const RtThePostGrid = (props) => {
     const [message, setMessage] = useState("");
 
     useEffect(() => {
-
-        let nawauthor = query.author.toString();
-        let newstatus = query.status.toString();
+        let nawauthor = query?.author?.toString();
+        let newstatus = query?.status?.toString();
         $(document).on('click', '.pagination .pagination_number', function (){
             setPageindex(parseInt($(this).attr('data-value')))
             $('.pagination .pagination_number').removeClass('active')

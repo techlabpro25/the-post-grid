@@ -117,7 +117,7 @@ const Layout1 = (props) => {
 							const date_props = { meta, meta_style, primary_color, date: post.post_date}
 							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
 							const category_props = { meta, meta_style, primary_color, category, post_cat: post?.category, category_style, category_padding, category_margin }
-							const tag_props = { meta, primary_color, post_tags: post?.tags, category_style, category_padding, category_margin }
+							const tag_props = { meta, meta_style, primary_color, post_tags: post?.tags }
 
 							return (
 								<>
@@ -132,7 +132,10 @@ const Layout1 = (props) => {
 												{
 													(category.position.includes('over-image')) ? (
 														<div class={`cat-${category.position} ${category.style}`}>
-															<Non_Category_Default data={category_props}/>
+															<>
+																<Non_Category_Default data={category_props}/>
+															</>
+
 														</div>
 													) : ("")
 												}
@@ -142,7 +145,9 @@ const Layout1 = (props) => {
 												{
 													(category.position == "above-title") ? (
 														<div class={`cat-above-title ${category.style}`}>
-															<Non_Category_Default data={category_props}/>
+															<>
+																<Non_Category_Default data={category_props}/>
+															</>
 														</div>
 													) : ('')
 												}
@@ -166,7 +171,10 @@ const Layout1 = (props) => {
 															{/*Category*/}
 															{
 																(category.position.length == 0) && general.category ? (
-																	<Category_Default data={category_props}/>
+																	<>
+																		<Category_Default data={category_props}/>
+																		{" " + meta.seperator}
+																	</>
 																) : ("")
 															}
 
@@ -215,7 +223,10 @@ const Layout1 = (props) => {
 															{/*Category*/}
 															{
 																(category.position.length == 0) && general.category ? (
-																	<Category_Default data={category_props}/>
+																	<>
+																		<Category_Default data={category_props}/>
+																		{" " + meta.seperator}
+																	</>
 																) : ("")
 															}
 
@@ -269,7 +280,10 @@ const Layout1 = (props) => {
 															{/*Category*/}
 															{
 																(category.position.length == 0) && general.category ? (
-																	<Category_Default data={category_props}/>
+																	<>
+																		<Category_Default data={category_props}/>
+																		{" " + meta.seperator}
+																	</>
 																) : ("")
 															}
 

@@ -10,227 +10,153 @@ class RtThePostGrid extends Block
 
 	protected $attributes = [
         'layout'=>[
-            'type'=> "object",
-            'default'=> [
-                'type'=> 'grid',
-                'value'=> "grid1"
-            ],
+            'type'=> 'grid',
+            'value'=> "grid1",
         ],
         'general' =>[
-            'type' => "object",
-            'default' => [
-                    'heading' => true,
-                    'title' => true,
-                    'excerpt' => true,
-                    'category' => true,
-                    'author' => true,
-                    'post_date' => true,
-                    'tag' => true,
-                    'comment_count' => true,
-                    'see_more' => true,
-            ]
+            'heading' => true,
+            'title' => true,
+            'excerpt' => true,
+            'category' => true,
+            'author' => true,
+            'post_date' => true,
+            'tag' => true,
+            'comment_count' => true,
+            'see_more' => true,
         ],
         'title'=> [
-            'type'=> "object",
-            'default'=> [
-                'tag'=> "2",
-                'position'=> "bottom_left",
-                'word_limit'=> 100,
-                'type'=> "full",
-                'more_text'=> "...",
-            ],
+            'tag'=> "2",
+            'position'=> "bottom_left",
+            'word_limit'=> 100,
+            'type'=> "full",
+            'more_text'=> "...",
         ],
 		'title_style' => [
-			'type'=> "object",
-			'default'=> [
-				"text-align"=> "left",
-				"color"=> "",
-				"font-size"=> "22px",
-				"font-weight"=> 500,
-			],
+            "text-align"=> "left",
+            "color"=> "",
+            "font-size"=> "22px",
+            "font-weight"=> 500,
 		],
 		'category_style' =>[
-			'type' => "object",
-			'default' => [
-				'color' => "",
-				"background-color" => "transparent",
-				'font-size' => '15px',
-				'border-radius' => "5",
-			],
+            'color' => "",
+            "background-color" => "transparent",
+            'font-size' => '15px',
+            'border-radius' => "5",
 		],
-		'category_padding' =>[
-			'type' => "object",
-		],
-		'category_margin' =>[
-			'type' => "object",
-		],
+		'category_padding' =>[],
+		'category_margin' =>[],
         'meta_style' =>[
-            'type' => "object",
-            'default' => [
-                'color' => "",
-                "text-align" => "left",
-                'font-size' => '15px',
-                'font-weight' => "400",
-            ],
+            'color' => "",
+            "text-align" => "left",
+            'font-size' => '15px',
+            'font-weight' => "400",
         ],
         'button' =>[
-            'type' => "object",
-            'default' => [
-                'border-radius' => "5",
-                "text-align" => "left",
-                'text' => 'View More',
-            ],
+            'border-radius' => "5",
+            "text-align" => "left",
+            'text' => 'View More',
         ],
         'button_style' =>[
-            'type' => "object",
-            'default' => [
-                'color' => '',
-                'h_color' => "#fff",
-                'background-color' => "#fff",
-                'h_bg_color' => "#000",
-                'active_color' => "#000",
-            ],
+            'color' => '',
+            'h_color' => "#fff",
+            'background-color' => "#fff",
+            'h_bg_color' => "#000",
+            'active_color' => "#000",
         ],
         'excerpt_style' =>[
-            'type' => "object",
-            'default' => [
-                'color' => "",
-                "text-align" => "left",
-                'font-size' => '15px',
-                'font-weight' => "400",
-            ],
+            'color' => "",
+            "text-align" => "left",
+            'font-size' => '15px',
+            'font-weight' => "400",
         ],
         'heading' =>[
-            'type' => 'object',
-            'default' => [
-                'tag' => '1',
-                'style' => '1',
-                'link' => '#'
-            ]
+            'tag' => '1',
+            'style' => '1',
+            'link' => '#'
         ],
         'heading_style' =>[
-                'type' => "object",
-                'default' =>[
-                    'color' => "",
-                    "text-align" => "left",
-                    'background-color' => 'transparent',
-                    "border-color" => "gray",
-                    "border-width" => "1px",
-                    "border-style" => "solid",
-                ]
+            'color' => "",
+            "text-align" => "left",
+            'background-color' => 'transparent',
+            "border-color" => "gray",
+            "border-width" => "1px",
+            "border-style" => "solid",
         ],
         'content_wrap' =>[
-            'type' =>"object",
-            'default' =>[
-                'background-color' => "transparent",
-                'box-shadow-color' => '#fff',
-                'radius' => '5',
-                'border-color' => 'gray',
-                'border-width' => '0px'
-            ]
+            'background-color' => "transparent",
+            'box-shadow-color' => '#fff',
+            'radius' => '5',
+            'border-color' => 'gray',
+            'border-width' => '0px'
         ],
-        'constent_box_padding' =>[
-            'type' => "object",
-        ],
-        'content_padding' =>[
-            'type' => "object",
-        ],
+        'constent_box_padding' =>[],
+        'content_padding' =>[],
         'excerpt'=>[
-            'type' => 'object',
-            'default' =>[
-                'limit' => 20,
-                'type' => 'full',
-                'more_text' => '...',
-            ]
+            'limit' => 20,
+            'type' => 'full',
+            'more_text' => '...',
         ],
         'category' =>[
-            'type' =>'object',
-            'default' =>[
-                'position' => "",
-                'style' => "style1",
-                'icon' => true
-            ]
+            'position' => "",
+            'style' => "style1",
+            'icon' => true
         ],
         'meta' =>[
-            'type' => 'object',
-            'default' =>[
-                'position' => 'between',
-                'icon' => true,
-                'seperator' => ''
-            ]
+            'position' => 'between',
+            'icon' => true,
+            'seperator' => ''
         ],
         'image' => [
-            'type' => 'object',
-            'default' => [
-                'show_hide' => true,
-                'size'=> "150",
-                'shape'=> "normal",
-                'animation'=> 1,
-                'border-radius'=> "5",
-            ]
+            'show_hide' => true,
+            'size'=> "150",
+            'shape'=> "normal",
+            'animation'=> 1,
+            'border-radius'=> "5",
         ],
         'query' =>[
-            'type' =>'object',
-            'default' => [
-                'post_type'  => "post",
-                'limit'  => -1,
-                'include'  => "",
-                'exclude'  => "",
-                'offset'  => 0,
-                'taxonomy_bool'  => false,
-                'category_bool'  => false,
-                'taxonomy'  => [],
-                'tax_term'  => [
-                    'category'  => ["aa", "bb"],
-                ],
-                'category'  => [],
-                'category_operator'  => "",
-                'tag_bool'  => false,
-                'tag'  => [],
-                'tag_operator'  => "",
-                'relation'  => "AND",
-                'order_bool'  => false,
-                'order_by'  => "",
-                'order'  => "",
-                'author_bool'  => false,
-                'author'  => [],
-                'status_bool'  => false,
-                'status'  => ["publish"],
-                'keyword_bool'  => false,
-                'keyword'  => "",
-            ]
+            'post_type'  => "post",
+            'limit'  => -1,
+            'include'  => "",
+            'exclude'  => "",
+            'offset'  => 0,
+            'taxonomy_bool'  => false,
+            'category_bool'  => false,
+            'taxonomy'  => [],
+            'tax_term'  => [
+                'category'  => ["aa", "bb"],
+            ],
+            'category'  => [],
+            'category_operator'  => "",
+            'tag_bool'  => false,
+            'tag'  => [],
+            'tag_operator'  => "",
+            'relation'  => "AND",
+            'order_bool'  => false,
+            'order_by'  => "",
+            'order'  => "",
+            'author_bool'  => false,
+            'author'  => [],
+            'status_bool'  => false,
+            'status'  => ["publish"],
+            'keyword_bool'  => false,
+            'keyword'  => "",
         ],
-        'primary_color' =>[
-            'type' => 'string',
-            'default' => '#000'
-        ],
-        'parent_class' =>[
-            'type'=> "string",
-		    'default'=> "default"
-        ],
+        'primary_color' =>'#000',
+        'parent_class' =>"default",
         'columns' =>[
-            'type' => 'object',
-            'default' =>[
-                'desktop' => 4,
-                'tablet' => 6,
-                'mobile' => 12
-            ]
+            'desktop' => 4,
+            'tablet' => 6,
+            'mobile' => 12
         ],
         'linking'=> [
-            'type'=> "object",
-            'default'=> [
-                'link_to_page'=> true,
-                'link_type'=> "",
-                'target'=> "",
-            ],
+            'link_to_page'=> true,
+            'link_type'=> "",
+            'target'=> "",
         ],
         'pagination'=> [
-            'type'=> "object",
-            'default'=> [
-                'show'=> false,
-                'post_per_page'=> 5,
-                'pagination_type'=> "",
-            ],
+            'show'=> false,
+            'post_per_page'=> 5,
+            'pagination_type'=> "",
         ],
 	];
 
@@ -252,7 +178,7 @@ class RtThePostGrid extends Block
 		$_attributes = array_merge(
 			array_map(
 				function ($attribute) {
-					return $attribute['default'];
+					return $attribute;
 				}, 
 				$this->getAttributes()
 			), 

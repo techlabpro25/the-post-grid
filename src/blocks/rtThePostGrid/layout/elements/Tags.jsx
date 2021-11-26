@@ -1,14 +1,14 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTags} from "@fortawesome/free-solid-svg-icons";
-import {Cat_style, MetaIcon} from "../../Style_component";
+import {MetaIcon, MetaTagStyle} from "../../Style_component";
 
 export const Tags = (props) =>{
-    const { meta, primary_color, post_tags, category_style, category_padding, category_margin } = props.data
+    const { meta, meta_style, primary_color, post_tags } = props.data
     return(
         <span className="post-tags-links">
             {
                 meta.icon?(
-                    <MetaIcon as={FontAwesomeIcon} css={category_style} primary={primary_color} icon={faTags} />
+                    <MetaIcon as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faTags} />
                 ):("")
             }
             &nbsp;
@@ -18,9 +18,9 @@ export const Tags = (props) =>{
                     return (
                         <>
                             {(i > 0) ? ", " : ""}
-                            <Cat_style css={category_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={tag_item.tag_link} rel="tag">
+                            <MetaTagStyle css={meta_style} primary={primary_color} href={tag_item.tag_link} rel="tag">
                                 {tag_item.tag_name}
-                            </Cat_style>
+                            </MetaTagStyle>
                         </>
 
                     )
