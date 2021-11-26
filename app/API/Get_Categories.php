@@ -10,7 +10,8 @@ class Get_Categories{
     public function register_catagory_route(){
         register_rest_route( 'rt/v1', 'categories',array(
             'methods'  => 'GET',
-            'callback' => [$this, 'get_posts_categories']
+            'callback' => [$this, 'get_posts_categories'],
+            'permission_callback' => function() { return true; }
         ));
     }
 

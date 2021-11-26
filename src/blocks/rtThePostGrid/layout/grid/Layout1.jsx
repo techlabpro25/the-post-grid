@@ -78,7 +78,7 @@ const Layout1 = (props) => {
 								(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line line-left"></Head_border_style1>) : ("")
 							}
 							<Head_title css={heading_style} primary={primary_color} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widget-heading">
-								<Head_color css={heading_style} primary={primary_color} href={heading.link}>{heading_title}</Head_color>
+								<Head_color as={(heading.link.length > 0)? 'a': 'span'} css={heading_style} primary={primary_color} href={heading.link}>{heading_title}</Head_color>
 							</Head_title>
 							{
 								(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line"></Head_border_style1>) : ("")
@@ -116,7 +116,7 @@ const Layout1 = (props) => {
 							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name}
 							const date_props = { meta, meta_style, primary_color, date: post.post_date}
 							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
-							const category_props = { meta, primary_color, category, post_cat: post?.category, category_style, category_padding, category_margin }
+							const category_props = { meta, meta_style, primary_color, category, post_cat: post?.category, category_style, category_padding, category_margin }
 							const tag_props = { meta, primary_color, post_tags: post?.tags, category_style, category_padding, category_margin }
 
 							return (

@@ -79,7 +79,7 @@ export const Head_title = styled.div`
 	
 `;
 
-export const Head_color = styled.a`
+export const Head_color = styled.div`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 `;
 
