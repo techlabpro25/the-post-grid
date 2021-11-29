@@ -23,11 +23,6 @@ const Query = (props) => {
 	const operator = [
 		{
 			label:
-				"--Select--",
-			value: "",
-		},
-		{
-			label:
 				"IN — show posts which associate with one or more of selected terms",
 			value: "IN",
 		},
@@ -131,23 +126,21 @@ const Query = (props) => {
 				setTax_warning(term.message)
 			}else{
 				setTax_warning('');
-				setPost_term(
-					term.map((item_key) => {
-						if (!typefilter.includes(item_key)) {
-							return {
-								label: item_key.label,
-								value: item_key.name,
-							};
-						}
-						return false;
-					})
-				);
+				let taxonomy_loop = term.map((item_key) => {
+					if (!typefilter.includes(item_key.name)) {
+						return {
+							label: item_key.label,
+							value: item_key.name,
+						};
+					}
+					return false;
+				})
+				setPost_term(taxonomy_loop.filter(e => e))
 			}
 
 		});
 	}, [query.post_type, query.taxonomy_bool]);
 
-	// console.log(post_term);
 
 	// Get Authors
 	useEffect(() => {
@@ -326,7 +319,7 @@ const Query = (props) => {
 									}
 								}
 								props.attr.setAttributes({
-									query: { ...query, tax_term: tax_term },
+									query: { ...query, tax_term: tax_term, filter: true },
 								});
 							}}
 						/>
@@ -347,7 +340,7 @@ const Query = (props) => {
 										}
 									}
 									props.attr.setAttributes({
-										query: { ...query, tax_term: tax_term, filter: true },
+										query: { ...query, tax_term: tax_term },
 									});
 								}
 							}

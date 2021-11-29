@@ -115,14 +115,10 @@ export const ImgAnimation = styled.img`
 	width: ${props => props.css.size}px !important;
 	height: ${props => (props.css.size == "150")? "150px": (props.css.size == "300")? "300px": "auto"} !important;
 
-	border-radius: ${props => (props.css['border-radius'].length == 0)? ((props.layout == "list2")? "50%" : '5px') : props.css['border-radius']} !important;
+	border-radius: ${props => (props.css['border-radius'].length == 0)? ((props.layout == "list2")? "50%" : '5px') : props.css['border-radius']+"px"} !important;
 	&:hover{
 	    transform: scale(${props => props.css.animation})
 	}
-`;
-
-export const ImgParent = styled.div`
-		
 `;
 
 export const MetaIcon = styled.div`

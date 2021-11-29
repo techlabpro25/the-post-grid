@@ -112,7 +112,7 @@ class RtThePostGrid extends Block
             'size'=> "150",
             'shape'=> "normal",
             'animation'=> 1,
-            'border-radius'=> "5",
+            'border-radius'=> "",
         ],
         'query' =>[
             'post_type'  => "post",

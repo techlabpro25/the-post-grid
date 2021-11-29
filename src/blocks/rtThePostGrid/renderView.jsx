@@ -5,7 +5,6 @@ import {Isotope1} from "./layout/isotope/Isotope1";
 
 const RenderView = (props) => {
     const {layout, data} = props;
-
     return(
         <>
             {

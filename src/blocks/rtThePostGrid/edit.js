@@ -423,12 +423,13 @@ export default function Edit(props) {
                                 pagination.show?(
                                     <div className={"pagination"}>
                                         {Array.from(Array(pagestate), (e, i) => {
-                                            if(i == 0){
-                                                return <span className={"pagination_number active"} data-value={i+1} key={i}>{i+1}</span>
-                                            }else{
-                                                return <span className={"pagination_number"} data-value={i+1} key={i}>{i+1}</span>
+                                            if(pagestate > 1){
+                                                if(i == 0){
+                                                    return <span className={"pagination_number active"} data-value={i+1} key={i}>{i+1}</span>
+                                                }else{
+                                                    return <span className={"pagination_number"} data-value={i+1} key={i}>{i+1}</span>
+                                                }
                                             }
-
                                         })}
                                     </div>
                                 ):("")

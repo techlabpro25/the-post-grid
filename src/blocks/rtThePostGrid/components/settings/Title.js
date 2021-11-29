@@ -44,7 +44,7 @@ function Title(props) {
                 label="Limit Type"
                 selected={ title.type }
                 options={ [
-                    { label: 'Char', value: 'char' },
+                    { label: 'Character', value: 'char' },
                     { label: 'Word', value: 'word' },
                     { label: 'Full Title', value: 'full' },
                 ] }

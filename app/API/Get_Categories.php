@@ -18,25 +18,19 @@ class Get_Categories{
     public function get_posts_categories($request){
         $taxonomy = $request["tax_type"];
         $term_objects = get_terms( $taxonomy );
-
         
         $data = [];
-    
-    
-        if (empty($term_objects ) || is_wp_error($term_objects)) {
-            return new WP_Error( 'empty_category', 'There are no terms to display', array('status' => 404) );
-        
+
+        if(!empty($term_objects)){
+            foreach($term_objects as $newterms){
+                $data[]=[
+                    "id"=>$newterms->term_id,
+                    "name"=>$newterms->name,
+                    "slug"=>$newterms->slug
+                ];
+            }
         }
-    
-        foreach($term_objects as $newterms){
-            $data[]=[
-                "id"=>$newterms->term_id,
-                "name"=>$newterms->name,
-                "slug"=>$newterms->slug
-            ];
-        }
-      
-     
+
         return rest_ensure_response($data);
     }
 

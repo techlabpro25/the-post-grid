@@ -78,12 +78,13 @@ class All_Post{
         if(!empty($terms)){
             if(sizeof($terms) > 0){
                 foreach ($terms as $key => $term){
+                    $operator = (!empty($term['operator']))? $term['operator']: "IN";
                     if(!empty($term['data'])){
                         $args['tax_query'][]= array(
                           'taxonomy' => $key,
                           'field' => 'term_id',
                           'terms' => $term['data'],
-                          'operator' => $term['operator'],
+                          'operator' => $operator,
                         );
                     }
                 }

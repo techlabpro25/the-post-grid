@@ -21,7 +21,7 @@ function Excerpt(props) {
                 label="Limit Type"
                 selected={ excerpt.type }
                 options={ [
-                    { label: 'Char', value: 'char' },
+                    { label: 'Character', value: 'char' },
                     { label: 'Word', value: 'word' },
                     { label: 'Full Content', value: 'full' },
                 ] }
