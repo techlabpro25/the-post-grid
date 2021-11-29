@@ -12,6 +12,7 @@ import { useState, useEffect } from "@wordpress/element";
 import apiFetch from "@wordpress/api-fetch";
 
 const Query = (props) => {
+	const {__} = wp.i18n;
 	const [pt, setPt] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [term_cat, setTerm_cat] = useState([]);
@@ -22,79 +23,77 @@ const Query = (props) => {
 
 	const operator = [
 		{
-			label:
-				"IN — show posts which associate with one or more of selected terms",
+			label: __( "IN — show posts which associate with one or more of selected terms", "the-post-grid" ),
 			value: "IN",
 		},
 		{
-			label:
-				"NOT IN — show posts which do not associate with any of selected terms",
+			label:__( "NOT IN — show posts which do not associate with any of selected terms", "the-post-grid" ),
 			value: "NOT IN",
 		},
 		{
-			label: "AND — show posts which associate with all of selected terms",
+			label: __( "AND — show posts which associate with all of selected terms", "the-post-grid"),
 			value: "AND",
 		},
 	];
 
 	const order_type = [
 		{
-			label: "ID",
+			label: __( "ID", "the-post-grid"),
 			value: "ID",
 		},
 		{
-			label: "Title",
+			label: __( "Title", "the-post-grid"),
 			value: "title",
 		},
 		{
-			label: "Created date",
+			label: __( "Created date", "the-post-grid"),
 			value: "date",
 		},
 		{
-			label: "Modified date",
+			label: __( "Modified date", "the-post-grid"),
 			value: "modified",
 		},
 		{
-			label: "Menu Order",
+			label: __( "Menu Order", "the-post-grid"),
 			value: "menu_order",
 		},
 	];
 
 	const publish_type = [
 		{
-			label: "Publish",
+			label: __( "Publish", "the-post-grid"),
 			value: "publish",
 		},
 		{
-			label: "Pending",
+			label: __( "Pending", "the-post-grid"),
 			value: "pending",
 		},
 		{
-			label: "Draft",
+			label: __( "Draft", "the-post-grid"),
 			value: "draft",
 		},
 		{
-			label: "Auto Draft",
+			label: __( "Auto Draft", "the-post-grid"),
 			value: "auto-draft",
 		},
 		{
-			label: "future",
+			label: __( "future", "the-post-grid"),
 			value: "future",
 		},
 		{
-			label: "Private",
+			label: __( "Private", "the-post-grid"),
 			value: "private",
 		},
 		{
-			label: "Inherit",
+			label: __( "Inherit", "the-post-grid"),
 			value: "inherit",
 		},
 		{
-			label: "Trash",
+			label: __( "Trash", "the-post-grid"),
 			value: "trash",
 		},
 		{
-			label: "Any",
+			label: __( "Any", "the-post-grid"),
 			value: "any",
 		},
 	];
@@ -175,7 +174,7 @@ const Query = (props) => {
 	return (
 		<>
 			<SelectControl
-				label="Post Type:"
+				label={__( "Post Type:", "the-post-grid")}
 				value={query.post_type}
 				options={pt}
 				onChange={(value) =>{
@@ -189,8 +188,8 @@ const Query = (props) => {
 			/>
 
 			<RangeControl
-				label="limit:"
-				help="The number of posts to show. Set -1 to show all found posts."
+				label={__( "limit:", "the-post-grid")}
+				help={__( "The number of posts to show. Set -1 to show all found posts.", "the-post-grid")}
 				value={query.limit}
 				onChange={(value) =>
 					props.attr.setAttributes({ query: { ...query, limit: value } })
@@ -201,8 +200,8 @@ const Query = (props) => {
 			/>
 
 			<TextControl
-				label="Include Only"
-				help="List of post IDs to show (comma-separated values, for example: 1,2,3)"
+				label={__( "Include Only", "the-post-grid")}
+				help={__( "List of post IDs to show (comma-separated values, for example: 1,2,3)", "the-post-grid")}
 				value={query.include}
 				onChange={(value) =>
 					props.attr.setAttributes({ query: { ...query, include: value } })
@@ -210,8 +209,8 @@ const Query = (props) => {
 			/>
 
 			<TextControl
-				label="Exclude"
-				help="List of post IDs to hide (comma-separated values, for example: 1,2,3)"
+				label={__( "Exclude", "the-post-grid")}
+				help={__( "List of post IDs to hide (comma-separated values, for example: 1,2,3)", "the-post-grid")}
 				value={query.exclude}
 				onChange={(value) =>
 					props.attr.setAttributes({ query: { ...query, exclude: value } })
@@ -219,7 +218,7 @@ const Query = (props) => {
 			/>
 
 			<NumberControl
-				label="Offset"
+				label={__( "Offset", "the-post-grid")}
 				labelPosition="side"
 				onChange={(value) =>
 					props.attr.setAttributes({ query: { ...query, offset: value } })
@@ -229,7 +228,7 @@ const Query = (props) => {
 			/>
 
 			<CheckboxControl
-				label="Taxonomy"
+				label={__( "Taxonomy", "the-post-grid")}
 				checked={query.taxonomy_bool}
 				onChange={(value) =>{
 					let tax_term = {...query.tax_term}
@@ -250,7 +249,7 @@ const Query = (props) => {
 			{
 				(tax_warning.length && query.taxonomy_bool)?(
 					<div className={'no_notice'}>
-						{tax_warning}
+						{__( tax_warning, "the-post-grid")}
 					</div>
 				):(
 					<>
@@ -261,7 +260,7 @@ const Query = (props) => {
 									<>
 										<div className="tax_first_child">
 											<CheckboxControl
-												label={term_item.label}
+												label={__( term_item.label, "the-post-grid")}
 												checked={query.taxonomy.includes(term_item.value)}
 												onChange={(value) => {
 													let taxonomy = [...query.taxonomy];
@@ -304,7 +303,7 @@ const Query = (props) => {
 				return(
 					<div className="tax_second_child">
 						<SelectControl
-							label={taxonomy}
+							label={__( taxonomy, "the-post-grid")}
 							value={query.tax_term[taxonomy]?.data || []}
 							options={query.tax_item?.[taxonomy] || []}
 							multiple={true}
@@ -325,7 +324,7 @@ const Query = (props) => {
 						/>
 
 						 <SelectControl
-							label={`${taxonomy} Operator:`}
+							label={__( `${taxonomy} Operator:`, "the-post-grid")}
 							value={query.tax_term[taxonomy]?.operator}
 							options={operator}
 							onChange={(value) =>
@@ -352,15 +351,15 @@ const Query = (props) => {
 			{(query.taxonomy.length > 1) ? (
 				<div className="tax_second_child">
 					<SelectControl
-						label="Relation:"
+						label={__( "Relation: ", "the-post-grid")}
 						value={query.relation}
 						options={[
 							{
-								label: "AND — show posts which match all settings",
+								label: __( "AND — show posts which match all settings", "the-post-grid"),
 								value: "AND",
 							},
 							{
-								label: "OR — show posts which match one or more settings",
+								label: __( "OR — show posts which match one or more settings", "the-post-grid"),
 								value: "OR",
 							},
 						]}
@@ -373,7 +372,7 @@ const Query = (props) => {
 				""
 			)}
 			<CheckboxControl
-				label="Order"
+				label={__( "Order", "the-post-grid")}
 				checked={query.order_bool}
 				onChange={(value) =>
 					{
@@ -398,7 +397,7 @@ const Query = (props) => {
 			{query.order_bool ? (
 				<>
 					<SelectControl
-						label="Order BY:"
+						label={__( "Order BY:", "the-post-grid")}
 						value={query.order_by}
 						options={order_type}
 						onChange={(value) =>
@@ -409,7 +408,7 @@ const Query = (props) => {
 					/>
 
 					<RadioControl
-						label="Order:"
+						label={__( "Order:", "the-post-grid")}
 						selected={query.order}
 						options={[
 							{ label: "Ascending", value: "ASC" },
@@ -425,7 +424,7 @@ const Query = (props) => {
 			)}
 
 			<CheckboxControl
-				label="Author"
+				label={__( "Author", "the-post-grid")}
 				checked={query.author_bool}
 				onChange={(value) => {
 					let author  = [...query.author]
@@ -443,7 +442,7 @@ const Query = (props) => {
 
 			{query.author_bool ? (
 				<SelectControl
-					label="Author:"
+					label={__( "Author:", "the-post-grid")}
 					value={query.author}
 					multiple={true}
 					options={authors}
@@ -456,7 +455,7 @@ const Query = (props) => {
 			)}
 
 			<CheckboxControl
-				label="Status"
+				label={__( "Status", "the-post-grid")}
 				checked={query.status_bool}
 				onChange={(value) =>
 					{
@@ -472,7 +471,7 @@ const Query = (props) => {
 
 			{query.status_bool ? (
 				<SelectControl
-					label="Status Type:"
+					label={__( "Status Type:", "the-post-grid")}
 					value={query.status}
 					multiple={true}
 					options={publish_type}
@@ -485,7 +484,7 @@ const Query = (props) => {
 			)}
 
 			<CheckboxControl
-				label="Keyword"
+				label={__( "Keyword", "the-post-grid")}
 				checked={query.keyword_bool}
 				onChange={(value) =>{
 					let keyword = query.keyword
@@ -500,7 +499,7 @@ const Query = (props) => {
 
 			{query.keyword_bool ? (
 				<TextControl
-					label="Enter Keyword:"
+					label={__( "Enter Keyword:", "the-post-grid")}
 					value={query.keyword}
 					onChange={(value) =>
 						props.attr.setAttributes({ query: { ...query, keyword: value, filter: true } })

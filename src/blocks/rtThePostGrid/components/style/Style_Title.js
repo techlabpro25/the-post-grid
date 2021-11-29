@@ -9,23 +9,22 @@ import {
 } from "@wordpress/components";
 
 function Title(props) {
+    const {__} = wp.i18n;
     const {title, title_style} = props.attr.attributes
     return (
-        <PanelBody title="Title" initialOpen={false}>
+        <PanelBody title={__( "Title", "the-post-grid")} initialOpen={false}>
             <Text>
-                Color:
+                {__( "Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Select Color"
                 colors={ props.attr.colors }
                 value={ title_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {title_style: {...title_style, "color": color}} ) }
             />
             <Text>
-                Hover Color:
+                {__( "Hover Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Select Color"
                 colors={ props.attr.colors }
                 value={ title_style.h_color }
                 onChange={ ( color ) => props.attr.setAttributes( {title_style: {...title_style, "h_color": color}} ) }
@@ -34,7 +33,7 @@ function Title(props) {
             
 
             <Text>
-                Text Alignment:
+                {__( "Text Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({title_style: {...title_style, "text-align": val}}) } checked={ title_style["text-align"] }>
                 <Radio value="Left"></Radio>
@@ -44,7 +43,7 @@ function Title(props) {
             
             <br/>
             <Text>
-                Font Size:
+                {__( "Font Size:", "the-post-grid")}
             </Text>
             <UnitControl
                 value={ title_style["font-size"] }
@@ -53,7 +52,7 @@ function Title(props) {
 
 
             <SelectControl
-                label="Font Weight:"
+                label={__( "Font Weight:", "the-post-grid")}
                 value={ title_style["font-weight"] }
                 options={ [
                     { label: '100', value: 100 },

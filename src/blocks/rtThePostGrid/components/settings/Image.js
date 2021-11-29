@@ -10,13 +10,14 @@ import {
 import { useState } from '@wordpress/element';
 
 function Image(props) {
+    const {__} = wp.i18n;
     const { image } = props.attr.attributes
     const [ showimage, setShowimage ] = useState( true );
 
     return (
-        <PanelBody title="Image" initialOpen={false}>
+        <PanelBody title={__( "Image", "the-post-grid")} initialOpen={false}>
             <ToggleControl
-                label="Show Image"
+                label={__( "Show Image", "the-post-grid")}
                 checked={ image.show_hide }
                 onChange={ (val) => {
                     setShowimage( ( state ) => ! state );
@@ -27,7 +28,7 @@ function Image(props) {
             {
                 image.show_hide?(
                     <SelectControl
-                        label="Featured Image Size:"
+                        label={__( "Featured Image Size:", "the-post-grid")}
                         value={ image.size }
                         options={ [
                             { label: 'Thumbnail (150 x 150)', value: "150" },
@@ -42,31 +43,19 @@ function Image(props) {
                 ):("")
             }
 
-            <Text>
-                Shape:
-            </Text>
-            <RadioGroup defaultChecked="Normal" 
-                onChange={ (val) =>props.attr.setAttributes({image: {...image, "shape": val}}) } 
-                checked={ image["shape"] }
-            >
-                <Radio value="image-normal">Normal</Radio>
-                <Radio value="image-circle">Circle</Radio>
-            </RadioGroup>
-            
-
             <SelectControl
-                label="Hover Animation:"
+                label={__( "Hover Animation:", "the-post-grid")}
                 value={ image.animation }
                 options={ [
-                    { label: 'None', value: 1 },
-                    { label: 'Zoom In', value: 1.1 },
-                    { label: 'Zoom Out', value: 0.96 },
+                    { label: __( 'None', "the-post-grid"), value: 1 },
+                    { label: __( 'Zoom In', "the-post-grid"), value: 1.1 },
+                    { label: __( 'Zoom Out', "the-post-grid"), value: 0.95 },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "animation": value} } ) }
             />
 
             <NumberControl
-                label="Border Radius"
+                label={__( "Border Radius", "the-post-grid")}
                 value={image["border-radius"]}
                 onChange={ ( value ) => props.attr.setAttributes( { image: {...image, "border-radius": value} }) }
             />

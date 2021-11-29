@@ -4,10 +4,10 @@ import attributes from "./attributes"
 import edit from "./edit"
 
 registerBlockType("rt-radius-blocks/thepostgrid", {
-    title: __("The Post Grid", "radius-blocks"),
+    title: __("The Post Grid", "the-post-grid"),
     keywords: [
-        __("Posts", "radius-blocks"),
-        __("Grid", "radius-blocks"),
+        __("Posts", "the-post-grid"),
+        __("Grid", "the-post-grid"),
     ],
     attributes,
     edit,

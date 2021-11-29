@@ -18,17 +18,17 @@ class All_Post{
     public function get_all_posts($request){
 
         $terms = $request['terms'];
-        $post_type = $request["post_type"];
+        $post_type = sanitize_text_field($request["post_type"]);
         $post_per_page = $request["post_per_page"];
-        $include = explode(",",$request["include"]);
-        $exclude = explode(",", $request["exclude"]);
+        $include = sanitize_text_field(explode(",",$request["include"]));
+        $exclude = sanitize_text_field(explode(",", $request["exclude"]));
         $offset = $request["offset"];
-        $relation = $request["relation"];
-        $order_by = $request["order_by"];
-        $order = $request["order"];
-        $author = explode(",",$request["author"]);
-        $status = explode(",",$request["status"]);
-        $keyword = $request["keyword"];
+        $relation = sanitize_text_field($request["relation"]);
+        $order_by = sanitize_text_field($request["order_by"]);
+        $order = sanitize_text_field($request["order"]);
+        $author = sanitize_text_field(explode(",",$request["author"]));
+        $status = sanitize_text_field(explode(",",$request["status"]));
+        $keyword = sanitize_text_field($request["keyword"]);
 
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
         $post_per_page =  ($request["post_per_page"] === null )? -1: $request["post_per_page"];
@@ -81,10 +81,10 @@ class All_Post{
                     $operator = (!empty($term['operator']))? $term['operator']: "IN";
                     if(!empty($term['data'])){
                         $args['tax_query'][]= array(
-                          'taxonomy' => $key,
-                          'field' => 'term_id',
+                          'taxonomy' => esc_html($key),
+                          'field' => esc_html('term_id'),
                           'terms' => $term['data'],
-                          'operator' => $operator,
+                          'operator' => esc_html($operator),
                         );
                     }
                 }
@@ -117,9 +117,9 @@ class All_Post{
                     if(!empty($get_cat)){
                         foreach($get_cat as $cat){
                             $category[]=[
-                                "cat_id" => $cat->term_id,
-                                "cat_name" => $cat->name,
-                                "cat_link" => get_term_link($cat->term_id),
+                                "cat_id" => esc_html($cat->term_id),
+                                "cat_name" => esc_html($cat->name),
+                                "cat_link" => esc_html(get_term_link($cat->term_id)),
                             ];
                         }
                     }
@@ -128,26 +128,26 @@ class All_Post{
                     if(!empty($get_tags)){
                         foreach($get_tags as $tag){
                             $tags[]=[
-                                "tag_id" => $tag->term_id,
-                                "tag_name" => $tag->name,
-                                "tag_link" => get_term_link($tag->term_id)
+                                "tag_id" => esc_html($tag->term_id),
+                                "tag_name" => esc_html($tag->name),
+                                "tag_link" => esc_html(get_term_link($tag->term_id)),
                             ];
                         }
                     }
 
                     $data[]=[
                         'id' => $id,
-                        "title" => get_the_title(),
-                        "excerpt" => get_the_excerpt(),
-                        "comment_count" => wp_count_comments($id)->all,
-                        "post_date" => get_the_date('M d, y'),
-                        "image_url" => get_the_post_thumbnail_url(null, 'full'),
-                        "author_name" => get_the_author_meta( 'display_name', $author_id ),
-                        "author_url" => get_author_posts_url(get_the_author_meta('ID')),
+                        "title" => esc_html(get_the_title()),
+                        "excerpt" => esc_html(get_the_excerpt()),
+                        "comment_count" => esc_html(wp_count_comments($id)->all),
+                        "post_date" => esc_html(get_the_date('M d, y')),
+                        "image_url" => esc_url_raw(get_the_post_thumbnail_url(null, 'full')),
+                        "author_name" => esc_html(get_the_author_meta( 'display_name', $author_id )),
+                        "author_url" => esc_html(get_author_posts_url(get_the_author_meta('ID'))),
                         "category" => $category,
                         "tags" => $tags,
-                        "post_link" => get_post_permalink(),
-                        "total_post" => $query->found_posts,
+                        "post_link" => esc_url_raw(get_post_permalink()),
+                        "total_post" => esc_html($query->found_posts),
                     ];
                 }
             } else {

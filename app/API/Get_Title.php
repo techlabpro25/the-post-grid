@@ -15,13 +15,13 @@ class Get_Title{
     }
 
     public function get_page_title($request){
-        $id = $request["id"];
+        $id = sanitize_text_field($request["id"]);
         if (empty($id )) {
             return new WP_Error( 'empty_id', 'There are no ID', array('status' => 404) );
         }
         $data = [
-            'title' => get_the_title($id),
-            'path' => plugins_url()
+            'title' => esc_html(get_the_title($id)),
+            'path' => esc_html(plugins_url())
         ];
       return rest_ensure_response($data);
     }

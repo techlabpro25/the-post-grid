@@ -3,40 +3,34 @@ import {
     __experimentalText as Text,
     __experimentalRadio as Radio,
     __experimentalRadioGroup as RadioGroup,
-    ColorPalette,
     __experimentalNumberControl as NumberControl,
-    Popover,
-    Button,
     TextControl,
 } from "@wordpress/components";
 import { useState, useEffect } from '@wordpress/element';
 
 function Read_More(props) {
-
+    const {__} = wp.i18n;
     const { button } = props.attr.attributes
-
     const [ colortoggle, setColortoggle ] = useState( false );
 	const [ bgcolortoggle, setBgcolortoggle ] = useState( false );
-
     const btncolorpopover = () => {
         setColortoggle( ( state ) => ! state );
     };
-
 	const btnbgcolorpopover = () => {
         setBgcolortoggle( ( state ) => ! state );
     };
 
     return (
-        <PanelBody title="Read More Button" initialOpen={false}>
+        <PanelBody title={__( "Read More Button", "the-post-grid")} initialOpen={false}>
             <NumberControl
-                label="Border Radius"
+                label={__( "Border Radius", "the-post-grid")}
                 value={button["border-radius"]}
                 onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "border-radius": value} }) }
             />
 
             <br/>
             <Text>
-                Alignment:
+                {__( "Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left" 
                 onChange={ (val) =>props.attr.setAttributes({button: {...button, "text-align": val}}) } 
@@ -49,7 +43,7 @@ function Read_More(props) {
             
             
             <TextControl
-                label="Button Text:"
+                label={__( "Button Text:", "the-post-grid")}
                 value={button.text}
                 onChange={(val) =>props.attr.setAttributes({button: {...button, "text": val}})}
             />

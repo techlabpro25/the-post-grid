@@ -1,18 +1,17 @@
 import { 
-    PanelBody, 
-    __experimentalText as Text,
-    __experimentalAlignmentMatrixControl as AlignmentMatrixControl,
+    PanelBody,
     __experimentalNumberControl as NumberControl,
     RadioControl,
     SelectControl
 } from "@wordpress/components";
 
 function Title(props) {
+    const {__} = wp.i18n;
     const {title, title_style} = props.attr.attributes
     return (
-        <PanelBody title="Title" initialOpen={false}>
+        <PanelBody title={__( "Title", "the-post-grid")} initialOpen={false}>
             <SelectControl
-                label="Tag:"
+                label={__( "Tag:", "the-post-grid")}
                 value={ title["tag"] }
                 options={ [
                     { label: 'H1', value: '1' },
@@ -26,14 +25,14 @@ function Title(props) {
             />
             
             <SelectControl
-                label="Title Position:"
+                label={__( "Title Position:", "the-post-grid")}
                 value={ title.position }
                 options={ props.attr.matrix_position }
                 onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }
             />
 
             <NumberControl
-                label="Title Limit"
+                label={__( "Title Limit:", "the-post-grid")}
                 value={ title.word_limit }
                 min={1}
                 step={1}
@@ -41,12 +40,12 @@ function Title(props) {
             />
 
             <RadioControl
-                label="Limit Type"
+                label={__( "Limit Type", "the-post-grid")}
                 selected={ title.type }
                 options={ [
-                    { label: 'Character', value: 'char' },
-                    { label: 'Word', value: 'word' },
-                    { label: 'Full Title', value: 'full' },
+                    { label: __( 'Character', "the-post-grid"), value: 'char' },
+                    { label: __( 'Word', "the-post-grid"), value: 'word' },
+                    { label: __( 'Full Content', "the-post-grid"), value: 'full' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "type": value} } ) }
             />

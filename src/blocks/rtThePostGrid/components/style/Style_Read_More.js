@@ -8,9 +8,8 @@ import {
 import { useState, useEffect } from '@wordpress/element';
 
 function Read_More(props) {
-
     const { button, button_style, } = props.attr.attributes
-
+    const {__} = wp.i18n;
     const [ colortoggle, setColortoggle ] = useState( false );
 	const [ bgcolortoggle, setBgcolortoggle ] = useState( false );
 
@@ -23,17 +22,16 @@ function Read_More(props) {
     };
 
     return (
-        <PanelBody title="Read More Button" initialOpen={false}>
+        <PanelBody title={__( "Read More Button", "the-post-grid")} initialOpen={false}>
             <Button className="popovercomponent com_1" variant="secondary" onClick={ btncolorpopover }>
                 Select Text Color
                 { colortoggle && 
                     <Popover>
                         <br/>
                         <Text>
-                            Text Color:
+                            {__( "Text Color:", "the-post-grid")}
                         </Text>
                         <ColorPalette
-                            label = "Select Color"
                             colors={ props.attr.colors }
                             value={ button_style.color }
                             onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "color": color}} ) }
@@ -41,10 +39,9 @@ function Read_More(props) {
 
 
                         <Text>
-                            Text Hover Color:
+                            {__( "Text Hover Color:", "the-post-grid")}
                         </Text>
                         <ColorPalette
-                            label = "Select Color"
                             colors={ props.attr.colors }
                             value={ button_style.h_color }
                             onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "h_color": color}} ) }
@@ -59,7 +56,7 @@ function Read_More(props) {
                     <Popover>
                         <br/>
                         <Text>
-                            Background Color:
+                            {__( "Background Color:", "the-post-grid")}
                         </Text>
                         <ColorPalette
                             label = "Select Color"
@@ -70,10 +67,9 @@ function Read_More(props) {
                         
 
                         <Text>
-                            Background Hover Color:
+                            {__( "Background Hover Color:", "the-post-grid")}
                         </Text>
                         <ColorPalette
-                            label = "Select Color"
                             colors={ props.attr.colors }
                             value={ button_style.h_bg_color }
                             onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "h_bg_color": color}} ) }
@@ -85,10 +81,9 @@ function Read_More(props) {
             <br/>
 
             <Text>
-                Active Color:
+                {__( "Active Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Select Color"
                 colors={ props.attr.colors }
                 value={ button_style.active_color }
                 onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "active_color": color}} ) }

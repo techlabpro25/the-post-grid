@@ -1,5 +1,5 @@
 {
-	"name": "rt/radius-blocks",
+	"name": "rt/the-post-grid",
 	"autoload": {
 		"psr-4": {
 			"RT\\RadiusBlocks\\": "app/"

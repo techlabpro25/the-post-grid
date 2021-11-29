@@ -6,11 +6,12 @@ import {
 } from "@wordpress/components";
 
 function Excerpt(props) {
+    const {__} = wp.i18n;
     const { excerpt } = props.attr.attributes
     return (
-        <PanelBody title="Excerpt" initialOpen={false}>
+        <PanelBody title={__( "Excerpt", "the-post-grid")} initialOpen={false}>
             <NumberControl
-                label="Excerpt Limit"
+                label={__( "Excerpt Limit", "the-post-grid")}
                 value={ excerpt.limit }
                 min={1}
                 step={1}
@@ -18,17 +19,17 @@ function Excerpt(props) {
             />
 
             <RadioControl
-                label="Limit Type"
+                label={__( "Limit Type", "the-post-grid")}
                 selected={ excerpt.type }
                 options={ [
-                    { label: 'Character', value: 'char' },
-                    { label: 'Word', value: 'word' },
-                    { label: 'Full Content', value: 'full' },
+                    { label: __( 'Character', "the-post-grid"), value: 'char' },
+                    { label: __( 'Word', "the-post-grid"), value: 'word' },
+                    { label: __( 'Full Content', "the-post-grid"), value: 'full' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "type": value} } ) }
             />
             <TextControl
-                label="Excerpt More Text"
+                label={__( "Excerpt More Text", "the-post-grid")}
                 value={excerpt.more_text}
                 onChange={(val) =>props.attr.setAttributes({excerpt: {...excerpt, "more_text": val}})}	
             />	

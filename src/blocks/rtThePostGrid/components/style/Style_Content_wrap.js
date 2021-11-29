@@ -6,17 +6,17 @@ import {
 	__experimentalUnitControl as UnitControl,
     __experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
-import {useState} from '@wordpress/element';
 
 function Style_Content_wrap(props) {
+    const {__} = wp.i18n;
     const { content_wrap, content_padding, constent_box_padding} = props.attr.attributes
     return (
-        <PanelBody title="Content Wrap" initialOpen={false}>
+        <PanelBody title={__( "Content Wrap", "the-post-grid")} initialOpen={false}>
             <Text>
-                Background Color:
+                {__( "Background Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Select Background Color"
+                label = {__( "Select Background Color:", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ content_wrap["background-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "background-color": color}} ) }
@@ -24,10 +24,10 @@ function Style_Content_wrap(props) {
             
 
             <Text>
-                Border Shadow Color:
+                {__( "Border Shadow Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Select Color"
+                label = {__( "Select Color:", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ content_wrap["box-shadow-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "box-shadow-color": color}} ) }
@@ -35,10 +35,10 @@ function Style_Content_wrap(props) {
             
 
             <Text>
-                Border Color:
+                {__( "Border Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Border Color"
+                label = {__( "Border Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ content_wrap["border-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-color": color}} ) }
@@ -46,8 +46,8 @@ function Style_Content_wrap(props) {
             
 
             <Text>
-                Border Width:
-                </Text>
+                {__( "Border Width:", "the-post-grid")}
+            </Text>
             <UnitControl
                 value={ content_wrap["border-width"] }
                 onChange={ ( val ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-width": val}} ) } 
@@ -55,13 +55,13 @@ function Style_Content_wrap(props) {
             
 
             <NumberControl
-                label="Border Radius"
+                label={__( "Border Radius", "the-post-grid")}
                 value={content_wrap["radius"]}
                 onChange={ ( value ) =>  props.attr.setAttributes( { content_wrap: {...content_wrap, "radius": value} })}
             />
 
             <BoxControl
-                label="Box Padding"														
+                label={__( "Box Padding:", "the-post-grid")}
                 values={ constent_box_padding }
                 onChange={ ( nextValues ) => {
                     props.attr.setAttributes({constent_box_padding: nextValues})
@@ -69,7 +69,7 @@ function Style_Content_wrap(props) {
             />
 
             <BoxControl
-                label="Content Padding"																
+                label={__( "Content Padding:", "the-post-grid")}
                 values={ content_padding }
                 onChange={ ( val ) => {
                     props.attr.setAttributes({content_padding: val})

@@ -8,14 +8,15 @@ import {
 import {useState} from '@wordpress/element';
 
 function Heading(props) {
+    const {__} = wp.i18n;
     const { heading_style, heading_padding_object, heading_margin_object} = props.attr.attributes
     return (
-        <PanelBody title="Block Heading" initialOpen={false}>
+        <PanelBody title={__( "Block Heading" , "the-post-grid")} initialOpen={false}>
             <Text>
-                Color:
+                {__( "Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Select Color"
+                label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ heading_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {heading_style: {...heading_style, "color": color}} ) }
@@ -26,7 +27,7 @@ function Heading(props) {
                 Background Color:
             </Text>
             <ColorPalette
-                label = "Select Background Color"
+                label = {__( "Select Background Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ heading_style["background-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {heading_style: {...heading_style, "background-color": color}} ) }
@@ -34,10 +35,9 @@ function Heading(props) {
             
 
             <Text>
-                Border Color:
+                {__( "Border Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Border Color"
                 colors={ props.attr.colors }
                 value={ heading_style["border-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {heading_style: {...heading_style, "border-color": color}} ) }
@@ -45,7 +45,7 @@ function Heading(props) {
             
 
             <Text>
-                Border Width:
+                {__( "Border Width:", "the-post-grid")}
             </Text>
             <UnitControl
                 value={ heading_style["border-width"] }
@@ -54,7 +54,7 @@ function Heading(props) {
             
 
             <BoxControl
-                label="Padding"														
+                label={__( "Padding", "the-post-grid")}
                 values={ heading_padding_object }
                 onChange={ ( nextValues ) => {
                     props.attr.setAttributes({heading_padding_object: nextValues})
@@ -62,7 +62,7 @@ function Heading(props) {
             />
 
             <BoxControl
-                label="Margin"																
+                label={__( "Margin", "the-post-grid")}
                 values={ heading_margin_object }
                 onChange={ ( val ) => {
                     props.attr.setAttributes({heading_margin_object: val})

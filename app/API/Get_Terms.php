@@ -16,7 +16,7 @@ class Get_Terms{
     }
 
     public function get_posts_terms($request){
-        $post_type = $request["post_type"];
+        $post_type = sanitize_text_field($request["post_type"]);
         $taxonomy_objects = get_object_taxonomies( $post_type, 'objects' );
 
         $data = [];
@@ -26,13 +26,13 @@ class Get_Terms{
             if(!empty($taxonomy_objects)){
                 foreach($taxonomy_objects as $newterms){
                     $data[]=[
-                        "name"=>$newterms->name,
-                        "label"=>$newterms->label
+                        "name"=>esc_html($newterms->name),
+                        "label"=>esc_html($newterms->label)
                     ];
                 }
             }
         }else{
-            $data['message'] = "No Taxonomies found";
+            $data['message'] = esc_html("No Taxonomies found");
         }
 
 

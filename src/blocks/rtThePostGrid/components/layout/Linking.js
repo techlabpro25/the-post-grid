@@ -7,14 +7,15 @@ import {useState} from '@wordpress/element';
 
 
 function Linking(props) {
+    const {__} = wp.i18n;
     const [haslinking, useHaslinking] = useState(true)
     const {linking} = props.attr.attributes
     
     return (
-        <PanelBody title="Linking" initialOpen={false}>
+        <PanelBody title={__( "Linking", "the-post-grid")} initialOpen={false}>
 
             <ToggleControl
-                label="Link to Page Details:"
+                label={__( "Link to Page Details:", "the-post-grid")}
                 checked={ linking.link_to_page }
                 onChange={ (val) => {
                     useHaslinking( ( state ) => ! state );
@@ -25,11 +26,11 @@ function Linking(props) {
                 linking.link_to_page?(
                     <>
                         <RadioControl
-                            label="Detail Page Link Type:"
+                            label={__( "Detail Page Link Type:", "the-post-grid")}
                             selected={ linking.link_type }
                             options={ [
-                                { label: 'PopUp', value: 'popup' },
-                                { label: 'New Page', value: 'new_page' },
+                                { label: __( 'PopUp', "the-post-grid"), value: 'popup' },
+                                { label: __( "New Page", "the-post-grid"), value: 'new_page' },
                             ] }
                             onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "link_type": val}}) }
                         />
@@ -38,11 +39,11 @@ function Linking(props) {
             }
 
             <RadioControl
-                label="Link Target:"
+                label={__( "Link Target:", "the-post-grid")}
                 selected={ linking.target }
                 options={ [
-                    { label: 'Same Window', value: '' },
-                    { label: 'New Window', value: '_blank' },
+                    { label: __( "Same Window", "the-post-grid"), value: '' },
+                    { label: __( "New Window", "the-post-grid"), value: '_blank' },
                 ] }
                 onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "target": val}}) }
             />

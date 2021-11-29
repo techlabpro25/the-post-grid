@@ -11,23 +11,22 @@ import {
 import { useState, useEffect } from '@wordpress/element';
 
 function Meta(props) {
+    const {__} = wp.i18n;
     const { meta_style} = props.attr.attributes
     return (
-        <PanelBody title="Meta" initialOpen={false}>
+        <PanelBody title={__( "Meta", "the-post-grid")} initialOpen={false}>
             <Text>
                 Color:
             </Text>
             <ColorPalette
-                label = "Select Color"
+                label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ meta_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {meta_style: {...meta_style, "color": color}} ) }
             />
-            
-	
 
             <Text>
-                Font Size:
+                {__( "Font Size:", "the-post-grid")}
             </Text>
             <UnitControl
                 value={ meta_style["font-size"] }
@@ -37,7 +36,7 @@ function Meta(props) {
 
 
             <SelectControl
-                label="Font Weight:"
+                label={__( "Font Weight:", "the-post-grid")}
                 value={ meta_style["font-weight"] }
                 options={ [
                     { label: '100', value: 100 },
@@ -54,7 +53,7 @@ function Meta(props) {
             />
 
             <Text>
-                Text Alignment:
+                {__( "Text Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left" 
                 onChange={ (val) =>props.attr.setAttributes({meta_style: {...meta_style, "text-align": val}}) } 

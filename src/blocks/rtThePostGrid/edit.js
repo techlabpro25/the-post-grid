@@ -135,7 +135,7 @@ export default function Edit(props) {
             }
         }).then((posts) => {
             if('message' in posts){
-                setMessage(__("Sorry! No Post Found.", "radius-blocks"))
+                setMessage(__("Sorry! No Post Found.", "the-post-grid"))
                 setPagestate(0)
             }else{
                 setMessage("")
@@ -143,7 +143,6 @@ export default function Edit(props) {
                 setPagestate(Math.ceil(posts?.[0]?.total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
             }
 			setIsloading(false);
-
         });
     }, [query, pagination, pageindex]);
 
@@ -165,7 +164,7 @@ export default function Edit(props) {
     return (
         <>
             <InspectorControls>
-                <PanelBody className="post_grid_blocks" title={__("The Post Grid", 'radius-blocks')}>
+                <PanelBody className="post_grid_blocks" title={__("The Post Grid", 'the-post-grid')}>
                     <TabPanel
                         className="custom-tab-panel"
                         activeClass="active-tab"
@@ -225,17 +224,17 @@ export default function Edit(props) {
 											tabs={ [
 												{
 													name: 'fields',
-													title: 'Fields',
+													title: __( 'Fields', "the-post-grid"),
 													className: 'tab-fields panel_tab',
 												},
 												{
 													name: 'settings',
-													title: 'Settings',
+													title: __( 'Settings', "the-post-grid"),
 													className: 'tab-settings panel_tab',
 												},
 												{
 													name: 'style',
-													title: 'Style',
+													title: __( 'Style', "the-post-grid"),
 													className: 'tab-style panel_tab',
 												},
 												
@@ -315,7 +314,7 @@ export default function Edit(props) {
 													return(
 														<>
 															<TextControl
-																label="Parent Class:"
+																label={__( "Parent Class:", "the-post-grid")}
 																value={parent_class}
 																onChange={(val) =>props.setAttributes({parent_class: val})}
 															/>
@@ -323,7 +322,7 @@ export default function Edit(props) {
 															<Text>
 																Primary Color:
 																<ColorPalette
-																	label="Primary"
+																	label={__( "Primary", "the-post-grid")}
 																	value={primary_color}
 																	colors={colors}
 																	onChange={(val) =>props.setAttributes({primary_color: val})}

@@ -3,6 +3,7 @@ import { useState, useEffect } from "@wordpress/element";
 import $ from 'jquery'
 
 function Layout(props) {
+	const {__} = wp.i18n;
 	const  {layout, plugin_path} = props.attr.attributes;
 
 	const clickHandler = (e) =>{
@@ -38,9 +39,9 @@ function Layout(props) {
 
 
     return (
-			<PanelBody title="Layout Type" initialOpen={true}>
+			<PanelBody title={__( "Layout Type", "the-post-grid")} initialOpen={true}>
 				<div className="parent">
-					<label>Layout Type: </label>
+					<label>{__( "Layout Type:", "the-post-grid")}</label>
 					<br/>
 					<label>
 						<input className={`grid`} type="radio" name="laytype" value="grid" onClick={clickHandler}/>
@@ -59,7 +60,7 @@ function Layout(props) {
 				</div>
 
 				<div className="child">
-					<label>Layout: </label>
+					<label>{__( "Layout: ", "the-post-grid")}</label>
 					<br/>
 					{
 						layout.type == "grid"?(

@@ -1,47 +1,42 @@
 import {
-    PanelBody, 
-    __experimentalText as Text,
-    __experimentalRadio as Radio,
-    __experimentalRadioGroup as RadioGroup,
-    __experimentalAlignmentMatrixControl as AlignmentMatrixControl,
-    __experimentalUnitControl as UnitControl,
+    PanelBody,
     SelectControl,
-    ColorPalette,
     ToggleControl 
 } from "@wordpress/components";
 
 import { useState, useEffect } from '@wordpress/element';
 
 function Meta(props) {
+    const {__} = wp.i18n;
     const {meta, meta_style} = props.attr.attributes
     const [hasmetaicon, useHasmetaicon] = useState(true)
 
     const position = [
         {
-            label: "Above Title",
+            label: __( "Above Title", "the-post-grid"),
             value: "above"
         },
         {
-            label: "Between Title and Excerpt",
+            label: __( "Between Title and Excerpt", "the-post-grid"),
             value: "between"
         },
         {
-            label: "Below Excerpt",
+            label: __( "Below Excerpt", "the-post-grid"),
             value: "below"
         }
     ]
 
     return (
-        <PanelBody title="Meta" initialOpen={false}>
+        <PanelBody title={__( "Meta", "the-post-grid")} initialOpen={false}>
             <SelectControl
-                label="Position"
+                label={__( "Position", "the-post-grid")}
                 value={ meta.position }
                 options={ position }
                 onChange={ ( val ) => props.attr.setAttributes( {meta: {...meta, "position": val}} ) }
             />
 
             <SelectControl
-                label="Seperator"
+                label={__( "Seperator", "the-post-grid")}
                 value={ meta.seperator }
                 options={ [
                     { label: 'Default', value: '' },
@@ -55,7 +50,7 @@ function Meta(props) {
             />
 
             <ToggleControl
-                label="Icon"
+                label={__( "Icon", "the-post-grid")}
                 checked={ meta.icon }
                 onChange={ (val) => {
                     useHasmetaicon( ( state ) => ! state );

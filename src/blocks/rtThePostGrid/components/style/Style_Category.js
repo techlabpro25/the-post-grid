@@ -10,16 +10,17 @@ import {
 import { useState, useEffect } from '@wordpress/element';
 
 function Category(props) {
+    const {__} = wp.i18n;
     const { category, category_style, category_padding, category_margin, } = props.attr.attributes
     const [hasicon, useHasicon] = useState(true)
     return (
-        <PanelBody title="Category" initialOpen={false}>
+        <PanelBody title={__( "Category", "the-post-grid")} initialOpen={false}>
             
             <Text>
                 Color:
             </Text>
             <ColorPalette
-                label = "Select Color"
+                label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ category_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, "color": color}} ) }
@@ -27,10 +28,9 @@ function Category(props) {
             	
 
             <Text>
-                Background-Color:
+                {__( "Background-Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Background Color"
                 colors={ props.attr.colors }
                 value={ category_style["background-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, "background-color": color}} ) }
@@ -38,7 +38,7 @@ function Category(props) {
             
 
             <Text>
-                Font Size::
+                {__( "Font Size:", "the-post-grid")}
             </Text>
             <UnitControl
                 value={ category_style["font-size"] }
@@ -47,13 +47,13 @@ function Category(props) {
             
 
             <NumberControl
-                label="Border Radius"
+                label={__( "Border Radius:", "the-post-grid")}
                 value={category_style["border-radius"]}
                 onChange={ ( value ) => props.attr.setAttributes( { category_style: {...category_style, "border-radius": value} }) }
             />
 
             <BoxControl
-                label="Padding"														
+                label={__( "Padding:", "the-post-grid")}
                 values={ category_padding }
                 onChange={ ( val ) => {
                     props.attr.setAttributes({category_padding: val})
@@ -61,7 +61,7 @@ function Category(props) {
             />
 
             <BoxControl
-                label="Margin"																
+                label={__( "Margin:", "the-post-grid")}
                 values={ category_margin }
                 onChange={ ( val ) => {
                     props.attr.setAttributes({category_margin: val})

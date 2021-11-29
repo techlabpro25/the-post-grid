@@ -9,11 +9,12 @@ import {
 import {useState} from '@wordpress/element';
 
 function Heading(props) {
+    const {__} = wp.i18n;
     const {heading, heading_style} = props.attr.attributes
     return (
-        <PanelBody title="Block Heading" initialOpen={true}>
+        <PanelBody title={__( "Block Heading", "the-post-grid")} initialOpen={true}>
             <SelectControl
-                label="Tag:"
+                label={__( "Tag:", "the-post-grid")}
                 value={ heading["tag"] }
                 options={ [
                     { label: 'H1', value: '1' },
@@ -27,18 +28,18 @@ function Heading(props) {
             />
 
             <SelectControl
-                label="Style"
+                label={__( "Style", "the-post-grid")}
                 value={ heading["style"] }
                 options={ [
-                    { label: 'Style 1', value: "1" },
-                    { label: 'Style 2', value: "2" },
-                    { label: 'Style 3', value: "3" },
+                    { label: __( 'Style 1', "the-post-grid"), value: "1" },
+                    { label: __( 'Style 2', "the-post-grid"), value: "2" },
+                    { label: __( 'Style 3', "the-post-grid"), value: "3" },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {heading: {...heading, "style": value} } ) }
             />
 
             <Text>
-                Text Alignment:
+                {__( "Text Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({heading_style: {...heading_style, "text-align": val}}) } checked={ heading_style["text-align"] }>
                 <Radio value="left"></Radio>
@@ -48,7 +49,7 @@ function Heading(props) {
 
 
             <TextControl
-                label='Link:'
+                label={__( "Link:", "the-post-grid")}
                 value={ heading.link }
                 onChange={ (val) => props.attr.setAttributes({heading: {...heading, "link": val}}) }
             />

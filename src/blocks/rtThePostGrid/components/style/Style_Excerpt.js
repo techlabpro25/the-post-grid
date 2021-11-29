@@ -9,15 +9,16 @@ import {
 } from "@wordpress/components";
 
 function Excerpt(props) {
+    const {__} = wp.i18n;
     const { excerpt_style } = props.attr.attributes
     return (
-        <PanelBody title="Excerpt" initialOpen={false}>
+        <PanelBody title={__( "Excerpt", "the-post-grid")} initialOpen={false}>
             
             <Text>
-                Color:
+                {__( "Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                label = "Select Color"
+                label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ excerpt_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "color": color}} ) }
@@ -25,7 +26,7 @@ function Excerpt(props) {
             
 
             <Text>
-                Font Size:
+                {__( "Font Size:", "the-post-grid")}
             </Text>
             <UnitControl
                 value={ excerpt_style["font-size"] }
@@ -35,7 +36,7 @@ function Excerpt(props) {
 
 
             <SelectControl
-                label="Font Weight:"
+                label={__( "Font Weight:", "the-post-grid")}
                 value={ excerpt_style["font-weight"] }
                 options={ [
                     { label: '100', value: 100 },
@@ -52,7 +53,7 @@ function Excerpt(props) {
             />
 
             <Text>
-                Text Alignment:
+                {__( "Text Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({excerpt_style: {...excerpt_style, "text-align": val}}) } checked={ excerpt_style["text-align"] }>
                 <Radio value="Left"></Radio>

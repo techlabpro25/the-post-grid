@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @package radius-blocks
+ * @package the-post-grid
  * Plugin Name: Radius Blocks
  * Plugin URI:
  * Description:
@@ -10,7 +10,7 @@
  * Version: 0.0.1
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
- * Text Domain: radius-blocks
+ * Text Domain: the-post-grid
  * Domain Path: /languages
  */
 
