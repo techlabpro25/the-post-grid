@@ -152,7 +152,7 @@ export default function Edit(props) {
         var id = url.searchParams.get("post");
 
         apiFetch({path: '/rt/v1/post_title?id='+id}).then((data) => {
-            const pluginPath= data.path+"/radius-blocks-main/images/";
+            const pluginPath= data.path+"/the_post_grid/images/";
             setAttributes({heading_title: data.title})
             setAttributes({plugin_path: pluginPath})
         });
