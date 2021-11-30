@@ -2284,7 +2284,7 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
   text-align: center;
 }
 
-.pagination span.pagination_number {
+.pagination .pagination_number {
   background-color: #4c6fff;
   color: white;
   padding: 8px 15px;
@@ -2294,7 +2294,7 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
   cursor: pointer;
 }
 
-.pagination span.pagination_number:hover, .pagination span.pagination_number.active {
+.pagination .pagination_number:hover, .pagination .pagination_number.active {
   background-color: #1c2f7a;
 }
 

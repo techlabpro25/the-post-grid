@@ -98,7 +98,7 @@ const Query = (props) => {
 		},
 	];
 
-	const typefilter = ["wp_template", "attachment", "wp_block", "post_format"];
+	const typefilter = ["wp_template", "attachment", "wp_block", "post_format", "product_type", "product_visibility", "product_shipping_class"];
 
 	// Post Type
 	useEffect(() => {
@@ -182,7 +182,15 @@ const Query = (props) => {
 					const tax_term = {};
 					const tax_item = {};
 
-					props.attr.setAttributes({ query: { ...query, post_type: value, taxonomy_bool: false, taxonomy:taxonomy, tax_term:tax_term, tax_item:tax_item } })
+					props.attr.setAttributes({ query: {
+						...query,
+							post_type: value,
+							taxonomy_bool: false,
+							taxonomy:taxonomy,
+							tax_term:tax_term,
+							tax_item:tax_item,
+							filter: true
+					} })
 				}
 				}
 			/>
@@ -192,7 +200,7 @@ const Query = (props) => {
 				help={__( "The number of posts to show. Set -1 to show all found posts.", "the-post-grid")}
 				value={query.limit}
 				onChange={(value) =>
-					props.attr.setAttributes({ query: { ...query, limit: value } })
+					props.attr.setAttributes({ query: { ...query, limit: value, filter: true } })
 				}
 				min={-1}
 				max={1000}
@@ -204,7 +212,7 @@ const Query = (props) => {
 				help={__( "List of post IDs to show (comma-separated values, for example: 1,2,3)", "the-post-grid")}
 				value={query.include}
 				onChange={(value) =>
-					props.attr.setAttributes({ query: { ...query, include: value } })
+					props.attr.setAttributes({ query: { ...query, include: value, filter: true } })
 				}
 			/>
 
@@ -213,7 +221,7 @@ const Query = (props) => {
 				help={__( "List of post IDs to hide (comma-separated values, for example: 1,2,3)", "the-post-grid")}
 				value={query.exclude}
 				onChange={(value) =>
-					props.attr.setAttributes({ query: { ...query, exclude: value } })
+					props.attr.setAttributes({ query: { ...query, exclude: value, filter: true } })
 				}
 			/>
 
@@ -402,7 +410,7 @@ const Query = (props) => {
 						options={order_type}
 						onChange={(value) =>
 							props.attr.setAttributes({
-								query: { ...query, order_by: value },
+								query: { ...query, order_by: value, filter: true },
 							})
 						}
 					/>
@@ -415,7 +423,7 @@ const Query = (props) => {
 							{ label: "Descending", value: "DESC" },
 						]}
 						onChange={(value) =>
-							props.attr.setAttributes({ query: { ...query, order: value } })
+							props.attr.setAttributes({ query: { ...query, order: value, filter: true } })
 						}
 					/>
 				</>

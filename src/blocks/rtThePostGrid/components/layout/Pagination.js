@@ -10,7 +10,7 @@ import {useState} from '@wordpress/element';
 function Pagination(props) {
     const {__} = wp.i18n;
     const [haspagination, useHaspagination] = useState(true)
-    const {pagination} = props.attr.attributes
+    const {pagination, query} = props.attr.attributes
     const pagination_type = [
         {
             label: __( "Default", "the-post-grid"),
@@ -54,14 +54,28 @@ function Pagination(props) {
                             max={5000}
                             step={1}
                             value={pagination.post_per_page}
-                            onChange={val =>{props.attr.setAttributes({pagination: {...pagination, "post_per_page": val}})}}
+                            onChange={val =>{props.attr.setAttributes({
+                                pagination: {
+                                    ...pagination,
+                                    "post_per_page": val
+                                },
+                                query:{
+                                    ...query,
+                                    'filter': true
+                                }
+                            })}}
                         />
 
                         <SelectControl
                             label={__( "Pagination Type:", "the-post-grid")}
                             options={pagination_type}
                             value ={pagination.pagination_type}
-                            onChange={(val)=>props.attr.setAttributes( {pagination: {...pagination, "pagination_type": val} })}
+                            onChange={(val)=>props.attr.setAttributes( {
+                                pagination: {
+                                    ...pagination,
+                                    "pagination_type": val
+                                }
+                            })}
                         />
                     </>
                 ):("")

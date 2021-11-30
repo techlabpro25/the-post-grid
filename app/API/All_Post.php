@@ -20,14 +20,14 @@ class All_Post{
         $terms = $request['terms'];
         $post_type = sanitize_text_field($request["post_type"]);
         $post_per_page = $request["post_per_page"];
-        $include = sanitize_text_field(explode(",",$request["include"]));
-        $exclude = sanitize_text_field(explode(",", $request["exclude"]));
+        $include = explode(",",$request["include"]);
+        $exclude = explode(",", $request["exclude"]);
         $offset = $request["offset"];
         $relation = sanitize_text_field($request["relation"]);
         $order_by = sanitize_text_field($request["order_by"]);
         $order = sanitize_text_field($request["order"]);
-        $author = sanitize_text_field(explode(",",$request["author"]));
-        $status = sanitize_text_field(explode(",",$request["status"]));
+        $author = explode(",",$request["author"]);
+        $status = explode(",",$request["status"]);
         $keyword = sanitize_text_field($request["keyword"]);
 
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
