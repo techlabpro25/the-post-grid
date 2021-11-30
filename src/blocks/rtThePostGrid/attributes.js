@@ -147,7 +147,7 @@ const attributes = {
 		default: {
 			color: "",
 			["background-color"]: "",
-			["font-size"]: "12px",
+			["font-size"]: "",
 			["border-radius"]: "",
 		},
 	},

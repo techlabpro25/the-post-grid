@@ -147,17 +147,17 @@ export const List1 = (props) =>{
                                 meta_style,
                                 primary_color,
                                 category,
-                                post_cat: post?.category,
+                                post_terms: post?.terms,
                                 category_style,
                                 category_padding,
                                 category_margin
                             }
-                            const tag_props = {
-                                meta,
-                                meta_style,
-                                primary_color,
-                                post_tags: post?.tags
-                            }
+                            // const tag_props = {
+                            //     meta,
+                            //     meta_style,
+                            //     primary_color,
+                            //     post_tags: post?.tags
+                            // }
 
                             return(
                                 <>
@@ -220,11 +220,11 @@ export const List1 = (props) =>{
 
 
                                                                     {/*Tag*/}
-                                                                    {
-                                                                        general.tag ? (
-                                                                            <Tags data={tag_props}/>
-                                                                        ) : ("")
-                                                                    }
+                                                                    {/*{*/}
+                                                                    {/*    general.tag ? (*/}
+                                                                    {/*        <Tags data={tag_props}/>*/}
+                                                                    {/*    ) : ("")*/}
+                                                                    {/*}*/}
 
                                                                     {/*Comment count*/}
                                                                     {
@@ -272,11 +272,11 @@ export const List1 = (props) =>{
 
 
                                                                     {/*Tag*/}
-                                                                    {
-                                                                        general.tag ? (
-                                                                            <Tags data={tag_props}/>
-                                                                        ) : ("")
-                                                                    }
+                                                                    {/*{*/}
+                                                                    {/*    general.tag ? (*/}
+                                                                    {/*        <Tags data={tag_props}/>*/}
+                                                                    {/*    ) : ("")*/}
+                                                                    {/*}*/}
 
                                                                     {/*Comment count*/}
                                                                     {
@@ -325,11 +325,11 @@ export const List1 = (props) =>{
 
 
                                                                     {/*Tag*/}
-                                                                    {
-                                                                        general.tag ? (
-                                                                            <Tags data={tag_props}/>
-                                                                        ) : ("")
-                                                                    }
+                                                                    {/*{*/}
+                                                                    {/*    general.tag ? (*/}
+                                                                    {/*        <Tags data={tag_props}/>*/}
+                                                                    {/*    ) : ("")*/}
+                                                                    {/*}*/}
 
                                                                     {/*Comment count*/}
                                                                     {

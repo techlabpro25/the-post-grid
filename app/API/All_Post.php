@@ -96,7 +96,8 @@ class All_Post{
 
 
         $query = new WP_Query($args);
-        
+        $alltaxonomies = get_object_taxonomies($post_type);
+
         $data = [];
 
 
@@ -110,29 +111,21 @@ class All_Post{
                     $tags = [];
                     $id = get_the_id();
                     $author_id = $query->post_author;
-                    $get_cat = get_the_category($id);
-                    $get_tags = get_the_tags($id);
+                    $items = [];
 
-
-                    if(!empty($get_cat)){
-                        foreach($get_cat as $cat){
-                            $category[]=[
-                                "cat_id" => esc_html($cat->term_id),
-                                "cat_name" => esc_html($cat->name),
-                                "cat_link" => esc_html(get_term_link($cat->term_id)),
-                            ];
+                    foreach($alltaxonomies as $taxonomy){
+                        $tempterms = [];
+                        $term_obj = get_the_terms($id, $taxonomy);
+                        if(!empty($term_obj)){
+                            foreach ($term_obj as $termitems){
+                                $tempterms[]=[
+                                    "term_id" => esc_html($termitems->term_id),
+                                    "term_name" => esc_html($termitems->name),
+                                    "term_link" => esc_html(get_term_link($termitems->term_id)),
+                                ];
+                            }
                         }
-                    }
-
-
-                    if(!empty($get_tags)){
-                        foreach($get_tags as $tag){
-                            $tags[]=[
-                                "tag_id" => esc_html($tag->term_id),
-                                "tag_name" => esc_html($tag->name),
-                                "tag_link" => esc_html(get_term_link($tag->term_id)),
-                            ];
-                        }
+                        $items[]=$tempterms;
                     }
 
                     $data[]=[
@@ -144,10 +137,9 @@ class All_Post{
                         "image_url" => esc_url_raw(get_the_post_thumbnail_url(null, 'full')),
                         "author_name" => esc_html(get_the_author_meta( 'display_name', $author_id )),
                         "author_url" => esc_html(get_author_posts_url(get_the_author_meta('ID'))),
-                        "category" => $category,
-                        "tags" => $tags,
                         "post_link" => esc_url_raw(get_post_permalink()),
                         "total_post" => esc_html($query->found_posts),
+                        "terms" => $items,
                     ];
                 }
             } else {
@@ -157,7 +149,7 @@ class All_Post{
             wp_reset_postdata();
         }
 
-
+//die();
         return rest_ensure_response($data);
     }
 }

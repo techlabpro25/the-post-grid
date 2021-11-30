@@ -116,8 +116,8 @@ const Layout1 = (props) => {
 							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name}
 							const date_props = { meta, meta_style, primary_color, date: post.post_date}
 							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
-							const category_props = { meta, meta_style, primary_color, category, post_cat: post?.category, category_style, category_padding, category_margin }
-							const tag_props = { meta, meta_style, primary_color, post_tags: post?.tags }
+							const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin }
+							// const tag_props = { meta, meta_style, primary_color, post_tags: post?.tags }
 
 							return (
 								<>
@@ -181,11 +181,11 @@ const Layout1 = (props) => {
 
 
 															{/*Tag*/}
-															{
-																general.tag ? (
-																	<Tags data={tag_props}/>
-																) : ("")
-															}
+															{/*{*/}
+															{/*	general.tag ? (*/}
+															{/*		<Tags data={tag_props}/>*/}
+															{/*	) : ("")*/}
+															{/*}*/}
 
 															{/*Comment count*/}
 															{
@@ -233,11 +233,11 @@ const Layout1 = (props) => {
 
 
 															{/*Tag*/}
-															{
-																general.tag ? (
-																	<Tags data={tag_props}/>
-																) : ("")
-															}
+															{/*{*/}
+															{/*	general.tag ? (*/}
+															{/*		<Tags data={tag_props}/>*/}
+															{/*	) : ("")*/}
+															{/*}*/}
 
 															{/*Comment count*/}
 															{
@@ -290,11 +290,11 @@ const Layout1 = (props) => {
 
 
 															{/*Tag*/}
-															{
-																general.tag ? (
-																	<Tags data={tag_props}/>
-																) : ("")
-															}
+															{/*{*/}
+															{/*	general.tag ? (*/}
+															{/*		<Tags data={tag_props}/>*/}
+															{/*	) : ("")*/}
+															{/*}*/}
 
 															{/*Comment count*/}
 															{
