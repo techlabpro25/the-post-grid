@@ -173,6 +173,7 @@ const Query = (props) => {
 		});
 	}
 
+
 	return (
 		<>
 			<SelectControl
@@ -203,8 +204,11 @@ const Query = (props) => {
 				label={__( "limit:", "the-post-grid")}
 				help={__( "The number of posts to show. Set -1 to show all found posts.", "the-post-grid")}
 				value={query.limit}
-				onChange={(value) =>
+				onChange={(value) =>{
+					$('.pagination_number.active').removeClass("active")
+					$('.pagination_number').first().addClass("active")
 					props.attr.setAttributes({ query: { ...query, limit: value, filter: true } })
+				}
 				}
 				min={-1}
 				max={1000}
@@ -215,8 +219,12 @@ const Query = (props) => {
 				label={__( "Include Only", "the-post-grid")}
 				help={__( "List of post IDs to show (comma-separated values, for example: 1,2,3)", "the-post-grid")}
 				value={query.include}
-				onChange={(value) =>
+				onChange={(value) =>{
+					$('.pagination_number.active').removeClass("active")
+					$('.pagination_number').first().addClass("active")
 					props.attr.setAttributes({ query: { ...query, include: value, filter: true } })
+				}
+
 				}
 			/>
 
@@ -224,16 +232,24 @@ const Query = (props) => {
 				label={__( "Exclude", "the-post-grid")}
 				help={__( "List of post IDs to hide (comma-separated values, for example: 1,2,3)", "the-post-grid")}
 				value={query.exclude}
-				onChange={(value) =>
+				onChange={(value) =>{
+					$('.pagination_number.active').removeClass("active")
+					$('.pagination_number').first().addClass("active")
 					props.attr.setAttributes({ query: { ...query, exclude: value, filter: true } })
+				}
+
 				}
 			/>
 
 			<NumberControl
 				label={__( "Offset", "the-post-grid")}
 				labelPosition="side"
-				onChange={(value) =>
+				onChange={(value) =>{
+					$('.pagination_number.active').removeClass("active")
+					$('.pagination_number').first().addClass("active")
 					props.attr.setAttributes({ query: { ...query, offset: value } })
+				}
+
 				}
 				Step={1}
 				value={query.offset}
@@ -329,6 +345,8 @@ const Query = (props) => {
 										operator: null
 									}
 								}
+								$('.pagination_number.active').removeClass("active")
+								$('.pagination_number').first().addClass("active")
 								props.attr.setAttributes({
 									query: { ...query, tax_term: tax_term, filter: true },
 								});
@@ -350,6 +368,8 @@ const Query = (props) => {
 											operator: value
 										}
 									}
+									$('.pagination_number.active').removeClass("active")
+									$('.pagination_number').first().addClass("active")
 									props.attr.setAttributes({
 										query: { ...query, tax_term: tax_term },
 									});
@@ -375,8 +395,12 @@ const Query = (props) => {
 								value: "OR",
 							},
 						]}
-						onChange={(value) =>
+						onChange={(value) =>{
+							$('.pagination_number.active').removeClass("active")
+							$('.pagination_number').first().addClass("active")
 							props.attr.setAttributes({ query: { ...query, relation: value } })
+						}
+
 						}
 					/>
 				</div>
@@ -412,10 +436,14 @@ const Query = (props) => {
 						label={__( "Order BY:", "the-post-grid")}
 						value={query.order_by}
 						options={order_type}
-						onChange={(value) =>
+						onChange={(value) =>{
+							$('.pagination_number.active').removeClass("active")
+							$('.pagination_number').first().addClass("active")
 							props.attr.setAttributes({
 								query: { ...query, order_by: value, filter: true },
 							})
+						}
+
 						}
 					/>
 
@@ -426,8 +454,12 @@ const Query = (props) => {
 							{ label: "Ascending", value: "ASC" },
 							{ label: "Descending", value: "DESC" },
 						]}
-						onChange={(value) =>
+						onChange={(value) =>{
+							$('.pagination_number.active').removeClass("active")
+							$('.pagination_number').first().addClass("active")
 							props.attr.setAttributes({ query: { ...query, order: value, filter: true } })
+						}
+
 						}
 					/>
 				</>
@@ -458,8 +490,12 @@ const Query = (props) => {
 					value={query.author}
 					multiple={true}
 					options={authors}
-					onChange={(value) =>
+					onChange={(value) =>{
+						$('.pagination_number.active').removeClass("active")
+						$('.pagination_number').first().addClass("active")
 						props.attr.setAttributes({ query: { ...query, author: value, filter: true } })
+					}
+
 					}
 				/>
 			) : (
@@ -487,8 +523,12 @@ const Query = (props) => {
 					value={query.status}
 					multiple={true}
 					options={publish_type}
-					onChange={(value) =>
+					onChange={(value) =>{
+						$('.pagination_number.active').removeClass("active")
+						$('.pagination_number').first().addClass("active")
 						props.attr.setAttributes({ query: { ...query, status: value, filter: true } })
+					}
+
 					}
 				/>
 			) : (
@@ -513,8 +553,12 @@ const Query = (props) => {
 				<TextControl
 					label={__( "Enter Keyword:", "the-post-grid")}
 					value={query.keyword}
-					onChange={(value) =>
+					onChange={(value) =>{
+						$('.pagination_number.active').removeClass("active")
+						$('.pagination_number').first().addClass("active")
 						props.attr.setAttributes({ query: { ...query, keyword: value, filter: true } })
+					}
+
 					}
 				/>
 			) : (

@@ -2404,13 +2404,13 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 /************************** Custom CSS ***********************************/
 /*************************************************************************/
 
-.lds-dual-ring {
+.rt-tpg-lds-dual-ring {
     display: inline-block;
     width: 80px;
     height: 80px;
     width: 100%;
   }
-  .lds-dual-ring:after {
+  .rt-tpg-lds-dual-ring:after {
     content: " ";
     display: block;
     width: 64px;
@@ -2419,12 +2419,12 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
     border-radius: 50%;
     border: 6px solid rgb(0, 0, 0);
     border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
-    animation: lds-dual-ring 1.2s linear infinite;
+    animation: rt-tpg-lds-dual-ring 1.2s linear infinite;
     left: 0;
     right: 0;
     margin: auto;
   }
-  @keyframes lds-dual-ring {
+  @keyframes rt-tpg-lds-dual-ring {
     0% {
       transform: rotate(0deg);
     }

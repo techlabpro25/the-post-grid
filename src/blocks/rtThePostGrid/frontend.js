@@ -19,6 +19,7 @@ const RtThePostGrid = (props) => {
             setPageindex(parseInt($(this).attr('data-value')))
             $('.pagination .pagination_number').removeClass('active')
             $(this).addClass('active')
+            // setIsloading(true);
         })
         let newOffset = 0;
         let newLimit = 0;
@@ -67,7 +68,7 @@ const RtThePostGrid = (props) => {
         <div className="rt-thepostgrid-frontend">
             {
                 isloading?(
-                    <div class="lds-dual-ring"></div>
+                    <div class="rt-tpg-lds-dual-ring"></div>
                 ):(
 
                     <>

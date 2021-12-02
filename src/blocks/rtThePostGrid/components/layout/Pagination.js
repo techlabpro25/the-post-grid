@@ -54,7 +54,8 @@ function Pagination(props) {
                             max={5000}
                             step={1}
                             value={pagination.post_per_page}
-                            onChange={val =>{props.attr.setAttributes({
+                            onChange={val =>{
+                                props.attr.setAttributes({
                                 pagination: {
                                     ...pagination,
                                     "post_per_page": val

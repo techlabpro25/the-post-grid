@@ -2,7 +2,7 @@
 
 /**
  * @package the-post-grid
- * Plugin Name: Radius Blocks
+ * Plugin Name: The Post Grid
  * Plugin URI:
  * Description:
  * Author: RadiusTheme

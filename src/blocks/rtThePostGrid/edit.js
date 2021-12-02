@@ -165,7 +165,7 @@ export default function Edit(props) {
         }
         $('.pagination_number.active').removeClass("active")
         $('.pagination_number.'+pageindex).addClass("active")
-        // setIsloading(true);
+        setIsloading(true);
     }, [pageindex])
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
@@ -413,7 +413,7 @@ export default function Edit(props) {
             <div className="rt-postsreact-editor">
                 {
                     isloading ? (
-                        <div class="lds-dual-ring"></div>
+                        <div class="rt-tpg-lds-dual-ring"></div>
                     ) : (
                         <>
                             {
@@ -426,37 +426,36 @@ export default function Edit(props) {
                                     <RenderView {...attributes} data={data}/>
                                 )
                             }
-
-                            {
-                                pagination.show ? (
-                                    <div className={"pagination"}>
-                                        {
-                                            //Here paginationNumber = 3
-                                            (paginationNumber > 1) ?(
-                                                <>
-                                                    {
-                                                        Array(paginationNumber).fill().map((_, i) => {
-
-                                                            if (i == 0){
-                                                                return <button className={`pagination_number active ${i+1}`} data-value={i + 1}
-                                                                               key={i}
-                                                                               onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
-                                                            }else{
-                                                                return <button className={`pagination_number ${i+1}`} data-value={i + 1}
-                                                                               key={i}
-                                                                               onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
-                                                            }
-                                                        })
-                                                    }
-                                                </>
-                                            ):("")
-                                        }
-                                    </div>
-                                ) : ("")
-                            }
                         </>
 
                     )
+                }
+                {
+                    pagination.show ? (
+                        <div className={"pagination"}>
+                            {
+                                //Here paginationNumber = 3
+                                (paginationNumber > 1) ?(
+                                    <>
+                                        {
+                                            Array(paginationNumber).fill().map((_, i) => {
+
+                                                if (i == 0){
+                                                    return <button className={`pagination_number active ${i+1}`} data-value={i + 1}
+                                                                   key={i}
+                                                                   onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
+                                                }else{
+                                                    return <button className={`pagination_number ${i+1}`} data-value={i + 1}
+                                                                   key={i}
+                                                                   onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
+                                                }
+                                            })
+                                        }
+                                    </>
+                                ):("")
+                            }
+                        </div>
+                    ) : ("")
                 }
             </div>
         </>

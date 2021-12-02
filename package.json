@@ -36,7 +36,8 @@
 		"laravel-mix": "^6.0.37",
 		"sass": "^1.43.4",
 		"sass-loader": "^12.1.0",
-		"wp-pot": "^1.9.9"
+		"wp-pot": "^1.9.9",
+		"cross-env": "^7.0.3"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.36",
