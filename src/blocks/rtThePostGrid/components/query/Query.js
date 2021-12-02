@@ -10,6 +10,7 @@ import {
 } from "@wordpress/components";
 import { useState, useEffect } from "@wordpress/element";
 import apiFetch from "@wordpress/api-fetch";
+import $ from "jquery";
 
 const Query = (props) => {
 	const {__} = wp.i18n;
@@ -181,6 +182,8 @@ const Query = (props) => {
 					const taxonomy = [];
 					const tax_term = {};
 					const tax_item = {};
+					$('.pagination_number.active').removeClass("active")
+					$('.pagination_number').first().addClass("active")
 
 					props.attr.setAttributes({ query: {
 						...query,

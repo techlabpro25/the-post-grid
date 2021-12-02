@@ -19,16 +19,15 @@ export const Category_Default = (props) =>{
                         &nbsp;
                         {
                             post_terms?.length && post_terms.map((term_item, i) => {
-                                console.log(term_item)
                                 if(term_item.length > 0){
                                     return(
                                         <>
-                                            ::
+                                            {i > 0 ? ", ":""}
                                             {
-                                                term_item?.length && term_item?.map((items) =>{
+                                                term_item?.length && term_item?.map((items,i) =>{
                                                     return (
                                                         <>
-                                                            =
+                                                            {/*=*/}
                                                             {(i > 0) ? ", " : ""}
                                                             <Cat_style css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
                                                                 {items.term_name}
