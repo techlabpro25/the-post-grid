@@ -11,6 +11,7 @@ const RtThePostGrid = (props) => {
     const [pagestate, setPagestate] = useState(0);
     const [pageindex, setPageindex] = useState(1);
     const [message, setMessage] = useState("");
+    const [loadingindex, setLoadingindex] = useState(1);
 
     useEffect(() => {
         let nawauthor = query?.author?.toString();
@@ -64,6 +65,7 @@ const RtThePostGrid = (props) => {
         });
     }, [query, pagination, pageindex]);
 
+
     return (
         <div className="rt-thepostgrid-frontend">
             {
@@ -89,9 +91,13 @@ const RtThePostGrid = (props) => {
                                     {Array.from(Array(pagestate), (e, i) => {
                                         if(pagestate > 1){
                                             if(i == 0){
-                                                return <span className={"pagination_number active"} data-value={i+1} key={i}>{i+1}</span>
+                                                return <span className={"pagination_number active"}
+                                                             data-value={i+1}
+                                                             key={i} onClick={()=> {setLoadingindex(i+1)}}>{i+1}</span>
                                             }else{
-                                                return <span className={"pagination_number"} data-value={i+1} key={i}>{i+1}</span>
+                                                return <span className={"pagination_number"}
+                                                             data-value={i+1}
+                                                             key={i} onClick={()=> {setLoadingindex(i+1)}}>{i+1}</span>
                                             }
                                         }
                                     })}

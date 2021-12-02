@@ -194,7 +194,8 @@ const Query = (props) => {
 							taxonomy:taxonomy,
 							tax_term:tax_term,
 							tax_item:tax_item,
-							filter: true
+							filter: true,
+							pageindex: 1
 					} })
 				}
 				}
@@ -207,7 +208,12 @@ const Query = (props) => {
 				onChange={(value) =>{
 					$('.pagination_number.active').removeClass("active")
 					$('.pagination_number').first().addClass("active")
-					props.attr.setAttributes({ query: { ...query, limit: value, filter: true } })
+					props.attr.setAttributes({ query: {
+						...query,
+							limit: value,
+							filter: true,
+							pageindex: 1
+						} })
 				}
 				}
 				min={-1}
@@ -222,7 +228,11 @@ const Query = (props) => {
 				onChange={(value) =>{
 					$('.pagination_number.active').removeClass("active")
 					$('.pagination_number').first().addClass("active")
-					props.attr.setAttributes({ query: { ...query, include: value, filter: true } })
+					props.attr.setAttributes({ query: {
+						...query,
+							include: value,
+							filter: true,
+							pageindex: 1 } })
 				}
 
 				}
@@ -235,7 +245,7 @@ const Query = (props) => {
 				onChange={(value) =>{
 					$('.pagination_number.active').removeClass("active")
 					$('.pagination_number').first().addClass("active")
-					props.attr.setAttributes({ query: { ...query, exclude: value, filter: true } })
+					props.attr.setAttributes({ query: { ...query, exclude: value, filter: true, pageindex: 1 } })
 				}
 
 				}
@@ -247,7 +257,7 @@ const Query = (props) => {
 				onChange={(value) =>{
 					$('.pagination_number.active').removeClass("active")
 					$('.pagination_number').first().addClass("active")
-					props.attr.setAttributes({ query: { ...query, offset: value } })
+					props.attr.setAttributes({ query: { ...query, offset: value, pageindex: 1 } })
 				}
 
 				}
@@ -348,7 +358,7 @@ const Query = (props) => {
 								$('.pagination_number.active').removeClass("active")
 								$('.pagination_number').first().addClass("active")
 								props.attr.setAttributes({
-									query: { ...query, tax_term: tax_term, filter: true },
+									query: { ...query, tax_term: tax_term, filter: true, pageindex: 1 },
 								});
 							}}
 						/>
@@ -423,7 +433,8 @@ const Query = (props) => {
 								order_bool: value,
 								order_by: order_by,
 								order: order,
-								filter: true
+								filter: true,
+								pageindex: 1
 						} })
 					}
 
@@ -440,7 +451,7 @@ const Query = (props) => {
 							$('.pagination_number.active').removeClass("active")
 							$('.pagination_number').first().addClass("active")
 							props.attr.setAttributes({
-								query: { ...query, order_by: value, filter: true },
+								query: { ...query, order_by: value, filter: true, pageindex: 1 },
 							})
 						}
 
@@ -457,7 +468,7 @@ const Query = (props) => {
 						onChange={(value) =>{
 							$('.pagination_number.active').removeClass("active")
 							$('.pagination_number').first().addClass("active")
-							props.attr.setAttributes({ query: { ...query, order: value, filter: true } })
+							props.attr.setAttributes({ query: { ...query, order: value, filter: true, pageindex: 1 } })
 						}
 
 						}
@@ -493,7 +504,7 @@ const Query = (props) => {
 					onChange={(value) =>{
 						$('.pagination_number.active').removeClass("active")
 						$('.pagination_number').first().addClass("active")
-						props.attr.setAttributes({ query: { ...query, author: value, filter: true } })
+						props.attr.setAttributes({ query: { ...query, author: value, filter: true, pageindex: 1 } })
 					}
 
 					}
@@ -526,7 +537,7 @@ const Query = (props) => {
 					onChange={(value) =>{
 						$('.pagination_number.active').removeClass("active")
 						$('.pagination_number').first().addClass("active")
-						props.attr.setAttributes({ query: { ...query, status: value, filter: true } })
+						props.attr.setAttributes({ query: { ...query, status: value, filter: true, pageindex: 1 } })
 					}
 
 					}
@@ -556,7 +567,7 @@ const Query = (props) => {
 					onChange={(value) =>{
 						$('.pagination_number.active').removeClass("active")
 						$('.pagination_number').first().addClass("active")
-						props.attr.setAttributes({ query: { ...query, keyword: value, filter: true } })
+						props.attr.setAttributes({ query: { ...query, keyword: value, filter: true, pageindex: 1 } })
 					}
 
 					}

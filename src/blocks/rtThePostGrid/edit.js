@@ -104,10 +104,10 @@ export default function Edit(props) {
                 setNewOffset(0)
 
             } else {
-                if (pageindex == 0) {
+                if (query.pageindex == 0) {
                     setNewOffset(0)
                 } else {
-                    setNewOffset((post_per_page * pageindex) - post_per_page)
+                    setNewOffset((post_per_page * query.pageindex) - post_per_page)
                 }
             }
         } else {
@@ -160,13 +160,18 @@ export default function Edit(props) {
     }, [])
 
     useEffect(() => {
+
         if (pageindex > 0) {
-            setAttributes({query: {...query, "filter": false}})
+            setAttributes({query: {...query, "filter": false, "pageindex":pageindex}})
         }
         $('.pagination_number.active').removeClass("active")
         $('.pagination_number.'+pageindex).addClass("active")
         setIsloading(true);
     }, [pageindex])
+
+    useEffect(()=>{
+        setPageindex(query.pageindex)
+    }, [query.pageindex])
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
 
