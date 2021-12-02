@@ -69,7 +69,7 @@ const Layout1 = (props) => {
 
 	return (
 		<>
-			<div css={content_wrap} css_pad={constent_box_padding} className={`${parent_class}`}>
+			<div className={`${parent_class}`}>
 				{
 					general.heading?(
 						<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>

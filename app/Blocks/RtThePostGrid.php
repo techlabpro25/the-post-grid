@@ -35,7 +35,7 @@ class RtThePostGrid extends Block
             "text-align"=> "left",
             "color"=> "",
             "h_color"=> "",
-            "font-size"=> "22px",
+            "font-size"=> "",
             "font-weight"=> 500,
 		],
 		'category_style' =>[

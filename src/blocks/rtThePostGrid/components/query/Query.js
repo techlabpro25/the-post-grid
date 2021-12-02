@@ -99,7 +99,8 @@ const Query = (props) => {
 		},
 	];
 
-	const typefilter = ["wp_template", "attachment", "wp_block", "post_format", "product_type", "product_visibility", "product_shipping_class"];
+	// const typefilter = ["wp_template", "attachment", "wp_block", "post_format", "product_type", "product_visibility", "product_shipping_class"];
+	const typefilter = ["wp_template", "attachment", "wp_block", "product_type", "product_visibility", "product_shipping_class"];
 
 	// Post Type
 	useEffect(() => {
@@ -314,7 +315,7 @@ const Query = (props) => {
 				return(
 					<div className="tax_second_child">
 						<SelectControl
-							label={__( taxonomy, "the-post-grid")}
+							label={__( (taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1)), "the-post-grid")}
 							value={query.tax_term[taxonomy]?.data || []}
 							options={query.tax_item?.[taxonomy] || []}
 							multiple={true}
@@ -335,7 +336,7 @@ const Query = (props) => {
 						/>
 
 						 <SelectControl
-							label={__( `${taxonomy} Operator:`, "the-post-grid")}
+							label={__( `${(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))} operator:`, "the-post-grid")}
 							value={query.tax_term[taxonomy]?.operator}
 							options={operator}
 							onChange={(value) =>
