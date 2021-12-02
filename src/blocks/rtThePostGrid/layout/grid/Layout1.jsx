@@ -131,7 +131,7 @@ const Layout1 = (props) => {
 												}
 												{
 													(category.position.includes('over-image')) ? (
-														<div class={`cat-${category.position} ${category.style}`}>
+														<div className={`cat-${category.position} ${category.style}`}>
 															<>
 																<Non_Category_Default data={category_props}/>
 															</>
@@ -144,7 +144,7 @@ const Layout1 = (props) => {
 											<Content_padding css_pad={content_padding} className="rt-detail">
 												{
 													(category.position == "above-title") ? (
-														<div class={`cat-above-title ${category.style}`}>
+														<div className={`cat-above-title ${category.style}`}>
 															<>
 																<Non_Category_Default data={category_props}/>
 															</>

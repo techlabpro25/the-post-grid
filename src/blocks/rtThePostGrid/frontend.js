@@ -68,7 +68,7 @@ const RtThePostGrid = (props) => {
         <div className="rt-thepostgrid-frontend">
             {
                 isloading?(
-                    <div class="rt-tpg-lds-dual-ring"></div>
+                    <div className="rt-tpg-lds-dual-ring"></div>
                 ):(
 
                     <>

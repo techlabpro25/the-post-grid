@@ -413,7 +413,7 @@ export default function Edit(props) {
             <div className="rt-postsreact-editor">
                 {
                     isloading ? (
-                        <div class="rt-tpg-lds-dual-ring"></div>
+                        <div className="rt-tpg-lds-dual-ring"></div>
                     ) : (
                         <>
                             {
