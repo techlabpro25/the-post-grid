@@ -13,17 +13,19 @@ if (process.env.NODE_ENV === "package") {
 	const package_slug = path.basename(path.resolve(package_path));
 
 	mix.then(function () {
-		const copyTo = path.resolve(`${package_slug}`);
+		const copyTo = path.resolve(`temp/${package_slug}`);
 		// Select All file then paste on list
 		let includes = [
 			"app",
 			"assets",
+			"dist",
 			"languages",
 			"vendor",
+			"images",
 			"index.php",
 			"README.md",
 			"uninstall.php",
-			`${package_slug}.php`,
+			`radius-blocks.php`,
 		];
 		fs.ensureDir(copyTo, function (err) {
 			if (err) return console.error(err);

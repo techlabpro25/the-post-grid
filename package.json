@@ -11,7 +11,8 @@
 		"hot": "mix watch --hot",
 		"prod": "npm run production",
 		"production": "mix --production",
-		"package": "npm run dev && npm run prod && cross-env NODE_ENV=package mix",
+		"clean": "rm -rf temp/*",
+		"package": "npm run clean && npm run prod && NODE_ENV=package mix",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {

@@ -99,8 +99,7 @@ const Query = (props) => {
 		},
 	];
 
-	// const typefilter = ["wp_template", "attachment", "wp_block", "post_format", "product_type", "product_visibility", "product_shipping_class"];
-	const typefilter = ["wp_template", "attachment", "wp_block", "product_type", "product_visibility", "product_shipping_class"];
+	const typefilter = ["wp_template", "attachment", "wp_block", "post_format", "product_type", "product_visibility", "product_shipping_class"];
 
 	// Post Type
 	useEffect(() => {

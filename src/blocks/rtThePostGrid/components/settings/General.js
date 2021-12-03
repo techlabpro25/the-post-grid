@@ -72,14 +72,14 @@ function General(props) {
                 } }
             />
 
-            <ToggleControl
-                label={__( "Tag", "the-post-grid")}
-                checked={ general.tag }
-                onChange={ (val) => {
-                    useHastag( ( state ) => ! state );
-                    props.attr.setAttributes({general: {...general, "tag": val}})
-                } }
-            />
+            {/*<ToggleControl*/}
+            {/*    label={__( "Tag", "the-post-grid")}*/}
+            {/*    checked={ general.tag }*/}
+            {/*    onChange={ (val) => {*/}
+            {/*        useHastag( ( state ) => ! state );*/}
+            {/*        props.attr.setAttributes({general: {...general, "tag": val}})*/}
+            {/*    } }*/}
+            {/*/>*/}
 
             <ToggleControl
                 label={__( "Comment Count", "the-post-grid")}

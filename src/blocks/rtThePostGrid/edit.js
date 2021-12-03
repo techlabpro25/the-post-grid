@@ -104,7 +104,7 @@ export default function Edit(props) {
                 setNewOffset(0)
 
             } else {
-                if (query.pageindex == 0) {
+                if (query.pageindex == 1) {
                     setNewOffset(0)
                 } else {
                     setNewOffset((post_per_page * query.pageindex) - post_per_page)
@@ -153,11 +153,13 @@ export default function Edit(props) {
         var id = url.searchParams.get("post");
 
         apiFetch({path: '/rt/v1/post_title?id=' + id}).then((data) => {
-            const pluginPath = data.path + "/the_post_grid/images/";
+            const pluginPath = data.path + "/the-post-grid/images/";
             setAttributes({heading_title: data.title})
             setAttributes({plugin_path: pluginPath})
         });
     }, [])
+
+
 
     useEffect(() => {
 
@@ -172,6 +174,10 @@ export default function Edit(props) {
     useEffect(()=>{
         setPageindex(query.pageindex)
     }, [query.pageindex])
+
+    useEffect(()=>{
+        setPageindex(1)
+    },[])
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
 

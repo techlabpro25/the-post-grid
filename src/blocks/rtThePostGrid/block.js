@@ -3,7 +3,7 @@ const {registerBlockType} = wp.blocks;
 import attributes from "./attributes"
 import edit from "./edit"
 
-registerBlockType("rt-radius-blocks/thepostgrid", {
+registerBlockType("rt-tpg/thepostgrid", {
     title: __("The Post Grid", "the-post-grid"),
     keywords: [
         __("Posts", "the-post-grid"),

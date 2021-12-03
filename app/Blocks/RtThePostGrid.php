@@ -6,7 +6,7 @@ use RT\RadiusBlocks\Abstracts\Block;
 
 class RtThePostGrid extends Block
 {
-	protected $name = 'rt-radius-blocks/thepostgrid';
+	protected $name = 'rt-tpg/thepostgrid';
 
 	protected $attributes = [
         'layout'=>[
@@ -189,7 +189,7 @@ class RtThePostGrid extends Block
 		wp_enqueue_script(RT_RADIUS_BLOCKS_SLUG . '-frontend-js');
 		//        }
 		ob_start(); ?>
-        <div class="rt-radius-blocks-ph rt-thepostgrid">
+        <div class="rt-tpg-ph rt-thepostgrid">
             <pre style="display: none;"><?php echo wp_json_encode($_attributes) ?></pre>
         </div>
 <?php return ob_get_clean();

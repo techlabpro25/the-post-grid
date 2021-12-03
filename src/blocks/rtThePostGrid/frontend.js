@@ -65,7 +65,6 @@ const RtThePostGrid = (props) => {
         });
     }, [query, pagination, pageindex]);
 
-
     return (
         <div className="rt-thepostgrid-frontend">
             {
@@ -117,5 +116,5 @@ const divsToUpdate = document.querySelectorAll(".rt-thepostgrid")
 divsToUpdate.forEach(div => {
     const data = JSON.parse(div.querySelector("pre").innerText)
     render(<RtThePostGrid {...data} />, div)
-    div.classList.remove("rt-radius-blocks-ph")
+    div.classList.remove("rt-tpg-ph")
 })
