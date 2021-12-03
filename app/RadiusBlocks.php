@@ -8,6 +8,7 @@ use RT\RadiusBlocks\Helpers\Fns;
 use RT\RadiusBlocks\API\All_Post;
 use RT\RadiusBlocks\API\Get_Terms;
 use RT\RadiusBlocks\API\Get_Title;
+use RT\RadiusBlocks\API\Isotope_Terms;
 use RT\RadiusBlocks\Abstracts\Block;
 use RT\RadiusBlocks\Helpers\Installer;
 use RT\RadiusBlocks\API\Get_Categories;
@@ -36,6 +37,7 @@ final class RadiusBlocks{
 		new Get_Terms();
 		new All_Post();
 		new Get_Title();
+		new Isotope_Terms();
 	}
 
 	/**

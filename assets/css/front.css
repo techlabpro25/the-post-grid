@@ -2282,6 +2282,7 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 
 .pagination {
   text-align: center;
+  margin-top: 50px;
 }
 
 .pagination .pagination_number {

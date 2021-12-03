@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "package") {
 			"index.php",
 			"README.md",
 			"uninstall.php",
-			`radius-blocks.php`,
+			`the-post-grid.php`,
 		];
 		fs.ensureDir(copyTo, function (err) {
 			if (err) return console.error(err);

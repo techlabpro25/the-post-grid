@@ -73,10 +73,11 @@ export const Isotope1 = (props) =>{
 
     // Get Category
     useEffect(() => {
-        apiFetch({ path: "/rt/v1/categories/category" }).then((category) => {
+        apiFetch({ path: "/rt/v1/isotope_terms?post_type=product" }).then((terms) => {
             setTerm_cat(
-                category.map((item_key) => {
+                terms.map((item_key) => {
                     return {
+                        id: item_key.id,
                         label: item_key.name,
                         value: item_key.slug,
                     };
@@ -84,6 +85,7 @@ export const Isotope1 = (props) =>{
             );
         });
     }, []);
+
 
     return(
         <>
