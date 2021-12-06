@@ -23,7 +23,7 @@ const attributes = {
 			author_bool: false,
 			author: [],
 			status_bool: false,
-			status: ["publish"],
+			status: [],
 			keyword_bool: false,
 			keyword: "",
 			filter: true,

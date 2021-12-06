@@ -11,6 +11,7 @@ import {
 import { useState, useEffect } from "@wordpress/element";
 import apiFetch from "@wordpress/api-fetch";
 import $ from "jquery";
+import Select from "react-select";
 
 const Query = (props) => {
 	const {__} = wp.i18n;
@@ -98,6 +99,7 @@ const Query = (props) => {
 			value: "any",
 		},
 	];
+
 
 	const typefilter = ["wp_template", "attachment", "wp_block", "post_format", "product_type", "product_visibility", "product_shipping_class"];
 
@@ -339,12 +341,14 @@ const Query = (props) => {
 
 				return(
 					<div className="tax_second_child">
-						<SelectControl
-							label={__( (taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1)), "the-post-grid")}
-							value={query.tax_term[taxonomy]?.data || []}
+
+						<Select
+							className={"rt-react-select2"}
 							options={query.tax_item?.[taxonomy] || []}
-							multiple={true}
+							value={query.tax_term[taxonomy]?.data || []}
+							isMulti ={true}
 							onChange={(value) => {
+								// console.log(value)
 								const tax_term = { ...query.tax_term };
 								if(tax_term[taxonomy]){
 									tax_term[taxonomy].data = value
@@ -495,19 +499,20 @@ const Query = (props) => {
 			/>
 
 			{query.author_bool ? (
-				<SelectControl
-					label={__( "Author:", "the-post-grid")}
-					value={query.author}
-					multiple={true}
-					options={authors}
-					onChange={(value) =>{
-						$('.pagination_number.active').removeClass("active")
-						$('.pagination_number').first().addClass("active")
-						props.attr.setAttributes({ query: { ...query, author: value, filter: true, pageindex: 1 } })
-					}
-
-					}
-				/>
+				<>
+					<Select
+						className={"rt-react-select2"}
+						options={authors}
+						value={query.author}
+						isMulti ={true}
+						onChange={(value) =>{
+							$('.pagination_number.active').removeClass("active")
+							$('.pagination_number').first().addClass("active")
+							props.attr.setAttributes({ query: { ...query, author: value, filter: true, pageindex: 1 } })
+						}
+						}
+					/>
+				</>
 			) : (
 				""
 			)}
@@ -528,19 +533,22 @@ const Query = (props) => {
 			/>
 
 			{query.status_bool ? (
-				<SelectControl
-					label={__( "Status Type:", "the-post-grid")}
-					value={query.status}
-					multiple={true}
-					options={publish_type}
-					onChange={(value) =>{
-						$('.pagination_number.active').removeClass("active")
-						$('.pagination_number').first().addClass("active")
-						props.attr.setAttributes({ query: { ...query, status: value, filter: true, pageindex: 1 } })
-					}
+				<>
+					<Select
+						className={"rt-react-select2"}
+						options={publish_type}
+						value={query.status}
+						isMulti ={true}
+						onChange={(value) =>{
+							$('.pagination_number.active').removeClass("active")
+							$('.pagination_number').first().addClass("active")
+							props.attr.setAttributes({ query: { ...query, status: value, filter: true, pageindex: 1 } })
+						}
 
-					}
-				/>
+						}
+					/>
+				</>
+
 			) : (
 				""
 			)}

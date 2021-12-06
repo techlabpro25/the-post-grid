@@ -78,12 +78,16 @@ class All_Post{
         if(!empty($terms)){
             if(sizeof($terms) > 0){
                 foreach ($terms as $key => $term){
+                   $term_val = [];
+                   foreach ($term['data'] as $term_value){
+                       array_push($term_val, $term_value['value']);
+                   }
                     $operator = (!empty($term['operator']))? $term['operator']: "IN";
                     if(!empty($term['data'])){
                         $args['tax_query'][]= array(
                           'taxonomy' => esc_html($key),
                           'field' => esc_html('term_id'),
-                          'terms' => $term['data'],
+                          'terms' => $term_val,
                           'operator' => esc_html($operator),
                         );
                     }
@@ -99,8 +103,6 @@ class All_Post{
         $alltaxonomies = get_object_taxonomies($post_type);
 
         $data = [];
-//        print_r($query);
-//        die();
 
         if ($query->found_posts == 0){
             $data['message'] = "No Post Found";

@@ -95,8 +95,18 @@ export default function Edit(props) {
     ]
 
     useEffect(() => {
-        let nawauthor = query.author.toString();
-        let newstatus = query.status.toString();
+        let authors = [];
+        let status = [];
+        query.author.map((i)=>{
+            authors.push(i.value)
+        })
+
+        query.status.map((i)=>{
+            status.push(i.value)
+        })
+
+        let nawauthor = authors.toString();
+        let newstatus = status.toString();
         var post_per_page;
         if (pagination.show) {
             post_per_page = pagination.post_per_page

@@ -72,7 +72,7 @@ const Layout1 = (props) => {
 		txt.innerHTML = excerpt;
 		return txt.value;
 	}
-	
+
 
 	return (
 		<>
