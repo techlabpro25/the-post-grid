@@ -168,7 +168,7 @@ export const List2 = (props) =>{
 
                             return(
                                 <>
-                                    <div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item rt-grid-item`} data-id={post.id}>
+                                    <div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item`} data-id={post.id}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className="rt-row">
                                                 <div className="rt-col-sm-4 rt-col-xs-12 ">
@@ -251,7 +251,7 @@ export const List2 = (props) =>{
                                                         }
 
                                                         {
-                                                            (meta.position == "between") ? (
+                                                            (meta.position == "between" || meta.position == "default") ? (
                                                                 <MetaStyle_align css={meta_style} className="post-meta-user  ">
                                                                     {
                                                                         general.author ? (

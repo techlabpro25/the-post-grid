@@ -40,14 +40,14 @@ const {InspectorControls} = wp.blockEditor
 const {useState, useEffect} = wp.element;
 
 export default function Edit(props) {
-    const {attributes, setAttributes} = props;
+    const {attributes, setAttributes, } = props;
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const [paginationNumber, setPaginationNumber] = useState(0);
     const [pageindex, setPageindex] = useState(1);
     const [message, setMessage] = useState("");
     const [newOffset, setNewOffset] = useState(0);
-    const {query, general, parent_class, primary_color, heading, pagination} = attributes
+    const {query, general, parent_class, primary_color, heading_title, pagination} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -154,6 +154,7 @@ export default function Edit(props) {
                 setPaginationNumber(Math.ceil(posts?.[0]?.total_post / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
             }
             setIsloading(false);
+            // setAttributes({query: {...query, 'query_loader':false}})
         });
     }, [query, pagination, newOffset, pageindex]);
 
@@ -164,7 +165,9 @@ export default function Edit(props) {
 
         apiFetch({path: '/rt/v1/post_title?id=' + id}).then((data) => {
             const pluginPath = data.path + "/the-post-grid/images/";
-            setAttributes({heading_title: data.title})
+            if(heading_title.length == 0){
+                setAttributes({heading_title: data.title})
+            }
             setAttributes({plugin_path: pluginPath})
         });
     }, [])
@@ -188,6 +191,8 @@ export default function Edit(props) {
     useEffect(()=>{
         setPageindex(1)
     },[])
+
+    
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}
 

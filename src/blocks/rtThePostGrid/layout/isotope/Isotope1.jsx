@@ -203,7 +203,7 @@ export const Isotope1 = (props) =>{
                             return(
                                 <>
                                     <div
-                                        className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24") ? "2" : columns.tablet} rt-col-xs-${(columns.mobile == "24") ? "2" : columns.mobile} rt-equal-height  rt-grid-item even-grid-item`}>
+                                        className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24") ? "2" : columns.tablet} rt-col-xs-${(columns.mobile == "24") ? "2" : columns.mobile} rt-equal-height even-grid-item`}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding}
                                                       className="rt-holder">
                                             <div className="rt-img-holder">
@@ -282,7 +282,7 @@ export const Isotope1 = (props) =>{
                                                 }
 
                                                 {
-                                                    (meta.position == "between") ? (
+                                                    (meta.position == "between" || meta.position == "default") ? (
                                                         <MetaStyle_align css={meta_style} className="post-meta-user  ">
                                                             {
                                                                 general.author ? (

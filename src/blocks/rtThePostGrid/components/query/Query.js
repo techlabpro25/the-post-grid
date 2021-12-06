@@ -341,7 +341,7 @@ const Query = (props) => {
 
 				return(
 					<div className="tax_second_child">
-
+						<Text className={"title"}>{(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))}:</Text>
 						<Select
 							className={"rt-react-select2"}
 							options={query.tax_item?.[taxonomy] || []}

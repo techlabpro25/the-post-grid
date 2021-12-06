@@ -28,7 +28,8 @@ const attributes = {
 			keyword: "",
 			filter: true,
 			tax_item: {},
-			pageindex: 1
+			pageindex: 1,
+			query_loader: true
 		},
 	},
 	columns: {
@@ -161,7 +162,7 @@ const attributes = {
 	meta: {
 		type: "object",
 		default: {
-			position: "between",
+			position: "default",
 			icon: true,
 			seperator: "",
 		},

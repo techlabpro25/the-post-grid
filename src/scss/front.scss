@@ -2438,8 +2438,10 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
   }
 
 .pagination {
-    text-align: center;
+    text-align: center !important;
     margin-top: 50px;
+    margin-bottom: 50px;
+    display: block !important;
 }
 
 .pagination .pagination_number {

@@ -10,9 +10,15 @@ import {useState} from '@wordpress/element';
 
 function Heading(props) {
     const {__} = wp.i18n;
-    const {heading, heading_style} = props.attr.attributes
+    const {heading, heading_style, heading_title} = props.attr.attributes
     return (
         <PanelBody title={__( "Block Heading", "the-post-grid")} initialOpen={true}>
+            <TextControl
+                label={__( "Add Heading:", "the-post-grid")}
+                value={ heading_title }
+                onChange={ (val) => props.attr.setAttributes({heading_title: val}) }
+            />
+
             <SelectControl
                 label={__( "Tag:", "the-post-grid")}
                 value={ heading["tag"] }

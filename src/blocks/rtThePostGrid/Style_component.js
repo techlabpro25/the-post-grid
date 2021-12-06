@@ -78,13 +78,14 @@ export const Head_title = styled.div`
     padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '15px'} !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
 	background-color: ${props => props.css['background-color']} !important;
+	background-color: ${props => ((props.css['background-color'] == "transparent")?((props.head_sty.style != 1)?"#1e73be":"transparent"): props.css['background-color'])} !important;
 	:before{
 	    background-color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	}
 	:after{
-	    border-color: ${props => (props.css != undefined)? props.css['background-color']: "#1e73be"} transparent !important;
+	    border-color: ${props => (props.css != undefined)? ((props.css['background-color'] == "transparent")?((props.head_sty.style != 1)?"#1e73be":"transparent"): props.css['background-color']): "#1e73be"} transparent !important;
 	}
-	
+
 `;
 
 export const Head_color = styled.div`

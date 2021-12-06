@@ -84,7 +84,7 @@ const Layout1 = (props) => {
 							{
 								(heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line line-left"></Head_border_style1>) : ("")
 							}
-							<Head_title css={heading_style} primary={primary_color} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widget-heading">
+							<Head_title css={heading_style} head_sty={heading} primary={primary_color} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widget-heading">
 								<Head_color as={(heading.link.length > 0)? 'a': 'span'} css={heading_style} primary={primary_color} href={heading.link}>{heading_title}</Head_color>
 							</Head_title>
 							{
@@ -128,7 +128,7 @@ const Layout1 = (props) => {
 
 							return (
 								<>
-									<div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height  rt-grid-item even-grid-item`}>
+									<div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item`}>
 										<Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
 											<div className="rt-img-holder">
 												{
@@ -212,7 +212,7 @@ const Layout1 = (props) => {
 												}
 
 												{
-													(meta.position == "between") ? (
+													(meta.position == "between" || meta.position == "default") ? (
 														<MetaStyle_align css={meta_style} className="post-meta-user  ">
 															{
 																general.author ? (

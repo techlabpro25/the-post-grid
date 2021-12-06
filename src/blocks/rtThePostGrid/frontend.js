@@ -3,7 +3,7 @@ import RenderView from "./renderView";
 const {render, useState, useEffect} = wp.element;
 import apiFetch from '@wordpress/api-fetch';
 import $ from "jquery";
-
+const {__} = wp.i18n;
 const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
@@ -14,8 +14,18 @@ const RtThePostGrid = (props) => {
     const [loadingindex, setLoadingindex] = useState(1);
 
     useEffect(() => {
-        let nawauthor = query?.author?.toString();
-        let newstatus = query?.status?.toString();
+        let authors = [];
+        let status = [];
+        query.author.map((i)=>{
+            authors.push(i.value)
+        })
+
+        query.status.map((i)=>{
+            status.push(i.value)
+        })
+
+        let nawauthor = authors.toString();
+        let newstatus = status.toString();
         $(document).on('click', '.pagination .pagination_number', function (){
             setPageindex(parseInt($(this).attr('data-value')))
             $('.pagination .pagination_number').removeClass('active')
@@ -52,8 +62,9 @@ const RtThePostGrid = (props) => {
                 relation: query.relation
             }
         }).then((posts) => {
-            if(posts.length == 0){
-                setMessage("Sorry! No Post Found.")
+            console.log(posts)
+            if('message' in posts){
+                setMessage(__("Sorry! No Post Found.", "the-post-grid"))
             }else{
                 setMessage("")
                 setData(posts);

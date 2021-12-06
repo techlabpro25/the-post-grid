@@ -103,7 +103,7 @@ class RtThePostGrid extends Block
             'icon' => true
         ],
         'meta' =>[
-            'position' => 'between',
+            'position' => 'default',
             'icon' => true,
             'seperator' => ''
         ],

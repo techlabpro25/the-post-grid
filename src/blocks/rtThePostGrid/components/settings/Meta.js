@@ -13,6 +13,10 @@ function Meta(props) {
 
     const position = [
         {
+          label: __("Default", "the-post-grid") ,
+          value: "default"
+        },
+        {
             label: __( "Above Title", "the-post-grid"),
             value: "above"
         },
