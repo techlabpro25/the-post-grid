@@ -122,7 +122,7 @@ const attributes = {
 		type: "object",
 		default: {
 			limit: 20,
-			type: "full",
+			type: "word",
 			more_text: "...",
 		},
 	},

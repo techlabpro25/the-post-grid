@@ -99,7 +99,8 @@ class All_Post{
         $alltaxonomies = get_object_taxonomies($post_type);
 
         $data = [];
-
+//        print_r($query);
+//        die();
 
         if ($query->found_posts == 0){
             $data['message'] = "No Post Found";

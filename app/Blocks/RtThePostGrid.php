@@ -94,7 +94,7 @@ class RtThePostGrid extends Block
         'content_padding' =>[],
         'excerpt'=>[
             'limit' => 20,
-            'type' => 'full',
+            'type' => 'word',
             'more_text' => '...',
         ],
         'category' =>[

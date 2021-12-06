@@ -25,8 +25,8 @@ function Category(props) {
                 value={ category.style }
                 options={ [
                     { label: __( 'Style 1', "the-post-grid"), value: 'style1' },
-                    { label: __( 'Style 1', "the-post-grid"), value: 'style2' },
-                    { label: __( 'Style 1', "the-post-grid"), value: 'style3' },
+                    { label: __( 'Style 2', "the-post-grid"), value: 'style2' },
+                    { label: __( 'Style 3', "the-post-grid"), value: 'style3' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {category: {...category, "style": value} }) }
             />

@@ -10,6 +10,16 @@ function Excerpt(props) {
     const { excerpt } = props.attr.attributes
     return (
         <PanelBody title={__( "Excerpt", "the-post-grid")} initialOpen={false}>
+            <RadioControl
+                label={__( "Limit Type", "the-post-grid")}
+                selected={ excerpt.type }
+                options={ [
+                    { label: __( 'Character', "the-post-grid"), value: 'char' },
+                    { label: __( 'Word', "the-post-grid"), value: 'word' },
+                ] }
+                onChange={ ( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "type": value} } ) }
+            />
+
             <NumberControl
                 label={__( "Excerpt Limit", "the-post-grid")}
                 value={ excerpt.limit }
@@ -18,16 +28,6 @@ function Excerpt(props) {
                 onChange={( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "limit": value} } )}
             />
 
-            <RadioControl
-                label={__( "Limit Type", "the-post-grid")}
-                selected={ excerpt.type }
-                options={ [
-                    { label: __( 'Character', "the-post-grid"), value: 'char' },
-                    { label: __( 'Word', "the-post-grid"), value: 'word' },
-                    { label: __( 'Full Content', "the-post-grid"), value: 'full' },
-                ] }
-                onChange={ ( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "type": value} } ) }
-            />
             <TextControl
                 label={__( "Excerpt More Text", "the-post-grid")}
                 value={excerpt.more_text}

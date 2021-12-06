@@ -31,14 +31,6 @@ function Title(props) {
                 onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }
             />
 
-            <NumberControl
-                label={__( "Title Limit:", "the-post-grid")}
-                value={ title.word_limit }
-                min={1}
-                step={1}
-                onChange={( value ) => props.attr.setAttributes( {title: {...title, "word_limit": value} } )}
-            />
-
             <RadioControl
                 label={__( "Limit Type", "the-post-grid")}
                 selected={ title.type }
@@ -48,6 +40,14 @@ function Title(props) {
                     { label: __( 'Full Content', "the-post-grid"), value: 'full' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "type": value} } ) }
+            />
+
+            <NumberControl
+                label={__( "Title Limit:", "the-post-grid")}
+                value={ title.word_limit }
+                min={1}
+                step={1}
+                onChange={( value ) => props.attr.setAttributes( {title: {...title, "word_limit": value} } )}
             />
         
         </PanelBody>

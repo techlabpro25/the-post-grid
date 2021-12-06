@@ -86,6 +86,11 @@ export const Isotope1 = (props) =>{
         });
     }, []);
 
+    const htmltotextconvert = (excerpt) =>{
+        var txt = document.createElement("textarea");
+        txt.innerHTML = excerpt;
+        return txt.value;
+    }
 
     return(
         <>
@@ -327,7 +332,7 @@ export const Isotope1 = (props) =>{
                                                     general.excerpt ? (
                                                         <Excerpts css={excerpt_style} primary={primary_color}
                                                                   className="tpg-excerpt">
-                                                            {postexcerpt}
+                                                            {htmltotextconvert(postexcerpt)}
                                                         </Excerpts>
                                                     ) : ("")
                                                 }

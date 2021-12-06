@@ -67,6 +67,13 @@ const Layout1 = (props) => {
 		Title = 'h' + title.tag
 	}
 
+	const htmltotextconvert = (excerpt) =>{
+		var txt = document.createElement("textarea");
+		txt.innerHTML = excerpt;
+		return txt.value;
+	}
+	
+
 	return (
 		<>
 			<div className={`${parent_class}`}>
@@ -256,7 +263,7 @@ const Layout1 = (props) => {
 												{
 													general.excerpt ? (
 														<Excerpts css={excerpt_style} primary={primary_color} className="tpg-excerpt">
-															{postexcerpt}
+															{htmltotextconvert(postexcerpt)}
 														</Excerpts>
 													) : ("")
 												}
