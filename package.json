@@ -1,8 +1,11 @@
 {
-	"name": "wp-blocks",
+	"name": "the-post-grid",
 	"version": "1.0.0",
-	"description": "",
+	"description": "=== The Post Grid ===",
 	"main": "index.js",
+	"directories": {
+		"lib": "lib"
+	},
 	"scripts": {
 		"dev": "npm run development",
 		"development": "mix",
@@ -38,7 +41,8 @@
 		"sass": "^1.43.4",
 		"sass-loader": "^12.1.0",
 		"wp-pot": "^1.9.9",
-		"cross-env": "^7.0.3"
+		"cross-env": "^7.0.3",
+		"postcss": "^8.3.0"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -47,6 +51,7 @@
 		"@wordpress/api-fetch": "^5.2.4",
 		"jquery": "^3.6.0",
 		"react-select": "^5.2.1",
-		"styled-components": "^5.3.3"
+		"styled-components": "^5.3.3",
+		"select2": "^4.0.13"
 	}
 }

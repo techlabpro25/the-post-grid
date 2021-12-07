@@ -25,6 +25,9 @@ if (process.env.NODE_ENV === "package") {
 			"index.php",
 			"README.md",
 			"uninstall.php",
+			'lib',
+			'index.html',
+			'README.txt',
 			`the-post-grid.php`,
 		];
 		fs.ensureDir(copyTo, function (err) {
@@ -77,13 +80,14 @@ if (
 		processCssUrls: false,
 	});
 	mix
+		.block('tpg/blocks.js', 'scripts')
 		.block("src/blocks.js", "dist/blocks.build.js", {})
 		.block("src/frontend.js", "dist/frontend.js");
 
 	mix
-		.js(`src/admin.js`, "assets/js/admin.js")
+		.js(`src/admin.js`, "assets/js/admin-block.js")
 		.js(`src/deactivator.js`, "assets/js/deactivator.build.js")
-		.sass("src/scss/admin.scss", "assets/css/admin.css")
+		.sass("src/scss/block-admin.scss", "assets/css/block-admin.css")
 		.sass("src/scss/front.scss", "assets/css/front.css");
 
 }

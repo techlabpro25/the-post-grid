@@ -45,7 +45,7 @@ class AssetsController
     }
 
     public function admin_assets() {
-        wp_enqueue_style($this->plugin_name, radiusBlocks()->get_assets_uri('css/admin.css'), [], $this->version);
+        wp_enqueue_style($this->plugin_name, radiusBlocks()->get_assets_uri('css/block-admin.css'), [], $this->version);
         wp_enqueue_style("rtrb_common_front_css", radiusBlocks()->get_assets_uri('css/front.css'), [], $this->version);
         wp_enqueue_script($this->plugin_name, radiusBlocks()->get_assets_uri('js/admin.js'), ['jquery'], $this->version, false);
     }
