@@ -16,17 +16,22 @@ function Excerpt(props) {
                 options={ [
                     { label: __( 'Character', "the-post-grid"), value: 'char' },
                     { label: __( 'Word', "the-post-grid"), value: 'word' },
+                    { label: __( 'Full content', "the-post-grid"), value: 'full' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "type": value} } ) }
             />
+            {
+                excerpt.type != "full"?(
+                    <NumberControl
+                        label={__( "Excerpt Limit", "the-post-grid")}
+                        value={ excerpt.limit }
+                        min={1}
+                        step={1}
+                        onChange={( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "limit": value} } )}
+                    />
+                ):("")
+            }
 
-            <NumberControl
-                label={__( "Excerpt Limit", "the-post-grid")}
-                value={ excerpt.limit }
-                min={1}
-                step={1}
-                onChange={( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "limit": value} } )}
-            />
 
             <TextControl
                 label={__( "Excerpt More Text", "the-post-grid")}
