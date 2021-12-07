@@ -63,17 +63,19 @@ function Pagination(props) {
                             })}}
                         />
 
-                        <SelectControl
-                            label={__( "Pagination Type:", "the-post-grid")}
-                            options={pagination_type}
-                            value ={pagination.pagination_type}
-                            onChange={(val)=>props.attr.setAttributes( {
-                                pagination: {
-                                    ...pagination,
-                                    "pagination_type": val
-                                }
-                            })}
-                        />
+                        {/*Pro Feature*/}
+                        
+                        {/*<SelectControl*/}
+                        {/*    label={__( "Pagination Type:", "the-post-grid")}*/}
+                        {/*    options={pagination_type}*/}
+                        {/*    value ={pagination.pagination_type}*/}
+                        {/*    onChange={(val)=>props.attr.setAttributes( {*/}
+                        {/*        pagination: {*/}
+                        {/*            ...pagination,*/}
+                        {/*            "pagination_type": val*/}
+                        {/*        }*/}
+                        {/*    })}*/}
+                        {/*/>*/}
                     </>
                 ):("")
             }

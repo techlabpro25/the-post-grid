@@ -38,13 +38,14 @@ function Title(props) {
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "tag": value} } ) }
             />
-            
-            <SelectControl
-                label={__( "Title Position:", "the-post-grid")}
-                value={ title.position }
-                options={ title_position }
-                onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }
-            />
+            {/*Pro Feature*/}
+
+            {/*<SelectControl*/}
+            {/*    label={__( "Title Position:", "the-post-grid")}*/}
+            {/*    value={ title.position }*/}
+            {/*    options={ title_position }*/}
+            {/*    onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }*/}
+            {/*/>*/}
 
             <RadioControl
                 label={__( "Limit Type", "the-post-grid")}
