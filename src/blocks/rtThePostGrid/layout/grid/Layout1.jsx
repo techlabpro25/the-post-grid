@@ -77,7 +77,7 @@ const Layout1 = (props) => {
 		<>
 			<div className={`${parent_class}`}>
 				{
-					general.heading?(
+					(general.heading && (heading_title.length > 0))?(
 						<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
 
 							{
@@ -115,6 +115,8 @@ const Layout1 = (props) => {
 							if (excerpt.type == "word") {
 								postexcerpt = trimbyword(postexcerpt, excerpt.limit, excerpt.more_text)
 							}
+
+
 
 							// Title
 							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.terget, link: post.post_link, post_title }

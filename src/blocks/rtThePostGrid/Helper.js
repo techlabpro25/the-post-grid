@@ -16,3 +16,4 @@ export const trimbyword = (textToLimit, wordLimit, suffix) =>{
     }else 
         return textToLimit;
 }
+

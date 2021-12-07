@@ -172,7 +172,6 @@ export default function Edit(props) {
         });
     }, [])
 
-    console.log(query.filter)
 
     useEffect(() => {
 

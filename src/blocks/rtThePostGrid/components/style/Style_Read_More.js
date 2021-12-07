@@ -1,6 +1,9 @@
 import {
-    PanelBody, 
+    PanelBody,
     __experimentalText as Text,
+    __experimentalRadio as Radio,
+    __experimentalRadioGroup as RadioGroup,
+    __experimentalNumberControl as NumberControl,
     ColorPalette,
     Popover,
     Button,
@@ -83,12 +86,30 @@ function Read_More(props) {
             <Text>
                 {__( "Active Color:", "the-post-grid")}
             </Text>
+
             <ColorPalette
                 colors={ props.attr.colors }
                 value={ button_style.active_color }
                 onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "active_color": color}} ) }
             />
-            
+
+            <NumberControl
+                label={__( "Border Radius", "the-post-grid")}
+                value={button["border-radius"]}
+                onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "border-radius": value} }) }
+            />
+
+            <Text>
+                {__( "Alignment:", "the-post-grid")}
+            </Text>
+            <RadioGroup defaultChecked="left"
+                onChange={ (val) =>props.attr.setAttributes({button: {...button, "text-align": val}}) }
+                checked={ button["text-align"] }
+            >
+                <Radio value="Left"></Radio>
+                <Radio value="Center"></Radio>
+                <Radio value="Right"></Radio>
+            </RadioGroup>
         
         </PanelBody>
     );

@@ -110,7 +110,7 @@ const attributes = {
 			tag: "3",
 			position: "",
 			word_limit: 100,
-			type: "full",
+			type: "",
 			more_text: "...",
 		},
 	},

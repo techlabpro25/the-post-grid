@@ -26,8 +26,8 @@ class RtThePostGrid extends Block
         'title'=> [
             'tag'=> "3",
             'position'=> "",
-            'word_limit'=> 100,
-            'type'=> "full",
+            'word_limit'=> 10,
+            'type'=> "",
             'more_text'=> "...",
         ],
 		'title_style' => [

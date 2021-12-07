@@ -8,6 +8,21 @@ import {
 function Title(props) {
     const {__} = wp.i18n;
     const {title, title_style} = props.attr.attributes
+
+    const title_position = [
+        {
+            label: __("Default", "the-post-grid"),
+            value: "default"
+        },
+        {
+            label: __("Above Image", "the-post-grid"),
+            value: "above-image"
+        },
+        {
+            label: __("Below Image", "the-post-grid"),
+            value: "below-image"
+        }
+    ]
     return (
         <PanelBody title={__( "Title", "the-post-grid")} initialOpen={false}>
             <SelectControl
@@ -27,7 +42,7 @@ function Title(props) {
             <SelectControl
                 label={__( "Title Position:", "the-post-grid")}
                 value={ title.position }
-                options={ props.attr.matrix_position }
+                options={ title_position }
                 onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }
             />
 
@@ -37,18 +52,22 @@ function Title(props) {
                 options={ [
                     { label: __( 'Character', "the-post-grid"), value: 'char' },
                     { label: __( 'Word', "the-post-grid"), value: 'word' },
-                    { label: __( 'Full Content', "the-post-grid"), value: 'full' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "type": value} } ) }
             />
 
-            <NumberControl
-                label={__( "Title Limit:", "the-post-grid")}
-                value={ title.word_limit }
-                min={1}
-                step={1}
-                onChange={( value ) => props.attr.setAttributes( {title: {...title, "word_limit": value} } )}
-            />
+            {
+                title.type != ""?(
+                    <NumberControl
+                        label={__( "Title Limit:", "the-post-grid")}
+                        value={ title.word_limit }
+                        min={1}
+                        step={1}
+                        onChange={( value ) => props.attr.setAttributes( {title: {...title, "word_limit": value} } )}
+                    />
+                ):("")
+            }
+
         
         </PanelBody>
     );

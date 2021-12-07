@@ -13,10 +13,6 @@ function Pagination(props) {
     const {pagination, query} = props.attr.attributes
     const pagination_type = [
         {
-            label: __( "Default", "the-post-grid"),
-            value: ""
-        },
-        {
             label: __( "Pagination", "the-post-grid"),
             value: "pagination"
         },

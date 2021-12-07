@@ -15,6 +15,12 @@ class All_Post{
         ));
     }
 
+//    public static function excerpt_content($content){
+//        $content = apply_filters( 'the_content', $content );
+//        $content = str_replace( ']]>', ']]&gt;', $content );
+//        return $content;
+//    }
+
     public function get_all_posts($request){
 
         $terms = $request['terms'];
@@ -131,10 +137,11 @@ class All_Post{
                         $items[]=$tempterms;
                     }
 
+
                     $data[]=[
                         'id' => $id,
                         "title" => esc_html(get_the_title()),
-                        "excerpt" => esc_html(get_the_excerpt()),
+                        "excerpt" => get_the_excerpt(),
                         "comment_count" => esc_html(wp_count_comments($id)->all),
                         "post_date" => esc_html(get_the_date('M d, y')),
                         "image_url" => esc_url_raw(get_the_post_thumbnail_url(null, 'full')),
@@ -152,7 +159,6 @@ class All_Post{
             wp_reset_postdata();
         }
 
-//die();
         return rest_ensure_response($data);
     }
 }
