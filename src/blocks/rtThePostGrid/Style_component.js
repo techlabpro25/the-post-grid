@@ -109,7 +109,7 @@ export const Content_wrap = styled.div`
 `;
 
 export const Content_padding = styled.div`
-	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '5px'} !important;
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '15px'} !important;
 `;
 
 export const ImgAnimation = styled.img`

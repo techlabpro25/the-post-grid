@@ -14,7 +14,7 @@ function Heading(props) {
     return (
         <PanelBody title={__( "Block Heading", "the-post-grid")} initialOpen={true}>
             <TextControl
-                label={__( "Add Heading:", "the-post-grid")}
+                label={__( "Heading:", "the-post-grid")}
                 value={ heading_title }
                 onChange={ (val) => props.attr.setAttributes({heading_title: val}) }
             />

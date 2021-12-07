@@ -62,7 +62,6 @@ const RtThePostGrid = (props) => {
                 relation: query.relation
             }
         }).then((posts) => {
-            console.log(posts)
             if('message' in posts){
                 setMessage(__("Sorry! No Post Found.", "the-post-grid"))
             }else{

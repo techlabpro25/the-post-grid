@@ -28,8 +28,7 @@ const attributes = {
 			keyword: "",
 			filter: true,
 			tax_item: {},
-			pageindex: 1,
-			query_loader: true
+			pageindex: 1
 		},
 	},
 	columns: {
@@ -65,7 +64,6 @@ const attributes = {
 			category: true,
 			author: true,
 			post_date: true,
-			tag: true,
 			comment_count: true,
 			see_more: true,
 		},
@@ -88,13 +86,19 @@ const attributes = {
 			["text-align"]: "left",
 			color: "",
 			["background-color"]: "transparent",
-			["border-color"]: "gray",
-			["border-width"]: "1px",
-			["border-style"]: "solid",
+			["border-color"]: "",
+			["border-width"]: "",
+			["border-style"]: "",
 		},
 	},
 	heading_padding_object: {
 		type: "object",
+		default:{
+			top: "5px",
+			right: "15px",
+			bottom: "5px",
+			left: "15px",
+		}
 	},
 	heading_margin_object: {
 		type: "object",
@@ -102,7 +106,7 @@ const attributes = {
 	title: {
 		type: "object",
 		default: {
-			tag: "2",
+			tag: "3",
 			position: "",
 			word_limit: 100,
 			type: "full",
@@ -198,10 +202,9 @@ const attributes = {
 		type: "object",
 		default: {
 			show_hide: true,
-			size: "150",
-			shape: "normal",
-			animation: 1,
-			["border-radius"]: "",
+			size: "1024",
+			animation: 1.1,
+			["border-radius"]: "0",
 		},
 	},
 	parent_class: {
@@ -210,16 +213,16 @@ const attributes = {
 	},
 	primary_color: {
 		type: "string",
-		default: "#000",
+		default: "",
 	},
 	content_wrap: {
 		type: "object",
 		default: {
-			["background-color"]: "transparent",
-			["box-shadow-color"]: "#fff",
+			["background-color"]: "#fff",
+			["box-shadow-color"]: "transparent",
 			radius: "",
-			["border-color"]: "gray",
-			["border-width"]: "0px"
+			["border-color"]: "#d9d9d9",
+			["border-width"]: "1px"
 		},
 	},
 	constent_box_padding: {
@@ -227,6 +230,12 @@ const attributes = {
 	},
 	content_padding: {
 		type: "object",
+		default:{
+			top : '15px',
+			right : '15px',
+			left: '15px',
+			bottom : '15px',
+		}
 	},
 	section: {
 		type: "object",

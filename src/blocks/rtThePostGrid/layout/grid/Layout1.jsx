@@ -73,7 +73,6 @@ const Layout1 = (props) => {
 		return txt.value;
 	}
 
-
 	return (
 		<>
 			<div className={`${parent_class}`}>
@@ -95,7 +94,7 @@ const Layout1 = (props) => {
 					):("")
 				}
 				
-				<div className="rt-container-fluid rt-tpg-container ">
+				<div className="rt-container-fluid rt-tpg-container grid-layout-1">
 					{
 						data.length && data.map((post) => {
 							var postexcerpt = post.excerpt;

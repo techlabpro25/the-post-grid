@@ -2492,3 +2492,20 @@ a, .rt-thepostgrid a{
 .rt-thepostgrid {
     max-width: 100% !important;
 }
+
+.read-more a{
+    padding: 8px 20px;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 1.8;
+    border: 1px solid rgb(203 203 203 / 40%);
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin-top: 0 !important;
+}
+
+.grid-layout-1 .rt-holder {
+    height: 100%;
+}
+
