@@ -114,10 +114,10 @@ export default function Edit(props) {
                 setNewOffset(0)
 
             } else {
-                if (query.pageindex == 1) {
+                if (pageindex == 1) {
                     setNewOffset(0)
                 } else {
-                    setNewOffset((post_per_page * query.pageindex) - post_per_page)
+                    setNewOffset((post_per_page * pageindex) - post_per_page)
                 }
             }
         } else {
@@ -172,7 +172,7 @@ export default function Edit(props) {
         });
     }, [])
 
-
+    console.log(query.filter)
 
     useEffect(() => {
 
