@@ -26,12 +26,12 @@ const RtThePostGrid = (props) => {
 
         let nawauthor = authors.toString();
         let newstatus = status.toString();
-        $(document).on('click', '.pagination .pagination_number', function (){
-            setPageindex(parseInt($(this).attr('data-value')))
-            $('.pagination .pagination_number').removeClass('active')
-            $(this).addClass('active')
-            // setIsloading(true);
-        })
+        // $(document).on('click', '.pagination .pagination_number', function (){
+        //     setPageindex(parseInt($(this).attr('data-value')))
+        //     $('.pagination .pagination_number').removeClass('active')
+        //     $('.pagination .pagination_number.'+pageindex).addClass('active')
+        //     setIsloading(true);
+        // })
         let newOffset = 0;
         let newLimit = 0;
         let paginationLimit = 0;
@@ -71,9 +71,15 @@ const RtThePostGrid = (props) => {
             }
 
             setIsloading(false);
+            $('.pagination .pagination_number.active').removeClass('active')
+            $('.pagination .pagination_number.'+pageindex).addClass('active')
 
         });
     }, [query, pagination, pageindex]);
+
+    useEffect(()=>{
+        setIsloading(true);
+    },[pageindex])
 
     return (
         <div className="rt-thepostgrid-frontend">
@@ -100,13 +106,13 @@ const RtThePostGrid = (props) => {
                                     {Array.from(Array(pagestate), (e, i) => {
                                         if(pagestate > 1){
                                             if(i == 0){
-                                                return <span className={"pagination_number active"}
+                                                return <span className={`pagination_number active ${i+1}`}
                                                              data-value={i+1}
-                                                             key={i} onClick={()=> {setLoadingindex(i+1)}}>{i+1}</span>
+                                                             key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</span>
                                             }else{
-                                                return <span className={"pagination_number"}
+                                                return <span className={`pagination_number ${i+1}`}
                                                              data-value={i+1}
-                                                             key={i} onClick={()=> {setLoadingindex(i+1)}}>{i+1}</span>
+                                                             key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</span>
                                             }
                                         }
                                     })}

@@ -28,7 +28,8 @@ const attributes = {
 			keyword: "",
 			filter: true,
 			tax_item: {},
-			pageindex: 1
+			pageindex: 1,
+			loader: false
 		},
 	},
 	columns: {

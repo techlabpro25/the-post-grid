@@ -192,6 +192,10 @@ export default function Edit(props) {
         setPageindex(1)
     },[])
 
+    useEffect(()=>{
+        setIsloading(true)
+        setAttributes({query: {...query, 'loader':false}})
+    },[query.loader])
     
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}

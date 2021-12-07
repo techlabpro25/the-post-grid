@@ -196,7 +196,8 @@ const Query = (props) => {
 							tax_term:tax_term,
 							tax_item:tax_item,
 							filter: true,
-							pageindex: 1
+							pageindex: 1,
+							loader: true
 					} })
 				}
 				}
@@ -213,7 +214,8 @@ const Query = (props) => {
 						...query,
 							limit: value,
 							filter: true,
-							pageindex: 1
+							pageindex: 1,
+							loader: true
 						} })
 				}
 				}
@@ -233,7 +235,9 @@ const Query = (props) => {
 						...query,
 							include: value,
 							filter: true,
-							pageindex: 1 } })
+							pageindex: 1,
+							loader: true
+					} })
 				}
 
 				}
@@ -246,7 +250,13 @@ const Query = (props) => {
 				onChange={(value) =>{
 					$('.pagination_number.active').removeClass("active")
 					$('.pagination_number').first().addClass("active")
-					props.attr.setAttributes({ query: { ...query, exclude: value, filter: true, pageindex: 1 } })
+					props.attr.setAttributes({ query: {
+						...query,
+							exclude: value,
+							filter: true,
+							pageindex: 1,
+							loader: true
+					} })
 				}
 
 				}
@@ -361,7 +371,13 @@ const Query = (props) => {
 								$('.pagination_number.active').removeClass("active")
 								$('.pagination_number').first().addClass("active")
 								props.attr.setAttributes({
-									query: { ...query, tax_term: tax_term, filter: true, pageindex: 1 },
+									query: {
+										...query,
+										tax_term: tax_term,
+										filter: true,
+										pageindex: 1,
+										loader: true
+									},
 								});
 							}}
 						/>
@@ -384,7 +400,7 @@ const Query = (props) => {
 									$('.pagination_number.active').removeClass("active")
 									$('.pagination_number').first().addClass("active")
 									props.attr.setAttributes({
-										query: { ...query, tax_term: tax_term },
+										query: { ...query, tax_term: tax_term, loader: true },
 									});
 								}
 							}
@@ -411,7 +427,11 @@ const Query = (props) => {
 						onChange={(value) =>{
 							$('.pagination_number.active').removeClass("active")
 							$('.pagination_number').first().addClass("active")
-							props.attr.setAttributes({ query: { ...query, relation: value } })
+							props.attr.setAttributes({ query: {
+								...query,
+									relation: value,
+									loader: true
+							} })
 						}
 
 						}
@@ -454,7 +474,13 @@ const Query = (props) => {
 							$('.pagination_number.active').removeClass("active")
 							$('.pagination_number').first().addClass("active")
 							props.attr.setAttributes({
-								query: { ...query, order_by: value, filter: true, pageindex: 1 },
+								query: {
+									...query,
+									order_by: value,
+									filter: true,
+									pageindex: 1,
+									loader: true
+								},
 							})
 						}
 
@@ -471,7 +497,13 @@ const Query = (props) => {
 						onChange={(value) =>{
 							$('.pagination_number.active').removeClass("active")
 							$('.pagination_number').first().addClass("active")
-							props.attr.setAttributes({ query: { ...query, order: value, filter: true, pageindex: 1 } })
+							props.attr.setAttributes({ query: {
+								...query,
+									order: value,
+									filter: true,
+									pageindex: 1,
+									loader: true
+							} })
 						}
 
 						}
@@ -508,7 +540,13 @@ const Query = (props) => {
 						onChange={(value) =>{
 							$('.pagination_number.active').removeClass("active")
 							$('.pagination_number').first().addClass("active")
-							props.attr.setAttributes({ query: { ...query, author: value, filter: true, pageindex: 1 } })
+							props.attr.setAttributes({ query: {
+								...query,
+									author: value,
+									filter: true,
+									pageindex: 1,
+									loader: true
+							} })
 						}
 						}
 					/>
@@ -526,7 +564,11 @@ const Query = (props) => {
 						if (!value){
 							status = []
 						}
-						props.attr.setAttributes({ query: { ...query, status_bool: value, status: status } })
+						props.attr.setAttributes({ query: {
+							...query,
+								status_bool: value,
+								status: status
+						} })
 					}
 
 				}
@@ -542,7 +584,13 @@ const Query = (props) => {
 						onChange={(value) =>{
 							$('.pagination_number.active').removeClass("active")
 							$('.pagination_number').first().addClass("active")
-							props.attr.setAttributes({ query: { ...query, status: value, filter: true, pageindex: 1 } })
+							props.attr.setAttributes({ query: {
+								...query,
+									status: value,
+									filter: true,
+									pageindex: 1,
+									loader: true
+							} })
 						}
 
 						}
@@ -574,7 +622,13 @@ const Query = (props) => {
 					onChange={(value) =>{
 						$('.pagination_number.active').removeClass("active")
 						$('.pagination_number').first().addClass("active")
-						props.attr.setAttributes({ query: { ...query, keyword: value, filter: true, pageindex: 1 } })
+						props.attr.setAttributes({ query: {
+							...query,
+								keyword: value,
+								filter: true,
+								pageindex: 1,
+								loader: true
+						} })
 					}
 
 					}
