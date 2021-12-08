@@ -212,17 +212,17 @@ export default function Edit(props) {
                             {
                                 name: 'query',
                                 title: 'Query',
-                                className: 'tab-query panel_tab',
+                                className: 'tab-query panel_tab parent_tab',
                             },
                             {
                                 name: 'layout',
                                 title: 'Layout',
-                                className: 'tab-latout panel_tab',
+                                className: 'tab-latout panel_tab parent_tab',
                             },
                             {
                                 name: 'advanced',
                                 title: 'Advanced',
-                                className: 'tab-advanced panel_tab',
+                                className: 'tab-advanced panel_tab parent_tab',
                             }
 
                         ]}
@@ -246,9 +246,6 @@ export default function Edit(props) {
 
                                         <Columns attr={global_attr}/>
 
-                                        {/* Pagination */}
-
-                                        <Pagination attr={global_attr}/>
 
                                         {/* Linking */}
 
@@ -265,17 +262,17 @@ export default function Edit(props) {
                                                 {
                                                     name: 'fields',
                                                     title: __('Fields', "the-post-grid"),
-                                                    className: 'tab-fields panel_tab',
+                                                    className: 'tab-fields panel_tab child_tab',
                                                 },
                                                 {
                                                     name: 'settings',
                                                     title: __('Settings', "the-post-grid"),
-                                                    className: 'tab-settings panel_tab',
+                                                    className: 'tab-settings panel_tab child_tab',
                                                 },
                                                 {
                                                     name: 'style',
                                                     title: __('Style', "the-post-grid"),
-                                                    className: 'tab-style panel_tab',
+                                                    className: 'tab-style panel_tab child_tab',
                                                 },
 
 

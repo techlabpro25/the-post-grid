@@ -7,6 +7,7 @@ import {
 	__experimentalText as Text,
 	CheckboxControl,
 	RadioControl,
+	ToggleControl,
 } from "@wordpress/components";
 import { useState, useEffect } from "@wordpress/element";
 import apiFetch from "@wordpress/api-fetch";
@@ -21,7 +22,8 @@ const Query = (props) => {
 	const [post_term, setPost_term] = useState([]);
 	const [tax_warning, setTax_warning] = useState("");
 	const [authors, setAuthors] = useState([]);
-	const { query } = props.attr.attributes;
+	const [haspagination, useHaspagination] = useState(true)
+	const { query, pagination } = props.attr.attributes;
 
 	const operator = [
 		{
@@ -100,6 +102,24 @@ const Query = (props) => {
 		},
 	];
 
+	const pagination_type = [
+		{
+			label: __( "Pagination", "the-post-grid"),
+			value: "pagination"
+		},
+		{
+			label: __( "Ajax Number Pagination ( Only for Grid )", "the-post-grid"),
+			value: "pagination_ajax"
+		},
+		{
+			label: __( "Load more button (by ajax loading)", "the-post-grid"),
+			value: "load_more"
+		},
+		{
+			label: __( "Load more on scroll (by ajax loading)", "the-post-grid"),
+			value: "load_on_scroll"
+		}
+	]
 
 	const typefilter = ["wp_template", "attachment", "wp_block", "post_format", "product_type", "product_visibility", "product_shipping_class"];
 
@@ -275,6 +295,59 @@ const Query = (props) => {
 				Step={1}
 				value={query.offset}
 			/>
+
+			{/*Pagination Start*/}
+
+			<ToggleControl
+				label={__( "Show Pagination:", "the-post-grid")}
+				checked={ pagination.show }
+				onChange={ (val) => {
+					useHaspagination( ( state ) => ! state );
+					props.attr.setAttributes({pagination: {...pagination, "show": val}})
+				} }
+			/>
+			{
+				pagination.show?(
+					<>
+						<NumberControl
+							label={__( "Display per page:", "the-post-grid")}
+							labelPosition="side"
+							min={1}
+							max={5000}
+							step={1}
+							value={pagination.post_per_page}
+							onChange={val =>{
+								props.attr.setAttributes({
+									pagination: {
+										...pagination,
+										"post_per_page": val
+									},
+									query:{
+										...query,
+										'filter': true
+									}
+								})}}
+						/>
+
+						{/*Pro Feature*/}
+
+						{/*<SelectControl*/}
+						{/*    label={__( "Pagination Type:", "the-post-grid")}*/}
+						{/*    options={pagination_type}*/}
+						{/*    value ={pagination.pagination_type}*/}
+						{/*    onChange={(val)=>props.attr.setAttributes( {*/}
+						{/*        pagination: {*/}
+						{/*            ...pagination,*/}
+						{/*            "pagination_type": val*/}
+						{/*        }*/}
+						{/*    })}*/}
+						{/*/>*/}
+					</>
+				):("")
+			}
+
+			{/*Pagination End*/}
+
 
 			<CheckboxControl
 				label={__( "Taxonomy", "the-post-grid")}

@@ -7,7 +7,8 @@ export const Titlea = styled.a`
 	&:hover{
 	    color: ${props => (props.css.h_color)? props.css.h_color: props.primary} !important;
 	}
-	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""}px !important
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""}px !important;
+	font-family: ${props => (props.css['font-family'])? props.css['font-family'].label+", "+props.css['font-family'].value : ""} !important;
 `;
 
 export const Titletag = styled.div`

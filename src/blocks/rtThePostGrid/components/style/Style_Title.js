@@ -12,6 +12,10 @@ import {
 function Title(props) {
     const {__} = wp.i18n;
     const {title, title_style} = props.attr.attributes
+    const {useState, useEffect} = wp.element;
+    const [googlefont, setGooglefont] = useState([]);
+
+
     return (
         <PanelBody title={__( "Title", "the-post-grid")} initialOpen={false}>
             <Text>
@@ -69,12 +73,14 @@ function Title(props) {
                 onChange={ ( value ) => props.attr.setAttributes( {title_style: {...title_style, "font-weight": value} } ) }
             />
 
+
             <NumberControl
                 label={__('Line Height', 'the-post-grid')}
                 onChange={ (value) =>{props.attr.setAttributes({title_style: {...title_style,"line-height":value}})}}
                 shiftStep={ 1 }
                 value={ title_style['line-height'] }
             />
+
         
         </PanelBody>
     );
