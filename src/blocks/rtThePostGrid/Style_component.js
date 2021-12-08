@@ -7,7 +7,7 @@ export const Titlea = styled.a`
 	&:hover{
 	    color: ${props => (props.css.h_color)? props.css.h_color: props.primary} !important;
 	}
-	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""}px !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 	font-family: ${props => (props.css['font-family'])? props.css['font-family'].label+", "+props.css['font-family'].value : ""} !important;
 `;
 
@@ -20,7 +20,7 @@ export const Excerpts = styled.div`
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	text-align: ${props => props.css['text-align']} !important;
-	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""}px !important
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 `;
 
 export const Cat_style = styled.a`
@@ -30,6 +30,7 @@ export const Cat_style = styled.a`
 	border-radius: ${props => props.css['border-radius']}px !important;
 	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
+	line-height: ${props => (props.meta['line-height'])?props.meta['line-height']: ""} !important;
 `;
 
 export const Cat_style_non_default = styled.a`
@@ -49,6 +50,7 @@ export const MetaStyle = styled.span`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 `;
 export const MetaTagStyle = styled.a`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
@@ -95,6 +97,7 @@ export const Head_title = styled.div`
 
 export const Head_color = styled.div`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 `;
 
 export const Head_border = styled.div`
@@ -118,9 +121,6 @@ export const Content_padding = styled.div`
 `;
 
 export const ImgAnimation = styled.img`
-	width: ${props => props.css.size}px !important;
-	height: ${props => (props.css.size == "150")? "150px": (props.css.size == "300")? "300px": "auto"} !important;
-
 	border-radius: ${props => (props.css['border-radius'].length == 0)? ((props.layout == "list2")? "50%" : '5px') : props.css['border-radius']+"px"} !important;
 	&:hover{
 	    transform: scale(${props => props.css.animation})

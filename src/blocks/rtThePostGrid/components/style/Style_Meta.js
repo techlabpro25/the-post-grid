@@ -4,6 +4,7 @@ import {
     __experimentalRadio as Radio,
     __experimentalRadioGroup as RadioGroup,
     __experimentalUnitControl as UnitControl,
+    __experimentalNumberControl as NumberControl,
     SelectControl,
     ColorPalette,
 } from "@wordpress/components";
@@ -32,8 +33,13 @@ function Meta(props) {
                 value={ meta_style["font-size"] }
                 onChange={ ( value ) => props.attr.setAttributes( { meta_style: {...meta_style, "font-size": value} }) }
             />
-            
 
+            <NumberControl
+                label={__('Line Height', 'the-post-grid')}
+                onChange={ (value) =>{props.attr.setAttributes({meta_style: {...meta_style,"line-height":value}})}}
+                shiftStep={ 1 }
+                value={ meta_style['line-height'] }
+            />
 
             <SelectControl
                 label={__( "Font Weight:", "the-post-grid")}

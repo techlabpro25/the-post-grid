@@ -77,7 +77,6 @@ function Title(props) {
             <NumberControl
                 label={__('Line Height', 'the-post-grid')}
                 onChange={ (value) =>{props.attr.setAttributes({title_style: {...title_style,"line-height":value}})}}
-                shiftStep={ 1 }
                 value={ title_style['line-height'] }
             />
 

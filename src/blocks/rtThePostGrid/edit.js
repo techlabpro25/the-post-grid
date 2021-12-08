@@ -47,6 +47,8 @@ export default function Edit(props) {
     const [pageindex, setPageindex] = useState(1);
     const [message, setMessage] = useState("");
     const [newOffset, setNewOffset] = useState(0);
+    const [maxlimit, setMaxlimit] = useState(5);
+    const [minlimit, setMinlimit] = useState(1);
     const {query, general, parent_class, primary_color, heading_title, pagination} = attributes
 
     const colors = [
@@ -466,6 +468,7 @@ export default function Edit(props) {
                                 (paginationNumber > 1) ?(
                                     <>
                                         {
+
                                             Array(paginationNumber).fill().map((_, i) => {
 
                                                 if (i == 0){

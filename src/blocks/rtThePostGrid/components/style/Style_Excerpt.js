@@ -65,7 +65,6 @@ function Excerpt(props) {
             <NumberControl
                 label={__('Line Height', 'the-post-grid')}
                 onChange={ (value) =>{props.attr.setAttributes({excerpt_style: {...excerpt_style,"line-height":value}})}}
-                shiftStep={ 1 }
                 value={ excerpt_style['line-height'] }
             />
         

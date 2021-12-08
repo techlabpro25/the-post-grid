@@ -4,6 +4,7 @@ import {
     __experimentalText as Text,
     __experimentalBoxControl as BoxControl,
 	__experimentalUnitControl as UnitControl,
+    __experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
 import {useState} from '@wordpress/element';
 
@@ -51,6 +52,12 @@ function Heading(props) {
                 value={ heading_style["border-width"] }
                 onChange={ ( val ) => props.attr.setAttributes( {heading_style: {...heading_style, "border-width": val}} ) } 
             />
+            <NumberControl
+                label={__('Line Height', 'the-post-grid')}
+                onChange={ (value) =>{props.attr.setAttributes({heading_style: {...heading_style,"line-height":value}})}}
+                value={ heading_style['line-height'] }
+            />
+
             
 
             <BoxControl

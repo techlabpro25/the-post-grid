@@ -7,7 +7,7 @@ export const Image = (props) =>{
             {
                 (image_url.length > 0)? (
                     <a data-id={id} className="" href={link} target={target}>
-                        <ImgAnimation css={image} layout={layout} width="" height="150" src={image_url} className={`rt-img-responsive ${image.animation}`} alt="" />
+                        <ImgAnimation css={image} layout={layout} width={image.size} height="auto" src={image_url} className={`rt-img-responsive ${image.animation}`} alt="" />
                     </a>
                 ):("")
             }

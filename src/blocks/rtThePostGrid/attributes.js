@@ -90,6 +90,7 @@ const attributes = {
 			["border-color"]: "",
 			["border-width"]: "",
 			["border-style"]: "",
+			['line-height']: ""
 		},
 	},
 	heading_padding_object: {
@@ -110,8 +111,8 @@ const attributes = {
 			tag: "3",
 			position: "",
 			word_limit: 100,
-			type: "",
-			more_text: "...",
+			type: "full",
+			more_text: "",
 		},
 	},
 	title_style: {
@@ -128,8 +129,8 @@ const attributes = {
 	excerpt: {
 		type: "object",
 		default: {
-			limit: 20,
-			type: "word",
+			limit: 300,
+			type: "char",
 			more_text: "...",
 		},
 	},
@@ -181,6 +182,7 @@ const attributes = {
 			color: "",
 			["font-size"]: "15px",
 			["font-weight"]: 400,
+			['line-height']: ''
 		},
 	},
 	button: {
