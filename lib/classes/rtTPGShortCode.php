@@ -469,6 +469,8 @@ if ( ! class_exists( 'rtTPGShortCode' ) ):
 					$tempArgs['posts_per_page'] = $limit;
 					$tempArgs['paged']          = 1;
 					$tempArgs['fields']         = 'ids';
+                    print_r($tempArgs);
+                    die();
 					$tempQ                      = new WP_Query( $tempArgs );
 					if ( ! empty( $tempQ->posts ) ) {
 						$args['post__in'] = $tempQ->posts;

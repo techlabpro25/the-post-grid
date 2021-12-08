@@ -26,12 +26,6 @@ const RtThePostGrid = (props) => {
 
         let nawauthor = authors.toString();
         let newstatus = status.toString();
-        // $(document).on('click', '.pagination .pagination_number', function (){
-        //     setPageindex(parseInt($(this).attr('data-value')))
-        //     $('.pagination .pagination_number').removeClass('active')
-        //     $('.pagination .pagination_number.'+pageindex).addClass('active')
-        //     setIsloading(true);
-        // })
         let newOffset = 0;
         let newLimit = 0;
         let paginationLimit = 0;
@@ -59,7 +53,9 @@ const RtThePostGrid = (props) => {
                 status:newstatus,
                 keyword: query.keyword,
                 terms: query.tax_term,
-                relation: query.relation
+                relation: query.relation,
+                pagination: pagination.show,
+                limit: query.limit
             }
         }).then((posts) => {
             if('message' in posts){

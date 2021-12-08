@@ -142,7 +142,9 @@ export default function Edit(props) {
                 status: newstatus,
                 keyword: query.keyword,
                 terms: query.tax_term,
-                relation: query.relation
+                relation: query.relation,
+                pagination: pagination.show,
+                limit: query.limit
             }
         }).then((posts) => {
             if ('message' in posts) {

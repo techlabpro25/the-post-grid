@@ -35,6 +35,8 @@ class All_Post{
         $author = explode(",",$request["author"]);
         $status = explode(",",$request["status"]);
         $keyword = sanitize_text_field($request["keyword"]);
+        $pagination = $request['pagination'];
+        $limit = $request['limit'];
 
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
         $post_per_page =  ($request["post_per_page"] === null )? -1: $request["post_per_page"];
@@ -44,7 +46,19 @@ class All_Post{
             'posts_per_page' => $post_per_page,
         );
 
-        if(!empty($include) && isset($include) && array_filter($include)){
+
+        if(empty(array_filter($include))){
+            if($pagination && ($limit != -1)){
+                $tempArgs                   = $args;
+                $tempArgs['posts_per_page'] = $limit;
+                $tempArgs['offset']          = 0;
+                $tempArgs['fields']         = 'ids';
+                $tempQ                      = new WP_Query( $tempArgs );
+                if ( ! empty( $tempQ->posts ) ) {
+                    $args['post__in'] = $tempQ->posts;
+                }
+            }
+        }else{
             $args['post__in'] = $include;
         }
 
