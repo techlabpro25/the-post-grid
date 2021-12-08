@@ -122,6 +122,7 @@ const attributes = {
 			h_color: "",
 			["font-size"]: "",
 			["font-weight"]: 500,
+			['line-height']: ""
 		},
 	},
 	excerpt: {
@@ -139,6 +140,7 @@ const attributes = {
 			color: "",
 			["font-size"]: "15px",
 			["font-weight"]: 400,
+			['line-height']: "",
 		},
 	},
 	category: {
@@ -197,7 +199,15 @@ const attributes = {
 			["background-color"]: "",
 			h_bg_color: "",
 			active_color: "",
+			['line-height']: "",
+			['font-size']: ""
 		},
+	},
+	button_padding: {
+		top:'8px',
+		right:'15px',
+		bottom:'8px',
+		left:'15px',
 	},
 	image: {
 		type: "object",

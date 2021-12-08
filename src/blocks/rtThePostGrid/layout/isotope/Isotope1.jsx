@@ -39,6 +39,7 @@ export const Isotope1 = (props) =>{
         meta_style,
         button,
         button_style,
+        button_padding,
         general,
         heading,
         heading_style,
@@ -387,7 +388,9 @@ export const Isotope1 = (props) =>{
                                                     general.see_more ? (
                                                         <Btn_align css_btn={button} className="post-meta ">
 															<span className="read-more">
-																<Button_style css={button_style} primary={primary_color}
+																<Button_style css={button_style}
+                                                                              css_pad={button_padding}
+                                                                              primary={primary_color}
                                                                               target={linking.target} css_btn={button}
                                                                               data-id={post.id} className=""
                                                                               href={post.post_link}>

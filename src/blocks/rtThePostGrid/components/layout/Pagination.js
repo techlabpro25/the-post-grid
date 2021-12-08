@@ -64,7 +64,7 @@ function Pagination(props) {
                         />
 
                         {/*Pro Feature*/}
-                        
+
                         {/*<SelectControl*/}
                         {/*    label={__( "Pagination Type:", "the-post-grid")}*/}
                         {/*    options={pagination_type}*/}

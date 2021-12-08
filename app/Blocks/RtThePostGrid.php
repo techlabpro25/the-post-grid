@@ -36,6 +36,7 @@ class RtThePostGrid extends Block
             "h_color"=> "",
             "font-size"=> "",
             "font-weight"=> 500,
+            'line-height' => ""
 		],
 		'category_style' =>[
             'color' => "",
@@ -62,12 +63,21 @@ class RtThePostGrid extends Block
             'background-color' => "",
             'h_bg_color' => "",
             'active_color' => "",
+            'line-height' => "",
+            'font-size' => ""
+        ],
+        'button_padding' =>[
+                'top' => '8px',
+                'right' => '15px',
+                'bottom' => '8px',
+                'left' => '15px',
         ],
         'excerpt_style' =>[
             'color' => "",
             "text-align" => "left",
             'font-size' => '15px',
             'font-weight' => "400",
+            'line-height' => ""
         ],
         'heading' =>[
             'tag' => '1',

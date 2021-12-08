@@ -4,6 +4,7 @@ import {
     __experimentalRadio as Radio,
     __experimentalRadioGroup as RadioGroup,
     __experimentalUnitControl as UnitControl,
+    __experimentalNumberControl as NumberControl,
     SelectControl,
     ColorPalette 
 } from "@wordpress/components";
@@ -60,7 +61,13 @@ function Excerpt(props) {
                 <Radio value="Center"></Radio>
                 <Radio value="Right"></Radio>
             </RadioGroup>
-            
+
+            <NumberControl
+                label={__('Line Height', 'the-post-grid')}
+                onChange={ (value) =>{props.attr.setAttributes({excerpt_style: {...excerpt_style,"line-height":value}})}}
+                shiftStep={ 1 }
+                value={ excerpt_style['line-height'] }
+            />
         
         </PanelBody>
     );

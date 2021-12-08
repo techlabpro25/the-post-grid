@@ -7,6 +7,7 @@ export const Titlea = styled.a`
 	&:hover{
 	    color: ${props => (props.css.h_color)? props.css.h_color: props.primary} !important;
 	}
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""}px !important
 `;
 
 export const Titletag = styled.div`
@@ -18,6 +19,7 @@ export const Excerpts = styled.div`
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	text-align: ${props => props.css['text-align']} !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""}px !important
 `;
 
 export const Cat_style = styled.a`
@@ -68,6 +70,8 @@ export const Button_style = styled.a`
 	&:active{
 		background-color: ${props => props.css.active_color} !important;
 	}
+	font-size: ${props => (props.css['font-size'])? props.css['font-size']:""} !important;
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: ''} !important;
 `;
 
 export const Btn_align = styled.div`
