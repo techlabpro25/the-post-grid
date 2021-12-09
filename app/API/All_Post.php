@@ -40,12 +40,10 @@ class All_Post{
             'posts_per_page' => $post_per_page,
         );
 
-
         if(empty(array_filter($include))){
             if($pagination && ($limit != -1)){
                 $tempArgs                   = $args;
                 $tempArgs['posts_per_page'] = $limit;
-                $tempArgs['offset']          = 0;
                 $tempArgs['fields']         = 'ids';
                 $tempQ                      = new WP_Query( $tempArgs );
                 if ( ! empty( $tempQ->posts ) ) {

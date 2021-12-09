@@ -113,13 +113,14 @@ export default function Edit(props) {
         if (pagination.show) {
             post_per_page = pagination.post_per_page
             if (query.filter) {
-                setNewOffset(0)
+                setNewOffset(0+query.offset)
 
             } else {
                 if (pageindex == 1) {
-                    setNewOffset(0)
+                    setNewOffset(0+query.offset)
+
                 } else {
-                    setNewOffset((post_per_page * pageindex) - post_per_page)
+                    setNewOffset(((post_per_page * pageindex) - post_per_page)+query.offset)
                 }
             }
         } else {
@@ -155,7 +156,7 @@ export default function Edit(props) {
             } else {
                 setMessage("")
                 setData(posts);
-                setPaginationNumber(Math.ceil(posts?.[0]?.total_post / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
+                setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
             }
             setIsloading(false);
             // setAttributes({query: {...query, 'query_loader':false}})

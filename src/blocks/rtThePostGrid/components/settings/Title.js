@@ -61,7 +61,7 @@ function Title(props) {
                 options={ [
                     { label: __( 'Character', "the-post-grid"), value: 'char' },
                     { label: __( 'Word', "the-post-grid"), value: 'word' },
-                    { label: __( 'Full Content', "the-post-grid"), value: 'full' },
+                    { label: __( 'Full Title', "the-post-grid"), value: 'full' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "type": value} } ) }
             />

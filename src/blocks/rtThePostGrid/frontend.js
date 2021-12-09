@@ -31,7 +31,7 @@ const RtThePostGrid = (props) => {
         let paginationLimit = 0;
         if(pagination.show){
             newLimit = pagination.post_per_page
-            newOffset = (pageindex * newLimit)-newLimit
+            newOffset = ((pageindex * newLimit)-newLimit) + query.offset
             paginationLimit = newLimit
         }else{
             newLimit = query.limit
@@ -63,7 +63,7 @@ const RtThePostGrid = (props) => {
             }else{
                 setMessage("")
                 setData(posts);
-                setPagestate(Math.ceil(posts?.[0]?.total_post/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
+                setPagestate(Math.ceil((posts?.[0]?.total_post - query.offset)/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
             }
 
             setIsloading(false);
