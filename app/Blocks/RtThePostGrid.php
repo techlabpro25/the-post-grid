@@ -115,7 +115,7 @@ class RtThePostGrid extends Block
                 'bottom' => '15px',
         ],
         'excerpt'=>[
-            'limit' => 300,
+            'limit' => '',
             'type' => 'char',
             'more_text' => '...',
         ],

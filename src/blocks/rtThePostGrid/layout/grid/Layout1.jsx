@@ -117,6 +117,12 @@ const Layout1 = (props) => {
 								postexcerpt = trimbyword(postexcerpt, excerpt.limit, excerpt.more_text)
 							}
 
+							if (excerpt.type == "full") {
+								postexcerpt = trimbychar(postexcerpt, excerpt.limit, excerpt.more_text)
+							}
+
+
+
 
 
 							// Title

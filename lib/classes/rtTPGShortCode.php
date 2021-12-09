@@ -487,8 +487,6 @@ if ( ! class_exists( 'rtTPGShortCode' ) ):
 				$arg['title_tag'] = ( ! empty( $scMeta['title_tag'][0] ) && in_array( $scMeta['title_tag'][0], array_keys( rtTPG()->getTitleTags() ) ) )
 					? esc_attr( $scMeta['title_tag'][0] ) : 'h3';
 
-                print_r($args);
-                die();
 
 				$gridQuery = new WP_Query( apply_filters( 'tpg_sc_query_args', $args, $scMeta ) );
 

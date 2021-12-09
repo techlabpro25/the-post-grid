@@ -31,6 +31,7 @@ class All_Post{
         $keyword = sanitize_text_field($request["keyword"]);
         $pagination = $request['pagination'];
         $limit = $request['limit'];
+        $excerpt_type = $request['excerpt_type'];
 
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
         $post_per_page =  ($request["post_per_page"] === null )? -1: $request["post_per_page"];
@@ -144,10 +145,11 @@ class All_Post{
                     }
 
 
+
                     $data[]=[
                         'id' => $id,
                         "title" => esc_html(get_the_title()),
-                        "excerpt" => get_the_content(),
+                        "excerpt" => ($excerpt_type == "full") ? get_the_content() : get_the_excerpt(),
                         "comment_count" => esc_html(wp_count_comments($id)->all),
                         "post_date" => esc_html(get_the_date('M d, y')),
                         "image_url" => esc_url_raw(get_the_post_thumbnail_url(null, 'full')),

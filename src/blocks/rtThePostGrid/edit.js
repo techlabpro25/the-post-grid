@@ -49,7 +49,7 @@ export default function Edit(props) {
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const {query, general, parent_class, primary_color, heading_title, pagination} = attributes
+    const {query, general, parent_class, primary_color, heading_title, pagination, excerpt} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -147,7 +147,8 @@ export default function Edit(props) {
                 terms: query.tax_term,
                 relation: query.relation,
                 pagination: pagination.show,
-                limit: query.limit
+                limit: query.limit,
+                excerpt_type: excerpt.type
             }
         }).then((posts) => {
             if ('message' in posts) {
@@ -161,7 +162,7 @@ export default function Edit(props) {
             setIsloading(false);
             // setAttributes({query: {...query, 'query_loader':false}})
         });
-    }, [query, pagination, newOffset, pageindex]);
+    }, [query, pagination, newOffset, pageindex, excerpt.type]);
 
     useEffect(() => {
         var url_string = window.location.href
@@ -200,6 +201,14 @@ export default function Edit(props) {
         setIsloading(true)
         setAttributes({query: {...query, 'loader':false}})
     },[query.loader])
+
+    useEffect(()=>{
+        if(excerpt.type == "char" || excerpt.type == "full"){
+            setAttributes({excerpt: {...excerpt, 'limit': '300'}})
+        }else{
+            setAttributes({excerpt: {...excerpt, 'limit': '25'}})
+        }
+    }, [excerpt.type])
     
 
     const global_attr = {attributes, setAttributes, colors, matrix_position}

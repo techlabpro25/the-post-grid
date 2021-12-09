@@ -129,7 +129,7 @@ const attributes = {
 	excerpt: {
 		type: "object",
 		default: {
-			limit: 300,
+			limit: '',
 			type: "char",
 			more_text: "...",
 		},
