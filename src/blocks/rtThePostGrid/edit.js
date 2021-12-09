@@ -49,6 +49,7 @@ export default function Edit(props) {
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
+    const [maxflug, setMaxflug] = useState(false);
     const {query, general, parent_class, primary_color, heading_title, pagination, excerpt} = attributes
 
     const colors = [
@@ -227,21 +228,18 @@ export default function Edit(props) {
     }, [query.pageindex])
 
     useEffect(()=>{
-        setPageindex(1)
-    },[])
-
-    useEffect(()=>{
         setIsloading(true)
         setAttributes({query: {...query, 'loader':false}})
     },[query.loader])
 
     useEffect(()=>{
-        if(excerpt.type == "char" || excerpt.type == "full"){
-            setAttributes({excerpt: {...excerpt, 'limit': '300'}})
-        }else{
-            setAttributes({excerpt: {...excerpt, 'limit': '25'}})
-        }
+        setAttributes({excerpt: {...excerpt, 'limit': ''}})
     }, [excerpt.type])
+
+    useEffect(()=>{
+        setPageindex(1)
+        setAttributes({excerpt: {...excerpt, 'limit': '25'}})
+    },[])
     
 
     const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform}
@@ -514,9 +512,7 @@ export default function Edit(props) {
                                 (paginationNumber > 1) ?(
                                     <>
                                         {
-
                                             Array(paginationNumber).fill().map((_, i) => {
-
                                                 if (i == 0){
                                                     return <button className={`pagination_number active ${i+1}`} data-value={i + 1}
                                                                    key={i}

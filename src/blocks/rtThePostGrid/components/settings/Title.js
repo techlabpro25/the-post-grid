@@ -48,14 +48,17 @@ function Title(props) {
             {/*    onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }*/}
             {/*/>*/}
 
-            <NumberControl
-                className={'rt-numbercontrol title'}
-                label={__( "Title Limit:", "the-post-grid")}
-                value={ title.word_limit }
-                min={1}
-                step={1}
-                onChange={( value ) => props.attr.setAttributes( {title: {...title, "word_limit": value} } )}
-            />
+            {(title.type != "full")?(
+                <NumberControl
+                    className={'rt-numbercontrol title'}
+                    label={__( "Title Limit:", "the-post-grid")}
+                    value={ title.word_limit }
+                    min={1}
+                    step={1}
+                    onChange={( value ) => props.attr.setAttributes( {title: {...title, "word_limit": value} } )}
+                />
+            ):("")}
+
 
             <RadioControl
                 className={'rt-radiocontrol title'}

@@ -114,7 +114,7 @@ const attributes = {
 		default: {
 			tag: "3",
 			position: "",
-			word_limit: 100,
+			word_limit: 25,
 			type: "full",
 			more_text: "",
 		},
@@ -136,7 +136,7 @@ const attributes = {
 		type: "object",
 		default: {
 			limit: '',
-			type: "char",
+			type: "word",
 			more_text: "...",
 		},
 	},

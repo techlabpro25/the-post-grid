@@ -274,3 +274,7 @@ div.tax_second_child .components-base-control {
   font-size: 14px;
   color: #333;
 }
+
+.rt-radiocontrol .components-radio-control__input:focus {
+  box-shadow: unset;
+}

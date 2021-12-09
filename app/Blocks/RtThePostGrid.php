@@ -26,7 +26,7 @@ class RtThePostGrid extends Block
         'title'=> [
             'tag'=> "3",
             'position'=> "",
-            'word_limit'=> 10,
+            'word_limit'=> 25,
             'type'=> "full",
             'more_text'=> "",
         ],
@@ -132,7 +132,7 @@ class RtThePostGrid extends Block
         ],
         'excerpt'=>[
             'limit' => '',
-            'type' => 'char',
+            'type' => 'word',
             'more_text' => '...',
         ],
         'category' =>[
