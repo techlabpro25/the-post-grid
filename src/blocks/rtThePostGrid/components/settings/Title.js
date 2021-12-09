@@ -26,6 +26,7 @@ function Title(props) {
     return (
         <PanelBody title={__( "Title", "the-post-grid")} initialOpen={false}>
             <SelectControl
+                className={'rt-selectcontrol title'}
                 label={__( "Tag:", "the-post-grid")}
                 value={ title["tag"] }
                 options={ [
@@ -48,6 +49,7 @@ function Title(props) {
             {/*/>*/}
 
             <NumberControl
+                className={'rt-numbercontrol title'}
                 label={__( "Title Limit:", "the-post-grid")}
                 value={ title.word_limit }
                 min={1}
@@ -56,6 +58,7 @@ function Title(props) {
             />
 
             <RadioControl
+                className={'rt-radiocontrol title'}
                 label={__( "Limit Type", "the-post-grid")}
                 selected={ title.type }
                 options={ [

@@ -94,6 +94,39 @@ export default function Edit(props) {
             value: "over-image image_center"
         },
 
+    ];
+
+    const units = [
+        { value: 'px', label: 'px', default: 0 },
+        { value: '%', label: '%', default: 10 },
+        { value: 'em', label: 'em', default: 0 },
+    ];
+
+    const transform = [
+        {
+            label: "None",
+            value: ""
+        },
+        {
+            label: "Capitalize",
+            value: "capitalize"
+        },
+        {
+            label: "Uppercase",
+            value: "uppercase"
+        },
+        {
+            label: "Lowercase",
+            value: "lowercase"
+        },
+        {
+            label: "Initial",
+            value: "initial"
+        },
+        {
+            label: "Inherit",
+            value: "inherit"
+        },
     ]
 
     useEffect(() => {
@@ -211,7 +244,7 @@ export default function Edit(props) {
     }, [excerpt.type])
     
 
-    const global_attr = {attributes, setAttributes, colors, matrix_position}
+    const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform}
 
     return (
         <>
@@ -363,6 +396,7 @@ export default function Edit(props) {
                                                     return (
                                                         <>
                                                             <TextControl
+                                                                className={'.rt-textcontrol'}
                                                                 label={__("Parent Class:", "the-post-grid")}
                                                                 value={parent_class}
                                                                 onChange={(val) => props.setAttributes({parent_class: val})}
@@ -370,13 +404,15 @@ export default function Edit(props) {
 
                                                             <Text>
                                                                 Primary Color:
-                                                                <ColorPalette
-                                                                    label={__("Primary", "the-post-grid")}
-                                                                    value={primary_color}
-                                                                    colors={colors}
-                                                                    onChange={(val) => props.setAttributes({primary_color: val})}
-                                                                />
                                                             </Text>
+                                                            <ColorPalette
+                                                                className={'rt-colorcontrol'}
+                                                                label={__("Primary", "the-post-grid")}
+                                                                value={primary_color}
+                                                                colors={colors}
+                                                                onChange={(val) => props.setAttributes({primary_color: val})}
+                                                            />
+
                                                             <br/>
                                                             {
                                                                 general.heading ?

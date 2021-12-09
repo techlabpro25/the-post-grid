@@ -36,13 +36,18 @@ class RtThePostGrid extends Block
             "h_color"=> "",
             "font-size"=> "",
             "font-weight"=> 500,
-            'line-height' => ""
+            'line-height' => "",
+            'letter-spaceing' => '',
+			'transform' => ''
 		],
 		'category_style' =>[
             'color' => "",
             "background-color" => "",
             'font-size' => '',
             'border-radius' => "",
+            "font-weight" => '',
+            'letter-spaceing' => '',
+            'transform' => ''
 		],
 		'category_padding' =>[],
 		'category_margin' =>[],
@@ -51,7 +56,9 @@ class RtThePostGrid extends Block
             "text-align" => "left",
             'font-size' => '15px',
             'font-weight' => "400",
-            'line-height' => ''
+            'line-height' => '',
+            'letter-spaceing' => '',
+			'transform' => ''
         ],
         'button' =>[
             'border-radius' => "",
@@ -65,7 +72,10 @@ class RtThePostGrid extends Block
             'h_bg_color' => "",
             'active_color' => "",
             'line-height' => "",
-            'font-size' => ""
+            'font-size' => "",
+            "font-weight" => 400,
+            'letter-spaceing' => '',
+            'transform' => ''
         ],
         'button_padding' =>[
                 'top' => '8px',
@@ -78,7 +88,9 @@ class RtThePostGrid extends Block
             "text-align" => "left",
             'font-size' => '15px',
             'font-weight' => "400",
-            'line-height' => ""
+            'line-height' => "",
+            'letter-spaceing' => '',
+            'transform' => ''
         ],
         'heading' =>[
             'tag' => '1',
@@ -92,7 +104,11 @@ class RtThePostGrid extends Block
             "border-color" => "",
             "border-width" => "",
             "border-style" => "",
-            'line-height' => ""
+            'line-height' => "",
+            'font-weight' => 600,
+            'font-size'=> '',
+            'letter-spaceing' => '',
+            'transform' => ''
         ],
         'heading_padding_object' =>[
             'top'=> "5px",

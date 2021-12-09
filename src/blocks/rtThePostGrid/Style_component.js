@@ -8,6 +8,8 @@ export const Titlea = styled.a`
 	    color: ${props => (props.css.h_color)? props.css.h_color: props.primary} !important;
 	}
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
 	font-family: ${props => (props.css['font-family'])? props.css['font-family'].label+", "+props.css['font-family'].value : ""} !important;
 `;
 
@@ -21,6 +23,8 @@ export const Excerpts = styled.div`
 	font-weight: ${props => props.css['font-weight']} !important;
 	text-align: ${props => props.css['text-align']} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
 `;
 
 export const Cat_style = styled.a`
@@ -31,6 +35,10 @@ export const Cat_style = styled.a`
 	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
 	line-height: ${props => (props.meta['line-height'])?props.meta['line-height']: ""} !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	letter-spacing: ${props => ((!props.css['letter-spacing'])?((props.meta['letter-spacing'])? props.meta['letter-spacing']: "") : props.css['letter-spacing'])} !important;
+	text-transform: ${props => ((!props.css['transform'])?((props.meta['transform'])? props.meta['transform']: "") : props.css['transform'])} !important;
+	font-weight: ${props => (props.css['font-weight'] == '')? (props.meta['font-weight']? props.meta['font-weight'] : 400) : props.css['font-weight']} !important;
 `;
 
 export const Cat_style_non_default = styled.a`
@@ -40,7 +48,7 @@ export const Cat_style_non_default = styled.a`
 	border-radius: ${props => props.css['border-radius']}px !important;
 	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
-
+    font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
 	&::after{
 		border-top-color: ${props => props.css['background-color']} !important;;
 	}
@@ -51,11 +59,17 @@ export const MetaStyle = styled.span`
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
+	
 `;
 export const MetaTagStyle = styled.a`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
 `;
 
 export const MetaStyle_align = styled.div`
@@ -74,6 +88,10 @@ export const Button_style = styled.a`
 		background-color: ${props => props.css.active_color} !important;
 	}
 	font-size: ${props => (props.css['font-size'])? props.css['font-size']:""} !important;
+	font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
 	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: ''} !important;
 `;
 
@@ -98,6 +116,10 @@ export const Head_title = styled.div`
 export const Head_color = styled.div`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
+	font-size: ${props => (props.css['font-size'])?props.css['font-size']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
 `;
 
 export const Head_border = styled.div`

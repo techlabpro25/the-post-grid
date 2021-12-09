@@ -19,6 +19,7 @@ function General(props) {
     return (
         <PanelBody title={__( "General", "the-post-grid")} className="general_tab" initialOpen={true}>
             <ToggleControl
+                className={"rt-togglecontrol general"}
                 label={__( "Block Heading", "the-post-grid")}
                 checked={ general.heading }
                 onChange={ (val) => {
@@ -28,6 +29,7 @@ function General(props) {
             />
 
             <ToggleControl
+                className={"rt-togglecontrol general"}
                 label={__( "Title", "the-post-grid")}
                 checked={ general.title }
                 onChange={ (val) => {
@@ -37,6 +39,7 @@ function General(props) {
             />
 
             <ToggleControl
+                className={"rt-togglecontrol general"}
                 label={__( "Excerpt", "the-post-grid")}
                 checked={ general.excerpt }
                 onChange={ (val) => {
@@ -46,6 +49,7 @@ function General(props) {
             />
 
             <ToggleControl
+                className={"rt-togglecontrol general"}
                 label={__( "Category", "the-post-grid")}
                 checked={ general.category }
                 onChange={ (val) => {
@@ -55,6 +59,7 @@ function General(props) {
             />
 
             <ToggleControl
+                className={"rt-togglecontrol general"}
                 label={__( "Author", "the-post-grid")}
                 checked={ general.author }
                 onChange={ (val) => {
@@ -64,6 +69,7 @@ function General(props) {
             />
 
             <ToggleControl
+                className={"rt-togglecontrol general"}
                 label={__( "Post Date", "the-post-grid")}
                 checked={ general.post_date }
                 onChange={ (val) => {
@@ -82,6 +88,7 @@ function General(props) {
             {/*/>*/}
 
             <ToggleControl
+                className={"rt-togglecontrol general"}
                 label={__( "Comment Count", "the-post-grid")}
                 checked={ general.comment_count }
                 onChange={ (val) => {
@@ -91,6 +98,7 @@ function General(props) {
             />
 
             <ToggleControl
+                className={"rt-togglecontrol general"}
                 label={__( "Read More", "the-post-grid")}
                 checked={ general.see_more }
                 onChange={ (val) => {

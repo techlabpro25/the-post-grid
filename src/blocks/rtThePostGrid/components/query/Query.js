@@ -283,6 +283,7 @@ const Query = (props) => {
 			/>
 
 			<NumberControl
+				className={"rt-numbercontrol query"}
 				label={__( "Offset", "the-post-grid")}
 				labelPosition="side"
 				onChange={(value) =>{

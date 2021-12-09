@@ -4,7 +4,11 @@ import {
     __experimentalNumberControl as NumberControl,
     __experimentalBoxControl as BoxControl,
     __experimentalUnitControl as UnitControl,
-    ColorPalette
+    ColorPalette,
+    BaseControl,
+    Button,
+    Dropdown,
+    SelectControl,
 } from "@wordpress/components";
 
 import { useState, useEffect } from '@wordpress/element';
@@ -20,6 +24,7 @@ function Category(props) {
                 Color:
             </Text>
             <ColorPalette
+                className={"rt-colorcontrol terms"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ category_style.color }
@@ -31,30 +36,16 @@ function Category(props) {
                 {__( "Background-Color:", "the-post-grid")}
             </Text>
             <ColorPalette
+                className={"rt-colorcontrol terms"}
                 colors={ props.attr.colors }
                 value={ category_style["background-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, "background-color": color}} ) }
-            />
-            
-
-            <Text>
-                {__( "Font Size:", "the-post-grid")}
-            </Text>
-            <UnitControl
-                value={ category_style["font-size"] }
-                onChange={ ( value ) => props.attr.setAttributes( { category_style: {...category_style, "font-size": value} }) }
-            />
-            
-
-            <NumberControl
-                label={__( "Border Radius:", "the-post-grid")}
-                value={category_style["border-radius"]}
-                onChange={ ( value ) => props.attr.setAttributes( { category_style: {...category_style, "border-radius": value} }) }
             />
 
             <BoxControl
                 label={__( "Padding:", "the-post-grid")}
                 values={ category_padding }
+                splitOnAxis={true}
                 onChange={ ( val ) => {
                     props.attr.setAttributes({category_padding: val})
                 }}
@@ -63,10 +54,94 @@ function Category(props) {
             <BoxControl
                 label={__( "Margin:", "the-post-grid")}
                 values={ category_margin }
+                splitOnAxis={true}
                 onChange={ ( val ) => {
                     props.attr.setAttributes({category_margin: val})
                 }}
             />
+            <NumberControl
+                className={"rt-numbercontrol terms"}
+                label={__( "Border Radius:", "the-post-grid")}
+                labelPosition="side"
+                value={category_style["border-radius"]}
+                onChange={ ( value ) => props.attr.setAttributes( { category_style: {...category_style, "border-radius": value} }) }
+            />
+
+            <BaseControl label={__("Typography", "the-post-grid")} className="rttpg-typography-base">
+                <Dropdown
+                    className="rttpg-typography-dropdown"
+                    contentClassName="my-popover-content-classname"
+                    position="bottom left"
+                    renderToggle={({ isOpen, onToggle }) => (
+                        <Button
+                            isSmall
+                            onClick={onToggle}
+                            aria-expanded={isOpen}
+                            icon="edit"
+                        ></Button>
+                    )}
+                    renderContent={() => (
+
+                        <div className="rttpg-panel-control rtcl-gb-typography-component-panel">
+
+                            <Text>
+                                {__( "Font Size:", "the-post-grid")}
+                            </Text>
+                            <UnitControl
+                                className={"rt-unitcontrol terms"}
+                                value={ category_style["font-size"] }
+                                onChange={ ( value ) => props.attr.setAttributes( { category_style: {...category_style, "font-size": value} }) }
+                            />
+
+                            <SelectControl
+                                label={__( "Font Weight:", "the-post-grid")}
+                                className={"rt-selectcontrol terms"}
+                                value={ category_style["font-weight"] }
+                                options={ [
+                                    { label: 'Default', value: "" },
+                                    { label: '100', value: 100 },
+                                    { label: '200', value: 200 },
+                                    { label: '300', value: 300 },
+                                    { label: '400', value: 400 },
+                                    { label: '500', value: 500 },
+                                    { label: '600', value: 600 },
+                                    { label: '700', value: 700 },
+                                    { label: '800', value: 800 },
+                                    { label: '900', value: 900 },
+                                ] }
+                                onChange={ ( value ) => props.attr.setAttributes( {category_style: {...category_style, "font-weight": value} } ) }
+                            />
+
+                            <SelectControl
+                                label={__( "Text Transform", "the-post-grid")}
+                                className={"rt-selectcontrol terms"}
+                                value={ category_style["transform"] }
+                                options={ props.attr.transform}
+                                onChange={ ( value ) => props.attr.setAttributes( {category_style: {...category_style, "transform": value} } ) }
+                            />
+
+                            <Text>
+                                {__( "Letter Spacing:", "the-post-grid")}
+                            </Text>
+                            <UnitControl
+                                className={"rt-unitcontrol terms"}
+                                units={props.attr.units}
+                                value={ category_style["letter-spacing"] }
+                                onChange={ ( val ) => props.attr.setAttributes( {category_style: {...category_style, "letter-spacing": val}} ) }
+                            />
+
+                            {/*<NumberControl*/}
+                            {/*    className={"rt-numbercontrol terms"}*/}
+                            {/*    label={__('Line Height:', 'the-post-grid')}*/}
+                            {/*    onChange={ (value) =>{props.attr.setAttributes({category_style: {...category_style,"line-height":value}})}}*/}
+                            {/*    value={ category_style['line-height'] }*/}
+                            {/*/>*/}
+
+
+                        </div>
+                    )}
+                />
+            </BaseControl>
         
         </PanelBody>
     );

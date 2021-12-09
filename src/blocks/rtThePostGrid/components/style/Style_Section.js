@@ -26,6 +26,7 @@ function Style_Section(props) {
             <BoxControl
                 label="Padding"														
                 values={ section_padding }
+                splitOnAxis={true}
                 onChange={ ( val ) => {
                     props.attr.setAttributes({section_padding: val})
                 }}
@@ -34,6 +35,7 @@ function Style_Section(props) {
             <BoxControl
                 label="Margin"																
                 values={ section_margin }
+                splitOnAxis={true}
                 onChange={ ( val ) => {
                     props.attr.setAttributes({section_margin: val})
                 }}

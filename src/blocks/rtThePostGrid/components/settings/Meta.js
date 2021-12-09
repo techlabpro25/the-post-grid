@@ -33,6 +33,7 @@ function Meta(props) {
     return (
         <PanelBody title={__( "Meta", "the-post-grid")} initialOpen={false}>
             <SelectControl
+                className={"rt-selectcontrol meta"}
                 label={__( "Position", "the-post-grid")}
                 value={ meta.position }
                 options={ position }
@@ -40,6 +41,7 @@ function Meta(props) {
             />
 
             <SelectControl
+                className={"rt-selectcontrol meta"}
                 label={__( "Seperator", "the-post-grid")}
                 value={ meta.seperator }
                 options={ [
@@ -54,6 +56,7 @@ function Meta(props) {
             />
 
             <ToggleControl
+                className={"rt-togglecontrol meta"}
                 label={__( "Icon", "the-post-grid")}
                 checked={ meta.icon }
                 onChange={ (val) => {

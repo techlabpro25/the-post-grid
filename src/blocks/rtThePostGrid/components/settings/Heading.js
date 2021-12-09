@@ -14,12 +14,14 @@ function Heading(props) {
     return (
         <PanelBody title={__( "Block Heading", "the-post-grid")} initialOpen={true}>
             <TextControl
+                className={"rt-textcontrol heading"}
                 label={__( "Heading:", "the-post-grid")}
                 value={ heading_title }
                 onChange={ (val) => props.attr.setAttributes({heading_title: val}) }
             />
 
             <SelectControl
+                className={"rt-selectcontrol heading"}
                 label={__( "Tag:", "the-post-grid")}
                 value={ heading["tag"] }
                 options={ [
@@ -34,6 +36,7 @@ function Heading(props) {
             />
 
             <SelectControl
+                className={"rt-selectcontrol heading"}
                 label={__( "Style", "the-post-grid")}
                 value={ heading["style"] }
                 options={ [
@@ -47,7 +50,7 @@ function Heading(props) {
             <Text>
                 {__( "Text Alignment:", "the-post-grid")}
             </Text>
-            <RadioGroup defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({heading_style: {...heading_style, "text-align": val}}) } checked={ heading_style["text-align"] }>
+            <RadioGroup className={"rt-radiocontrol heading"} defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({heading_style: {...heading_style, "text-align": val}}) } checked={ heading_style["text-align"] }>
                 <Radio value="left"></Radio>
                 <Radio value="center"></Radio>
                 <Radio value="right"></Radio>
@@ -55,6 +58,7 @@ function Heading(props) {
 
 
             <TextControl
+                className={"rt-textcontrol heading"}
                 label={__( "Link:", "the-post-grid")}
                 value={ heading.link }
                 onChange={ (val) => props.attr.setAttributes({heading: {...heading, "link": val}}) }

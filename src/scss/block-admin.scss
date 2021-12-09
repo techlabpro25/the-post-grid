@@ -93,7 +93,7 @@ div.tax_second_child .components-base-control {
 }
 
 .components-button-group, .components-number-control{
-    margin-bottom: 24px;
+    //margin-bottom: 24px;
 }
 
 .post_grid_blocks h2.components-panel__body-title {
@@ -232,6 +232,38 @@ div.tax_second_child .components-base-control {
 .rt-font-family input:focus{
     box-shadow: unset !important;
 }
+
+.rttpg-typography-base .components-base-control__field {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rttpg-typography-base .components-dropdown.rttpg-typography-dropdown {
+    background-color: #ededed;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.rttpg-typography-base span.components-base-control__label {
+    padding-top: 8px;
+    font-size: 14px;
+}
+.popover-slot .components-popover.components-dropdown__content.my-popover-content-classname .components-popover__content {
+    left: -210px;
+    padding: 0 !important;
+}
+
+.rt-selectcontrol, .rt-unitcontrol, .rt-numbercontrol, .rt-colorcontrol, .rt-radiocontrol, .rt-togglecontrol, .rt-textcontrol {
+    margin-bottom: 15px !important;
+    margin-top: 8px !important;
+}
+
+.components-text{
+    font-size: 14px;
+    color: #333;
+}
+
+
 
 
 

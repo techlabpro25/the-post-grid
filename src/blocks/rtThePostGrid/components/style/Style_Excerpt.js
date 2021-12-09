@@ -6,7 +6,10 @@ import {
     __experimentalUnitControl as UnitControl,
     __experimentalNumberControl as NumberControl,
     SelectControl,
-    ColorPalette 
+    ColorPalette,
+    BaseControl,
+    Button,
+    Dropdown
 } from "@wordpress/components";
 
 function Excerpt(props) {
@@ -19,55 +22,93 @@ function Excerpt(props) {
                 {__( "Color:", "the-post-grid")}
             </Text>
             <ColorPalette
+                className={"rt-colorcontrol excerpt"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ excerpt_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "color": color}} ) }
             />
-            
-
-            <Text>
-                {__( "Font Size:", "the-post-grid")}
-            </Text>
-            <UnitControl
-                value={ excerpt_style["font-size"] }
-                onChange={ ( value ) => props.attr.setAttributes( { excerpt_style: {...excerpt_style, "font-size": value} }) }
-            />
-            
-
-
-            <SelectControl
-                label={__( "Font Weight:", "the-post-grid")}
-                value={ excerpt_style["font-weight"] }
-                options={ [
-                    { label: '100', value: 100 },
-                    { label: '200', value: 200 },
-                    { label: '300', value: 300 },
-                    { label: '400', value: 400 },
-                    { label: '500', value: 500 },
-                    { label: '600', value: 600 },
-                    { label: '700', value: 700 },
-                    { label: '800', value: 800 },
-                    { label: '900', value: 900 },
-                ] }
-                onChange={ ( value ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "font-weight": value} } ) }
-            />
 
             <Text>
                 {__( "Text Alignment:", "the-post-grid")}
             </Text>
-            <RadioGroup defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({excerpt_style: {...excerpt_style, "text-align": val}}) } checked={ excerpt_style["text-align"] }>
+            <RadioGroup className={"rt-radiocontrol"} defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({excerpt_style: {...excerpt_style, "text-align": val}}) } checked={ excerpt_style["text-align"] }>
                 <Radio value="Left"></Radio>
                 <Radio value="Center"></Radio>
                 <Radio value="Right"></Radio>
             </RadioGroup>
 
-            <NumberControl
-                label={__('Line Height', 'the-post-grid')}
-                onChange={ (value) =>{props.attr.setAttributes({excerpt_style: {...excerpt_style,"line-height":value}})}}
-                value={ excerpt_style['line-height'] }
-            />
-        
+            <BaseControl label={__("Typography", "the-post-grid")} className="rttpg-typography-base">
+                <Dropdown
+                    className="rttpg-typography-dropdown"
+                    contentClassName="my-popover-content-classname"
+                    position="bottom left"
+                    renderToggle={({ isOpen, onToggle }) => (
+                        <Button
+                            isSmall
+                            onClick={onToggle}
+                            aria-expanded={isOpen}
+                            icon="edit"
+                        ></Button>
+                    )}
+                    renderContent={() => (
+
+                        <div className="rttpg-panel-control rtcl-gb-typography-component-panel">
+                            <Text>
+                                {__( "Font Size:", "the-post-grid")}
+                            </Text>
+                            <UnitControl
+                                className={"rt-unitcontrol excerpt"}
+                                value={ excerpt_style["font-size"] }
+                                onChange={ ( value ) => props.attr.setAttributes( { excerpt_style: {...excerpt_style, "font-size": value} }) }
+                            />
+
+                            <SelectControl
+                                className={"rt-selectcontrol excerpt"}
+                                label={__( "Font Weight:", "the-post-grid")}
+                                value={ excerpt_style["font-weight"] }
+                                options={ [
+                                    { label: '100', value: 100 },
+                                    { label: '200', value: 200 },
+                                    { label: '300', value: 300 },
+                                    { label: '400', value: 400 },
+                                    { label: '500', value: 500 },
+                                    { label: '600', value: 600 },
+                                    { label: '700', value: 700 },
+                                    { label: '800', value: 800 },
+                                    { label: '900', value: 900 },
+                                ] }
+                                onChange={ ( value ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "font-weight": value} } ) }
+                            />
+                            <SelectControl
+                                label={__( "Text Transform", "the-post-grid")}
+                                className={"rt-selectcontrol excerpt"}
+                                value={ excerpt_style["transform"] }
+                                options={ props.attr.transform}
+                                onChange={ ( value ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "transform": value} } ) }
+                            />
+
+                            <Text>
+                                {__( "Letter Spacing:", "the-post-grid")}
+                            </Text>
+                            <UnitControl
+                                className={"rt-unitcontrol excerpt"}
+                                units={props.attr.units}
+                                value={ excerpt_style["letter-spacing"] }
+                                onChange={ ( val ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "letter-spacing": val}} ) }
+                            />
+
+
+                            <NumberControl
+                                className={"rt-numbercontrol excerpt"}
+                                label={__('Line Height', 'the-post-grid')}
+                                onChange={ (value) =>{props.attr.setAttributes({excerpt_style: {...excerpt_style,"line-height":value}})}}
+                                value={ excerpt_style['line-height'] }
+                            />
+                        </div>
+                    )}
+                />
+            </BaseControl>
         </PanelBody>
     );
 }

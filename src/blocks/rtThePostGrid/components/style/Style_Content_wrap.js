@@ -43,26 +43,12 @@ function Style_Content_wrap(props) {
                 value={ content_wrap["border-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-color": color}} ) }
             />
-            
 
-            <Text>
-                {__( "Border Width:", "the-post-grid")}
-            </Text>
-            <UnitControl
-                value={ content_wrap["border-width"] }
-                onChange={ ( val ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-width": val}} ) } 
-            />
-            
-
-            <NumberControl
-                label={__( "Border Radius", "the-post-grid")}
-                value={content_wrap["radius"]}
-                onChange={ ( value ) =>  props.attr.setAttributes( { content_wrap: {...content_wrap, "radius": value} })}
-            />
 
             <BoxControl
                 label={__( "Box Padding:", "the-post-grid")}
                 values={ constent_box_padding }
+                splitOnAxis={true}
                 onChange={ ( nextValues ) => {
                     props.attr.setAttributes({constent_box_padding: nextValues})
                 }}
@@ -71,9 +57,28 @@ function Style_Content_wrap(props) {
             <BoxControl
                 label={__( "Content Padding:", "the-post-grid")}
                 values={ content_padding }
+                splitOnAxis={true}
                 onChange={ ( val ) => {
                     props.attr.setAttributes({content_padding: val})
                 }}
+            />
+
+            <Text>
+                {__( "Border Width:", "the-post-grid")}
+            </Text>
+            <UnitControl
+                className={"rt-unitcontrol content-wrap"}
+                value={ content_wrap["border-width"] }
+                onChange={ ( val ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-width": val}} ) }
+            />
+
+
+            <NumberControl
+                className={"rt-numbercontrol content-wrap"}
+                label={__( "Border Radius", "the-post-grid")}
+                labelPosition="side"
+                value={content_wrap["radius"]}
+                onChange={ ( value ) =>  props.attr.setAttributes( { content_wrap: {...content_wrap, "radius": value} })}
             />
         
         </PanelBody>

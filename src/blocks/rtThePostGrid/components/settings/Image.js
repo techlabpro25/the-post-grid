@@ -17,6 +17,7 @@ function Image(props) {
     return (
         <PanelBody title={__( "Image", "the-post-grid")} initialOpen={false}>
             <ToggleControl
+                className={"rt-togglecontrol image"}
                 label={__( "Show Image", "the-post-grid")}
                 checked={ image.show_hide }
                 onChange={ (val) => {
@@ -28,6 +29,7 @@ function Image(props) {
             {
                 image.show_hide?(
                     <SelectControl
+                        className={"rt-selectcontrol image"}
                         label={__( "Featured Image Size:", "the-post-grid")}
                         value={ image.size }
                         options={ [
@@ -44,6 +46,7 @@ function Image(props) {
             }
 
             <SelectControl
+                className={"rt-selectcontrol image"}
                 label={__( "Hover Animation:", "the-post-grid")}
                 value={ image.animation }
                 options={ [
@@ -55,6 +58,7 @@ function Image(props) {
             />
 
             <NumberControl
+                className={"rt-numbercontrol image"}
                 label={__( "Border Radius", "the-post-grid")}
                 value={image["border-radius"]}
                 onChange={ ( value ) => props.attr.setAttributes( { image: {...image, "border-radius": value} }) }
