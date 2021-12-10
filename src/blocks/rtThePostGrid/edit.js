@@ -11,7 +11,6 @@ import {
 import Query from './components/query/Query';
 import Layout from './components/layout/Layout';
 import Columns from './components/layout/Columns';
-import Pagination from './components/layout/Pagination';
 import Linking from './components/layout/Linking';
 
 import General from './components/settings/General';

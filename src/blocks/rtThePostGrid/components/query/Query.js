@@ -311,6 +311,7 @@ const Query = (props) => {
 				pagination.show?(
 					<>
 						<NumberControl
+							className={"rt-numbercontrol querytio"}
 							label={__( "Display per page:", "the-post-grid")}
 							labelPosition="side"
 							min={1}
