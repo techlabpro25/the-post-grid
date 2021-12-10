@@ -5,7 +5,10 @@ export const trimbychar = (str, max, suffix) => {
     return str?.length < max ? str : `${str?.substr(0, str?.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
 }
 
-export const trimbyword = (textToLimit, wordLimit, suffix, element, type) =>{
+export const trimbyword = (textToLimit, wordLimit, suffix) =>{
+    if(wordLimit.length == 0){
+        wordLimit = 25
+    }
     var finalText = "";
     var text2 = textToLimit.replace(/\s+/g, ' ');
     var text3 = text2.split(' ');

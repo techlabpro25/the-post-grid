@@ -49,7 +49,6 @@ export default function Edit(props) {
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const [maxflug, setMaxflug] = useState(false);
     const {query, general, parent_class, primary_color, heading_title, pagination, excerpt} = attributes
 
     const colors = [
@@ -212,7 +211,6 @@ export default function Edit(props) {
         });
     }, [])
 
-
     useEffect(() => {
 
         if (pageindex > 0) {
@@ -240,7 +238,35 @@ export default function Edit(props) {
         setPageindex(1)
         setAttributes({excerpt: {...excerpt, 'limit': '25'}})
     },[])
-    
+
+    const nextbtn = (pageval) =>{
+        if(maxlimit <pageval){
+            return <button className={`pagination_number next`} onClick={nextpageset}>Next</button>
+        }
+    }
+    const prevbtn = (pageval) => {
+        if(minlimit > 1){
+            return <button className={`pagination_number prev`} onClick={prevpageset}>Prev</button>
+        }
+    }
+
+    const nextpageset = () => {
+        setMaxlimit((prev) => prev + 1)
+        setMinlimit((prev) => prev + 1)
+    }
+
+    const prevpageset = () => {
+        setMaxlimit((prev) => prev - 1)
+        setMinlimit((prev) => prev - 1)
+    }
+
+    useEffect(()=>{
+        if(query.filter){
+            setMaxlimit(5)
+            setMinlimit(1)
+        }
+    }, [query.filter])
+
 
     const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform}
 
@@ -511,19 +537,26 @@ export default function Edit(props) {
                                 //Here paginationNumber = 3
                                 (paginationNumber > 1) ?(
                                     <>
+                                        {prevbtn(paginationNumber)}
                                         {
                                             Array(paginationNumber).fill().map((_, i) => {
-                                                if (i == 0){
-                                                    return <button className={`pagination_number active ${i+1}`} data-value={i + 1}
-                                                                   key={i}
-                                                                   onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
-                                                }else{
-                                                    return <button className={`pagination_number ${i+1}`} data-value={i + 1}
-                                                                   key={i}
-                                                                   onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
+
+                                                if(((i+1) >= minlimit) && (i+1) <= maxlimit){
+                                                    if ((i == 0) && (pageindex == 1) ){
+                                                        return <button className={`pagination_number active ${i+1}`} data-value={i + 1}
+                                                                       key={i}
+                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
+                                                    }else{
+                                                        return <button className={`pagination_number ${i+1}`} data-value={i + 1}
+                                                                       key={i}
+                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
+                                                    }
                                                 }
                                             })
                                         }
+
+                                        {nextbtn(paginationNumber)}
+
                                     </>
                                 ):("")
                             }

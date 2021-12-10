@@ -11,6 +11,8 @@ const RtThePostGrid = (props) => {
     const [pagestate, setPagestate] = useState(0);
     const [pageindex, setPageindex] = useState(1);
     const [message, setMessage] = useState("");
+    const [maxlimit, setMaxlimit] = useState(5);
+    const [minlimit, setMinlimit] = useState(1);
     const [loadingindex, setLoadingindex] = useState(1);
 
     useEffect(() => {
@@ -77,6 +79,27 @@ const RtThePostGrid = (props) => {
         setIsloading(true);
     },[pageindex])
 
+    const nextbtn = (pageval) =>{
+        if(maxlimit <pageval){
+            return <button className={`pagination_number next`} onClick={nextpageset}>Next</button>
+        }
+    }
+    const prevbtn = (pageval) => {
+        if(minlimit > 1){
+            return <button className={`pagination_number prev`} onClick={prevpageset}>Prev</button>
+        }
+    }
+
+    const nextpageset = () => {
+        setMaxlimit((prev) => prev + 1)
+        setMinlimit((prev) => prev + 1)
+    }
+
+    const prevpageset = () => {
+        setMaxlimit((prev) => prev - 1)
+        setMinlimit((prev) => prev - 1)
+    }
+
     return (
         <div className="rt-thepostgrid-frontend">
             {
@@ -99,19 +122,23 @@ const RtThePostGrid = (props) => {
                         {
                             pagination.show?(
                                 <div className={"pagination"}>
+                                    {prevbtn(pagestate)}
                                     {Array.from(Array(pagestate), (e, i) => {
-                                        if(pagestate > 1){
-                                            if(i == 0){
-                                                return <span className={`pagination_number active ${i+1}`}
-                                                             data-value={i+1}
-                                                             key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</span>
-                                            }else{
-                                                return <span className={`pagination_number ${i+1}`}
-                                                             data-value={i+1}
-                                                             key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</span>
+                                        if(((i+1) >= minlimit) && (i+1) <= maxlimit){
+                                            if(pagestate > 1){
+                                                if(i == 0){
+                                                    return <span className={`pagination_number active ${i+1}`}
+                                                                 data-value={i+1}
+                                                                 key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</span>
+                                                }else{
+                                                    return <span className={`pagination_number ${i+1}`}
+                                                                 data-value={i+1}
+                                                                 key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</span>
+                                                }
                                             }
                                         }
                                     })}
+                                    {nextbtn(pagestate)}
                                 </div>
                             ):("")
                         }
