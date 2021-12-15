@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Titlea = styled.a`
-	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	color: ${props => (props.css.color)? props.css.color: "#333"} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	&:hover{
@@ -18,7 +18,7 @@ export const Titletag = styled.div`
 `;
 
 export const Excerpts = styled.div`
-	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	color: ${props => (props.css.color)? props.css.color: '#333'} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	text-align: ${props => props.css['text-align']} !important;
@@ -55,7 +55,7 @@ export const Cat_style_non_default = styled.a`
 `;
 
 export const MetaStyle = styled.span`
-	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	color: ${props => (props.css.color)? props.css.color: '#333'} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
@@ -64,7 +64,7 @@ export const MetaStyle = styled.span`
 	
 `;
 export const MetaTagStyle = styled.a`
-	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	color: ${props => (props.css.color)? props.css.color: ((props.primary != '')? props.primary: "")} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
@@ -123,10 +123,12 @@ export const Head_color = styled.div`
 `;
 
 export const Head_border = styled.div`
-	border-bottom: ${props => (props.css_head.style != '1')? props.css['border-width']+" "+props.css['border-style']+" "+props.css['border-color'] : ""} !important;
+	border-bottom: ${props => (props.css_head.style != '1')? props.css['border-width']+" solid "+((props.css['border-color'].length != 0)? props.css['border-color']: '#1e73be') : ""} !important;
 `;
 export const Head_border_style1 = styled.div`
-	border: ${props => props.css['border-width']+" "+props.css['border-style']+" "+props.css['border-color'] } !important;
+	border-style: ${props => props.css['border-style'] } !important;
+	border-width: ${props => props.css['border-width'] } !important;
+	border-color: ${props => props.css['border-color'] } !important;
 
 `;
 
@@ -149,9 +151,13 @@ export const ImgAnimation = styled.img`
 	}
 `;
 
-export const MetaIcon = styled.div`
+export const MetaIcona = styled.div`
     color: ${props => (props.css.color)? props.css.color: props.primary}
 `
+export const MetaIconspan = styled.div`
+    color: ${props => (props.css.color)? props.css.color: '#333'}
+`
+
 export const MetaCatIcon = styled.div`
     color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
 `

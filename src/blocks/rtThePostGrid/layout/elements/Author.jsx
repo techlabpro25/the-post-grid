@@ -1,6 +1,6 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {MetaIcon, MetaStyle} from "../../Style_component";
+import {MetaIcona, MetaTagStyle} from "../../Style_component";
 
 export const Author = (props) => {
     const { meta, author_url, meta_style, primary_color, name } = props.data
@@ -8,13 +8,14 @@ export const Author = (props) => {
         <span className="author">
             {
                 meta.icon ? (
-                    <MetaIcon as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faUser}/>
+                    <MetaIcona as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faUser}/>
                 ) : ("")
             }
             &nbsp;
-            <a href={author_url}>
-                <MetaStyle css={meta_style} primary={primary_color}>{name}</MetaStyle>
-            </a>
+            <MetaTagStyle css={meta_style} primary={primary_color} href={author_url}>
+                {name}
+            </MetaTagStyle>
+
             {meta.seperator}
         </span>
     )

@@ -49,7 +49,12 @@ class RtThePostGrid extends Block
             'letter-spaceing' => '',
             'transform' => ''
 		],
-		'category_padding' =>[],
+		'category_padding' =>[
+                'top' => '3px',
+                'right' => '8px',
+                'bottom' => '3px',
+                'left' => '8px',
+        ],
 		'category_margin' =>[],
         'meta_style' =>[
             'color' => "",
@@ -147,7 +152,7 @@ class RtThePostGrid extends Block
         ],
         'image' => [
             'show_hide' => true,
-            'size'=> "1024",
+            'size'=> "300",
             'animation'=> 1.1,
             'border-radius'=> "0",
         ],
@@ -171,10 +176,10 @@ class RtThePostGrid extends Block
             'relation'  => "AND",
             'order_bool'  => false,
             'order_by'  => "",
-            'order'  => "",
+            'order'  => "ASC",
             'author_bool'  => false,
             'author'  => [],
-            'status_bool'  => false,
+            'status_bool'  => true,
             'status'  => [],
             'keyword_bool'  => false,
             'keyword'  => "",

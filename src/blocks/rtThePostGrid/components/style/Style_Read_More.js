@@ -62,16 +62,6 @@ function Read_More(props) {
                                     onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "background-color": color}} ) }
                                 />
 
-                                <Text>
-                                    {__( "Active Color:", "the-post-grid")}
-                                </Text>
-
-                                <ColorPalette
-                                    className={"rt-colorcontrol"}
-                                    colors={ props.attr.colors }
-                                    value={ button_style.active_color }
-                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "active_color": color}} ) }
-                                />
                             </>
                         )
                     }else if (tab.name == "hover"){

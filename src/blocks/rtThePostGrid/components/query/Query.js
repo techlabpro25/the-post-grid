@@ -656,6 +656,7 @@ const Query = (props) => {
 						options={publish_type}
 						value={query.status}
 						isMulti ={true}
+						defaultValue = {{label: 'Publish', value: 'publish'}}
 						onChange={(value) =>{
 							$('.pagination_number.active').removeClass("active")
 							$('.pagination_number').first().addClass("active")

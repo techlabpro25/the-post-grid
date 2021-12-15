@@ -18,7 +18,7 @@ function Heading(props) {
     return (
         <PanelBody title={__( "Block Heading" , "the-post-grid")} initialOpen={false}>
             <Text>
-                {__( "Color:", "the-post-grid")}
+                {__( "Text Color:", "the-post-grid")}
             </Text>
             <ColorPalette
                 className={"rt-colorcontrol heading"}

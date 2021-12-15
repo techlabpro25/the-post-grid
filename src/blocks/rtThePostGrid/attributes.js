@@ -19,11 +19,11 @@ const attributes = {
 			relation: "AND",
 			order_bool: false,
 			order_by: "",
-			order: "",
+			order: "ASC",
 			author_bool: false,
 			author: [],
-			status_bool: false,
-			status: [],
+			status_bool: true,
+			status: [{label: 'Publish', value: 'publish'}],
 			keyword_bool: false,
 			keyword: "",
 			filter: true,
@@ -174,6 +174,12 @@ const attributes = {
 	},
 	category_padding: {
 		type: "object",
+		default:{
+			top: '3px',
+			right: '8px',
+			bottom: '3px',
+			left: '8px',
+		}
 	},
 	category_margin: {
 		type: "object",
@@ -231,7 +237,7 @@ const attributes = {
 		type: "object",
 		default: {
 			show_hide: true,
-			size: "1024",
+			size: "300",
 			animation: 1.1,
 			["border-radius"]: "0",
 		},
