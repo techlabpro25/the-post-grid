@@ -53,7 +53,6 @@ const Layout1 = (props) => {
 		layout
 	} = props
 
-
 	let Heading = "";
 	let Title = "";
 	if (heading.tag === undefined) {

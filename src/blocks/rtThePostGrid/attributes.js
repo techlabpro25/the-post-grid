@@ -239,7 +239,7 @@ const attributes = {
 			show_hide: true,
 			size: "300",
 			animation: 1.1,
-			["border-radius"]: "0",
+			["border-radius"]: "",
 		},
 	},
 	parent_class: {
@@ -256,8 +256,8 @@ const attributes = {
 			["background-color"]: "#fff",
 			["box-shadow-color"]: "transparent",
 			radius: "",
-			["border-color"]: "#d9d9d9",
-			["border-width"]: "1px"
+			["border-color"]: "",
+			["border-width"]: ""
 		},
 	},
 	constent_box_padding: {
@@ -266,10 +266,10 @@ const attributes = {
 	content_padding: {
 		type: "object",
 		default:{
-			top : '15px',
-			right : '15px',
-			left: '15px',
-			bottom : '15px',
+			top : '',
+			right : '',
+			left: '',
+			bottom : '',
 		}
 	},
 	section: {

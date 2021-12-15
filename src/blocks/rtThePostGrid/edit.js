@@ -22,7 +22,6 @@ import Category from './components/settings/Category';
 import Meta from './components/settings/Meta';
 import Read_More from './components/settings/Read_More';
 import Image from './components/settings/Image';
-
 import Style_Heading from './components/style/Style_Heading';
 import Style_Title from './components/style/Style_Title';
 import Style_Excerpt from './components/style/Style_Excerpt';
@@ -30,8 +29,8 @@ import Style_Category from './components/style/Style_Category';
 import Style_Meta from './components/style/Style_Meta';
 import Style_Read_More from './components/style/Style_Read_More';
 import Style_Content_wrap from './components/style/Style_Content_wrap';
-import Style_Section from './components/style/Style_Section';
 import $ from 'jquery';
+import PredefaultAttr from "./components/PredefaultAttr";
 
 
 const {__} = wp.i18n;
@@ -271,6 +270,7 @@ export default function Edit(props) {
 
     return (
         <>
+            <PredefaultAttr attr={global_attr}/>
             <InspectorControls>
                 <PanelBody className="post_grid_blocks" title={__("The Post Grid", 'the-post-grid')}>
                     <TabPanel
@@ -522,7 +522,7 @@ export default function Edit(props) {
                                     </div>
 
                                 ) : (
-                                    <RenderView {...attributes} data={data}/>
+                                    <RenderView {...attributes} setattr = {setAttributes} data={data}/>
                                 )
                             }
                         </>

@@ -94,7 +94,7 @@ export const List1 = (props) =>{
                         </Head_border>
                     ):("")
                 }
-                <Content_padding css_pad={content_padding}className={`rt-row rt-content-loader layout2 tpg-even`}>
+                <Content_padding css_pad={content_padding}className={`rt-row rt-content-loader layout2 list1 tpg-even`}>
                     {
                         data.length && data.map((post) => {
                             var postexcerpt = post.excerpt;
@@ -201,17 +201,19 @@ export const List1 = (props) =>{
                                                         {
                                                             (meta.position == "above") ? (
                                                                 <MetaStyle_align css={meta_style} className="post-meta-user  ">
-                                                                    {
-                                                                        general.author ? (
-                                                                            <Author data={author_props}/>
-                                                                        ) : ("")
-                                                                    }
+
 
                                                                     {/*Post date*/}
                                                                     {
                                                                         general.post_date ? (
                                                                             <Date data={date_props}/>
                                                                         ) : ('')
+                                                                    }
+                                                                    {/*Author*/}
+                                                                    {
+                                                                        general.author ? (
+                                                                            <Author data={author_props}/>
+                                                                        ) : ("")
                                                                     }
 
                                                                     {/*Category*/}
@@ -253,17 +255,19 @@ export const List1 = (props) =>{
                                                         {
                                                             (meta.position == "between" || meta.position == "default") ? (
                                                                 <MetaStyle_align css={meta_style} className="post-meta-user  ">
-                                                                    {
-                                                                        general.author ? (
-                                                                            <Author data={author_props}/>
-                                                                        ) : ("")
-                                                                    }
+
 
                                                                     {/*Post date*/}
                                                                     {
                                                                         general.post_date ? (
                                                                             <Date data={date_props}/>
                                                                         ) : ('')
+                                                                    }
+                                                                    {/*Author*/}
+                                                                    {
+                                                                        general.author ? (
+                                                                            <Author data={author_props}/>
+                                                                        ) : ("")
                                                                     }
 
                                                                     {/*Category*/}
@@ -306,17 +310,19 @@ export const List1 = (props) =>{
                                                         {
                                                             (meta.position == "below") ? (
                                                                 <MetaStyle_align css={meta_style} className="post-meta-user  ">
-                                                                    {
-                                                                        general.author ? (
-                                                                            <Author data={author_props}/>
-                                                                        ) : ("")
-                                                                    }
+
 
                                                                     {/*Post date*/}
                                                                     {
                                                                         general.post_date ? (
                                                                             <Date data={date_props}/>
                                                                         ) : ('')
+                                                                    }
+                                                                    {/*Author*/}
+                                                                    {
+                                                                        general.author ? (
+                                                                            <Author data={author_props}/>
+                                                                        ) : ("")
                                                                     }
 
                                                                     {/*Category*/}
