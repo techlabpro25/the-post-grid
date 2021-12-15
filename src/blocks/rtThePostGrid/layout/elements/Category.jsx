@@ -28,7 +28,7 @@ export const Category_Default = (props) =>{
                                                     return (
                                                         <>
                                                             {/*=*/}
-                                                            {(i > 0) ? ", " : ""}
+                                                            {(i > 0) ? " , " : ""}
                                                             <Cat_style css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style>
