@@ -49,8 +49,9 @@ export default function Edit(props) {
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const {query, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt} = attributes
+    const {query, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image} = attributes
 
+    const buttonActiveRef  = useRef();
     const colors = [
         {name: 'red', color: '#f00'},
         {name: 'white', color: '#fff'},
@@ -191,7 +192,8 @@ export default function Edit(props) {
                 relation: query.relation,
                 pagination: pagination.show,
                 limit: query.limit,
-                excerpt_type: excerpt.type
+                excerpt_type: excerpt.type,
+                imgsize: image.size
             }
         }).then((posts) => {
             if ('message' in posts) {
@@ -205,7 +207,7 @@ export default function Edit(props) {
             setIsloading(false);
             // setAttributes({query: {...query, 'query_loader':false}})
         });
-    }, [query, pagination, newOffset, pageindex, excerpt.type]);
+    }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
 
     useEffect(() => {
         var url_string = window.location.href
@@ -244,7 +246,6 @@ export default function Edit(props) {
         setAttributes({excerpt: {...excerpt, 'limit': ''}})
     }, [excerpt.type])
 
-    // const buttonRef  = useRef('.pagination_number.active');
 
     useEffect(()=>{
         setPageindex(1)
@@ -560,7 +561,7 @@ export default function Edit(props) {
 
                                                 if(((i+1) >= minlimit) && (i+1) <= maxlimit){
                                                     if ((i == 0) && (pageindex == 1) ){
-                                                        return <PaginationStyle  css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
+                                                        return <PaginationStyle  css={pagination} onLoad={(e) => e.target.focus()} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
                                                                        key={i}
                                                                        onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
                                                     }else{

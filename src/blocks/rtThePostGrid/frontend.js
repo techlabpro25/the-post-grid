@@ -7,7 +7,7 @@ const {__} = wp.i18n;
 const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
-    const {query, pagination} = props
+    const {query, pagination, image} = props
     const [pagestate, setPagestate] = useState(0);
     const [pageindex, setPageindex] = useState(1);
     const [message, setMessage] = useState("");
@@ -57,7 +57,8 @@ const RtThePostGrid = (props) => {
                 terms: query.tax_term,
                 relation: query.relation,
                 pagination: pagination.show,
-                limit: query.limit
+                limit: query.limit,
+                imgsize: image.size
             }
         }).then((posts) => {
             if('message' in posts){
@@ -73,7 +74,7 @@ const RtThePostGrid = (props) => {
             $('.pagination .pagination_number.'+pageindex).addClass('active')
 
         });
-    }, [query, pagination, pageindex]);
+    }, [query, pagination, pageindex, image.size]);
 
     useEffect(()=>{
         setIsloading(true);

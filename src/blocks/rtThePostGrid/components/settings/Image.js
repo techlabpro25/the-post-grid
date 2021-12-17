@@ -7,12 +7,21 @@ import {
     SelectControl,
     ToggleControl 
 } from "@wordpress/components";
-import { useState } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
+import apiFetch from "@wordpress/api-fetch";
 
 function Image(props) {
     const {__} = wp.i18n;
     const { image } = props.attr.attributes
     const [ showimage, setShowimage ] = useState( true );
+    const [sizes, setSizes] = useState([])
+
+    // Get all Image Size
+    useEffect(() => {
+        apiFetch({ path: "/rt/v1/image-size" }).then((sizes) => {
+            setSizes(sizes)
+        })
+    }, []);
 
     return (
         <PanelBody title={__( "Image", "the-post-grid")} initialOpen={false}>
@@ -32,13 +41,7 @@ function Image(props) {
                         className={"rt-selectcontrol image"}
                         label={__( "Featured Image Size:", "the-post-grid")}
                         value={ image.size }
-                        options={ [
-                            { label: 'Thumbnail (150 x 150)', value: "150" },
-                            { label: 'Medium (300 x 300)', value: "300" },
-                            { label: 'Large (1024 x 1024)', value: "1024" },
-                            { label: '1536 x 1536 (1536 x 1536)', value: "1536" },
-                            { label: '2048 x 2048 (2048 x 2048)', value: "2048" },
-                        ] }
+                        options={ sizes }
                         onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "size": value} } ) }
                     />
 

@@ -50,12 +50,17 @@ class RtThePostGrid extends Block
             'transform' => ''
 		],
 		'category_padding' =>[
-                'top' => '3px',
-                'right' => '8px',
-                'bottom' => '3px',
-                'left' => '8px',
+                'top' => '0px',
+                'right' => '5px',
+                'bottom' => '0px',
+                'left' => '5px',
         ],
-		'category_margin' =>[],
+		'category_margin' =>[
+            'top' => '4px',
+            'right' => '4px',
+            'bottom' => '4px',
+            'left' => '4px',
+        ],
         'meta_style' =>[
             'color' => "",
             "text-align" => "left",
@@ -159,7 +164,7 @@ class RtThePostGrid extends Block
         ],
         'image' => [
             'show_hide' => true,
-            'size'=> "300",
+            'size'=> "300x300",
             'animation'=> 1.1,
             'border-radius'=> "0",
         ],

@@ -7,6 +7,7 @@ defined('ABSPATH') || exit;
 use RT\RadiusBlocks\Helpers\Fns;
 use RT\RadiusBlocks\API\All_Post;
 use RT\RadiusBlocks\API\Get_Terms;
+use RT\RadiusBlocks\API\Get_Image_Sizes;
 use RT\RadiusBlocks\API\Get_Title;
 use RT\RadiusBlocks\API\Isotope_Terms;
 use RT\RadiusBlocks\Abstracts\Block;
@@ -38,6 +39,7 @@ final class RadiusBlocks{
 		new All_Post();
 		new Get_Title();
 		new Isotope_Terms();
+		new Get_Image_Sizes();
 	}
 
 	/**

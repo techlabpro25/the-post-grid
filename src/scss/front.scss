@@ -1174,7 +1174,6 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 }
 
 .categories-links {
-    display: inline-block;
     line-height: 1.3;
 }
 
@@ -2515,5 +2514,15 @@ h1,h2,h3,h4,h5,h6{
 
 .cat-above-title span.categories-links {
     margin-bottom: 6px;
+}
+
+#terms_icon{
+    background-color: transparent !important;
+    color: #1e73be !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+}
+#terms_icon:after{
+    border-top: unset !important;
 }
 

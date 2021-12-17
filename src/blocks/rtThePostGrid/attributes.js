@@ -224,14 +224,20 @@ const attributes = {
 	category_padding: {
 		type: "object",
 		default:{
-			top: '3px',
-			right: '8px',
-			bottom: '3px',
-			left: '8px',
+			top: '0px',
+			right: '5px',
+			bottom: '0px',
+			left: '5px',
 		}
 	},
 	category_margin: {
 		type: "object",
+		default:{
+			top: '4px',
+			right: '4px',
+			bottom: '4px',
+			left: '4px',
+		}
 	},
 	meta: {
 		type: "object",
@@ -293,7 +299,7 @@ const attributes = {
 		type: "object",
 		default: {
 			show_hide: true,
-			size: "300",
+			size: "300x300",
 			animation: 1.1,
 			["border-radius"]: "",
 		},

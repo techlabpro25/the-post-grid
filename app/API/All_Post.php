@@ -32,7 +32,7 @@ class All_Post{
         $pagination = $request['pagination'];
         $limit = $request['limit'];
         $excerpt_type = $request['excerpt_type'];
-
+        $size = explode('x', $request['imgsize']);
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
         $post_per_page =  ($request["post_per_page"] === null )? -1: $request["post_per_page"];
 
@@ -152,7 +152,7 @@ class All_Post{
                         "excerpt" => ($excerpt_type == "full") ? get_the_content() : get_the_excerpt(),
                         "comment_count" => esc_html(wp_count_comments($id)->all),
                         "post_date" => esc_html(get_the_date('M d, y')),
-                        "image_url" => esc_url_raw(get_the_post_thumbnail_url(null, 'full')),
+                        "image_url" => esc_url_raw(get_the_post_thumbnail_url(null, $size)),
                         "author_name" => esc_html(get_the_author_meta( 'display_name', $author_id )),
                         "author_url" => esc_html(get_author_posts_url(get_the_author_meta('ID'))),
                         "post_link" => esc_url_raw(get_post_permalink()),

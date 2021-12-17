@@ -6,6 +6,7 @@ import {Cat_style, Cat_style_non_default, MetaCatIcon, MetaIcon} from "../../Sty
 // For Default
 export const Category_Default = (props) =>{
     const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin } = props.data
+
     return(
         <>
             {
@@ -13,7 +14,7 @@ export const Category_Default = (props) =>{
                     <span className="categories-links">
                         {
                             category.icon?(
-                                <a>
+                                <a id={"terms_icon"}>
                                     <MetaCatIcon as={FontAwesomeIcon} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} />
                                 </a>
                             ):("")
@@ -24,13 +25,13 @@ export const Category_Default = (props) =>{
                                 if(term_item.length > 0){
                                     return(
                                         <>
-                                            {i > 0 ? " , ":""}
+                                            {((category.style == 'style1') && (i > 0) && (category_style['background-color'].length == 0)) ? "," : "   "}
                                             {
                                                 term_item?.length && term_item?.map((items,i) =>{
                                                     return (
                                                         <>
                                                             {/*=*/}
-                                                            {(i > 0) ? " , " : ""}
+                                                            {((category.style == 'style1') && (i > 0) && (category_style['background-color'].length == 0)) ? "," : "   "}
                                                             <Cat_style css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style>
@@ -64,7 +65,7 @@ export const Non_Category_Default = (props) =>{
                     <span className="categories-links">
                         {
                             category.icon?(
-                                <a>
+                                <a id={"terms_icon"}>
                                     <MetaCatIcon as={FontAwesomeIcon} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} />
                                 </a>
                             ):("")
@@ -79,7 +80,7 @@ export const Non_Category_Default = (props) =>{
                                                 term_item?.length && term_item?.map((items) =>{
                                                     return (
                                                         <>
-                                                            {(i > 0) ? " , " : ""}
+                                                            {((category.style == 'style1') && (i > 0) && (category_style['background-color'].length == 0)) ? "," : "   "}
                                                             <Cat_style_non_default css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style_non_default>
