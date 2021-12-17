@@ -208,11 +208,15 @@ div.tax_second_child .components-base-control {
 }
 
 .button-color-panel button.tab_panel {
-    border: solid 2px;
+    border: solid 1px gray;
     width: 100%;
     justify-content: center;
+    height: 38px;
 }
 
+.components-dropdown__content .components-popover__content>div {
+    padding: 0px !important;
+}
 
 .button-color-panel .components-tab-panel__tab-content {
     padding: 15px;
@@ -220,11 +224,16 @@ div.tax_second_child .components-base-control {
     background-color: aliceblue;
 }
 
-
 .button-color-panel button.tab_panel.active-tab {
     background-color: #4c6fff;
     color: white;
-    border: solid 2px #4c6fff;
+    border: solid 1px #4c6fff;
+}
+
+.button-color-panel button.tab_panel:hover{
+    background-color: #4b6adb;
+    color: white;
+    border: solid 1px #4b6adb;
 }
 .rt-font-family {
     margin-bottom: 18px;
@@ -249,7 +258,7 @@ div.tax_second_child .components-base-control {
     font-size: 14px;
 }
 .popover-slot .components-popover.components-dropdown__content.my-popover-content-classname .components-popover__content {
-    left: -210px;
+    left: -220px;
     padding: 0 !important;
 }
 
@@ -266,6 +275,8 @@ div.tax_second_child .components-base-control {
 .rt-radiocontrol .components-radio-control__input:focus{
     box-shadow: unset !important;
 }
+
+
 
 
 

@@ -31,11 +31,13 @@ import Style_Read_More from './components/style/Style_Read_More';
 import Style_Content_wrap from './components/style/Style_Content_wrap';
 import $ from 'jquery';
 import PredefaultAttr from "./components/PredefaultAttr";
+import Pagination from "./components/style/Pagination";
+import {PaginationStyle} from "./Style_component";
 
 
 const {__} = wp.i18n;
 const {InspectorControls} = wp.blockEditor
-const {useState, useEffect} = wp.element;
+const {useState, useEffect, useRef} = wp.element;
 
 export default function Edit(props) {
     const {attributes, setAttributes, } = props;
@@ -47,7 +49,7 @@ export default function Edit(props) {
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const {query, general, parent_class, primary_color, heading_title, pagination, excerpt} = attributes
+    const {query, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -99,6 +101,16 @@ export default function Edit(props) {
         { value: '%', label: '%', default: 10 },
         { value: 'em', label: 'em', default: 0 },
     ];
+    const border_style = [
+        {value: 'dotted', label: 'Dotted'},
+        {value: 'dashed', label: 'Dashed'},
+        {value: 'solid', label: 'Solid'},
+        {value: 'double', label: 'Double'},
+        {value: 'groove', label: 'Groove'},
+        {value: 'ridge', label: 'Ridge'},
+        {value: 'inset', label: 'Inset'},
+        {value: 'outset', label: 'Outset'},
+    ]
 
     const transform = [
         {
@@ -232,19 +244,22 @@ export default function Edit(props) {
         setAttributes({excerpt: {...excerpt, 'limit': ''}})
     }, [excerpt.type])
 
+    // const buttonRef  = useRef('.pagination_number.active');
+
     useEffect(()=>{
         setPageindex(1)
         setAttributes({excerpt: {...excerpt, 'limit': '25'}})
+        // buttonRef.current.focus();
     },[])
 
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
-            return <button className={`pagination_number next`} onClick={nextpageset}>Next</button>
+            return <PaginationStyle css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number next`} onClick={nextpageset}>Next</PaginationStyle>
         }
     }
     const prevbtn = (pageval) => {
         if(minlimit > 1){
-            return <button className={`pagination_number prev`} onClick={prevpageset}>Prev</button>
+            return <PaginationStyle css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number prev`} onClick={prevpageset}>Prev</PaginationStyle>
         }
     }
 
@@ -266,7 +281,7 @@ export default function Edit(props) {
     }, [query.filter])
 
 
-    const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform}
+    const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform, border_style}
 
     return (
         <>
@@ -495,6 +510,9 @@ export default function Edit(props) {
                                                                     ) : ("")
 
                                                             }
+
+                                                            {/*Pagination*/}
+                                                            <Pagination attr={global_attr}/>
                                                         </>
                                                     )
                                                 }
@@ -542,13 +560,13 @@ export default function Edit(props) {
 
                                                 if(((i+1) >= minlimit) && (i+1) <= maxlimit){
                                                     if ((i == 0) && (pageindex == 1) ){
-                                                        return <button className={`pagination_number active ${i+1}`} data-value={i + 1}
+                                                        return <PaginationStyle  css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
                                                                        key={i}
-                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
+                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
                                                     }else{
-                                                        return <button className={`pagination_number ${i+1}`} data-value={i + 1}
+                                                        return <PaginationStyle css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}
                                                                        key={i}
-                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</button>
+                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
                                                     }
                                                 }
                                             })

@@ -42,13 +42,14 @@ const Query = (props) => {
 
 	const order_type = [
 		{
-			label: __( "ID", "the-post-grid"),
-			value: "ID",
-		},
-		{
 			label: __( "Title", "the-post-grid"),
 			value: "title",
 		},
+		{
+			label: __( "ID", "the-post-grid"),
+			value: "ID",
+		},
+
 		{
 			label: __( "Created date", "the-post-grid"),
 			value: "date",
@@ -520,12 +521,13 @@ const Query = (props) => {
 				checked={query.order_bool}
 				onChange={(value) =>
 					{
-						let order_by ={...query.order_by}
-						let order ={...query.order}
+						let order_by = query.order_by
+						let order =query.order
 						if(!value){
-							order_by = "";
-							order = "";
+							order_by = "title";
+							order = "DESC";
 						}
+
 						props.attr.setAttributes({ query: {
 							...query,
 								order_bool: value,

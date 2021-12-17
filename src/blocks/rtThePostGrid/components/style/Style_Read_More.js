@@ -21,78 +21,99 @@ function Read_More(props) {
 
     return (
         <PanelBody title={__( "Read More Button", "the-post-grid")} initialOpen={false}>
-            <TabPanel
-                className="button-color-panel"
-                activeClass="active-tab"
-                tabs={ [
-                    {
-                        name: 'normal',
-                        title: __('Normal', 'the-post-grid'),
-                        className: 'btn-normal tab_panel',
-                    },
-                    {
-                        name: 'hover',
-                        title: __('Hover', 'the-post-grid'),
-                        className: 'btn-hover tab_panel',
-                    },
-                ] }
-            >
-                { ( tab ) => {
-                    if(tab.name == "normal"){
-                        return(
-                            <>
-                                <Text>
-                                    {__( "Text Color:", "the-post-grid")}
-                                </Text>
-                                <ColorPalette
-                                    className={"rt-colorcontrol"}
-                                    colors={ props.attr.colors }
-                                    value={ button_style.color }
-                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "color": color}} ) }
-                                />
+            {/*Color*/}
+            <BaseControl label={__("Color", "the-post-grid")} className="rttpg-typography-base">
+                <Dropdown
+                    className="rttpg-typography-dropdown"
+                    contentClassName="my-popover-content-classname"
+                    position="bottom left"
+                    renderToggle={({ isOpen, onToggle }) => (
+                        <Button
+                            isSmall
+                            onClick={onToggle}
+                            aria-expanded={isOpen}
+                            icon="edit"
+                        ></Button>
+                    )}
+                    renderContent={() => (
 
-                                <Text>
-                                    {__( "Background Color:", "the-post-grid")}
-                                </Text>
-                                <ColorPalette
-                                    className={"rt-colorcontrol"}
-                                    label = "Select Color"
-                                    colors={props.attr.colors }
-                                    value={ button_style["background-color"] }
-                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "background-color": color}} ) }
-                                />
+                        <div className="rttpg-panel-control rtcl-gb-typography-component-panel">
+                            <TabPanel
+                                className="button-color-panel"
+                                activeClass="active-tab"
+                                tabs={ [
+                                    {
+                                        name: 'normal',
+                                        title: __('Normal', 'the-post-grid'),
+                                        className: 'btn-normal tab_panel',
+                                    },
+                                    {
+                                        name: 'hover',
+                                        title: __('Hover', 'the-post-grid'),
+                                        className: 'btn-hover tab_panel',
+                                    },
+                                ] }
+                            >
+                                { ( tab ) => {
+                                    if(tab.name == "normal"){
+                                        return(
+                                            <>
+                                                <Text>
+                                                    {__( "Text Color:", "the-post-grid")}
+                                                </Text>
+                                                <ColorPalette
+                                                    className={"rt-colorcontrol"}
+                                                    colors={ props.attr.colors }
+                                                    value={ button_style.color }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "color": color}} ) }
+                                                />
 
-                            </>
-                        )
-                    }else if (tab.name == "hover"){
-                        return (
-                            <>
-                                <Text>
-                                    {__( "Text Hover Color:", "the-post-grid")}
-                                </Text>
-                                <ColorPalette
-                                    className={"rt-colorcontrol"}
-                                    colors={ props.attr.colors }
-                                    value={ button_style.h_color }
-                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "h_color": color}} ) }
-                                />
+                                                <Text>
+                                                    {__( "Background Color:", "the-post-grid")}
+                                                </Text>
+                                                <ColorPalette
+                                                    className={"rt-colorcontrol"}
+                                                    label = "Select Color"
+                                                    colors={props.attr.colors }
+                                                    value={ button_style["background-color"] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "background-color": color}} ) }
+                                                />
 
-                                <Text>
-                                    {__( "Background Hover Color:", "the-post-grid")}
-                                </Text>
-                                <ColorPalette
-                                    className={"rt-colorcontrol"}
-                                    colors={ props.attr.colors }
-                                    value={ button_style.h_bg_color }
-                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "h_bg_color": color}} ) }
-                                />
-                            </>
-                        )
-                    }
-                } }
-            </TabPanel>
+                                            </>
+                                        )
+                                    }else if (tab.name == "hover"){
+                                        return (
+                                            <>
+                                                <Text>
+                                                    {__( "Text Color:", "the-post-grid")}
+                                                </Text>
+                                                <ColorPalette
+                                                    className={"rt-colorcontrol"}
+                                                    colors={ props.attr.colors }
+                                                    value={ button_style.h_color }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "h_color": color}} ) }
+                                                />
 
-            <br/>
+                                                <Text>
+                                                    {__( "Background Color:", "the-post-grid")}
+                                                </Text>
+                                                <ColorPalette
+                                                    className={"rt-colorcontrol"}
+                                                    colors={ props.attr.colors }
+                                                    value={ button_style.h_bg_color }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "h_bg_color": color}} ) }
+                                                />
+                                            </>
+                                        )
+                                    }
+                                } }
+                            </TabPanel>
+                        </div>
+                    )}
+                />
+            </BaseControl>
+
+            {/*Typography*/}
             <BaseControl label={__("Typography", "the-post-grid")} className="rttpg-typography-base">
                 <Dropdown
                     className="rttpg-typography-dropdown"
@@ -164,12 +185,133 @@ function Read_More(props) {
                 />
             </BaseControl>
 
-            <NumberControl
-                className={"rt-numbercontrol"}
-                label={__( "Border Radius", "the-post-grid")}
-                value={button["border-radius"]}
-                onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "border-radius": value} }) }
-            />
+            {/*Border*/}
+
+            <BaseControl label={__("Border", "the-post-grid")} className="rttpg-typography-base">
+                <Dropdown
+                    className="rttpg-typography-dropdown"
+                    contentClassName="my-popover-content-classname"
+                    position="bottom left"
+                    renderToggle={({ isOpen, onToggle }) => (
+                        <Button
+                            isSmall
+                            onClick={onToggle}
+                            aria-expanded={isOpen}
+                            icon="edit"
+                        ></Button>
+                    )}
+                    renderContent={() => (
+
+                        <div className="rttpg-panel-control rtcl-gb-typography-component-panel">
+                            <TabPanel
+                                className="button-color-panel"
+                                activeClass="active-tab"
+                                tabs={ [
+                                    {
+                                        name: 'normal',
+                                        title: __('Normal', 'the-post-grid'),
+                                        className: 'btn-normal tab_panel',
+                                    },
+                                    {
+                                        name: 'hover',
+                                        title: __('Hover', 'the-post-grid'),
+                                        className: 'btn-hover tab_panel',
+                                    },
+                                ] }
+                            >
+                                { ( tab ) => {
+                                    if(tab.name == "normal"){
+                                        return(
+                                            <>
+                                                <Text>
+                                                    {__( "Border Color:", "the-post-grid")}
+                                                </Text>
+                                                <ColorPalette
+                                                    className={"rt-colorcontrol"}
+                                                    colors={ props.attr.colors }
+                                                    value={ button['border-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {button: {...button, "border-color": color}} ) }
+                                                />
+
+                                                <Text>
+                                                    {__( "Border Width:", "the-post-grid")}
+                                                </Text>
+                                                <UnitControl
+                                                    className={"rt-unitcontrol"}
+                                                    units={[{ value: 'px', label: 'px', default: 0 }]}
+                                                    value={ button["border-width"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {button: {...button, "border-width": val}} ) }
+                                                />
+                                                <SelectControl
+                                                    label={__( "Border Style:", "the-post-grid")}
+                                                    className={"rt-selectcontrol"}
+                                                    value={ button["border-style"] }
+                                                    options={ props.attr.border_style }
+                                                    onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "border-style": value} }) }
+                                                />
+                                                <UnitControl
+                                                    className={"rt-unitcontrol"}
+                                                    units={[
+                                                        { value: 'px', label: 'px', default: 0 },
+                                                        { value: '%', label: '%', default: 10 },
+                                                    ]}
+                                                    label={__( "Border Radius", "the-post-grid")}
+                                                    value={button["border-radius"]}
+                                                    onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "border-radius": value} }) }
+                                                />
+                                            </>
+                                        )
+                                    }else if (tab.name == "hover"){
+                                        return (
+                                            <>
+                                                <Text>
+                                                    {__( "Border Color:", "the-post-grid")}
+                                                </Text>
+                                                <ColorPalette
+                                                    className={"rt-colorcontrol"}
+                                                    colors={ props.attr.colors }
+                                                    value={ button['h-border-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {button: {...button, "h-border-color": color}} ) }
+                                                />
+
+                                                <Text>
+                                                    {__( "Border Width:", "the-post-grid")}
+                                                </Text>
+                                                <UnitControl
+                                                    className={"rt-unitcontrol"}
+                                                    units={[{ value: 'px', label: 'px', default: 0 }]}
+                                                    value={ button["h-border-width"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {button: {...button, "h-border-width": val}} ) }
+                                                />
+                                                <SelectControl
+                                                    label={__( "Border Style:", "the-post-grid")}
+                                                    className={"rt-selectcontrol"}
+                                                    value={ button["h-border-style"] }
+                                                    options={ props.attr.border_style }
+                                                    onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "h-border-style": value} }) }
+                                                />
+                                                <UnitControl
+                                                    className={"rt-unitcontrol"}
+                                                    units={[
+                                                        { value: 'px', label: 'px', default: 0 },
+                                                        { value: '%', label: '%', default: 10 },
+                                                    ]}
+                                                    label={__( "Border Radius", "the-post-grid")}
+                                                    value={button["h-border-radius"]}
+                                                    onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "h-border-radius": value} }) }
+                                                />
+                                            </>
+                                        )
+                                    }
+                                } }
+                            </TabPanel>
+                        </div>
+                    )}
+                />
+            </BaseControl>
+
+
+
 
             <Text>
                 {__( "Alignment:", "the-post-grid")}

@@ -67,8 +67,15 @@ class RtThePostGrid extends Block
         ],
         'button' =>[
             'border-radius' => "",
+            'h-boder-radius' => '',
             "text-align" => "left",
             'text' => 'View More',
+            'border-color' => '#e0e0e0',
+			'h-border-color' => '#e0e0e0',
+			'border-width'=> '1px',
+			'h-border-width'=> '1px',
+			'border-style' => 'solid',
+            'h-border-style' => 'solid'
         ],
         'button_style' =>[
             'color' => '',
@@ -175,7 +182,7 @@ class RtThePostGrid extends Block
             'tag_operator'  => "",
             'relation'  => "AND",
             'order_bool'  => false,
-            'order_by'  => "",
+            'order_by'  => "title",
             'order'  => "ASC",
             'author_bool'  => false,
             'author'  => [],
@@ -201,6 +208,51 @@ class RtThePostGrid extends Block
             'show'=> false,
             'post_per_page'=> 5,
             'pagination_type'=> "",
+            'color'=> '',
+			'h-color' => '',
+			'a-color' => '',
+			'bg-color' => "",
+			'h-bg-color' => "",
+			'a-bg-color' => "",
+			'border-color' => "",
+			'h-border-color' => "",
+			'a-border-color' => "",
+			'border-style' => "",
+			'h-border-style' => "",
+			'a-border-style' => "",
+			'border-width' => "",
+			'h-border-width' => "",
+			'a-border-width' => "",
+			'border-radius' => "",
+			'h-border-radius' => "",
+			'a-border-radius' => "",
+			'font-size' => "",
+			'h-font-size' => "",
+			'a-font-size' => "",
+			'font-weight' => "",
+			'h-font-weight' => "",
+			'a-font-weight' => "",
+			'transform' => "",
+			'h-transform' => "",
+			'a-transform' => "",
+			'letter-spacing' => "",
+			'h-letter-spacing' => "",
+			'a-letter-spacing' => "",
+			'line-height' => "",
+			'h-line-height' => "",
+			'a-line-height' => "",
+        ],
+        'pagination_padding'=>[
+            'top' => '5px',
+			'right' => '15px',
+			'bottom' => '5px',
+			'left' => '15px',
+        ],
+        'pagination_margin' =>[
+            'top' => '5px',
+            'right' => '5px',
+            'bottom' => '5px',
+            'left' => '5px',
         ],
 	];
 
@@ -232,7 +284,7 @@ class RtThePostGrid extends Block
 		//        }
 		ob_start(); ?>
         <div class="rt-tpg-ph rt-thepostgrid">
-            <pre style="display: none;"><?php echo wp_json_encode($_attributes) ?></pre>
+            <pre style="display => none;"><?php echo wp_json_encode($_attributes) ?></pre>
         </div>
 <?php return ob_get_clean();
 	}

@@ -18,8 +18,8 @@ const attributes = {
 			tag_operator: "",
 			relation: "AND",
 			order_bool: false,
-			order_by: "",
-			order: "ASC",
+			order_by: "title",
+			order: "DESC",
 			author_bool: false,
 			author: [],
 			status_bool: true,
@@ -46,7 +46,56 @@ const attributes = {
 			show: false,
 			post_per_page: 5,
 			pagination_type: "",
+			color: '',
+			['h-color']: '',
+			['a-color']: '',
+			['bg-color']: "",
+			['h-bg-color']: "",
+			['a-bg-color']: "",
+			['border-color']: "",
+			['h-border-color']: "",
+			['a-border-color']: "",
+			['border-style']: "",
+			['h-border-style']: "",
+			['a-border-style']: "",
+			['border-width']: "",
+			['h-border-width']: "",
+			['a-border-width']: "",
+			['border-radius']: "",
+			['h-border-radius']: "",
+			['a-border-radius']: "",
+			['font-size']: "",
+			['h-font-size']: "",
+			['a-font-size']: "",
+			['font-weight']: "",
+			['h-font-weight']: "",
+			['a-font-weight']: "",
+			['transform']: "",
+			['h-transform']: "",
+			['a-transform']: "",
+			['letter-spacing']: "",
+			['h-letter-spacing']: "",
+			['a-letter-spacing']: "",
+			['line-height']: "",
+			['h-line-height']: "",
+			['a-line-height']: "",
 		},
+	},
+	pagination_padding:{
+		default:{
+			top: '5px',
+			right: '15px',
+			bottom: '5px',
+			left: '15px',
+		}
+	},
+	pagination_margin:{
+		default:{
+			top: '5px',
+			right: '5px',
+			bottom: '5px',
+			left: '5px',
+		}
 	},
 	linking: {
 		type: "object",
@@ -208,8 +257,15 @@ const attributes = {
 		type: "object",
 		default: {
 			["border-radius"]: "",
+			['h-boder-radius'] : "",
 			text: "View More",
 			["text-align"]: "left",
+			['border-color']: '#e0e0e0',
+			['h-border-color']: '#e0e0e0',
+			['border-width']: '1px',
+			['h-border-width']: '1px',
+			['border-style']: 'solid',
+			['h-border-style']: 'solid',
 		},
 	},
 	button_style: {
@@ -295,7 +351,8 @@ const attributes = {
 	},
 	plugin_path:{
 		type: 'text'
-	}
+	},
+
 };
 
 export default attributes;

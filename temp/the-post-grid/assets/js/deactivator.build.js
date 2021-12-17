@@ -1,1 +1,0 @@
-window.ultimate_blocks&&window.ultimate_blocks.forEach((function(o){o.active||wp.blocks.unregisterBlockType(o.name)}));
