@@ -99,8 +99,9 @@ function Excerpt(props) {
                             />
 
 
-                            <NumberControl
-                                className={"rt-numbercontrol excerpt"}
+                            <UnitControl
+                                className={"rt-unitcontrol excerpt"}
+                                units={props.attr.units}
                                 label={__('Line Height', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({excerpt_style: {...excerpt_style,"line-height":value}})}}
                                 value={ excerpt_style['line-height'] }

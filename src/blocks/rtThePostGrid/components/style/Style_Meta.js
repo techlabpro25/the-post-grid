@@ -104,8 +104,9 @@ function Meta(props) {
                                 onChange={ ( val ) => props.attr.setAttributes( {meta_style: {...meta_style, "letter-spacing": val}} ) }
                             />
 
-                            <NumberControl
-                                className={"rt-numbercontrol meta"}
+                            <UnitControl
+                                className={"rt-unitcontrol meta"}
+                                units={props.attr.units}
                                 label={__('Line Height', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({meta_style: {...meta_style,"line-height":value}})}}
                                 shiftStep={ 1 }

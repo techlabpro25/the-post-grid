@@ -8,7 +8,10 @@ export const Author = (props) => {
         <span className="author">
             {
                 meta.icon ? (
-                    <MetaIcona as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faUser}/>
+                    <a href={author_url}>
+                        <MetaIcona as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faUser}/>
+                    </a>
+
                 ) : ("")
             }
             &nbsp;

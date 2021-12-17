@@ -222,14 +222,15 @@ function Pagination(props) {
                                                     {__( "Letter Spacing:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol meta"}
+                                                    className={"rt-unitcontrol"}
                                                     units={props.attr.units}
                                                     value={ pagination["letter-spacing"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "letter-spacing": val}} ) }
                                                 />
 
-                                                <NumberControl
-                                                    className={"rt-numbercontrol"}
+                                                <UnitControl
+                                                    className={"rt-unitcontrol"}
+                                                    units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
                                                     onChange={ (value) =>{props.attr.setAttributes({pagination: {...pagination,"line-height":value}})}}
                                                     value={ pagination['line-height'] }
@@ -283,8 +284,9 @@ function Pagination(props) {
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "h-letter-spacing": val}} ) }
                                                 />
 
-                                                <NumberControl
-                                                    className={"rt-numbercontrol"}
+                                                <UnitControl
+                                                    className={"rt-unitcontrol"}
+                                                    units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
                                                     onChange={ (value) =>{props.attr.setAttributes({pagination: {...pagination,"h-line-height":value}})}}
                                                     value={ pagination['h-line-height'] }
@@ -338,8 +340,9 @@ function Pagination(props) {
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "a-letter-spacing": val}} ) }
                                                 />
 
-                                                <NumberControl
-                                                    className={"rt-numbercontrol"}
+                                                <UnitControl
+                                                    className={"rt-unitcontrol"}
+                                                    units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
                                                     onChange={ (value) =>{props.attr.setAttributes({pagination: {...pagination,"a-line-height":value}})}}
                                                     value={ pagination['a-line-height'] }

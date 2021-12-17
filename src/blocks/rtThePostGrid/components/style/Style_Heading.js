@@ -122,8 +122,9 @@ function Heading(props) {
                                 onChange={ ( val ) => props.attr.setAttributes( {heading_style: {...heading_style, "letter-spacing": val}} ) }
                             />
 
-                            <NumberControl
-                                className={"rt-numbercontrol heading"}
+                            <UnitControl
+                                className={"rt-unitcontrol heading"}
+                                units={props.attr.units}
                                 label={__('Line Height:', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({heading_style: {...heading_style,"line-height":value}})}}
                                 value={ heading_style['line-height'] }

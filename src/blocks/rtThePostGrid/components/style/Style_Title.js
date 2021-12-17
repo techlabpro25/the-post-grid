@@ -112,8 +112,9 @@ function Title(props) {
                                 onChange={ ( val ) => props.attr.setAttributes( {title_style: {...title_style, "letter-spacing": val}} ) }
                             />
 
-                            <NumberControl
-                                className={"rt-numbercontrol title"}
+                            <UnitControl
+                                className={"rt-unitcontrol title"}
+                                units={props.attr.units}
                                 label={__('Line Height:', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({title_style: {...title_style,"line-height":value}})}}
                                 value={ title_style['line-height'] }

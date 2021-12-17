@@ -168,14 +168,15 @@ function Read_More(props) {
                                 {__( "Letter Spacing:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol meta"}
+                                className={"rt-unitcontrol"}
                                 units={props.attr.units}
                                 value={ button_style["letter-spacing"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {button_style: {...button_style, "letter-spacing": val}} ) }
                             />
 
-                            <NumberControl
-                                className={"rt-numbercontrol"}
+                            <UnitControl
+                            className={"rt-unitcontrol "}
+                            units={props.attr.units}
                                 label={__('Line Height:', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({button_style: {...button_style,"line-height":value}})}}
                                 value={ button_style['line-height'] }

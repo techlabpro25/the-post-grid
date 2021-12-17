@@ -2357,3 +2357,7 @@ h1, h2, h3, h4, h5, h6 {
 .list1 .tpg-excerpt, .list2 .tpg-excerpt, .rt-equal-height {
   margin-bottom: 15px;
 }
+
+.cat-above-title span.categories-links {
+  margin-bottom: 6px;
+}
