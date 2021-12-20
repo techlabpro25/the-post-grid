@@ -49,7 +49,8 @@ export default function Edit(props) {
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const {query, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image} = attributes
+    const [defset, setDefset] = useState(false);
+    const {query, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, layout} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -138,6 +139,8 @@ export default function Edit(props) {
             value: "inherit"
         },
     ]
+
+
 
     useEffect(() => {
         let authors = [];
