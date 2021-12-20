@@ -165,12 +165,104 @@ export const MetaIconspan = styled.div`
 `
 
 export const MetaCatIcon = styled.div`
-    color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
+    color: ${props => 
+    (props?.css?.['background-color'])? 
+        props?.css?.['background-color']: 
+        (
+            (!props?.css?.color)? 
+                ((props?.meta?.color)? 
+                    props.meta.color:
+                    (
+                        (props?.primary)? 
+                            props.primary: 
+                            (
+                                (
+                                    (props.cat_type.position != "") && (props.cat_type.style != 'style1')
+                                )?
+                                "#1e73be": 
+                                ""
+                            )
+                    )
+                )
+                :
+                props.css.color
+        )} !important;
 `
 export const CatIcon = styled.div`
     color: ${props => (props.css.color)? props.css.color: props.primary}
 `
 export const PaginationStyle = styled.button`
+    ${(props) =>{
+    // console.log(props)
+    // setTimeout(function(){
+    //     if(props.className.search("active") != -1){
+    //         console.log("hello")
+    //     }else{
+    //         console.log("not hello")
+    //     }
+    // }, 1000)
+    // if(props.className.search("active") != -1){
+    //     console.log("hello")
+    // }else{
+    //     console.log("not hello")
+    // }
+    
+}}
+    color: ${props => ((props.className.search("active") != -1)? props.css['a-color']:((props.css.color)? props.css.color: "#fff"))} !important;
+    background-color: ${props => ((props.className.search("active") != -1)? props.css['a-bg-color']:((props.css['bg-color'])? props.css['bg-color']: "#4c6fff"))} !important;
+    border-color: ${props => (props.css['border-color'])? props.css['border-color']: ""} !important;
+    border-style: ${props => (props.css['border-style'])? props.css['border-style']: ""} !important;
+    border-width: ${props => (props.css['border-width'])? props.css['border-width']: ""} !important;
+    border-radius: ${props => (props.css['border-radius'])? props.css['border-radius']: ""} !important;
+    padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: ''} !important;
+	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: ''} !important;
+    line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
+	font-size: ${props => (props.css['font-size'])?props.css['font-size']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
+	&:hover{
+	    color: ${props => (props.css['h-color'])? props.css['h-color']: "#fff"} !important;
+        background-color: ${props => (props.css['h-bg-color'])? props.css['h-bg-color']: "#4c6fff"} !important;
+        border-color: ${props => (props.css['h-border-color'])? props.css['h-border-color']: ""} !important;
+        border-style: ${props => (props.css['h-border-style'])? props.css['h-border-style']: ""} !important;
+        border-width: ${props => (props.css['h-border-width'])? props.css['h-border-width']: ""} !important;
+        border-radius: ${props => (props.css['h-border-radius'])? props.css['h-border-radius']: ""} !important;
+        line-height: ${props => (props.css['h-line-height'])?props.css['h-line-height']: ""} !important;
+        font-weight: ${props => (props.css['h-font-weight'])?props.css['h-font-weight']: ""} !important;
+        font-size: ${props => (props.css['h-font-size'])?props.css['h-font-size']: ""} !important;
+        letter-spacing: ${props => (props.css['h-letter-spacing'])?props.css['h-letter-spacing']: ""} !important;
+        text-transform: ${props => (props.css['h-transform'])?props.css['h-transform']: ""} !important;
+	}
+	&:active{
+	    color: ${props => (props.css['a-color'])? props.css['a-color']: "#fff"} !important;
+        background-color: ${props => (props.css['a-bg-color'])? props.css['a-bg-color']: "#4c6fff"} !important;
+        border-color: ${props => (props.css['a-border-color'])? props.css['a-border-color']: ""} !important;
+        border-style: ${props => (props.css['a-border-style'])? props.css['a-border-style']: ""} !important;
+        border-width: ${props => (props.css['a-border-width'])? props.css['a-border-width']: ""} !important;
+        border-radius: ${props => (props.css['a-border-radius'])? props.css['a-border-radius']: ""} !important;
+        line-height: ${props => (props.css['a-line-height'])?props.css['a-line-height']: ""} !important;
+        font-weight: ${props => (props.css['a-font-weight'])?props.css['a-font-weight']: ""} !important;
+        font-size: ${props => (props.css['a-font-size'])?props.css['a-font-size']: ""} !important;
+        letter-spacing: ${props => (props.css['a-letter-spacing'])?props.css['a-letter-spacing']: ""} !important;
+        text-transform: ${props => (props.css['a-transform'])?props.css['a-transform']: ""} !important;
+	}
+`
+export const Pageindex = styled.button`
+        color: ${props => (props.css['a-color'])? props.css['a-color']: "#fff"} !important;
+        background-color: ${props => (props.css['a-bg-color'])? props.css['a-bg-color']: "#4c6fff"} !important;
+        border-color: ${props => (props.css['a-border-color'])? props.css['a-border-color']: ""} !important;
+        border-style: ${props => (props.css['a-border-style'])? props.css['a-border-style']: ""} !important;
+        border-width: ${props => (props.css['a-border-width'])? props.css['a-border-width']: ""} !important;
+        border-radius: ${props => (props.css['a-border-radius'])? props.css['a-border-radius']: ""} !important;
+        line-height: ${props => (props.css['a-line-height'])?props.css['a-line-height']: ""} !important;
+        font-weight: ${props => (props.css['a-font-weight'])?props.css['a-font-weight']: ""} !important;
+        font-size: ${props => (props.css['a-font-size'])?props.css['a-font-size']: ""} !important;
+        letter-spacing: ${props => (props.css['a-letter-spacing'])?props.css['a-letter-spacing']: ""} !important;
+        text-transform: ${props => (props.css['a-transform'])?props.css['a-transform']: ""} !important;
+`
+
+export const Pageprivnext = styled.button`
     color: ${props => (props.css.color)? props.css.color: "#fff"} !important;
     background-color: ${props => (props.css['bg-color'])? props.css['bg-color']: "#4c6fff"} !important;
     border-color: ${props => (props.css['border-color'])? props.css['border-color']: ""} !important;
@@ -196,19 +288,6 @@ export const PaginationStyle = styled.button`
         font-size: ${props => (props.css['h-font-size'])?props.css['h-font-size']: ""} !important;
         letter-spacing: ${props => (props.css['h-letter-spacing'])?props.css['h-letter-spacing']: ""} !important;
         text-transform: ${props => (props.css['h-transform'])?props.css['h-transform']: ""} !important;
-	}
-	&:focus{
-	    color: ${props => (props.css['a-color'])? props.css['a-color']: "#fff"} !important;
-        background-color: ${props => (props.css['a-bg-color'])? props.css['a-bg-color']: "#4c6fff"} !important;
-        border-color: ${props => (props.css['a-border-color'])? props.css['a-border-color']: ""} !important;
-        border-style: ${props => (props.css['a-border-style'])? props.css['a-border-style']: ""} !important;
-        border-width: ${props => (props.css['a-border-width'])? props.css['a-border-width']: ""} !important;
-        border-radius: ${props => (props.css['a-border-radius'])? props.css['a-border-radius']: ""} !important;
-        line-height: ${props => (props.css['a-line-height'])?props.css['a-line-height']: ""} !important;
-        font-weight: ${props => (props.css['a-font-weight'])?props.css['a-font-weight']: ""} !important;
-        font-size: ${props => (props.css['a-font-size'])?props.css['a-font-size']: ""} !important;
-        letter-spacing: ${props => (props.css['a-letter-spacing'])?props.css['a-letter-spacing']: ""} !important;
-        text-transform: ${props => (props.css['a-transform'])?props.css['a-transform']: ""} !important;
 	}
 `
 

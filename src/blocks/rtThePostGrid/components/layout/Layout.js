@@ -4,7 +4,7 @@ import $ from 'jquery'
 
 function Layout(props) {
 	const {__} = wp.i18n;
-	const  {layout, plugin_path} = props.attr.attributes;
+	const  {layout, plugin_path, general} = props.attr.attributes;
 
 	const clickHandler = (e) =>{
 		props.attr.setAttributes({layout: {...layout, 'type': e.target.value}})
@@ -19,6 +19,7 @@ function Layout(props) {
 
 	const layoutClickHandler = (e) =>{
 		props.attr.setAttributes({layout: {...layout, 'value': e.target.value}})
+		props.attr.setAttributes({general: {...general, 'presdefault': true}})
 
 		if($('.child input.active').hasClass('active')){
 			$('.child input.active').removeClass('active');

@@ -14,8 +14,8 @@ export const Category_Default = (props) =>{
                     <span className="categories-links">
                         {
                             category.icon?(
-                                <a id={"terms_icon"}>
-                                    <MetaCatIcon as={FontAwesomeIcon} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} />
+                                <a id={"terms_icon"} href={"#"}>
+                                    <MetaCatIcon as={FontAwesomeIcon} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} />
                                 </a>
                             ):("")
                         }
@@ -65,8 +65,8 @@ export const Non_Category_Default = (props) =>{
                     <span className="categories-links">
                         {
                             category.icon?(
-                                <a id={"terms_icon"}>
-                                    <MetaCatIcon as={FontAwesomeIcon} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} />
+                                <a id={"terms_icon"} href={"#"}>
+                                    <MetaCatIcon as={FontAwesomeIcon} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} />
                                 </a>
                             ):("")
                         }

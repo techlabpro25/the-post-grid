@@ -35,7 +35,7 @@ const attributes = {
 	columns: {
 		type: "object",
 		default: {
-			desktop: "4",
+			desktop: "",
 			tablet: "6",
 			mobile: "12",
 		},
@@ -116,6 +116,7 @@ const attributes = {
 			post_date: true,
 			comment_count: true,
 			see_more: true,
+			presdefault: true
 		},
 	},
 	heading: {
@@ -175,7 +176,7 @@ const attributes = {
 			color: "",
 			h_color: "",
 			["font-size"]: "",
-			["font-weight"]: 500,
+			["font-weight"]: null,
 			['line-height']: "",
 			['letter-spacing']: '',
 			['transform']: ''
@@ -299,9 +300,11 @@ const attributes = {
 		type: "object",
 		default: {
 			show_hide: true,
-			size: "300x300",
-			animation: 1.1,
+			size: "",
+			animation: null,
 			["border-radius"]: "",
+			['img-column']: '',
+			['content-column']: ''
 		},
 	},
 	parent_class: {
@@ -315,7 +318,7 @@ const attributes = {
 	content_wrap: {
 		type: "object",
 		default: {
-			["background-color"]: "#fff",
+			["background-color"]: "",
 			["box-shadow-color"]: "transparent",
 			radius: "",
 			["border-color"]: "",

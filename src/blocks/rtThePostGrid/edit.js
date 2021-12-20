@@ -32,7 +32,7 @@ import Style_Content_wrap from './components/style/Style_Content_wrap';
 import $ from 'jquery';
 import PredefaultAttr from "./components/PredefaultAttr";
 import Pagination from "./components/style/Pagination";
-import {PaginationStyle} from "./Style_component";
+import {PaginationStyle, Pageindex, Pageprivnext} from "./Style_component";
 
 
 const {__} = wp.i18n;
@@ -51,7 +51,6 @@ export default function Edit(props) {
     const [minlimit, setMinlimit] = useState(1);
     const {query, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image} = attributes
 
-    const buttonActiveRef  = useRef();
     const colors = [
         {name: 'red', color: '#f00'},
         {name: 'white', color: '#fff'},
@@ -228,6 +227,11 @@ export default function Edit(props) {
         if (pageindex > 0) {
             setAttributes({query: {...query, "filter": false, "pageindex":pageindex}})
         }
+        // const relement = document.getElementsByClassName('pagination_number active')
+        // console.log(relement)
+        // relement[0].classList.remove("active")
+        // const aelement = document.getElementsByClassName('pagination_number '+pageindex)
+        // aelement[0].classList.add("active")
         $('.pagination_number.active').removeClass("active")
         $('.pagination_number.'+pageindex).addClass("active")
         setIsloading(true);
@@ -250,17 +254,16 @@ export default function Edit(props) {
     useEffect(()=>{
         setPageindex(1)
         setAttributes({excerpt: {...excerpt, 'limit': '25'}})
-        // buttonRef.current.focus();
     },[])
 
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
-            return <PaginationStyle css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number next`} onClick={nextpageset}>Next</PaginationStyle>
+            return <Pageprivnext css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number next`} onClick={nextpageset}>Next</Pageprivnext>
         }
     }
     const prevbtn = (pageval) => {
         if(minlimit > 1){
-            return <PaginationStyle css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number prev`} onClick={prevpageset}>Prev</PaginationStyle>
+            return <Pageprivnext css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number prev`} onClick={prevpageset}>Prev</Pageprivnext>
         }
     }
 
@@ -561,7 +564,7 @@ export default function Edit(props) {
 
                                                 if(((i+1) >= minlimit) && (i+1) <= maxlimit){
                                                     if ((i == 0) && (pageindex == 1) ){
-                                                        return <PaginationStyle  css={pagination} onLoad={(e) => e.target.focus()} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
+                                                        return <PaginationStyle  css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
                                                                        key={i}
                                                                        onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
                                                     }else{

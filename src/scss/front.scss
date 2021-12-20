@@ -2432,9 +2432,9 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
     }
   }
 
-  .layout2 .rt-equal-height{
-      height: 334.094px;
-  }
+  //.layout2 .rt-equal-height{
+  //    height: 334.094px;
+  //}
 
 .pagination {
     text-align: center !important;
@@ -2518,11 +2518,14 @@ h1,h2,h3,h4,h5,h6{
 
 #terms_icon{
     background-color: transparent !important;
-    color: #1e73be !important;
     margin-right: 0 !important;
     padding: 0 !important;
 }
 #terms_icon:after{
     border-top: unset !important;
+}
+
+.list1 .rt-img-holder, .list2 .rt-img-holder{
+    padding-top: 5px !important;
 }
 

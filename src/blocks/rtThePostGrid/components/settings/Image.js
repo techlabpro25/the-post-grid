@@ -50,6 +50,21 @@ function Image(props) {
 
             <SelectControl
                 className={"rt-selectcontrol image"}
+                label={__( "Image Column:", "the-post-grid")}
+                value={ image['img-column'] }
+                options={ [
+                    { label: __( 'Column 1', "the-post-grid"), value: '12' },
+                    { label: __( 'Column 2', "the-post-grid"), value: '6' },
+                    { label: __( 'Column 3', "the-post-grid"), value: '4' },
+                    { label: __( 'Column 4', "the-post-grid"), value: '3' },
+                    { label: __( 'Column 6', "the-post-grid"), value: '2' },
+                    { label: __( 'Column 12', "the-post-grid"), value: '1' },
+                ] }
+                onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "img-column": value, "content-column": (12 - value)} } ) }
+            />
+
+            <SelectControl
+                className={"rt-selectcontrol image"}
                 label={__( "Hover Animation:", "the-post-grid")}
                 value={ image.animation }
                 options={ [

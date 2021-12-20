@@ -22,6 +22,7 @@ class RtThePostGrid extends Block
             'post_date' => true,
             'comment_count' => true,
             'see_more' => true,
+            'presdefault' => true
         ],
         'title'=> [
             'tag'=> "3",
@@ -35,7 +36,7 @@ class RtThePostGrid extends Block
             "color"=> "",
             "h_color"=> "",
             "font-size"=> "",
-            "font-weight"=> 500,
+            "font-weight"=> null,
             'line-height' => "",
             'letter-spaceing' => '',
 			'transform' => ''
@@ -134,18 +135,18 @@ class RtThePostGrid extends Block
 			'left'=> "15px",
         ],
         'content_wrap' =>[
-            'background-color' => "#fff",
+            'background-color' => "",
             'box-shadow-color' => 'transparent',
             'radius' => '',
-            'border-color' => '#d9d9d9',
-            'border-width' => '1px'
+            'border-color' => '',
+            'border-width' => ''
         ],
         'constent_box_padding' =>[],
         'content_padding' =>[
-                'top' => '15px',
-                'right' => '15px',
-                'left' => '15px',
-                'bottom' => '15px',
+                'top' => '',
+                'right' => '',
+                'left' => '',
+                'bottom' => '',
         ],
         'excerpt'=>[
             'limit' => '',
@@ -164,9 +165,11 @@ class RtThePostGrid extends Block
         ],
         'image' => [
             'show_hide' => true,
-            'size'=> "300x300",
-            'animation'=> 1.1,
+            'size'=> "",
+            'animation'=> null,
             'border-radius'=> "0",
+            'img-column' => '',
+			'content-column' => ''
         ],
         'query' =>[
             'post_type'  => "post",
@@ -200,9 +203,9 @@ class RtThePostGrid extends Block
         'primary_color' =>'',
         'parent_class' =>"default",
         'columns' =>[
-            'desktop' => 4,
-            'tablet' => 6,
-            'mobile' => 12
+            'desktop' => "",
+            'tablet' => "6",
+            'mobile' => "12"
         ],
         'linking'=> [
             'link_to_page'=> true,

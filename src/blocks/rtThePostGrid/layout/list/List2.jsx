@@ -172,7 +172,7 @@ export const List2 = (props) =>{
                                     <div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item`} data-id={post.id}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className="rt-row">
-                                                <div className="rt-col-sm-4 rt-col-xs-12 ">
+                                                <div className={`rt-col-sm-${(image['img-column'])? image['img-column']: ''} rt-col-xs-12 `}>
                                                     <div className="rt-img-holder" id={"circle"}>
                                                         {
                                                             image.show_hide?(
@@ -189,7 +189,7 @@ export const List2 = (props) =>{
                                                         }
                                                     </div>
                                                 </div>
-                                                <div className="rt-col-sm-8 rt-col-xs-12 ">
+                                                <div className={`rt-col-sm-${(image['content-column'])? image['content-column']: ''} rt-col-xs-12 `}>
                                                     <Content_padding css_pad={content_padding} className="rt-detail">
                                                         {
                                                             (category.position == "above-title") ? (
