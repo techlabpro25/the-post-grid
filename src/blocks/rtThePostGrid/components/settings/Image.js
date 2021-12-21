@@ -1,8 +1,6 @@
 import {
-    PanelBody, 
-    __experimentalText as Text,
-    __experimentalRadio as Radio,
-    __experimentalRadioGroup as RadioGroup,
+    PanelBody,
+    __experimentalUnitControl as UnitControl,
 	__experimentalNumberControl as NumberControl,
     SelectControl,
     ToggleControl 
@@ -75,12 +73,15 @@ function Image(props) {
                 onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "animation": value} } ) }
             />
 
-            <NumberControl
-                className={"rt-numbercontrol image"}
-                label={__( "Border Radius", "the-post-grid")}
-                value={image["border-radius"]}
-                onChange={ ( value ) => props.attr.setAttributes( { image: {...image, "border-radius": value} }) }
+            <UnitControl
+                className={"rt-unitcontrol image"}
+                units={[{label: "px", value: "px"}, {label: "%", value: "%"}]}
+                label={__('Border Radius', 'the-post-grid')}
+                onChange={ ( value ) => props.attr.setAttributes( { image: {...image, "border-radius": value} })}
+                shiftStep={ 1 }
+                value={ image["border-radius"] }
             />
+
         </PanelBody>
     );
 }

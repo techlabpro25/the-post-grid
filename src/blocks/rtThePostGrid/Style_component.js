@@ -151,7 +151,7 @@ export const Content_padding = styled.div`
 `;
 
 export const ImgAnimation = styled.img`
-	border-radius: ${props => (props.css['border-radius'] == 0)? ((props.layout == "list2")? "50%" : '5px') : props.css['border-radius']+"px"} !important;
+	border-radius: ${props => (props.css['border-radius'] == 0)? ((props.layout == "list2")? "50%" : '0px') : props.css['border-radius']} !important;
 	&:hover{
 	    transform: scale(${props => props.css.animation})
 	}
