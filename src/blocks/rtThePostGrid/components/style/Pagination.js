@@ -16,7 +16,7 @@ import {
 import { useState, useEffect } from '@wordpress/element';
 
 function Pagination(props) {
-    const { pagination, pagination_padding, pagination_margin} = props.attr.attributes
+    const { pagination_style, pagination_padding, pagination_margin} = props.attr.attributes
     const {__} = wp.i18n;
 
     return (
@@ -69,8 +69,8 @@ function Pagination(props) {
                                                 <ColorPalette
                                                     className={"rt-colorcontrol"}
                                                     colors={ props.attr.colors }
-                                                    value={ pagination.color }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "color": color}} ) }
+                                                    value={ pagination_style.color }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "color": color}} ) }
                                                 />
 
                                                 <Text>
@@ -80,8 +80,8 @@ function Pagination(props) {
                                                     className={"rt-colorcontrol"}
                                                     label = "Select Color"
                                                     colors={props.attr.colors }
-                                                    value={ pagination["bg-color"] }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "bg-color": color}} ) }
+                                                    value={ pagination_style["bg-color"] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "bg-color": color}} ) }
                                                 />
 
                                             </>
@@ -95,8 +95,8 @@ function Pagination(props) {
                                                 <ColorPalette
                                                     className={"rt-colorcontrol"}
                                                     colors={ props.attr.colors }
-                                                    value={ pagination['h-color'] }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "h-color": color}} ) }
+                                                    value={ pagination_style['h-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-color": color}} ) }
                                                 />
 
                                                 <Text>
@@ -105,8 +105,8 @@ function Pagination(props) {
                                                 <ColorPalette
                                                     className={"rt-colorcontrol"}
                                                     colors={ props.attr.colors }
-                                                    value={ pagination['h-bg-color'] }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "h-bg-color": color}} ) }
+                                                    value={ pagination_style['h-bg-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-bg-color": color}} ) }
                                                 />
                                             </>
                                         )
@@ -119,8 +119,8 @@ function Pagination(props) {
                                                 <ColorPalette
                                                     className={"rt-colorcontrol"}
                                                     colors={ props.attr.colors }
-                                                    value={ pagination['a-color'] }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "a-color": color}} ) }
+                                                    value={ pagination_style['a-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-color": color}} ) }
                                                 />
 
                                                 <Text>
@@ -129,8 +129,8 @@ function Pagination(props) {
                                                 <ColorPalette
                                                     className={"rt-colorcontrol"}
                                                     colors={ props.attr.colors }
-                                                    value={ pagination['a-bg-color'] }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "a-bg-color": color}} ) }
+                                                    value={ pagination_style['a-bg-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-bg-color": color}} ) }
                                                 />
                                             </>
                                         )
@@ -189,14 +189,14 @@ function Pagination(props) {
                                                 </Text>
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
-                                                    value={ pagination["font-size"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "font-size": val}} ) }
+                                                    value={ pagination_style["font-size"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "font-size": val}} ) }
                                                 />
 
                                                 <SelectControl
                                                     label={__( "Font Weight:", "the-post-grid")}
                                                     className={"rt-selectcontrol"}
-                                                    value={ pagination["font-weight"] }
+                                                    value={ pagination_style["font-weight"] }
                                                     options={ [
                                                         { label: '100', value: 100 },
                                                         { label: '200', value: 200 },
@@ -208,14 +208,14 @@ function Pagination(props) {
                                                         { label: '800', value: 800 },
                                                         { label: '900', value: 900 },
                                                     ] }
-                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination: {...pagination, "font-weight": value} } ) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "font-weight": value} } ) }
                                                 />
                                                 <SelectControl
                                                     label={__( "Text Transform", "the-post-grid")}
                                                     className={"rt-selectcontrol meta"}
-                                                    value={ pagination["transform"] }
+                                                    value={ pagination_style["transform"] }
                                                     options={ props.attr.transform}
-                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination: {...pagination, "transform": value} } ) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "transform": value} } ) }
                                                 />
 
                                                 <Text>
@@ -224,16 +224,16 @@ function Pagination(props) {
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
                                                     units={props.attr.units}
-                                                    value={ pagination["letter-spacing"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "letter-spacing": val}} ) }
+                                                    value={ pagination_style["letter-spacing"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "letter-spacing": val}} ) }
                                                 />
 
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
                                                     units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
-                                                    onChange={ (value) =>{props.attr.setAttributes({pagination: {...pagination,"line-height":value}})}}
-                                                    value={ pagination['line-height'] }
+                                                    onChange={ (value) =>{props.attr.setAttributes({pagination_style: {...pagination_style,"line-height":value}})}}
+                                                    value={ pagination_style['line-height'] }
                                                 />
                                             </>
                                         )
@@ -245,14 +245,14 @@ function Pagination(props) {
                                                 </Text>
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
-                                                    value={ pagination["h-font-size"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "h-font-size": val}} ) }
+                                                    value={ pagination_style["h-font-size"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-font-size": val}} ) }
                                                 />
 
                                                 <SelectControl
                                                     label={__( "Font Weight:", "the-post-grid")}
                                                     className={"rt-selectcontrol"}
-                                                    value={ pagination["h-font-weight"] }
+                                                    value={ pagination_style["h-font-weight"] }
                                                     options={ [
                                                         { label: '100', value: 100 },
                                                         { label: '200', value: 200 },
@@ -264,14 +264,14 @@ function Pagination(props) {
                                                         { label: '800', value: 800 },
                                                         { label: '900', value: 900 },
                                                     ] }
-                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination: {...pagination, "h-font-weight": value} } ) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-font-weight": value} } ) }
                                                 />
                                                 <SelectControl
                                                     label={__( "Text Transform", "the-post-grid")}
                                                     className={"rt-selectcontrol meta"}
-                                                    value={ pagination["h-transform"] }
+                                                    value={ pagination_style["h-transform"] }
                                                     options={ props.attr.transform}
-                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination: {...pagination, "h-transform": value} } ) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-transform": value} } ) }
                                                 />
 
                                                 <Text>
@@ -280,16 +280,16 @@ function Pagination(props) {
                                                 <UnitControl
                                                     className={"rt-unitcontrol meta"}
                                                     units={props.attr.units}
-                                                    value={ pagination["h-letter-spacing"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "h-letter-spacing": val}} ) }
+                                                    value={ pagination_style["h-letter-spacing"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-letter-spacing": val}} ) }
                                                 />
 
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
                                                     units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
-                                                    onChange={ (value) =>{props.attr.setAttributes({pagination: {...pagination,"h-line-height":value}})}}
-                                                    value={ pagination['h-line-height'] }
+                                                    onChange={ (value) =>{props.attr.setAttributes({pagination_style: {...pagination_style,"h-line-height":value}})}}
+                                                    value={ pagination_style['h-line-height'] }
                                                 />
                                             </>
                                         )
@@ -301,14 +301,14 @@ function Pagination(props) {
                                                 </Text>
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
-                                                    value={ pagination["a-font-size"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "a-font-size": val}} ) }
+                                                    value={ pagination_style["a-font-size"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-font-size": val}} ) }
                                                 />
 
                                                 <SelectControl
                                                     label={__( "Font Weight:", "the-post-grid")}
                                                     className={"rt-selectcontrol"}
-                                                    value={ pagination["a-font-weight"] }
+                                                    value={ pagination_style["a-font-weight"] }
                                                     options={ [
                                                         { label: '100', value: 100 },
                                                         { label: '200', value: 200 },
@@ -320,14 +320,14 @@ function Pagination(props) {
                                                         { label: '800', value: 800 },
                                                         { label: '900', value: 900 },
                                                     ] }
-                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination: {...pagination, "a-font-weight": value} } ) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-font-weight": value} } ) }
                                                 />
                                                 <SelectControl
                                                     label={__( "Text Transform", "the-post-grid")}
                                                     className={"rt-selectcontrol meta"}
-                                                    value={ pagination["a-transform"] }
+                                                    value={ pagination_style["a-transform"] }
                                                     options={ props.attr.transform}
-                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination: {...pagination, "a-transform": value} } ) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-transform": value} } ) }
                                                 />
 
                                                 <Text>
@@ -336,16 +336,16 @@ function Pagination(props) {
                                                 <UnitControl
                                                     className={"rt-unitcontrol meta"}
                                                     units={props.attr.units}
-                                                    value={ pagination["a-letter-spacing"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "a-letter-spacing": val}} ) }
+                                                    value={ pagination_style["a-letter-spacing"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-letter-spacing": val}} ) }
                                                 />
 
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
                                                     units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
-                                                    onChange={ (value) =>{props.attr.setAttributes({pagination: {...pagination,"a-line-height":value}})}}
-                                                    value={ pagination['a-line-height'] }
+                                                    onChange={ (value) =>{props.attr.setAttributes({pagination_style: {...pagination_style,"a-line-height":value}})}}
+                                                    value={ pagination_style['a-line-height'] }
                                                 />
                                             </>
                                         )
@@ -407,8 +407,8 @@ function Pagination(props) {
                                                 <ColorPalette
                                                     className={"rt-colorcontrol"}
                                                     colors={ props.attr.colors }
-                                                    value={ pagination['border-color'] }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "border-color": color}} ) }
+                                                    value={ pagination_style['border-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "border-color": color}} ) }
                                                 />
 
                                                 <Text>
@@ -417,15 +417,15 @@ function Pagination(props) {
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
                                                     units={[{ value: 'px', label: 'px', default: 0 }]}
-                                                    value={ pagination["border-width"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "border-width": val}} ) }
+                                                    value={ pagination_style["border-width"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "border-width": val}} ) }
                                                 />
                                                 <SelectControl
                                                     label={__( "Border Style:", "the-post-grid")}
                                                     className={"rt-selectcontrol"}
-                                                    value={ pagination["border-style"] }
+                                                    value={ pagination_style["border-style"] }
                                                     options={ props.attr.border_style }
-                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination: {...pagination, "border-style": value} }) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination_style: {...pagination_style, "border-style": value} }) }
                                                 />
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
@@ -434,8 +434,8 @@ function Pagination(props) {
                                                         { value: '%', label: '%', default: 10 },
                                                     ]}
                                                     label={__( "Border Radius", "the-post-grid")}
-                                                    value={pagination["border-radius"]}
-                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination: {...pagination, "border-radius": value} }) }
+                                                    value={pagination_style["border-radius"]}
+                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination_style: {...pagination_style, "border-radius": value} }) }
                                                 />
                                             </>
                                         )
@@ -448,8 +448,8 @@ function Pagination(props) {
                                                 <ColorPalette
                                                     className={"rt-colorcontrol"}
                                                     colors={ props.attr.colors }
-                                                    value={ pagination['h-border-color'] }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "h-border-color": color}} ) }
+                                                    value={ pagination_style['h-border-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-border-color": color}} ) }
                                                 />
 
                                                 <Text>
@@ -458,15 +458,15 @@ function Pagination(props) {
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
                                                     units={[{ value: 'px', label: 'px', default: 0 }]}
-                                                    value={ pagination["h-border-width"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "h-border-width": val}} ) }
+                                                    value={ pagination_style["h-border-width"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-border-width": val}} ) }
                                                 />
                                                 <SelectControl
                                                     label={__( "Border Style:", "the-post-grid")}
                                                     className={"rt-selectcontrol"}
-                                                    value={ pagination["h-border-style"] }
+                                                    value={ pagination_style["h-border-style"] }
                                                     options={ props.attr.border_style }
-                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination: {...pagination, "h-border-style": value} }) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination_style: {...pagination_style, "h-border-style": value} }) }
                                                 />
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
@@ -475,8 +475,8 @@ function Pagination(props) {
                                                         { value: '%', label: '%', default: 10 },
                                                     ]}
                                                     label={__( "Border Radius", "the-post-grid")}
-                                                    value={pagination["h-border-radius"]}
-                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination: {...pagination, "h-border-radius": value} }) }
+                                                    value={pagination_style["h-border-radius"]}
+                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination_style: {...pagination_style, "h-border-radius": value} }) }
                                                 />
                                             </>
                                         )
@@ -489,8 +489,8 @@ function Pagination(props) {
                                                 <ColorPalette
                                                     className={"rt-colorcontrol"}
                                                     colors={ props.attr.colors }
-                                                    value={ pagination['a-border-color'] }
-                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination: {...pagination, "a-border-color": color}} ) }
+                                                    value={ pagination_style['a-border-color'] }
+                                                    onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-border-color": color}} ) }
                                                 />
 
                                                 <Text>
@@ -499,15 +499,15 @@ function Pagination(props) {
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
                                                     units={[{ value: 'px', label: 'px', default: 0 }]}
-                                                    value={ pagination["a-border-width"] }
-                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination: {...pagination, "a-border-width": val}} ) }
+                                                    value={ pagination_style["a-border-width"] }
+                                                    onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-border-width": val}} ) }
                                                 />
                                                 <SelectControl
                                                     label={__( "Border Style:", "the-post-grid")}
                                                     className={"rt-selectcontrol"}
-                                                    value={ pagination["a-border-style"] }
+                                                    value={ pagination_style["a-border-style"] }
                                                     options={ props.attr.border_style }
-                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination: {...pagination, "a-border-style": value} }) }
+                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination_style: {...pagination_style, "a-border-style": value} }) }
                                                 />
                                                 <UnitControl
                                                     className={"rt-unitcontrol"}
@@ -516,8 +516,8 @@ function Pagination(props) {
                                                         { value: '%', label: '%', default: 10 },
                                                     ]}
                                                     label={__( "Border Radius", "the-post-grid")}
-                                                    value={pagination["a-border-radius"]}
-                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination: {...pagination, "a-border-radius": value} }) }
+                                                    value={pagination_style["a-border-radius"]}
+                                                    onChange={ ( value ) => props.attr.setAttributes( { pagination_style: {...pagination_style, "a-border-radius": value} }) }
                                                 />
                                             </>
                                         )

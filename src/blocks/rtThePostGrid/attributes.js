@@ -46,6 +46,11 @@ const attributes = {
 			show: false,
 			post_per_page: 5,
 			pagination_type: "",
+		},
+	},
+
+	pagination_style:{
+		default:{
 			color: '',
 			['h-color']: '',
 			['a-color']: '',
@@ -79,13 +84,13 @@ const attributes = {
 			['line-height']: "",
 			['h-line-height']: "",
 			['a-line-height']: "",
-		},
+		}
 	},
 	pagination_padding:{
 		default:{
-			top: '5px',
+			top: '0px',
 			right: '15px',
-			bottom: '5px',
+			bottom: '0px',
 			left: '15px',
 		}
 	},

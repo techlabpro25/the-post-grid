@@ -31,7 +31,7 @@ import Style_Content_wrap from './components/style/Style_Content_wrap';
 import $ from 'jquery';
 import {PredefaultAttr} from "./components/PredefaultAttr";
 import Pagination from "./components/style/Pagination";
-import {PaginationStyle, Pageindex, Pageprivnext} from "./Style_component";
+import {PaginationStyle, Pageprivnext} from "./Style_component";
 
 
 const {__} = wp.i18n;
@@ -48,7 +48,7 @@ export default function Edit(props) {
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const {query, columns, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, layout} = attributes
+    const {query, columns, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, layout, pagination_style} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -209,6 +209,26 @@ export default function Edit(props) {
         });
     }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
 
+    // Temporary pagination active solution
+    useEffect(()=>{
+        $('.pagination_number.'+pageindex).addClass("active")
+        $('.pagination_number').removeAttr('style')
+        $('.pagination_number.active').attr('style', '' +
+            'background-color:'+pagination_style['a-bg-color']+' !important; ' +
+            'color:'+pagination_style['a-color']+' !important;' +
+            'border-color:'+pagination_style['a-border-color']+' !important;' +
+            'border-style:'+pagination_style['a-border-style']+' !important;' +
+            'border-width:'+pagination_style['a-border-width']+' !important;' +
+            'border-radius:'+pagination_style['a-border-radius']+' !important;' +
+            'line-height:'+pagination_style['a-line-height']+' !important;' +
+            'font-weight:'+pagination_style['a-font-weight']+' !important;' +
+            'font-size:'+pagination_style['a-font-size']+' !important;' +
+            'letter-spacing:'+pagination_style['a-letter-spacing']+' !important;' +
+            'text-transform:'+pagination_style['a-transform']+' !important;');
+    })
+
+    // End temp solution
+
     useEffect(() => {
         var url_string = window.location.href
         var url = new URL(url_string);
@@ -270,23 +290,25 @@ export default function Edit(props) {
 
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
-            return <Pageprivnext css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number next`} onClick={nextpageset}>Next</Pageprivnext>
+            return <Pageprivnext css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number next`} onClick={nextpageset}>Next</Pageprivnext>
         }
     }
     const prevbtn = (pageval) => {
         if(minlimit > 1){
-            return <Pageprivnext css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number prev`} onClick={prevpageset}>Prev</Pageprivnext>
+            return <Pageprivnext css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number prev`} onClick={prevpageset}>Prev</Pageprivnext>
         }
     }
 
     const nextpageset = () => {
         setMaxlimit((prev) => prev + 1)
         setMinlimit((prev) => prev + 1)
+        setPageindex((prev) => prev + 1)
     }
 
     const prevpageset = () => {
         setMaxlimit((prev) => prev - 1)
         setMinlimit((prev) => prev - 1)
+        setPageindex((prev) => prev - 1)
     }
 
     useEffect(()=>{
@@ -301,7 +323,6 @@ export default function Edit(props) {
 
     return (
         <>
-            {/*<PredefaultAttr attr={global_attr}/>*/}
             <InspectorControls>
                 <PanelBody className="post_grid_blocks" title={__("The Post Grid", 'the-post-grid')}>
                     <TabPanel
@@ -576,11 +597,11 @@ export default function Edit(props) {
 
                                                 if(((i+1) >= minlimit) && (i+1) <= maxlimit){
                                                     if ((i == 0) && (pageindex == 1) ){
-                                                        return <PaginationStyle  css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
+                                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
                                                                        key={i}
                                                                        onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
                                                     }else{
-                                                        return <PaginationStyle css={pagination} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}
+                                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}
                                                                        key={i}
                                                                        onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
                                                     }

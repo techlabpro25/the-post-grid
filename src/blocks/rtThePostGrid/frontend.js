@@ -1,5 +1,5 @@
 import RenderView from "./renderView";
-
+import {PaginationStyle, Pageprivnext} from "./Style_component";
 const {render, useState, useEffect} = wp.element;
 import apiFetch from '@wordpress/api-fetch';
 import $ from "jquery";
@@ -7,7 +7,7 @@ const {__} = wp.i18n;
 const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
-    const {query, pagination, image} = props
+    const {query, pagination, image, pagination_style, pagination_padding, pagination_margin} = props
     const [pagestate, setPagestate] = useState(0);
     const [pageindex, setPageindex] = useState(1);
     const [message, setMessage] = useState("");
@@ -80,25 +80,44 @@ const RtThePostGrid = (props) => {
         setIsloading(true);
     },[pageindex])
 
+    useEffect(()=>{
+        $('.pagination_number.'+pageindex).addClass("active")
+        $('.pagination_number').removeAttr('style')
+        $('.pagination_number.active').attr('style', '' +
+            'background-color:'+pagination_style['a-bg-color']+' !important; ' +
+            'color:'+pagination_style['a-color']+' !important;' +
+            'border-color:'+pagination_style['a-border-color']+' !important;' +
+            'border-style:'+pagination_style['a-border-style']+' !important;' +
+            'border-width:'+pagination_style['a-border-width']+' !important;' +
+            'border-radius:'+pagination_style['a-border-radius']+' !important;' +
+            'line-height:'+pagination_style['a-line-height']+' !important;' +
+            'font-weight:'+pagination_style['a-font-weight']+' !important;' +
+            'font-size:'+pagination_style['a-font-size']+' !important;' +
+            'letter-spacing:'+pagination_style['a-letter-spacing']+' !important;' +
+            'text-transform:'+pagination_style['a-transform']+' !important;');
+    })
+
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
-            return <button className={`pagination_number next`} onClick={nextpageset}>Next</button>
+            return <Pageprivnext css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin}  className={`pagination_number next`} onClick={nextpageset}>Next</Pageprivnext>
         }
     }
     const prevbtn = (pageval) => {
         if(minlimit > 1){
-            return <button className={`pagination_number prev`} onClick={prevpageset}>Prev</button>
+            return <Pageprivnext css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number prev`} onClick={prevpageset}>Prev</Pageprivnext>
         }
     }
 
     const nextpageset = () => {
         setMaxlimit((prev) => prev + 1)
         setMinlimit((prev) => prev + 1)
+        setPageindex((prev) => prev + 1)
     }
 
     const prevpageset = () => {
         setMaxlimit((prev) => prev - 1)
         setMinlimit((prev) => prev - 1)
+        setPageindex((prev) => prev - 1)
     }
 
     return (
@@ -128,13 +147,13 @@ const RtThePostGrid = (props) => {
                                         if(((i+1) >= minlimit) && (i+1) <= maxlimit){
                                             if(pagestate > 1){
                                                 if(i == 0){
-                                                    return <span className={`pagination_number active ${i+1}`}
+                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`}
                                                                  data-value={i+1}
-                                                                 key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</span>
+                                                                 key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
                                                 }else{
-                                                    return <span className={`pagination_number ${i+1}`}
+                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`}
                                                                  data-value={i+1}
-                                                                 key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</span>
+                                                                 key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
                                                 }
                                             }
                                         }
