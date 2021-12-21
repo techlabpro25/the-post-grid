@@ -14,7 +14,6 @@ import Columns from './components/layout/Columns';
 import Linking from './components/layout/Linking';
 
 import General from './components/settings/General';
-
 import Heading from './components/settings/Heading';
 import Title from './components/settings/Title';
 import Excerpt from './components/settings/Excerpt';
@@ -30,7 +29,7 @@ import Style_Meta from './components/style/Style_Meta';
 import Style_Read_More from './components/style/Style_Read_More';
 import Style_Content_wrap from './components/style/Style_Content_wrap';
 import $ from 'jquery';
-import PredefaultAttr from "./components/PredefaultAttr";
+import {PredefaultAttr} from "./components/PredefaultAttr";
 import Pagination from "./components/style/Pagination";
 import {PaginationStyle, Pageindex, Pageprivnext} from "./Style_component";
 
@@ -40,7 +39,7 @@ const {InspectorControls} = wp.blockEditor
 const {useState, useEffect, useRef} = wp.element;
 
 export default function Edit(props) {
-    const {attributes, setAttributes, } = props;
+    const {attributes, setAttributes } = props;
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const [paginationNumber, setPaginationNumber] = useState(0);
@@ -49,8 +48,7 @@ export default function Edit(props) {
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const [defset, setDefset] = useState(false);
-    const {query, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, layout} = attributes
+    const {query, columns, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, layout} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -253,6 +251,17 @@ export default function Edit(props) {
         setAttributes({excerpt: {...excerpt, 'limit': ''}})
     }, [excerpt.type])
 
+    useEffect(()=>{
+        if((columns.desktop == "") || (general.presdefault)){
+            PredefaultAttr(props)
+            setAttributes({
+                general:{
+                    ...general,
+                    'presdefault': false
+                }
+            })
+        }
+    },[layout.value])
 
     useEffect(()=>{
         setPageindex(1)
@@ -292,7 +301,7 @@ export default function Edit(props) {
 
     return (
         <>
-            <PredefaultAttr attr={global_attr}/>
+            {/*<PredefaultAttr attr={global_attr}/>*/}
             <InspectorControls>
                 <PanelBody className="post_grid_blocks" title={__("The Post Grid", 'the-post-grid')}>
                     <TabPanel

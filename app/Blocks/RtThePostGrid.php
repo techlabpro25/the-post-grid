@@ -22,7 +22,7 @@ class RtThePostGrid extends Block
             'post_date' => true,
             'comment_count' => true,
             'see_more' => true,
-            'presdefault' => true
+            'presdefault' => false
         ],
         'title'=> [
             'tag'=> "3",

@@ -116,7 +116,7 @@ const attributes = {
 			post_date: true,
 			comment_count: true,
 			see_more: true,
-			presdefault: true
+			presdefault: false
 		},
 	},
 	heading: {
