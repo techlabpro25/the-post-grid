@@ -11,7 +11,6 @@ import {
     Content_padding,
     ImgParent
 } from "../../Style_component";
-import { useState, useEffect } from "@wordpress/element";
 import { trimbychar, trimbyword } from './../../Helper';
 import {Titles} from "../elements/Titles";
 import {Image} from "../elements/Image";
@@ -19,11 +18,10 @@ import {Author} from "../elements/Author";
 import {Date} from "../elements/Date";
 import {CommentCount} from "../elements/CommentCount";
 import {Category_Default, Non_Category_Default} from "../elements/Category";
-import {Tags} from "../elements/Tags";
 import apiFetch from "@wordpress/api-fetch";
+const {useState, useEffect} = wp.element;
 
 export const Isotope1 = (props) =>{
-
     const [term_cat, setTerm_cat] = useState([])
     const {
         title,
@@ -54,9 +52,9 @@ export const Isotope1 = (props) =>{
         parent_class,
         columns,
         linking,
-        layout
+        layout,
+        query
     } = props
-
 
     let Heading = "";
     let Title = "";
@@ -72,9 +70,15 @@ export const Isotope1 = (props) =>{
         Title = 'h' + title.tag
     }
 
+    const htmltotextconvert = (excerpt) =>{
+        var txt = document.createElement("textarea");
+        txt.innerHTML = excerpt;
+        return txt.value;
+    }
+
     // Get Category
     useEffect(() => {
-        apiFetch({ path: "/rt/v1/isotope_terms?post_type=product" }).then((terms) => {
+        apiFetch({ path: "/rt/v1/isotope_terms?post_type="+query.post_type }).then((terms) => {
             setTerm_cat(
                 terms.map((item_key) => {
                     return {
@@ -87,17 +91,11 @@ export const Isotope1 = (props) =>{
         });
     }, []);
 
-    const htmltotextconvert = (excerpt) =>{
-        var txt = document.createElement("textarea");
-        txt.innerHTML = excerpt;
-        return txt.value;
-    }
-
     return(
         <>
             <div className={`${parent_class}`}>
                 {
-                    general.heading?(
+                    (general.heading && (heading_title.length > 0))?(
                         <Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
 
                             {
@@ -128,10 +126,10 @@ export const Isotope1 = (props) =>{
                         }
                     </div>
                 </div>
-                <Content_padding css_pad={content_padding}className={`rt-row rt-content-loader layout2 tpg-even`}>
+
+                <div className="rt-container-fluid rt-tpg-container grid-layout-1">
                     {
                         data.length && data.map((post) => {
-                            // console.log(post.category)
                             var postexcerpt = post.excerpt;
                             var post_title = post.title;
 
@@ -151,72 +149,41 @@ export const Isotope1 = (props) =>{
                                 postexcerpt = trimbyword(postexcerpt, excerpt.limit, excerpt.more_text)
                             }
 
-                            // Title
-                            const title_props = {
-                                Title,
-                                title_style,
-                                primary_color,
-                                id: post.id,
-                                target: linking.terget,
-                                link: post.post_link,
-                                post_title
+                            if (excerpt.type == "full") {
+                                postexcerpt = trimbychar(postexcerpt, excerpt.limit, excerpt.more_text)
                             }
-                            const image_props = {
-                                id: post.id,
-                                link: post.post_link,
-                                target: linking.terget,
-                                image,
-                                image_url: post.image_url,
-                                layout: layout.value
-                            }
-                            const author_props = {
-                                meta,
-                                author_url: post.author_url,
-                                meta_style,
-                                primary_color,
-                                name: post.author_name
-                            }
-                            const date_props = {meta, meta_style, primary_color, date: post.post_date}
-                            const comment_count_props = {
-                                meta,
-                                meta_style,
-                                primary_color,
-                                count: post.comment_count,
-                                link: post.post_link
-                            }
-                            const category_props = {
-                                meta,
-                                meta_style,
-                                primary_color,
-                                category,
-                                post_terms: post?.terms,
-                                category_style,
-                                category_padding,
-                                category_margin
-                            }
-                            // const tag_props = {
-                            //     meta,
-                            //     meta_style,
-                            //     primary_color,
-                            //     post_tags: post?.tags
-                            // }
 
-                            return(
+                            // Title
+                            const title_props = { Title, title_style, primary_color, id:post.id, target:linking.terget, link: post.post_link, post_title }
+                            const image_props = { id:post.id, link: post.post_link, target:linking.terget, image, image_url:post.image_url, layout: layout.value }
+                            const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name}
+                            const date_props = { meta, meta_style, primary_color, date: post.post_date}
+                            const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
+                            const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin }
+
+                            // var isotope_terms = "asassas";
+                            // post?.terms?.map((items) =>{
+                            //
+                            // })
+
+
+                            return (
                                 <>
-                                    <div
-                                        className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24") ? "2" : columns.tablet} rt-col-xs-${(columns.mobile == "24") ? "2" : columns.mobile} rt-equal-height even-grid-item`}>
-                                        <Content_wrap css={content_wrap} css_pad={constent_box_padding}
-                                                      className="rt-holder">
+                                    <div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item `}>
+                                        <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className="rt-img-holder">
                                                 {
-                                                    image.show_hide ? (
+                                                    image.show_hide?(
                                                         <Image data={image_props}/>
-                                                    ) : ("")
+                                                    ):("")
                                                 }
                                                 {
                                                     (category.position.includes('over-image')) ? (
                                                         <div className={`cat-${category.position} ${category.style}`}>
-                                                            <Non_Category_Default data={category_props}/>
+                                                            <>
+                                                                <Non_Category_Default data={category_props}/>
+                                                            </>
+
                                                         </div>
                                                     ) : ("")
                                                 }
@@ -226,7 +193,9 @@ export const Isotope1 = (props) =>{
                                                 {
                                                     (category.position == "above-title") ? (
                                                         <div className={`cat-above-title ${category.style}`}>
-                                                            <Non_Category_Default data={category_props}/>
+                                                            <>
+                                                                <Non_Category_Default data={category_props}/>
+                                                            </>
                                                         </div>
                                                     ) : ('')
                                                 }
@@ -258,11 +227,12 @@ export const Isotope1 = (props) =>{
                                                             }
 
 
+
                                                             {/*Tag*/}
                                                             {/*{*/}
-                                                            {/*    general.tag ? (*/}
-                                                            {/*        <Tags data={tag_props}/>*/}
-                                                            {/*    ) : ("")*/}
+                                                            {/*	general.tag ? (*/}
+                                                            {/*		<Tags data={tag_props}/>*/}
+                                                            {/*	) : ("")*/}
                                                             {/*}*/}
 
                                                             {/*Comment count*/}
@@ -278,7 +248,7 @@ export const Isotope1 = (props) =>{
 
                                                 {
                                                     general.title ? (
-                                                        <Titles data={title_props}/>
+                                                        <Titles data={title_props} />
                                                     ) : ('')
                                                 }
 
@@ -309,11 +279,12 @@ export const Isotope1 = (props) =>{
                                                             }
 
 
+
                                                             {/*Tag*/}
                                                             {/*{*/}
-                                                            {/*    general.tag ? (*/}
-                                                            {/*        <Tags data={tag_props}/>*/}
-                                                            {/*    ) : ("")*/}
+                                                            {/*	general.tag ? (*/}
+                                                            {/*		<Tags data={tag_props}/>*/}
+                                                            {/*	) : ("")*/}
                                                             {/*}*/}
 
                                                             {/*Comment count*/}
@@ -328,12 +299,11 @@ export const Isotope1 = (props) =>{
                                                 }
 
 
+
                                                 {/*Excerpt*/}
                                                 {
                                                     general.excerpt ? (
-                                                        <Excerpts css={excerpt_style} primary={primary_color}
-                                                                  className="tpg-excerpt">
-                                                            {htmltotextconvert(postexcerpt)}
+                                                        <Excerpts css={excerpt_style} primary={primary_color} className="tpg-excerpt" dangerouslySetInnerHTML={{__html: postexcerpt}}>
                                                         </Excerpts>
                                                     ) : ("")
                                                 }
@@ -365,11 +335,12 @@ export const Isotope1 = (props) =>{
                                                             }
 
 
+
                                                             {/*Tag*/}
                                                             {/*{*/}
-                                                            {/*    general.tag ? (*/}
-                                                            {/*        <Tags data={tag_props}/>*/}
-                                                            {/*    ) : ("")*/}
+                                                            {/*	general.tag ? (*/}
+                                                            {/*		<Tags data={tag_props}/>*/}
+                                                            {/*	) : ("")*/}
                                                             {/*}*/}
 
                                                             {/*Comment count*/}
@@ -388,12 +359,7 @@ export const Isotope1 = (props) =>{
                                                     general.see_more ? (
                                                         <Btn_align css_btn={button} className="post-meta ">
 															<span className="read-more">
-																<Button_style css={button_style}
-                                                                              css_pad={button_padding}
-                                                                              primary={primary_color}
-                                                                              target={linking.target} css_btn={button}
-                                                                              data-id={post.id} className=""
-                                                                              href={post.post_link}>
+																<Button_style css={button_style} css_pad={button_padding} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="" href={post.post_link}>
 																	{button.text}
 																</Button_style>
 															</span>
@@ -408,7 +374,7 @@ export const Isotope1 = (props) =>{
                             )
                         })
                     }
-                </Content_padding>
+                </div>
             </div>
         </>
     )

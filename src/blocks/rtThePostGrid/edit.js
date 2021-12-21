@@ -36,7 +36,7 @@ import {PaginationStyle, Pageprivnext} from "./Style_component";
 
 const {__} = wp.i18n;
 const {InspectorControls} = wp.blockEditor
-const {useState, useEffect, useRef} = wp.element;
+const {useState, useEffect} = wp.element;
 
 export default function Edit(props) {
     const {attributes, setAttributes } = props;

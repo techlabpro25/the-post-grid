@@ -51,12 +51,8 @@ const Query = (props) => {
 		},
 
 		{
-			label: __( "Created date", "the-post-grid"),
+			label: __( "Date", "the-post-grid"),
 			value: "date",
-		},
-		{
-			label: __( "Modified date", "the-post-grid"),
-			value: "modified",
 		},
 		{
 			label: __( "Menu Order", "the-post-grid"),

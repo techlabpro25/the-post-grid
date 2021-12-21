@@ -560,7 +560,7 @@ span.more-loading {
     font-size: 95%;
 }
 
-.post-meta-user span, .post-meta-tags span {
+.post-meta-user span.author, .post-meta-user .date, .post-meta-user .categories-links, .post-meta-user .comment-count, .post-meta-tags span {
     display: inline-block;
     padding-right: 8px;
 }

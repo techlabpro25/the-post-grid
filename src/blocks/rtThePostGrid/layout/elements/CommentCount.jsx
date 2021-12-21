@@ -13,7 +13,7 @@ export const CommentCount = (props) =>{
                     </a>
                 ):("")
             }
-            &nbsp;
+
             <MetaTagStyle css={meta_style} primary={primary_color} href={`${link}/#respond`}>
                 {count}
             </MetaTagStyle>

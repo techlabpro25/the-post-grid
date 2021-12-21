@@ -18,7 +18,6 @@ import {Author} from "../elements/Author";
 import {Date} from "../elements/Date";
 import {CommentCount} from "../elements/CommentCount";
 import {Category_Default, Non_Category_Default} from "../elements/Category";
-import {Tags} from "../elements/Tags";
 
 const Layout1 = (props) => {
 	const {

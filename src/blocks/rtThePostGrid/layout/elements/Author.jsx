@@ -14,7 +14,7 @@ export const Author = (props) => {
 
                 ) : ("")
             }
-            &nbsp;
+
             <MetaTagStyle css={meta_style} primary={primary_color} href={author_url}>
                 {name}
             </MetaTagStyle>

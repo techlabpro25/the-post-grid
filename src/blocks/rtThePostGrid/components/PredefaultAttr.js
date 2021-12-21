@@ -4,7 +4,7 @@ export const PredefaultAttr = (props) =>{
     // ===========================================================================
     // ========================= Grid 1 ==========================================
 
-    if (layout.value == 'grid1') {
+    if ((layout.value == 'grid1') || (layout.value == "isotope1")) {
         props.setAttributes({
             content_padding:
                 {

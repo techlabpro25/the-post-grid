@@ -10,7 +10,7 @@ import apiFetch from "@wordpress/api-fetch";
 
 function Image(props) {
     const {__} = wp.i18n;
-    const { image } = props.attr.attributes
+    const { image, layout } = props.attr.attributes
     const [ showimage, setShowimage ] = useState( true );
     const [sizes, setSizes] = useState([])
 
@@ -46,20 +46,23 @@ function Image(props) {
                 ):("")
             }
 
-            <SelectControl
-                className={"rt-selectcontrol image"}
-                label={__( "Image Column:", "the-post-grid")}
-                value={ image['img-column'] }
-                options={ [
-                    { label: __( 'Column 1', "the-post-grid"), value: '12' },
-                    { label: __( 'Column 2', "the-post-grid"), value: '6' },
-                    { label: __( 'Column 3', "the-post-grid"), value: '4' },
-                    { label: __( 'Column 4', "the-post-grid"), value: '3' },
-                    { label: __( 'Column 6', "the-post-grid"), value: '2' },
-                    { label: __( 'Column 12', "the-post-grid"), value: '1' },
-                ] }
-                onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "img-column": value, "content-column": (12 - value)} } ) }
-            />
+            {((layout.value == "list1")|| (layout.value == "list2"))? (
+                <SelectControl
+                    className={"rt-selectcontrol image"}
+                    label={__( "Image Column:", "the-post-grid")}
+                    value={ image['img-column'] }
+                    options={ [
+                        { label: __( 'Column 1', "the-post-grid"), value: '1' },
+                        { label: __( 'Column 2', "the-post-grid"), value: '2' },
+                        { label: __( 'Column 3', "the-post-grid"), value: '3' },
+                        { label: __( 'Column 4', "the-post-grid"), value: '4' },
+                        { label: __( 'Column 6', "the-post-grid"), value: '6' },
+                        { label: __( 'Column 12', "the-post-grid"), value: '12' },
+                    ] }
+                    onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "img-column": value, "content-column": (12 - value)} } ) }
+                />
+            ):("")}
+
 
             <SelectControl
                 className={"rt-selectcontrol image"}

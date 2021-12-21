@@ -49,9 +49,10 @@
 		"@fortawesome/free-solid-svg-icons": "^5.15.4",
 		"@fortawesome/react-fontawesome": "^0.1.16",
 		"@wordpress/api-fetch": "^5.2.4",
+		"isotope-layout": "^3.0.6",
 		"jquery": "^3.6.0",
 		"react-select": "^5.2.1",
-		"styled-components": "^5.3.3",
-		"select2": "^4.0.13"
+		"select2": "^4.0.13",
+		"styled-components": "^5.3.3"
 	}
 }

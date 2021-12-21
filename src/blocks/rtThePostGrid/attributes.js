@@ -7,7 +7,7 @@ const attributes = {
 			include: "",
 			exclude: "",
 			offset: 0,
-			taxonomy_bool: false,
+			taxonomy_bool: true,
 			category_bool: false,
 			taxonomy: [],
 			tax_term: {},
@@ -17,8 +17,8 @@ const attributes = {
 			tag: [],
 			tag_operator: "",
 			relation: "AND",
-			order_bool: false,
-			order_by: "title",
+			order_bool: true,
+			order_by: "date",
 			order: "DESC",
 			author_bool: false,
 			author: [],
@@ -230,19 +230,19 @@ const attributes = {
 	category_padding: {
 		type: "object",
 		default:{
-			top: '0px',
-			right: '5px',
-			bottom: '0px',
-			left: '5px',
+			top: '',
+			right: '',
+			bottom: '',
+			left: '',
 		}
 	},
 	category_margin: {
 		type: "object",
 		default:{
-			top: '4px',
-			right: '4px',
-			bottom: '4px',
-			left: '4px',
+			top: '0px',
+			right: '0px',
+			bottom: '0px',
+			left: '0px',
 		}
 	},
 	meta: {

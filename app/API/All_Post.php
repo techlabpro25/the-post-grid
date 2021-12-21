@@ -137,6 +137,7 @@ class All_Post{
                                 $tempterms[]=[
                                     "term_id" => esc_html($termitems->term_id),
                                     "term_name" => esc_html($termitems->name),
+                                    "term_slug" => esc_html($termitems->slug),
                                     "term_link" => esc_html(get_term_link($termitems->term_id)),
                                 ];
                             }

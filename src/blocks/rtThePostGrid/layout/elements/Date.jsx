@@ -11,7 +11,7 @@ export const Date = (props) =>{
                     <MetaIconspan as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faCalendarAlt} />
                 ):("")
             }
-            &nbsp;
+
             <MetaStyle css={meta_style} primary={primary_color} >{date}</MetaStyle>
             {meta.seperator}
         </span>
