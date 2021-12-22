@@ -73,11 +73,19 @@ const RtThePostGrid = (props) => {
             $('.pagination .pagination_number.active').removeClass('active')
             $('.pagination .pagination_number.'+pageindex).addClass('active')
 
+
         });
-    }, [query, pagination, pageindex, image.size]);
+    }, [query, pagination, loadingindex, image.size]);
 
     useEffect(()=>{
-        setIsloading(true);
+        $('.layout2.list1').css('opacity', 0.2);
+        window.scrollTo(0, 0)
+        setTimeout(function(){
+            $('.layout2.list1').css('opacity', 1.0);
+            setLoadingindex((prev)=> prev + 1)
+            }, 1000)
+
+        // setIsloading(true);
     },[pageindex])
 
     useEffect(()=>{
@@ -135,7 +143,10 @@ const RtThePostGrid = (props) => {
                                 </>
 
                             ):(
-                                <RenderView {...props} data={data}/>
+                                <>
+                                    <RenderView {...props} data={data}/>
+                                </>
+
                             )
                         }
 

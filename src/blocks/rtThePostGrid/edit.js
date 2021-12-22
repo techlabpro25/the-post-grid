@@ -138,8 +138,6 @@ export default function Edit(props) {
         },
     ]
 
-
-
     useEffect(() => {
         let authors = [];
         let status = [];
@@ -205,6 +203,7 @@ export default function Edit(props) {
                 setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
             }
             setIsloading(false);
+            window.scrollTo(0, 0)
             // setAttributes({query: {...query, 'query_loader':false}})
         });
     }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
