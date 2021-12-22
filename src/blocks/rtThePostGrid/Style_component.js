@@ -32,7 +32,28 @@ export const Cat_style = styled.a`
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
-	padding: ${props => ((props.css_pad.right != "") && (props.css_pad.left != "")) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: (((props.css['background-color'] == "") || (props.css['background-color'] == undefined))? "0px": "0px 3px 0px 3px")} !important;
+	padding: ${props => 
+        ((props.css_pad.right != "") && (props.css_pad.left != ""))
+        ?   (((props.css_pad.right != null) && (props.css_pad.left != null))?
+            props.css_pad.top+" "+
+            props.css_pad.right+" "+
+            props.css_pad.bottom+" "+
+            props.css_pad.left
+                :
+                    (((props.css['background-color'] == "") || (props.css['background-color'] == undefined))?
+                        "0px": "0px 3px 0px 3px"
+                    )
+            )
+            : 
+            (
+                (
+                    (props.css['background-color'] == "") || (props.css['background-color'] == undefined)
+                )? 
+                    "0px"
+                    : 
+                    "0px 3px 0px 3px"
+            )
+        } !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
 	line-height: ${props => (props.meta['line-height'])?props.meta['line-height']: ""} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;

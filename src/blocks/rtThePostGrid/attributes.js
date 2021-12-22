@@ -177,7 +177,7 @@ const attributes = {
 	title_style: {
 		type: "object",
 		default: {
-			["text-align"]: "left",
+			["text-align"]: "Left",
 			color: "",
 			h_color: "",
 			["font-size"]: "",
@@ -198,7 +198,7 @@ const attributes = {
 	excerpt_style: {
 		type: "object",
 		default: {
-			["text-align"]: "left",
+			["text-align"]: "Left",
 			color: "",
 			["font-size"]: "15px",
 			["font-weight"]: 400,
@@ -256,7 +256,7 @@ const attributes = {
 	meta_style: {
 		type: "object",
 		default: {
-			["text-align"]: "left",
+			["text-align"]: "Left",
 			color: "",
 			["font-size"]: "15px",
 			["font-weight"]: 400,
@@ -271,7 +271,7 @@ const attributes = {
 			["border-radius"]: "",
 			['h-boder-radius'] : "",
 			text: "View More",
-			["text-align"]: "left",
+			["text-align"]: "Left",
 			['border-color']: '#e0e0e0',
 			['h-border-color']: '#e0e0e0',
 			['border-width']: '1px',

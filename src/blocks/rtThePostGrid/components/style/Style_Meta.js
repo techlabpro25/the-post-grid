@@ -34,7 +34,7 @@ function Meta(props) {
                 {__( "Text Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left"
-                className={".rt-radiocontrol meta"}
+                className={"rt-radiocontrol meta"}
                 onChange={ (val) =>props.attr.setAttributes({meta_style: {...meta_style, "text-align": val}}) } 
                 checked={ meta_style["text-align"] }
             >
