@@ -51,16 +51,16 @@ class RtThePostGrid extends Block
             'transform' => ''
 		],
 		'category_padding' =>[
-                'top' => '0px',
-                'right' => '5px',
-                'bottom' => '0px',
-                'left' => '5px',
+                'top' => '',
+                'right' => '',
+                'bottom' => '',
+                'left' => '',
         ],
 		'category_margin' =>[
-            'top' => '4px',
-            'right' => '4px',
-            'bottom' => '4px',
-            'left' => '4px',
+            'top' => '',
+            'right' => '',
+            'bottom' => '',
+            'left' => '',
         ],
         'meta_style' =>[
             'color' => "",
@@ -253,9 +253,9 @@ class RtThePostGrid extends Block
             'a-line-height' => "",
         ],
         'pagination_padding'=>[
-            'top' => '0px',
+            'top' => '10px',
 			'right' => '15px',
-			'bottom' => '0px',
+			'bottom' => '10px',
 			'left' => '15px',
         ],
         'pagination_margin' =>[

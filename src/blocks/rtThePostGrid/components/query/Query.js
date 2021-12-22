@@ -220,7 +220,8 @@ const Query = (props) => {
 				}
 			/>
 
-			<RangeControl
+			<NumberControl
+				className={"rt-numbercontrol query"}
 				label={__( "limit:", "the-post-grid")}
 				help={__( "The number of posts to show. Set -1 to show all found posts.", "the-post-grid")}
 				value={query.limit}

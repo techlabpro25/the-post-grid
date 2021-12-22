@@ -30,7 +30,7 @@ export const Excerpts = styled.div`
 export const Cat_style = styled.a`
 	color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
 	background-color: ${props => props.css['background-color']} !important;
-	font-size: ${props => props.css['font-size']} !important;
+	font-size: ${props => (props.css['font-size'] == "")? ((props.meta['font-size'] == "")? "15px": props.meta['font-size']): props.css['font-size']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
 	padding: ${props => 
         ((props.css_pad.right != "") && (props.css_pad.left != ""))
@@ -56,11 +56,9 @@ export const Cat_style = styled.a`
         } !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
 	line-height: ${props => (props.meta['line-height'])?props.meta['line-height']: ""} !important;
-	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 	letter-spacing: ${props => ((!props.css['letter-spacing'])?((props.meta['letter-spacing'])? props.meta['letter-spacing']: "") : props.css['letter-spacing'])} !important;
 	text-transform: ${props => ((!props.css['transform'])?((props.meta['transform'])? props.meta['transform']: "") : props.css['transform'])} !important;
 	font-weight: ${props => (props.css['font-weight'] == '')? (props.meta['font-weight']? props.meta['font-weight'] : 400) : props.css['font-weight']} !important;
-    line-height: 30px !important;
 `;
 
 export const Cat_style_non_default = styled.a`
@@ -153,7 +151,7 @@ export const Btn_align = styled.div`
 
 export const Head_title = styled.div`
     padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '15px'} !important;
-	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
+	margin: ${props => (props.css_mar != undefined) ? (((props.css_mar.top == null) && (props.css_mar.right == null) && (props.css_mar.bottom == null) && (props.css_mar.left == null))? "0px":props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left): '0px'} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	background-color: ${props => ((props.css['background-color'] == "transparent")?((props.head_sty.style != 1)?"#1e73be":"transparent"): props.css['background-color'])} !important;
 	:before{
@@ -185,15 +183,63 @@ export const Head_border_style1 = styled.div`
 `;
 
 export const Content_wrap = styled.div`
-	background-color: ${props => props.css['background-color']} !important;
+	background-color: ${props => ((props.css['background-color'] == "") || (props.css['background-color'] == undefined))? "#fff":props.css['background-color']} !important;
 	border-radius: ${props => props.css.radius}px !important;
-	border: ${props => props.css['border-width']+" solid "+props.css['border-color']} !important;
+	border: ${props => (props?.layout?.value == "grid1") ?
+    (
+        (
+            (props.css['border-width'] == "") ? 
+                "1px"
+                : 
+                props.css['border-width']
+        )+" solid "+
+        (
+            (
+                (props.css['border-width'] == "") || (props.css['border-color'] == undefined)
+            ) ? 
+                "#d9d9d9"
+                : 
+                props.css['border-color']
+        ) 
+    )
+    :
+    (
+        (
+            (props.css['border-width'] == "") ?
+                "0px"
+                :
+                props.css['border-width']
+        )+" solid "+
+        (
+            (
+                (props.css['border-width'] == "") || (props.css['border-color'] == undefined)
+            ) ?
+                "transparent"
+                :
+                props.css['border-color']
+        )
+    )
+} !important;
 	box-shadow: ${props => '0px 0px 5px 0px '+props.css['box-shadow-color']} !important;
-	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
+	padding: ${props => 
+    (props.css_pad != undefined) ?
+        (((props.css_pad.top == null) && (props.css_pad.right == null) && (props.css_pad.bottom == null) && (props.css_pad.left == null))?
+            ((props?.layout?.value == "grid1")?
+                "0px"
+                :
+                "15px")
+            : props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left
+        )
+        :
+        ((props?.layout?.value == "grid1")? 
+            "0px"
+            : 
+            "15px")
+} !important;
 `;
 
 export const Content_padding = styled.div`
-	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '15px'} !important;
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
 `;
 
 export const ImgAnimation = styled.img`

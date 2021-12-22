@@ -44,6 +44,22 @@ function Style_Content_wrap(props) {
                 onChange={ ( color ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-color": color}} ) }
             />
 
+            <Text>
+                {__( "Border Width:", "the-post-grid")}
+            </Text>
+            <UnitControl
+                className={"rt-unitcontrol content-wrap"}
+                value={ content_wrap["border-width"] }
+                onChange={ ( val ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-width": val}} ) }
+            />
+
+            <NumberControl
+                className={"rt-numbercontrol content-wrap"}
+                label={__( "Border Radius", "the-post-grid")}
+                labelPosition="side"
+                value={content_wrap["radius"]}
+                onChange={ ( value ) =>  props.attr.setAttributes( { content_wrap: {...content_wrap, "radius": value} })}
+            />
 
             <BoxControl
                 label={__( "Box Padding:", "the-post-grid")}
@@ -62,25 +78,6 @@ function Style_Content_wrap(props) {
                     props.attr.setAttributes({content_padding: val})
                 }}
             />
-
-            <Text>
-                {__( "Border Width:", "the-post-grid")}
-            </Text>
-            <UnitControl
-                className={"rt-unitcontrol content-wrap"}
-                value={ content_wrap["border-width"] }
-                onChange={ ( val ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-width": val}} ) }
-            />
-
-
-            <NumberControl
-                className={"rt-numbercontrol content-wrap"}
-                label={__( "Border Radius", "the-post-grid")}
-                labelPosition="side"
-                value={content_wrap["radius"]}
-                onChange={ ( value ) =>  props.attr.setAttributes( { content_wrap: {...content_wrap, "radius": value} })}
-            />
-        
         </PanelBody>
     );
 }

@@ -564,6 +564,10 @@ span.more-loading {
     display: inline-block;
     padding-right: 8px;
 }
+.post-meta-user .date span{
+    padding-right: 0px !important;
+}
+
 
 .post-meta-user span.rt-separator, .post-meta-tags span.rt-separator {
     display: inline-block;
@@ -2451,6 +2455,7 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
     margin: 5px;
     border-radius: 5px;
     cursor: pointer;
+    line-height: 0;
 }
 
 .pagination .pagination_number:hover, .pagination .pagination_number.active {
@@ -2529,7 +2534,17 @@ h1,h2,h3,h4,h5,h6{
     padding-top: 5px !important;
 }
 
-.rt-detail{
+.grid1 .rt-detail{
     padding: 15px;
 }
+.tpg-widget-heading{
+    padding: 5px 15px 5px 15px;
+    margin: 0px;
+}
+
+.grid1, .list1, .list2, .isotope1{
+    display: flex;
+    flex-wrap: wrap;
+}
+
 

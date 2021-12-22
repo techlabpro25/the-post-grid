@@ -88,9 +88,9 @@ const attributes = {
 	},
 	pagination_padding:{
 		default:{
-			top: '0px',
+			top: '10px',
 			right: '15px',
-			bottom: '0px',
+			bottom: '10px',
 			left: '15px',
 		}
 	},
