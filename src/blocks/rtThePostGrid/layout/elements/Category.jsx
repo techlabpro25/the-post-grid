@@ -25,13 +25,13 @@ export const Category_Default = (props) =>{
                                 if(term_item.length > 0){
                                     return(
                                         <>
-                                            {((category.style == 'style1') && (i > 0) && (category_style['background-color'] == "")) ? "," : "   "}
+                                            {((i > 0) && ((category_style['background-color'] == "") || (category_style['background-color'] == undefined))) ? ", " : "   "}
                                             {
                                                 term_item?.length && term_item?.map((items,i) =>{
                                                     return (
                                                         <>
                                                             {/*=*/}
-                                                            {((category.style == 'style1') && (i > 0) && (category_style['background-color'] == "")) ? "," : "   "}
+                                                            {((category.style == 'style1') && (i > 0) && (category_style['background-color'] == "")) ? ", " : "   "}
                                                             <Cat_style css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style>
@@ -80,8 +80,8 @@ export const Non_Category_Default = (props) =>{
                                                 term_item?.length && term_item?.map((items) =>{
                                                     return (
                                                         <>
-                                                            {((category.style == 'style1') && (i > 0) && (category_style['background-color'] == "")) ? "," : "   "}
-                                                            <Cat_style_non_default css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
+                                                            {((category.style == 'style1') && (i > 0) && ((category_style['background-color'] == "") || (category_style['background-color'] == undefined))) ? ", " : "   "}
+                                                            <Cat_style_non_default cat_style={category} css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style_non_default>
                                                         </>

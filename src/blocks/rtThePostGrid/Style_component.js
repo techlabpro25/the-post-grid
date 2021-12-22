@@ -64,11 +64,36 @@ export const Cat_style = styled.a`
 `;
 
 export const Cat_style_non_default = styled.a`
+${(props) =>{
+    console.log(props)}}
+
 	color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
-	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
+	padding: ${props =>
+    ((props.css_pad.right != "") && (props.css_pad.left != ""))
+        ?   (((props.css_pad.right != null) && (props.css_pad.left != null))?
+                props.css_pad.top+" "+
+                props.css_pad.right+" "+
+                props.css_pad.bottom+" "+
+                props.css_pad.left
+                :
+                (((props.css['background-color'] == "") || (props.css['background-color'] == undefined))?
+                        ((props.cat_style.style == 'style1')? '0px': "0px 3px 0px 3px")
+                        : "0px 3px 0px 3px"
+                )
+        )
+        :
+        (
+            (
+                (props.css['background-color'] == "") || (props.css['background-color'] == undefined)
+            )?
+                ((props.cat_style.style == 'style1')? '0px': "0px 3px 0px 3px")
+                :
+                "0px 3px 0px 3px"
+        )
+} !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
     font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
     line-height: 30px !important;

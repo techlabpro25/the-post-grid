@@ -239,10 +239,10 @@ const attributes = {
 	category_margin: {
 		type: "object",
 		default:{
-			top: '0px',
-			right: '0px',
-			bottom: '0px',
-			left: '0px',
+			top: '',
+			right: '',
+			bottom: '',
+			left: '',
 		}
 	},
 	meta: {
