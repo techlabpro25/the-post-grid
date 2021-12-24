@@ -292,8 +292,9 @@ export const CatIcon = styled.div`
     color: ${props => (props.css.color)? props.css.color: props.primary}
 `
 export const PaginationStyle = styled.button`
-    color: ${props => (props.css['color'])? props.css['color']: ""} !important;
-    background-color: ${props => (props.css['bg-color'])? props.css['bg-color']: ""} !important;
+    color: ${props => ((props.className.search("active") != -1)? props.css['a-color']:((props.css.color)? props.css.color: "#fff"))} !important;
+    background-color: ${props => ((props.className.search("active") != -1)? props.css['a-bg-color']:((props.css['bg-color'])? props.css['bg-color']: "#4c6fff"))} !important;
+   
     border-color: ${props => (props.css['border-color'])? props.css['border-color']: ""} !important;
     border-style: ${props => (props.css['border-style'])? props.css['border-style']: ""} !important;
     border-width: ${props => (props.css['border-width'])? props.css['border-width']: ""} !important;

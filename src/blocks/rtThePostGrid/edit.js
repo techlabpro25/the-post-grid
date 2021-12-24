@@ -36,7 +36,7 @@ import {PaginationStyle, Pageprivnext} from "./Style_component";
 
 const {__} = wp.i18n;
 const {InspectorControls} = wp.blockEditor
-const {useState, useEffect} = wp.element;
+const {useState, useEffect, useRef} = wp.element;
 
 export default function Edit(props) {
     const {attributes, setAttributes } = props;
@@ -138,7 +138,7 @@ export default function Edit(props) {
             value: "inherit"
         },
     ]
-
+    const listingWrapRef = useRef();
 
 
     useEffect(() => {
@@ -212,23 +212,25 @@ export default function Edit(props) {
         });
     }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
 
+    const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
     // Temp Code
-    useEffect(()=>{
-        $('.pagination_number.'+pageindex).addClass("active")
-        $('.pagination_number').removeAttr('style')
-        $('.pagination_number.active').attr('style', '' +
-            'background-color:'+pagination_style['a-bg-color']+' !important; ' +
-            'color:'+pagination_style['a-color']+' !important;' +
-            'border-color:'+pagination_style['a-border-color']+' !important;' +
-            'border-style:'+pagination_style['a-border-style']+' !important;' +
-            'border-width:'+pagination_style['a-border-width']+' !important;' +
-            'border-radius:'+pagination_style['a-border-radius']+' !important;' +
-            'line-height:'+pagination_style['a-line-height']+' !important;' +
-            'font-weight:'+pagination_style['a-font-weight']+' !important;' +
-            'font-size:'+pagination_style['a-font-size']+' !important;' +
-            'letter-spacing:'+pagination_style['a-letter-spacing']+' !important;' +
-            'text-transform:'+pagination_style['a-transform']+' !important;');
-    })
+    // useEffect(()=>{
+    //     $('.pagination_number.'+pageindex).addClass("active")
+    //     $('.pagination_number').removeAttr('style')
+    //     $('.pagination_number.active').attr('style', '' +
+    //         'background-color:'+pagination_style['a-bg-color']+' !important; ' +
+    //         'color:'+pagination_style['a-color']+' !important;' +
+    //         'border-color:'+pagination_style['a-border-color']+' !important;' +
+    //         'border-style:'+pagination_style['a-border-style']+' !important;' +
+    //         'border-width:'+pagination_style['a-border-width']+' !important;' +
+    //         'border-radius:'+pagination_style['a-border-radius']+' !important;' +
+    //         'line-height:'+pagination_style['a-line-height']+' !important;' +
+    //         'font-weight:'+pagination_style['a-font-weight']+' !important;' +
+    //         'font-size:'+pagination_style['a-font-size']+' !important;' +
+    //         'letter-spacing:'+pagination_style['a-letter-spacing']+' !important;' +
+    //         'text-transform:'+pagination_style['a-transform']+' !important;');
+    // })
 
     // End temp code
 
@@ -247,14 +249,6 @@ export default function Edit(props) {
     }, [])
 
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
-        // console.log("hello")
-        // document.getElementById("tpg-editor-root").scroll(0,0)
-
         if (pageindex > 0) {
             setAttributes({query: {...query, "filter": false, "pageindex":pageindex}})
         }
@@ -266,6 +260,7 @@ export default function Edit(props) {
         $('.pagination_number.active').removeClass("active")
         $('.pagination_number.'+pageindex).addClass("active")
         setIsloading(true);
+        executeScroll();
     }, [pageindex])
 
     useEffect(()=>{
@@ -574,7 +569,7 @@ export default function Edit(props) {
                 </PanelBody>
 
             </InspectorControls>
-            <div className="rt-postsreact-editor" id={"tpg-editor-root"}>
+            <div className="rt-postsreact-editor" ref={listingWrapRef}>
                 {
                     (isrootloading)?(
                         <div className={"rootloading"}>Please Wait ...........</div>

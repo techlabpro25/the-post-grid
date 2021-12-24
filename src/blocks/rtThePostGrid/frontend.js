@@ -108,15 +108,6 @@ const RtThePostGrid = (props) => {
             'text-transform:'+pagination_style['a-transform']+' !important;');
     })
 
-    // useEffect(()=>{
-    //     return ()=>{
-    //         setTimeout(function(){
-    //             setIsrootloading(false)
-    //         }, 2000)
-    //
-    //     }
-    // })
-
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
             return <Pageprivnext css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin}  className={`pagination_number next`} onClick={nextpageset}>Next</Pageprivnext>
