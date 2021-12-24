@@ -580,7 +580,9 @@ export default function Edit(props) {
                                     <>
                                         {
                                             isloading ? (
-                                                <div className="rt-tpg-lds-dual-ring"></div>
+                                                <div className="loader-wrapper2">
+                                                    <div className="rt-tpg-lds-dual-ring"></div>
+                                                </div>
                                             ):("")
                                         }
                                         <RenderView {...attributes} setattr = {setAttributes} data={data}/>

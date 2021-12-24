@@ -2236,11 +2236,11 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
     padding: 0;
 }
 
-.tpg-widget-heading-wrapper.heading-style1 .tpg-widgets-heading::after {
+.tpg-widget-heading-wrapper.heading-style1 .tpg-widgets-heading::before {
     content: '';
-    //position: absolute;
-    //top: 50%;
-    //right: -7.5px;
+    position: absolute;
+    top: 50%;
+    right: -7.5px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -2409,14 +2409,28 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 button:focus{
     outline: none !important;
 }
+.rt-thepostgrid {
+    position: relative;
+}
+.loader-wrapper {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+.loader-wrapper2 {
+    position: fixed;
+    left: 42%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+
 .rt-tpg-lds-dual-ring {
-    display: inline-block;
     width: 80px;
     height: 80px;
-    width: 100%;
-    position: absolute;
-    top: 175px;
-    z-index: 1;
+    position: relative;
   }
   .rt-tpg-lds-dual-ring:after {
     content: " ";
@@ -2555,6 +2569,7 @@ h1,h2,h3,h4,h5,h6{
 
 .grid-layout-1 .rt-holder {
     height: 100%;
+    min-width: 100%;
 }
 
 .list1 .tpg-excerpt, .list2 .tpg-excerpt, .rt-equal-height {

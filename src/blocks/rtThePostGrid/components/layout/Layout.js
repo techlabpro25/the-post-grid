@@ -54,10 +54,10 @@ function Layout(props) {
 						<img src={plugin_path+'list.png'}/>
 					</label>
 
-					<label>
-						<input className={"isotope"} type="radio" name="laytype" value="isotope" onClick={clickHandler}/>
-						<img src={plugin_path+'isotope.png'}/>
-					</label>
+					{/*<label>*/}
+					{/*	<input className={"isotope"} type="radio" name="laytype" value="isotope" onClick={clickHandler}/>*/}
+					{/*	<img src={plugin_path+'isotope.png'}/>*/}
+					{/*</label>*/}
 				</div>
 
 				<div className="child">
@@ -87,14 +87,14 @@ function Layout(props) {
 						):("")
 					}
 
-					{
-						layout.type == "isotope"?(
-							<label>
-								<input className={"isotope1"} type="radio" name="layout" value="isotope1" onClick={layoutClickHandler}/>
-								<img src={plugin_path+'isotope1.png'}/>
-							</label>
-						):("")
-					}
+					{/*{*/}
+					{/*	layout.type == "isotope"?(*/}
+					{/*		<label>*/}
+					{/*			<input className={"isotope1"} type="radio" name="layout" value="isotope1" onClick={layoutClickHandler}/>*/}
+					{/*			<img src={plugin_path+'isotope1.png'}/>*/}
+					{/*		</label>*/}
+					{/*	):("")*/}
+					{/*}*/}
 
 
 				</div>

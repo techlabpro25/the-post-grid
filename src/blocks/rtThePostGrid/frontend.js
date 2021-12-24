@@ -131,7 +131,11 @@ const RtThePostGrid = (props) => {
                             ):(
                                 <>
                                     {
-                                        isloading?(<div className="rt-tpg-lds-dual-ring"></div>):("")
+                                        isloading?(
+                                            <div className="loader-wrapper">
+                                                <div className="rt-tpg-lds-dual-ring"></div>
+                                            </div>
+                                        ):("")
                                     }
                                     <RenderView {...props} data={data}/>
                                 </>

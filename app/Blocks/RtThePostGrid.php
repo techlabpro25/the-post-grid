@@ -111,7 +111,7 @@ class RtThePostGrid extends Block
             'transform' => ''
         ],
         'heading' =>[
-            'tag' => '1',
+            'tag' => '2',
             'style' => '1',
             'link' => ''
         ],
@@ -294,7 +294,7 @@ class RtThePostGrid extends Block
 		//        }
 		ob_start(); ?>
         <div class="rt-tpg-ph rt-thepostgrid">
-            <pre style="display => none;"><?php echo wp_json_encode($_attributes) ?></pre>
+            <pre style="display:none;"><?php echo wp_json_encode($_attributes) ?></pre>
         </div>
 <?php return ob_get_clean();
 	}

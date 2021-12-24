@@ -127,7 +127,7 @@ const attributes = {
 	heading: {
 		type: "object",
 		default: {
-			tag: "1",
+			tag: "2",
 			style: "1",
 			link: "",
 		},

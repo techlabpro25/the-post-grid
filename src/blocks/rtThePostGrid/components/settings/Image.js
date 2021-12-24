@@ -56,8 +56,6 @@ function Image(props) {
                         { label: __( 'Column 2', "the-post-grid"), value: '2' },
                         { label: __( 'Column 3', "the-post-grid"), value: '3' },
                         { label: __( 'Column 4', "the-post-grid"), value: '4' },
-                        { label: __( 'Column 6', "the-post-grid"), value: '6' },
-                        { label: __( 'Column 12', "the-post-grid"), value: '12' },
                     ] }
                     onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "img-column": value, "content-column": (12 - value)} } ) }
                 />
