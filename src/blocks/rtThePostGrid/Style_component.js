@@ -250,18 +250,20 @@ export const ImgAnimation = styled.img`
 `;
 
 export const MetaIcona = styled.div`
-    color: ${props => (props.css.color)? props.css.color: props.primary};
+    color: ${props => (props.css.color)? props.css.color: props.primary} !important;
     padding-right: 4px !important;
     font-size: ${props => props.css['font-size']} !important;
+    width: unset !important;
 `
 export const MetaIconspan = styled.div`
-    color: ${props => (props.css.color)? props.css.color: '#333'};
+    color: ${props => (props.css.color)? props.css.color: '#333'} !important;
     padding-right: 4px !important;
     font-size: ${props => props.css['font-size']} !important;
+    width: unset !important;
 `
 
 export const MetaCatIcon = styled.div`
-    font-size: ${(props) => {((props.css['font-size'] == "")? "12px": props.css['font-size'])}} !important;
+    font-size: ${(props)=> (props.css['font-size'] == "")? ((props.meta['font-size'] == "")? "12px": props.meta['font-size']): props.css['font-size']} !important;
     color: ${props => 
     (props?.css?.['background-color'])? 
         props?.css?.['background-color']: 
@@ -284,6 +286,8 @@ export const MetaCatIcon = styled.div`
                 :
                 props.css.color
         )} !important;
+        
+    width: unset !important;
 `
 export const CatIcon = styled.div`
     color: ${props => (props.css.color)? props.css.color: props.primary}

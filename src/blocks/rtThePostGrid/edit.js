@@ -210,7 +210,7 @@ export default function Edit(props) {
         });
     }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
 
-    // Temporary pagination active solution
+    // Temporary Code
     useEffect(()=>{
         $('.pagination_number.'+pageindex).addClass("active")
         $('.pagination_number').removeAttr('style')
@@ -228,7 +228,7 @@ export default function Edit(props) {
             'text-transform:'+pagination_style['a-transform']+' !important;');
     })
 
-    // End temp solution
+    // End temp code
 
     useEffect(() => {
         var url_string = window.location.href
@@ -245,6 +245,9 @@ export default function Edit(props) {
     }, [])
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+        console.log("hello")
+
         if (pageindex > 0) {
             setAttributes({query: {...query, "filter": false, "pageindex":pageindex}})
         }
@@ -565,78 +568,25 @@ export default function Edit(props) {
 
             </InspectorControls>
             <div className="rt-postsreact-editor">
-                {
-                    (message.length) ? (
-                        <div className={"no_notice"}>
-                            {message}
-                        </div>
-
-                    ) : (
-                        <>
-                            {
-                                isloading ? (
-                                    <div className="rt-tpg-lds-dual-ring2"></div>
-                                ):("")
-                            }
-                            <RenderView {...attributes} setattr = {setAttributes} data={data}/>
-                        </>
-
-                    )
-                }
-
-                {
-                    pagination.show ? (
-                        <div className={"pagination"}>
-                            {
-                                //Here paginationNumber = 3
-                                (paginationNumber > 1) ?(
-                                    <>
-                                        {prevbtn(paginationNumber)}
-                                        {
-                                            Array(paginationNumber).fill().map((_, i) => {
-
-                                                if(((i+1) >= minlimit) && (i+1) <= maxlimit){
-                                                    if ((i == 0) && (pageindex == 1) ){
-                                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
-                                                                                key={i}
-                                                                                onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
-                                                    }else{
-                                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}
-                                                                                key={i}
-                                                                                onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
-                                                    }
-                                                }
-                                            })
-                                        }
-
-                                        {nextbtn(paginationNumber)}
-
-                                    </>
-                                ):("")
-                            }
-                        </div>
-                    ) : ("")
-                }
-
                 {/*{*/}
-                {/*    isloading ? (*/}
-                {/*        <div className="rt-tpg-lds-dual-ring2"></div>*/}
+                {/*    (message.length) ? (*/}
+                {/*        <div className={"no_notice"}>*/}
+                {/*            {message}*/}
+                {/*        </div>*/}
+
                 {/*    ) : (*/}
                 {/*        <>*/}
                 {/*            {*/}
-                {/*                (message.length) ? (*/}
-                {/*                    <div className={"no_notice"}>*/}
-                {/*                        {message}*/}
-                {/*                    </div>*/}
-
-                {/*                ) : (*/}
-                {/*                    <RenderView {...attributes} setattr = {setAttributes} data={data}/>*/}
-                {/*                )*/}
+                {/*                isloading ? (*/}
+                {/*                    <div className="rt-tpg-lds-dual-ring2"></div>*/}
+                {/*                ):("")*/}
                 {/*            }*/}
+                {/*            <RenderView {...attributes} setattr = {setAttributes} data={data}/>*/}
                 {/*        </>*/}
 
                 {/*    )*/}
                 {/*}*/}
+
                 {/*{*/}
                 {/*    pagination.show ? (*/}
                 {/*        <div className={"pagination"}>*/}
@@ -651,12 +601,12 @@ export default function Edit(props) {
                 {/*                                if(((i+1) >= minlimit) && (i+1) <= maxlimit){*/}
                 {/*                                    if ((i == 0) && (pageindex == 1) ){*/}
                 {/*                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}*/}
-                {/*                                                       key={i}*/}
-                {/*                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
+                {/*                                                                key={i}*/}
+                {/*                                                                onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
                 {/*                                    }else{*/}
                 {/*                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}*/}
-                {/*                                                       key={i}*/}
-                {/*                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
+                {/*                                                                key={i}*/}
+                {/*                                                                onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
                 {/*                                    }*/}
                 {/*                                }*/}
                 {/*                            })*/}
@@ -670,6 +620,61 @@ export default function Edit(props) {
                 {/*        </div>*/}
                 {/*    ) : ("")*/}
                 {/*}*/}
+
+                {/*=========================================================*/}
+
+                {
+                    isloading ? (
+                        <div className="rt-tpg-lds-dual-ring2"></div>
+                    ) : (
+                        <>
+                            {
+                                (message.length) ? (
+                                    <div className={"no_notice"}>
+                                        {message}
+                                    </div>
+
+                                ) : (
+                                    <RenderView {...attributes} setattr = {setAttributes} data={data}/>
+                                )
+                            }
+                        </>
+
+                    )
+                }
+                {
+                    pagination.show ? (
+                        <div className={"pagination"}>
+                            {
+                                //Here paginationNumber = 3
+                                (paginationNumber > 1) ?(
+                                    <>
+                                        {prevbtn(paginationNumber)}
+                                        {
+                                            Array(paginationNumber).fill().map((_, i) => {
+
+                                                if(((i+1) >= minlimit) && (i+1) <= maxlimit){
+                                                    if ((i == 0) && (pageindex == 1) ){
+                                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
+                                                                       key={i}
+                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
+                                                    }else{
+                                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}
+                                                                       key={i}
+                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
+                                                    }
+                                                }
+                                            })
+                                        }
+
+                                        {nextbtn(paginationNumber)}
+
+                                    </>
+                                ):("")
+                            }
+                        </div>
+                    ) : ("")
+                }
             </div>
         </>
     );
