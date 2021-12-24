@@ -252,13 +252,16 @@ export const ImgAnimation = styled.img`
 export const MetaIcona = styled.div`
     color: ${props => (props.css.color)? props.css.color: props.primary};
     padding-right: 4px !important;
+    font-size: ${props => props.css['font-size']} !important;
 `
 export const MetaIconspan = styled.div`
     color: ${props => (props.css.color)? props.css.color: '#333'};
     padding-right: 4px !important;
+    font-size: ${props => props.css['font-size']} !important;
 `
 
 export const MetaCatIcon = styled.div`
+    font-size: ${(props) => {((props.css['font-size'] == "")? "12px": props.css['font-size'])}} !important;
     color: ${props => 
     (props?.css?.['background-color'])? 
         props?.css?.['background-color']: 

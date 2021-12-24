@@ -127,7 +127,7 @@ export const Isotope1 = (props) =>{
                     </div>
                 </div>
 
-                <div className="rt-container-fluid rt-tpg-container grid-layout-1">
+                <div className="rt-container-fluid rt-tpg-container grid-layout-1 layout_parent">
                     {
                         data.length && data.map((post) => {
                             var postexcerpt = post.excerpt;

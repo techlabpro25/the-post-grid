@@ -32,7 +32,7 @@ export const Category_Default = (props) =>{
                                                         <>
                                                             {/*=*/}
                                                             {((category.style == 'style1') && (i > 0) && (category_style['background-color'] == "")) ? ", " : "   "}
-                                                            <Cat_style css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
+                                                            <Cat_style css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} className={"terms"} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style>
                                                         </>
@@ -81,7 +81,7 @@ export const Non_Category_Default = (props) =>{
                                                     return (
                                                         <>
                                                             {((category.style == 'style1') && (i > 0) && ((category_style['background-color'] == "") || (category_style['background-color'] == undefined))) ? ", " : "   "}
-                                                            <Cat_style_non_default cat_style={category} css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} rel="category">
+                                                            <Cat_style_non_default cat_style={category} css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} className={"terms"} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style_non_default>
                                                         </>

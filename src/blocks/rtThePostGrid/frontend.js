@@ -69,7 +69,9 @@ const RtThePostGrid = (props) => {
                 setPagestate(Math.ceil((posts?.[0]?.total_post - query.offset)/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
             }
 
+            $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
+
             $('.pagination .pagination_number.active').removeClass('active')
             $('.pagination .pagination_number.'+pageindex).addClass('active')
 
@@ -78,14 +80,13 @@ const RtThePostGrid = (props) => {
     }, [query, pagination, loadingindex, image.size]);
 
     useEffect(()=>{
-        $('.layout2.list1').css('opacity', 0.2);
+        $('.layout_parent').css('opacity', 0.2);
         window.scrollTo(0, 0)
         setTimeout(function(){
-            $('.layout2.list1').css('opacity', 1.0);
             setLoadingindex((prev)=> prev + 1)
-            }, 1000)
+        }, 500)
 
-        // setIsloading(true);
+        setIsloading(true);
     },[pageindex])
 
     useEffect(()=>{
@@ -130,51 +131,46 @@ const RtThePostGrid = (props) => {
 
     return (
         <div className="rt-thepostgrid-frontend">
-            {
-                isloading?(
-                    <div className="rt-tpg-lds-dual-ring"></div>
-                ):(
 
+            {
+                (message.length )?(
+                    <>
+                        {message}
+                    </>
+
+                ):(
                     <>
                         {
-                            (message.length )?(
-                                <>
-                                    {message}
-                                </>
-
-                            ):(
-                                <>
-                                    <RenderView {...props} data={data}/>
-                                </>
-
-                            )
+                            isloading?(<div className="rt-tpg-lds-dual-ring"></div>):("")
                         }
+                        <RenderView {...props} data={data}/>
+                    </>
 
-                        {
-                            pagination.show?(
-                                <div className={"pagination"}>
-                                    {prevbtn(pagestate)}
-                                    {Array.from(Array(pagestate), (e, i) => {
-                                        if(((i+1) >= minlimit) && (i+1) <= maxlimit){
-                                            if(pagestate > 1){
-                                                if(i == 0){
-                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`}
-                                                                 data-value={i+1}
-                                                                 key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
-                                                }else{
-                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`}
-                                                                 data-value={i+1}
-                                                                 key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
-                                                }
-                                            }
-                                        }
-                                    })}
-                                    {nextbtn(pagestate)}
-                                </div>
-                            ):("")
-                        }
-                </>
                 )
+            }
+
+            {
+                pagination.show?(
+                    <div className={"pagination"}>
+                        {prevbtn(pagestate)}
+                        {Array.from(Array(pagestate), (e, i) => {
+                            if(((i+1) >= minlimit) && (i+1) <= maxlimit){
+                                if(pagestate > 1){
+                                    if(i == 0){
+                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`}
+                                                                data-value={i+1}
+                                                                key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
+                                    }else{
+                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`}
+                                                                data-value={i+1}
+                                                                key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
+                                    }
+                                }
+                            }
+                        })}
+                        {nextbtn(pagestate)}
+                    </div>
+                ):("")
             }
             
         </div>

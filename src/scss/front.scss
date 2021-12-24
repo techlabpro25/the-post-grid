@@ -2406,12 +2406,17 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 /*************************************************************************/
 /************************** Custom CSS ***********************************/
 /*************************************************************************/
-
+button:focus{
+    outline: none !important;
+}
 .rt-tpg-lds-dual-ring {
     display: inline-block;
     width: 80px;
     height: 80px;
     width: 100%;
+    position: absolute;
+    top: 3%;
+    z-index: 1;
   }
   .rt-tpg-lds-dual-ring:after {
     content: " ";
@@ -2420,8 +2425,8 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid rgb(0, 0, 0);
-    border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+    border: 6px solid rgb(68, 68, 68);
+    border-color: rgb(68, 68, 68) transparent rgb(68, 68, 68) transparent;
     animation: rt-tpg-lds-dual-ring 1.2s linear infinite;
     left: 0;
     right: 0;
@@ -2435,6 +2440,36 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
       transform: rotate(360deg);
     }
   }
+
+
+.rt-tpg-lds-dual-ring2 {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    width: 100%;
+}
+.rt-tpg-lds-dual-ring2:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid rgb(68, 68, 68);
+    border-color: rgb(68, 68, 68) transparent rgb(68, 68, 68) transparent;
+    animation: rt-tpg-lds-dual-ring 1.2s linear infinite;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+@keyframes rt-tpg-lds-dual-ring2 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 
   //.layout2 .rt-equal-height{
   //    height: 334.094px;
@@ -2545,6 +2580,10 @@ h1,h2,h3,h4,h5,h6{
 .grid1, .list1, .list2, .isotope1{
     display: flex;
     flex-wrap: wrap;
+}
+
+span.categories-links {
+    padding-right: 5px !important;
 }
 
 html{

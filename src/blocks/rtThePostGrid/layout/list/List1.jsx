@@ -94,7 +94,7 @@ export const List1 = (props) =>{
                         </Head_border>
                     ):("")
                 }
-                <Content_padding css_pad={content_padding}className={`rt-row rt-content-loader layout2 list1 tpg-even`}>
+                <Content_padding css_pad={content_padding}className={`rt-row rt-content-loader layout2 list1 layout_parent tpg-even`}>
                     {
                         data.length && data.map((post) => {
                             var postexcerpt = post.excerpt;
