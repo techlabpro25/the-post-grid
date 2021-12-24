@@ -150,14 +150,13 @@ export const Btn_align = styled.div`
 `;
 
 export const Head_title = styled.div`
-    padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '15px'} !important;
+    padding: ${props => (props.css_pad != undefined) ? (((props.css_pad.top == null) && (props.css_pad.right == null) && (props.css_pad.bottom == null) && (props.css_pad.left == null))?"5px 15px 5px 15px":props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left): '5px 15 5px 15px'} !important;
 	margin: ${props => (props.css_mar != undefined) ? (((props.css_mar.top == null) && (props.css_mar.right == null) && (props.css_mar.bottom == null) && (props.css_mar.left == null))? "0px":props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left): '0px'} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	background-color: ${props => ((props.css['background-color'] == "transparent")?((props.head_sty.style != 1)?"#1e73be":"transparent"): props.css['background-color'])} !important;
-	:before{
-	    background-color: ${props => (props.css.color)? props.css.color: ((props.primary)? props.primary: "#333")} !important;
-	}
+	
 	:after{
+	    background-color: ${props => ((props.head_sty.style == 2)? "": ((props.css.color)? props.css.color: ((props.primary)? props.primary: "#333")))} !important;
 	    border-color: ${props => (props.css != undefined)? ((props.css['background-color'] == "transparent")?((props.head_sty.style != 1)?"#1e73be":"transparent"): props.css['background-color']): "#1e73be"} transparent !important;
 	}
 

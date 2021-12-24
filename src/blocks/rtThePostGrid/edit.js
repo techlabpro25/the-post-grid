@@ -42,6 +42,7 @@ export default function Edit(props) {
     const {attributes, setAttributes } = props;
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
+    const [isrootloading, setIsrootloading] = useState(true);
     const [paginationNumber, setPaginationNumber] = useState(0);
     const [pageindex, setPageindex] = useState(1);
     const [message, setMessage] = useState("");
@@ -205,12 +206,13 @@ export default function Edit(props) {
                 setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
             }
             setIsloading(false);
-            window.scrollTo(0, 0)
+            setIsrootloading(false)
+            // window.scrollTo(0, 0)
             // setAttributes({query: {...query, 'query_loader':false}})
         });
     }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
 
-    // Temporary Code
+    // Temp Code
     useEffect(()=>{
         $('.pagination_number.'+pageindex).addClass("active")
         $('.pagination_number').removeAttr('style')
@@ -245,8 +247,13 @@ export default function Edit(props) {
     }, [])
 
     useEffect(() => {
-        window.scrollTo(0, 0)
-        console.log("hello")
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+        // console.log("hello")
+        // document.getElementById("tpg-editor-root").scroll(0,0)
 
         if (pageindex > 0) {
             setAttributes({query: {...query, "filter": false, "pageindex":pageindex}})
@@ -567,26 +574,90 @@ export default function Edit(props) {
                 </PanelBody>
 
             </InspectorControls>
-            <div className="rt-postsreact-editor">
-                {/*{*/}
-                {/*    (message.length) ? (*/}
-                {/*        <div className={"no_notice"}>*/}
-                {/*            {message}*/}
-                {/*        </div>*/}
+            <div className="rt-postsreact-editor" id={"tpg-editor-root"}>
+                {
+                    (isrootloading)?(
+                        <div className={"rootloading"}>Please Wait ...........</div>
+                    ):(
+                        <>
+                            {
+                                (message.length) ? (
+                                    <div className={"no_notice"}>
+                                        {message}
+                                    </div>
 
+                                ) : (
+                                    <>
+                                        {
+                                            isloading ? (
+                                                <div className="rt-tpg-lds-dual-ring2"></div>
+                                            ):("")
+                                        }
+                                        <RenderView {...attributes} setattr = {setAttributes} data={data}/>
+                                    </>
+
+                                )
+                            }
+
+                            {
+                                pagination.show ? (
+                                    <div className={"pagination"}>
+                                        {
+                                            //Here paginationNumber = 3
+                                            (paginationNumber > 1) ?(
+                                                <>
+                                                    {prevbtn(paginationNumber)}
+                                                    {
+                                                        Array(paginationNumber).fill().map((_, i) => {
+
+                                                            if(((i+1) >= minlimit) && (i+1) <= maxlimit){
+                                                                if ((i == 0) && (pageindex == 1) ){
+                                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
+                                                                                            key={i}
+                                                                                            onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
+                                                                }else{
+                                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}
+                                                                                            key={i}
+                                                                                            onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
+                                                                }
+                                                            }
+                                                        })
+                                                    }
+
+                                                    {nextbtn(paginationNumber)}
+
+                                                </>
+                                            ):("")
+                                        }
+                                    </div>
+                                ) : ("")
+                            }
+                        </>
+                    )
+                }
+
+
+                {/*=========================================================*/}
+
+                {/*{*/}
+                {/*    isloading ? (*/}
+                {/*        <div className="rt-tpg-lds-dual-ring2"></div>*/}
                 {/*    ) : (*/}
                 {/*        <>*/}
                 {/*            {*/}
-                {/*                isloading ? (*/}
-                {/*                    <div className="rt-tpg-lds-dual-ring2"></div>*/}
-                {/*                ):("")*/}
+                {/*                (message.length) ? (*/}
+                {/*                    <div className={"no_notice"}>*/}
+                {/*                        {message}*/}
+                {/*                    </div>*/}
+
+                {/*                ) : (*/}
+                {/*                    <RenderView {...attributes} setattr = {setAttributes} data={data}/>*/}
+                {/*                )*/}
                 {/*            }*/}
-                {/*            <RenderView {...attributes} setattr = {setAttributes} data={data}/>*/}
                 {/*        </>*/}
 
                 {/*    )*/}
                 {/*}*/}
-
                 {/*{*/}
                 {/*    pagination.show ? (*/}
                 {/*        <div className={"pagination"}>*/}
@@ -601,12 +672,12 @@ export default function Edit(props) {
                 {/*                                if(((i+1) >= minlimit) && (i+1) <= maxlimit){*/}
                 {/*                                    if ((i == 0) && (pageindex == 1) ){*/}
                 {/*                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}*/}
-                {/*                                                                key={i}*/}
-                {/*                                                                onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
+                {/*                                                       key={i}*/}
+                {/*                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
                 {/*                                    }else{*/}
                 {/*                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}*/}
-                {/*                                                                key={i}*/}
-                {/*                                                                onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
+                {/*                                                       key={i}*/}
+                {/*                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
                 {/*                                    }*/}
                 {/*                                }*/}
                 {/*                            })*/}
@@ -620,61 +691,6 @@ export default function Edit(props) {
                 {/*        </div>*/}
                 {/*    ) : ("")*/}
                 {/*}*/}
-
-                {/*=========================================================*/}
-
-                {
-                    isloading ? (
-                        <div className="rt-tpg-lds-dual-ring2"></div>
-                    ) : (
-                        <>
-                            {
-                                (message.length) ? (
-                                    <div className={"no_notice"}>
-                                        {message}
-                                    </div>
-
-                                ) : (
-                                    <RenderView {...attributes} setattr = {setAttributes} data={data}/>
-                                )
-                            }
-                        </>
-
-                    )
-                }
-                {
-                    pagination.show ? (
-                        <div className={"pagination"}>
-                            {
-                                //Here paginationNumber = 3
-                                (paginationNumber > 1) ?(
-                                    <>
-                                        {prevbtn(paginationNumber)}
-                                        {
-                                            Array(paginationNumber).fill().map((_, i) => {
-
-                                                if(((i+1) >= minlimit) && (i+1) <= maxlimit){
-                                                    if ((i == 0) && (pageindex == 1) ){
-                                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}
-                                                                       key={i}
-                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
-                                                    }else{
-                                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}
-                                                                       key={i}
-                                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
-                                                    }
-                                                }
-                                            })
-                                        }
-
-                                        {nextbtn(paginationNumber)}
-
-                                    </>
-                                ):("")
-                            }
-                        </div>
-                    ) : ("")
-                }
             </div>
         </>
     );

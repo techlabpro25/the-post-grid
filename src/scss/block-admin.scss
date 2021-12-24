@@ -271,6 +271,11 @@ div.tax_second_child .components-base-control {
 .rt-radiocontrol .components-radio-control__input:focus{
     box-shadow: unset !important;
 }
+.components-checkbox-control__input[type=checkbox]:focus, .components-radio-control__input[type=radio]:focus {
+    box-shadow: unset !important;
+    outline: unset !important;
+}
+
 
 
 

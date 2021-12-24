@@ -7,6 +7,7 @@ const {__} = wp.i18n;
 const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
+    const [isrootloading, setIsrootloading] = useState(true);
     const {query, pagination, image, pagination_style, pagination_padding, pagination_margin} = props
     const [pagestate, setPagestate] = useState(0);
     const [pageindex, setPageindex] = useState(1);
@@ -14,6 +15,7 @@ const RtThePostGrid = (props) => {
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
     const [loadingindex, setLoadingindex] = useState(1);
+
 
     useEffect(() => {
         let authors = [];
@@ -71,7 +73,7 @@ const RtThePostGrid = (props) => {
 
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
-
+            setIsrootloading(false)
             $('.pagination .pagination_number.active').removeClass('active')
             $('.pagination .pagination_number.'+pageindex).addClass('active')
 
@@ -106,6 +108,15 @@ const RtThePostGrid = (props) => {
             'text-transform:'+pagination_style['a-transform']+' !important;');
     })
 
+    // useEffect(()=>{
+    //     return ()=>{
+    //         setTimeout(function(){
+    //             setIsrootloading(false)
+    //         }, 2000)
+    //
+    //     }
+    // })
+
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
             return <Pageprivnext css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin}  className={`pagination_number next`} onClick={nextpageset}>Next</Pageprivnext>
@@ -131,48 +142,54 @@ const RtThePostGrid = (props) => {
 
     return (
         <div className="rt-thepostgrid-frontend">
-
             {
-                (message.length )?(
-                    <>
-                        {message}
-                    </>
-
+                (isrootloading)?(
+                    <div className={"rootloading"}>Please Wait ...........</div>
                 ):(
                     <>
                         {
-                            isloading?(<div className="rt-tpg-lds-dual-ring"></div>):("")
-                        }
-                        <RenderView {...props} data={data}/>
-                    </>
+                            (message.length )?(
+                                <>
+                                    {message}
+                                </>
 
+                            ):(
+                                <>
+                                    {
+                                        isloading?(<div className="rt-tpg-lds-dual-ring"></div>):("")
+                                    }
+                                    <RenderView {...props} data={data}/>
+                                </>
+
+                            )
+                        }
+
+                        {
+                            pagination.show?(
+                                <div className={"pagination"}>
+                                    {prevbtn(pagestate)}
+                                    {Array.from(Array(pagestate), (e, i) => {
+                                        if(((i+1) >= minlimit) && (i+1) <= maxlimit){
+                                            if(pagestate > 1){
+                                                if(i == 0){
+                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`}
+                                                                            data-value={i+1}
+                                                                            key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
+                                                }else{
+                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`}
+                                                                            data-value={i+1}
+                                                                            key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
+                                                }
+                                            }
+                                        }
+                                    })}
+                                    {nextbtn(pagestate)}
+                                </div>
+                            ):("")
+                        }
+                    </>
                 )
             }
-
-            {
-                pagination.show?(
-                    <div className={"pagination"}>
-                        {prevbtn(pagestate)}
-                        {Array.from(Array(pagestate), (e, i) => {
-                            if(((i+1) >= minlimit) && (i+1) <= maxlimit){
-                                if(pagestate > 1){
-                                    if(i == 0){
-                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`}
-                                                                data-value={i+1}
-                                                                key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
-                                    }else{
-                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`}
-                                                                data-value={i+1}
-                                                                key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
-                                    }
-                                }
-                            }
-                        })}
-                        {nextbtn(pagestate)}
-                    </div>
-                ):("")
-            }
-            
         </div>
     )
 }

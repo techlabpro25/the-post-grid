@@ -46,11 +46,11 @@ function Meta(props) {
                 value={ meta.seperator }
                 options={ [
                     { label: 'Default', value: '' },
-                    { label: 'Dot(.)', value: '.' },
-                    { label: 'Single Slash ( / )', value: '/' },
-                    { label: 'Double Slash ( // )', value: '//' },
-                    { label: 'Hypen ( - )', value: '-' },
-                    { label: 'Vertical Pipe ( | )', value: '|' },
+                    { label: 'Dot(.)', value: ' . ' },
+                    { label: 'Single Slash ( / )', value: ' / ' },
+                    { label: 'Double Slash ( // )', value: ' // ' },
+                    { label: 'Hypen ( - )', value: ' - ' },
+                    { label: 'Vertical Pipe ( | )', value: ' | ' },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {meta: {...meta, "seperator": value} }) }
             />
