@@ -295,17 +295,17 @@ export const PaginationStyle = styled.button`
     color: ${props => ((props.className.search("active") != -1)? props.css['a-color']:((props.css.color)? props.css.color: "#fff"))} !important;
     background-color: ${props => ((props.className.search("active") != -1)? props.css['a-bg-color']:((props.css['bg-color'])? props.css['bg-color']: "#4c6fff"))} !important;
    
-    border-color: ${props => (props.css['border-color'])? props.css['border-color']: ""} !important;
-    border-style: ${props => (props.css['border-style'])? props.css['border-style']: ""} !important;
-    border-width: ${props => (props.css['border-width'])? props.css['border-width']: ""} !important;
-    border-radius: ${props => (props.css['border-radius'])? props.css['border-radius']: ""} !important;
+    border-color: ${props => ((props.className.search("active") != -1)? props.css['a-border-color']:((props.css['border-color'])? props.css['border-color']: ""))} !important;
+    border-style: ${props => ((props.className.search("active") != -1)? props.css['a-border-style']:((props.css['border-style'])? props.css['border-style']: ""))} !important;
+    border-width: ${props => ((props.className.search("active") != -1)? props.css['a-border-width']:((props.css['border-width'])? props.css['border-width']: ""))} !important;
+    border-radius: ${props => ((props.className.search("active") != -1)? props.css['a-border-radius']:((props.css['border-radius'])? props.css['border-radius']: ""))} !important;
     padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: ''} !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: ''} !important;
-    line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
-	font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
-	font-size: ${props => (props.css['font-size'])?props.css['font-size']: ""} !important;
-	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
-	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
+    line-height: ${props => ((props.className.search("active") != -1)? props.css['a-line-height']:((props.css['line-height'])?props.css['line-height']: ""))} !important;
+	font-weight: ${props => ((props.className.search("active") != -1)? props.css['a-font-weight']:((props.css['font-weight'])?props.css['font-weight']: ""))} !important;
+	font-size: ${props => ((props.className.search("active") != -1)? props.css['a-font-size']:((props.css['font-size'])?props.css['font-size']: ""))} !important;
+	letter-spacing: ${props => ((props.className.search("active") != -1)? props.css['a-letter-spacing']:((props.css['letter-spacing'])?props.css['letter-spacing']: ""))} !important;
+	text-transform: ${props => ((props.className.search("active") != -1)? props.css['a-transform']:((props.css['transform'])?props.css['transform']: ""))} !important;
 	&:hover{
 	    color: ${props => (props.css['h-color'])? props.css['h-color']: "#fff"} !important;
         background-color: ${props => (props.css['h-bg-color'])? props.css['h-bg-color']: "#4c6fff"} !important;

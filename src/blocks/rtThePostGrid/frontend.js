@@ -1,6 +1,6 @@
 import RenderView from "./renderView";
 import {PaginationStyle, Pageprivnext} from "./Style_component";
-const {render, useState, useEffect} = wp.element;
+const {render, useState, useEffect, useRef} = wp.element;
 import apiFetch from '@wordpress/api-fetch';
 import $ from "jquery";
 const {__} = wp.i18n;
@@ -16,6 +16,8 @@ const RtThePostGrid = (props) => {
     const [minlimit, setMinlimit] = useState(1);
     const [loadingindex, setLoadingindex] = useState(1);
 
+    const listingWrapRef = useRef();
+    const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
     useEffect(() => {
         let authors = [];
@@ -74,16 +76,13 @@ const RtThePostGrid = (props) => {
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
             setIsrootloading(false)
-            $('.pagination .pagination_number.active').removeClass('active')
-            $('.pagination .pagination_number.'+pageindex).addClass('active')
-
 
         });
     }, [query, pagination, loadingindex, image.size]);
 
     useEffect(()=>{
         $('.layout_parent').css('opacity', 0.2);
-        window.scrollTo(0, 0)
+        executeScroll();
         setTimeout(function(){
             setLoadingindex((prev)=> prev + 1)
         }, 500)
@@ -91,22 +90,7 @@ const RtThePostGrid = (props) => {
         setIsloading(true);
     },[pageindex])
 
-    useEffect(()=>{
-        $('.pagination_number.'+pageindex).addClass("active")
-        $('.pagination_number').removeAttr('style')
-        $('.pagination_number.active').attr('style', '' +
-            'background-color:'+pagination_style['a-bg-color']+' !important; ' +
-            'color:'+pagination_style['a-color']+' !important;' +
-            'border-color:'+pagination_style['a-border-color']+' !important;' +
-            'border-style:'+pagination_style['a-border-style']+' !important;' +
-            'border-width:'+pagination_style['a-border-width']+' !important;' +
-            'border-radius:'+pagination_style['a-border-radius']+' !important;' +
-            'line-height:'+pagination_style['a-line-height']+' !important;' +
-            'font-weight:'+pagination_style['a-font-weight']+' !important;' +
-            'font-size:'+pagination_style['a-font-size']+' !important;' +
-            'letter-spacing:'+pagination_style['a-letter-spacing']+' !important;' +
-            'text-transform:'+pagination_style['a-transform']+' !important;');
-    })
+
 
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
@@ -132,7 +116,7 @@ const RtThePostGrid = (props) => {
     }
 
     return (
-        <div className="rt-thepostgrid-frontend">
+        <div className="rt-thepostgrid-frontend" ref={listingWrapRef}>
             {
                 (isrootloading)?(
                     <div className={"rootloading"}>Please Wait ...........</div>
@@ -162,15 +146,15 @@ const RtThePostGrid = (props) => {
                                     {Array.from(Array(pagestate), (e, i) => {
                                         if(((i+1) >= minlimit) && (i+1) <= maxlimit){
                                             if(pagestate > 1){
-                                                if(i == 0){
-                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`}
-                                                                            data-value={i+1}
-                                                                            key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
-                                                }else{
-                                                    return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`}
-                                                                            data-value={i+1}
-                                                                            key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}</PaginationStyle>
-                                                }
+                                                const activeClass = pageindex === i +1 ? 'active': '';
+                                                return <PaginationStyle
+                                                    css={pagination_style}
+                                                    css_pad={pagination_padding}
+                                                    css_mar={pagination_margin}
+                                                    className={`pagination_number ${i+1} ${activeClass}`}
+                                                    data-value={i+1}
+                                                    key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}
+                                                </PaginationStyle>
                                             }
                                         }
                                     })}
