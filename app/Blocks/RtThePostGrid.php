@@ -253,16 +253,16 @@ class RtThePostGrid extends Block
             'a-line-height' => "",
         ],
         'pagination_padding'=>[
-            'top' => '10px',
+            'top' => '15px',
 			'right' => '15px',
-			'bottom' => '10px',
+			'bottom' => '15px',
 			'left' => '15px',
         ],
         'pagination_margin' =>[
-            'top' => '5px',
-            'right' => '5px',
-            'bottom' => '5px',
-            'left' => '5px',
+            'top' => '1px',
+            'right' => '1px',
+            'bottom' => '1px',
+            'left' => '1px',
         ],
 	];
 

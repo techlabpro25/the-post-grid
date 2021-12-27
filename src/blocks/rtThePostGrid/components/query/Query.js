@@ -202,8 +202,7 @@ const Query = (props) => {
 					const taxonomy = [];
 					const tax_term = {};
 					const tax_item = {};
-					$('.pagination_number.active').removeClass("active")
-					$('.pagination_number').first().addClass("active")
+
 
 					props.attr.setAttributes({ query: {
 						...query,
@@ -226,8 +225,7 @@ const Query = (props) => {
 				help={__( "The number of posts to show. Set -1 to show all found posts.", "the-post-grid")}
 				value={query.limit}
 				onChange={(value) =>{
-					$('.pagination_number.active').removeClass("active")
-					$('.pagination_number').first().addClass("active")
+
 					props.attr.setAttributes({ query: {
 						...query,
 							limit: value,
@@ -247,8 +245,7 @@ const Query = (props) => {
 				help={__( "List of post IDs to show (comma-separated values, for example: 1,2,3)", "the-post-grid")}
 				value={query.include}
 				onChange={(value) =>{
-					$('.pagination_number.active').removeClass("active")
-					$('.pagination_number').first().addClass("active")
+
 					props.attr.setAttributes({ query: {
 						...query,
 							include: value,
@@ -266,8 +263,7 @@ const Query = (props) => {
 				help={__( "List of post IDs to hide (comma-separated values, for example: 1,2,3)", "the-post-grid")}
 				value={query.exclude}
 				onChange={(value) =>{
-					$('.pagination_number.active').removeClass("active")
-					$('.pagination_number').first().addClass("active")
+
 					props.attr.setAttributes({ query: {
 						...query,
 							exclude: value,
@@ -285,8 +281,7 @@ const Query = (props) => {
 				label={__( "Offset", "the-post-grid")}
 				labelPosition="side"
 				onChange={(value) =>{
-					$('.pagination_number.active').removeClass("active")
-					$('.pagination_number').first().addClass("active")
+
 					props.attr.setAttributes({ query: { ...query, offset: value, pageindex: 1 } })
 				}
 
@@ -441,8 +436,7 @@ const Query = (props) => {
 										operator: null
 									}
 								}
-								$('.pagination_number.active').removeClass("active")
-								$('.pagination_number').first().addClass("active")
+
 								props.attr.setAttributes({
 									query: {
 										...query,
@@ -470,8 +464,7 @@ const Query = (props) => {
 											operator: value
 										}
 									}
-									$('.pagination_number.active').removeClass("active")
-									$('.pagination_number').first().addClass("active")
+
 									props.attr.setAttributes({
 										query: { ...query, tax_term: tax_term, loader: true },
 									});
@@ -498,8 +491,7 @@ const Query = (props) => {
 							},
 						]}
 						onChange={(value) =>{
-							$('.pagination_number.active').removeClass("active")
-							$('.pagination_number').first().addClass("active")
+
 							props.attr.setAttributes({ query: {
 								...query,
 									relation: value,
@@ -545,8 +537,7 @@ const Query = (props) => {
 						value={query.order_by}
 						options={order_type}
 						onChange={(value) =>{
-							$('.pagination_number.active').removeClass("active")
-							$('.pagination_number').first().addClass("active")
+
 							props.attr.setAttributes({
 								query: {
 									...query,
@@ -569,8 +560,7 @@ const Query = (props) => {
 							{ label: "Descending", value: "DESC" },
 						]}
 						onChange={(value) =>{
-							$('.pagination_number.active').removeClass("active")
-							$('.pagination_number').first().addClass("active")
+
 							props.attr.setAttributes({ query: {
 								...query,
 									order: value,
@@ -612,8 +602,7 @@ const Query = (props) => {
 						value={query.author}
 						isMulti ={true}
 						onChange={(value) =>{
-							$('.pagination_number.active').removeClass("active")
-							$('.pagination_number').first().addClass("active")
+
 							props.attr.setAttributes({ query: {
 								...query,
 									author: value,
@@ -657,8 +646,7 @@ const Query = (props) => {
 						isMulti ={true}
 						defaultValue = {{label: 'Publish', value: 'publish'}}
 						onChange={(value) =>{
-							$('.pagination_number.active').removeClass("active")
-							$('.pagination_number').first().addClass("active")
+
 							props.attr.setAttributes({ query: {
 								...query,
 									status: value,
@@ -695,8 +683,7 @@ const Query = (props) => {
 					label={__( "Enter Keyword:", "the-post-grid")}
 					value={query.keyword}
 					onChange={(value) =>{
-						$('.pagination_number.active').removeClass("active")
-						$('.pagination_number').first().addClass("active")
+
 						props.attr.setAttributes({ query: {
 							...query,
 								keyword: value,

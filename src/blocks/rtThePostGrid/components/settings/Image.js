@@ -10,7 +10,7 @@ import apiFetch from "@wordpress/api-fetch";
 
 function Image(props) {
     const {__} = wp.i18n;
-    const { image, layout } = props.attr.attributes
+    const { image, layout, category } = props.attr.attributes
     const [ showimage, setShowimage ] = useState( true );
     const [sizes, setSizes] = useState([])
 
@@ -29,6 +29,9 @@ function Image(props) {
                 checked={ image.show_hide }
                 onChange={ (val) => {
                     setShowimage( ( state ) => ! state );
+                    if(val == false){
+                        props.attr.setAttributes({category: {...category, "position": ""}})
+                    }
                     props.attr.setAttributes({image: {...image, "show_hide": val}})
                 } }
             />

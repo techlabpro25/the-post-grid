@@ -1,8 +1,10 @@
 export const trimbychar = (str, max, suffix) => {
+    console.log(max+" , "+suffix)
     if(max.length == 0){
         max = 300
     }
-    return str?.length < max ? str : `${str?.substr(0, str?.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
+    const newstring = str?.length < max ? str : `${str?.substr(0, max)}${suffix}`;
+    return newstring
 }
 
 export const trimbyword = (textToLimit, wordLimit, suffix) =>{

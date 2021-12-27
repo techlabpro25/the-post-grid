@@ -88,18 +88,18 @@ const attributes = {
 	},
 	pagination_padding:{
 		default:{
-			top: '10px',
+			top: '15px',
 			right: '15px',
-			bottom: '10px',
+			bottom: '15px',
 			left: '15px',
 		}
 	},
 	pagination_margin:{
 		default:{
-			top: '5px',
-			right: '5px',
-			bottom: '5px',
-			left: '5px',
+			top: '1px',
+			right: '1px',
+			bottom: '1px',
+			left: '1px',
 		}
 	},
 	linking: {
@@ -190,7 +190,7 @@ const attributes = {
 	excerpt: {
 		type: "object",
 		default: {
-			limit: '',
+			limit: '25',
 			type: "word",
 			more_text: "...",
 		},

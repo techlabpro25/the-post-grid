@@ -9,7 +9,7 @@ import { useState } from '@wordpress/element';
 
 function Category(props) {
     const {__} = wp.i18n;
-    const { category } = props.attr.attributes
+    const { category, image } = props.attr.attributes
     const [hasicon, useHasicon] = useState(true)
     return (
         <PanelBody title={__( "Category", "the-post-grid")} initialOpen={false}>
@@ -18,7 +18,19 @@ function Category(props) {
                 label={__( "Category Position:", "the-post-grid")}
                 value={ category.position }
                 options={ props.attr.matrix_position }
-                onChange={ ( val ) => props.attr.setAttributes( {category: {...category, "position": val}} ) }
+                onChange={ ( val ) => {
+                    var value = val;
+                    if(!image.show_hide){
+                        if(val != 'above-title'){
+                            value = ""
+                        }
+                    }
+                    props.attr.setAttributes(
+                        {category:
+                                {...category, "position": value}
+                        }
+                    ) }
+                }
             />
 
             <SelectControl

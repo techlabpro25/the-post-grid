@@ -19,7 +19,11 @@ function Linking(props) {
                 checked={ linking.link_to_page }
                 onChange={ (val) => {
                     useHaslinking( ( state ) => ! state );
-                    props.attr.setAttributes({linking: {...linking, "link_to_page": val}})
+                    var tar = linking.target
+                    if(val == false){
+                        tar = ""
+                    }
+                    props.attr.setAttributes({linking: {...linking, "link_to_page": val, 'target': tar}})
                 } }
             />
             {
@@ -36,19 +40,21 @@ function Linking(props) {
                         {/*    ] }*/}
                         {/*    onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "link_type": val}}) }*/}
                         {/*/>*/}
+
+                        <RadioControl
+                            label={__( "Link Target:", "the-post-grid")}
+                            selected={ linking.target }
+                            options={ [
+                                { label: __( "Same Window", "the-post-grid"), value: '' },
+                                { label: __( "New Window", "the-post-grid"), value: '_blank' },
+                            ] }
+                            onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "target": val}}) }
+                        />
                     </>
                 ):("")
             }
 
-            <RadioControl
-                label={__( "Link Target:", "the-post-grid")}
-                selected={ linking.target }
-                options={ [
-                    { label: __( "Same Window", "the-post-grid"), value: '' },
-                    { label: __( "New Window", "the-post-grid"), value: '_blank' },
-                ] }
-                onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "target": val}}) }
-            />
+
         </PanelBody>
     );
 }

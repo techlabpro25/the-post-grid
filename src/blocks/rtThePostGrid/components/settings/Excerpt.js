@@ -27,7 +27,10 @@ function Excerpt(props) {
                     { label: __( 'Word', "the-post-grid"), value: 'word' },
                     { label: __( 'Full content', "the-post-grid"), value: 'full' },
                 ] }
-                onChange={ ( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "type": value} } ) }
+                onChange={
+                    ( value ) =>
+                        props.attr.setAttributes( {excerpt: {...excerpt, "type": value, 'limit': ''} } )
+                }
             />
 
             <TextControl

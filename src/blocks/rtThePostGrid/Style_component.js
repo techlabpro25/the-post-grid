@@ -94,7 +94,7 @@ ${(props) =>{
 } !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
     font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
-    line-height: 30px !important;
+    line-height: 22px !important;
 	&::after{
 		border-top-color: ${props => props.css['background-color']} !important;;
 	}
@@ -308,7 +308,7 @@ export const PaginationStyle = styled.button`
 	text-transform: ${props => ((props.className.search("active") != -1)? props.css['a-transform']:((props.css['transform'])?props.css['transform']: ""))} !important;
 	&:hover{
 	    color: ${props => (props.css['h-color'])? props.css['h-color']: "#fff"} !important;
-        background-color: ${props => (props.css['h-bg-color'])? props.css['h-bg-color']: "#4c6fff"} !important;
+        background-color: ${props => (props.css['h-bg-color'])? props.css['h-bg-color']: "#1c2f7a"} !important;
         border-color: ${props => (props.css['h-border-color'])? props.css['h-border-color']: ""} !important;
         border-style: ${props => (props.css['h-border-style'])? props.css['h-border-style']: ""} !important;
         border-width: ${props => (props.css['h-border-width'])? props.css['h-border-width']: ""} !important;
@@ -338,7 +338,7 @@ export const Pageprivnext = styled.button`
 	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
 	&:hover{
 	    color: ${props => (props.css['h-color'])? props.css['h-color']: "#fff"} !important;
-        background-color: ${props => (props.css['h-bg-color'])? props.css['h-bg-color']: "#4c6fff"} !important;
+        background-color: ${props => (props.css['h-bg-color'])? props.css['h-bg-color']: "#1c2f7a"} !important;
         border-color: ${props => (props.css['h-border-color'])? props.css['h-border-color']: ""} !important;
         border-style: ${props => (props.css['h-border-style'])? props.css['h-border-style']: ""} !important;
         border-width: ${props => (props.css['h-border-width'])? props.css['h-border-width']: ""} !important;

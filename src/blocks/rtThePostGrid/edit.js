@@ -215,25 +215,6 @@ export default function Edit(props) {
 
     const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
-    // Temp Code
-    // useEffect(()=>{
-    //     $('.pagination_number.'+pageindex).addClass("active")
-    //     $('.pagination_number').removeAttr('style')
-    //     $('.pagination_number.active').attr('style', '' +
-    //         'background-color:'+pagination_style['a-bg-color']+' !important; ' +
-    //         'color:'+pagination_style['a-color']+' !important;' +
-    //         'border-color:'+pagination_style['a-border-color']+' !important;' +
-    //         'border-style:'+pagination_style['a-border-style']+' !important;' +
-    //         'border-width:'+pagination_style['a-border-width']+' !important;' +
-    //         'border-radius:'+pagination_style['a-border-radius']+' !important;' +
-    //         'line-height:'+pagination_style['a-line-height']+' !important;' +
-    //         'font-weight:'+pagination_style['a-font-weight']+' !important;' +
-    //         'font-size:'+pagination_style['a-font-size']+' !important;' +
-    //         'letter-spacing:'+pagination_style['a-letter-spacing']+' !important;' +
-    //         'text-transform:'+pagination_style['a-transform']+' !important;');
-    // })
-
-    // End temp code
 
     useEffect(() => {
         var url_string = window.location.href
@@ -263,13 +244,12 @@ export default function Edit(props) {
     }, [query.pageindex])
 
     useEffect(()=>{
-        setIsloading(true)
+        $('.layout_parent').css('opacity', 0.2);
+        setIsloading(true);
+        executeScroll();
         setAttributes({query: {...query, 'loader':false}})
     },[query.loader])
 
-    useEffect(()=>{
-        setAttributes({excerpt: {...excerpt, 'limit': ''}})
-    }, [excerpt.type])
 
     useEffect(()=>{
         if((columns.desktop == "") || (general.presdefault)){
@@ -285,7 +265,6 @@ export default function Edit(props) {
 
     useEffect(()=>{
         setPageindex(1)
-        setAttributes({excerpt: {...excerpt, 'limit': '25'}})
     },[])
 
     const nextbtn = (pageval) =>{
@@ -567,7 +546,7 @@ export default function Edit(props) {
             <div className="rt-postsreact-editor" ref={listingWrapRef}>
                 {
                     (isrootloading)?(
-                        <div className={"rootloading"}>Please Wait ...........</div>
+                        <div className="rt-tpg-lds-dual-ring"></div>
                     ):(
                         <>
                             {

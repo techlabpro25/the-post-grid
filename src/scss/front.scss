@@ -2431,6 +2431,9 @@ button:focus{
     width: 80px;
     height: 80px;
     position: relative;
+    left: 0;
+    right: 0;
+    margin: 50px auto;
   }
   .rt-tpg-lds-dual-ring:after {
     content: " ";
@@ -2508,10 +2511,10 @@ button:focus{
 .pagination .pagination_number {
     background-color: #4c6fff;
     color: white;
-    padding: 10px 15px;
-    border: solid 5px #ffffff00;
-    margin: 5px;
-    border-radius: 5px;
+    padding: 15px 15px;
+    border: solid 0px #ffffff00;
+    margin: 1px;
+    border-radius: 2px;
     cursor: pointer;
     line-height: 0;
 }
@@ -2612,6 +2615,11 @@ span.categories-links {
 
 html{
     scroll-behavior: smooth;
+}
+
+ins.adsbygoogle {
+    width: 100% !important;
+    margin-top: 10px;
 }
 
 

@@ -73,7 +73,6 @@ export const List1 = (props) =>{
         return txt.value;
     }
 
-
     return(
         <>
             <div className={`${parent_class}`}>
@@ -116,20 +115,21 @@ export const List1 = (props) =>{
                                 postexcerpt = trimbyword(postexcerpt, excerpt.limit, excerpt.more_text)
                             }
 
+
                             // Title
                             const title_props = {
                                 Title,
                                 title_style,
                                 primary_color,
                                 id: post.id,
-                                target: linking.terget,
+                                target: linking.target,
                                 link: post.post_link,
                                 post_title
                             }
                             const image_props = {
                                 id: post.id,
                                 link: post.post_link,
-                                target: linking.terget,
+                                target: linking.target,
                                 image,
                                 image_url: post.image_url,
                                 layout: layout.value
@@ -159,36 +159,34 @@ export const List1 = (props) =>{
                                 category_padding,
                                 category_margin
                             }
-                            // const tag_props = {
-                            //     meta,
-                            //     meta_style,
-                            //     primary_color,
-                            //     post_tags: post?.tags
-                            // }
 
                             return(
                                 <>
                                     <div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item`} data-id={post.id}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className="rt-row">
-                                                <div className={`rt-col-sm-${(image['img-column'])? image['img-column']: ''} rt-col-xs-12 `}>
-                                                    <div className="rt-img-holder">
-                                                        {
-                                                            image.show_hide?(
-                                                                <Image data={image_props}/>
-                                                            ):("")
-                                                        }
+                                                {
+                                                    image.show_hide?(
+                                                        <div className={`rt-col-sm-${(image['img-column'])? image['img-column']: ''} rt-col-xs-12 `}>
+                                                            <div className="rt-img-holder">
+                                                                {
+                                                                    image.show_hide?(
+                                                                        <Image data={image_props}/>
+                                                                    ):("")
+                                                                }
 
-                                                        {
-                                                            (category.position.includes('over-image')) ? (
-                                                                <div className={`cat-${category.position} ${category.style}`}>
-                                                                    <Non_Category_Default data={category_props}/>
-                                                                </div>
-                                                            ) : ("")
-                                                        }
-                                                    </div>
-                                                </div>
-                                                <div className={`rt-col-sm-${(image['content-column'])? image['content-column']: ''} rt-col-xs-12 `}>
+                                                                {
+                                                                    (category.position.includes('over-image')) ? (
+                                                                        <div className={`cat-${category.position} ${category.style}`}>
+                                                                            <Non_Category_Default data={category_props}/>
+                                                                        </div>
+                                                                    ) : ("")
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    ):("")
+                                                }
+                                                <div className={`rt-col-sm-${(!image.show_hide)? "12":((image['content-column'])? image['content-column']: '')} rt-col-xs-12 `}>
                                                     <Content_padding css_pad={content_padding} className="rt-detail">
                                                         {
                                                             (category.position == "above-title") ? (

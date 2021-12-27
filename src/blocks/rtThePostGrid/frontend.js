@@ -8,7 +8,7 @@ const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
     const [isloading, setIsloading] = useState(true);
     const [isrootloading, setIsrootloading] = useState(true);
-    const {query, pagination, image, pagination_style, pagination_padding, pagination_margin} = props
+    const {query, pagination, image, pagination_style, pagination_padding, pagination_margin, excerpt} = props
     const [pagestate, setPagestate] = useState(0);
     const [pageindex, setPageindex] = useState(1);
     const [message, setMessage] = useState("");
@@ -62,6 +62,7 @@ const RtThePostGrid = (props) => {
                 relation: query.relation,
                 pagination: pagination.show,
                 limit: query.limit,
+                excerpt_type: excerpt.type,
                 imgsize: image.size
             }
         }).then((posts) => {
@@ -119,7 +120,8 @@ const RtThePostGrid = (props) => {
         <div className="rt-thepostgrid-frontend" ref={listingWrapRef}>
             {
                 (isrootloading)?(
-                    <div className={"rootloading"}>Please Wait ...........</div>
+
+                    <div className="rt-tpg-lds-dual-ring"></div>
                 ):(
                     <>
                         {

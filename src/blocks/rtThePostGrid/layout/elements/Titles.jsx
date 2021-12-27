@@ -2,7 +2,6 @@ import {Titlea, Titletag} from "../../Style_component";
 
 export const Titles = (props) =>{
     const { Title, title_style, primary_color, id, target, link, post_title } = props.data
-
     const htmltotextconvert = (title) =>{
         var txt = document.createElement("textarea");
         txt.innerHTML = title;
