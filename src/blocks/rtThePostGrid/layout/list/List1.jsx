@@ -301,8 +301,8 @@ export const List1 = (props) =>{
                                                         }
                                                         {
                                                             general.excerpt ? (
-                                                                <Excerpts css={excerpt_style} primary={primary_color} className="tpg-excerpt">
-                                                                    {htmltotextconvert(postexcerpt)}
+                                                                <Excerpts css={excerpt_style} primary={primary_color} className="tpg-excerpt" dangerouslySetInnerHTML={{__html: postexcerpt}}>
+
                                                                 </Excerpts>
                                                             ) : ("")
                                                         }

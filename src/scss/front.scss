@@ -547,7 +547,7 @@ body.rt-model-open,
 /************************ Common ***************************/
 
 .rt-tpg-container .rt-equal-height, .rt-tpg-container .masonry-grid-item, .rt-tpg-container .even-grid-item {
-    margin-bottom: 30px;
+    margin-bottom: unset !important;
 }
 
 .rt-tpg-container button {
@@ -2659,6 +2659,10 @@ html{
 ins.adsbygoogle {
     width: 100% !important;
     margin-top: 10px;
+}
+
+.layout_parent{
+    margin-bottom: 30px;
 }
 
 
