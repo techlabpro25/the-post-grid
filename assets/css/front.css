@@ -2107,6 +2107,7 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
   position: relative;
   margin-bottom: 20px;
   display: flex;
+  align-items: center;
 }
 
 .tpg-widget-heading-wrapper .tpg-widgets-heading {
@@ -2122,21 +2123,17 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
   padding: 0;
 }
 
-.tpg-widget-heading-wrapper.heading-style1 .tpg-widgets-heading::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: -7.5px;
+.tpg-widget-heading-wrapper .heading_dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background-color: #1e73be;
   display: inline-block;
-  margin: 0 0 0 12px;
+  margin: 0 12px;
   vertical-align: middle;
 }
 
-.tpg-widget-heading-wrapper.heading-style1.center .tpg-widgets-heading::before {
+.tpg-widget-heading-wrapper.center .heading_dot {
   display: none;
 }
 
@@ -2150,6 +2147,14 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
   margin-right: 15px;
 }
 
+.tpg-widget-heading-wrapper.center .tpg-widget-heading-line {
+  margin-left: 15px;
+}
+
+.tpg-widget-heading-wrapper.heading-style3 .heading_dot, .tpg-widget-heading-wrapper.heading-style2 .heading_dot {
+  display: none;
+}
+
 .tpg-widget-heading-wrapper.heading-style1 .tpg-widget-heading-line-left,
 .tpg-widget-heading-wrapper.heading-style1 .tpg-widget-heading-line {
   /*border: 1px solid;*/
@@ -2158,7 +2163,6 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
   border-width: 1px 0;
   -webkit-box-flex: 1;
   align-self: center;
-  margin-left: 8px;
   flex-grow: 1;
   height: 4px;
 }
@@ -2179,11 +2183,6 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
   flex-direction: row-reverse;
 }
 
-.tpg-widget-heading-wrapper.right .tpg-widgets-heading {
-  padding-left: 15px;
-  padding-right: 0;
-}
-
 .tpg-widget-heading-wrapper.right .tpg-widgets-heading::before {
   left: 0;
   right: auto;
@@ -2191,7 +2190,6 @@ body > .rt-tooltip .rt-tooltip-bottom:after {
 
 .tpg-widget-heading-wrapper.right .tpg-widget-heading-line {
   margin-left: 0;
-  margin-right: 15px;
 }
 
 .tpg-widget-heading-wrapper.heading-style2 .tpg-widgets-heading::after {

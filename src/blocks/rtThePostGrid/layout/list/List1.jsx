@@ -9,7 +9,7 @@ import {
     MetaStyle_align,
     Content_wrap,
     Content_padding,
-    ImgParent
+    Dot_style
 } from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
 import {Titles} from "../elements/Titles";
@@ -50,7 +50,8 @@ export const List1 = (props) =>{
         parent_class,
         columns,
         linking,
-        layout
+        layout,
+        heading_dot_margin
     } = props
 
 
@@ -86,6 +87,7 @@ export const List1 = (props) =>{
                             <Head_title css={heading_style} head_sty={heading} primary={primary_color} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widgets-heading">
                                 <Head_color as={(heading.link.length > 0)? 'a': 'span'} css={heading_style} primary={primary_color} href={heading.link}>{heading_title}</Head_color>
                             </Head_title>
+                            <Dot_style css={heading_style} css_mar={heading_dot_margin} className="heading_dot"></Dot_style>
                             {
                                 (heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line"></Head_border_style1>) : ("")
                             }

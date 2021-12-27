@@ -126,13 +126,20 @@ class RtThePostGrid extends Block
             'font-weight' => 600,
             'font-size'=> '',
             'letter-spaceing' => '',
-            'transform' => ''
+            'transform' => '',
+            'dot-color' => ''
+        ],
+        'heading_dot_margin'=>[
+			'top' => "",
+			'right' => "",
+			'bottom' => "",
+			'left' => ""
         ],
         'heading_padding_object' =>[
-            'top'=> "5px",
-			'right'=> "15px",
-			'bottom'=> "5px",
-			'left'=> "15px",
+            'top'=> "",
+			'right'=> "",
+			'bottom'=> "",
+			'left'=> "",
         ],
         'content_wrap' =>[
             'background-color' => "",

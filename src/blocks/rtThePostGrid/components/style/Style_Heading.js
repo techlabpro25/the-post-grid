@@ -14,7 +14,7 @@ import {useState} from '@wordpress/element';
 
 function Heading(props) {
     const {__} = wp.i18n;
-    const { heading_style, heading_padding_object, heading_margin_object} = props.attr.attributes
+    const { heading_style, heading_padding_object, heading_margin_object, heading_dot_margin} = props.attr.attributes
     return (
         <PanelBody title={__( "Block Heading" , "the-post-grid")} initialOpen={false}>
             <Text>
@@ -150,6 +150,27 @@ function Heading(props) {
                 splitOnAxis={true}
                 onChange={ ( val ) => {
                     props.attr.setAttributes({heading_margin_object: val})
+                }}
+            />
+
+
+            <Text>
+                {__( "Dot Color:", "the-post-grid")}
+            </Text>
+            <ColorPalette
+                className={"rt-colorcontrol heading"}
+                label = {__( "Select Color", "the-post-grid")}
+                colors={ props.attr.colors }
+                value={ heading_style['dot-color'] }
+                onChange={ ( color ) => props.attr.setAttributes( {heading_style: {...heading_style, "dot-color": color}} ) }
+            />
+
+            <BoxControl
+                label={__( "Dot Margin", "the-post-grid")}
+                values={ heading_dot_margin }
+                splitOnAxis={true}
+                onChange={ ( val ) => {
+                    props.attr.setAttributes({heading_dot_margin: val})
                 }}
             />
         

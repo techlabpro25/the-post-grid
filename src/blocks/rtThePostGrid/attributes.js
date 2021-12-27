@@ -149,16 +149,26 @@ const attributes = {
 			['font-weight']: 600,
 			['font-size']: '',
 			['letter-spacing']: '',
-			['transform']: ''
+			['transform']: '',
+			['dot-color']: ""
 		},
+	},
+	heading_dot_margin:{
+		type:"object",
+		default:{
+			top: "",
+			right: "",
+			bottom:"",
+			left: ""
+		}
 	},
 	heading_padding_object: {
 		type: "object",
 		default:{
-			top: "5px",
-			right: "15px",
-			bottom: "5px",
-			left: "15px",
+			top: "",
+			right: "",
+			bottom: "",
+			left: "",
 		}
 	},
 	heading_margin_object: {
