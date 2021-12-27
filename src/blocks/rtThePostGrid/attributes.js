@@ -309,7 +309,8 @@ const attributes = {
 			animation: null,
 			["border-radius"]: "",
 			['img-column']: '',
-			['content-column']: ''
+			['content-column']: '',
+			gutter: "3"
 		},
 	},
 	parent_class: {
@@ -327,7 +328,8 @@ const attributes = {
 			["box-shadow-color"]: "transparent",
 			radius: "",
 			["border-color"]: "",
-			["border-width"]: ""
+			["border-width"]: "",
+			gutter: '4',
 		},
 	},
 	constent_box_padding: {

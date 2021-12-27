@@ -15,7 +15,7 @@ function Linking(props) {
         <PanelBody title={__( "Linking", "the-post-grid")} initialOpen={false}>
 
             <ToggleControl
-                label={__( "Link to Page Details:", "the-post-grid")}
+                label={__( "Link to Page Details", "the-post-grid")}
                 checked={ linking.link_to_page }
                 onChange={ (val) => {
                     useHaslinking( ( state ) => ! state );

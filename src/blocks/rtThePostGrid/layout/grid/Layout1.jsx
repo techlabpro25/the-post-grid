@@ -93,7 +93,7 @@ const Layout1 = (props) => {
 					):("")
 				}
 				
-				<div className="rt-container-fluid rt-tpg-container grid-layout-1 layout_parent">
+				<div className={`rt-container-fluid rt-tpg-container grid-layout-1 layout_parent rt-row rt-g-${(content_wrap.gutter == "")? '4': content_wrap.gutter}`}>
 					{
 						data.length && data.map((post) => {
 							var postexcerpt = post.excerpt;

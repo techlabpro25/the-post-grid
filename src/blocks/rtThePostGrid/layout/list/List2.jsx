@@ -94,7 +94,7 @@ export const List2 = (props) =>{
                         </Head_border>
                     ):("")
                 }
-                <Content_padding css_pad={content_padding}className={`rt-row rt-content-loader layout2 list2 layout_parent tpg-even`}>
+                <div className={`rt-row rt-content-loader layout2 list2 layout_parent tpg-even rt-row rt-g-${(content_wrap.gutter == "")? '4': content_wrap.gutter}`}>
                     {
                         data.length && data.map((post) => {
                             var postexcerpt = post.excerpt;
@@ -171,7 +171,7 @@ export const List2 = (props) =>{
                                 <>
                                     <div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item`} data-id={post.id}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
-                                            <div className="rt-row">
+                                            <div className={`rt-row rt-g-${(image.gutter == "")? '3': image.gutter}`}>
                                                 {
                                                     image.show_hide?(
                                                         <div className={`rt-col-sm-${(image['img-column'])? image['img-column']: ''} rt-col-xs-12 `}>
@@ -384,7 +384,7 @@ export const List2 = (props) =>{
                             )
                         })
                     }
-                </Content_padding>
+                </div>
             </div>
         </>
     )

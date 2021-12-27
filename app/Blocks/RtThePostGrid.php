@@ -139,7 +139,8 @@ class RtThePostGrid extends Block
             'box-shadow-color' => 'transparent',
             'radius' => '',
             'border-color' => '',
-            'border-width' => ''
+            'border-width' => '',
+            'gutter' => "4"
         ],
         'constent_box_padding' =>[],
         'content_padding' =>[
@@ -169,7 +170,8 @@ class RtThePostGrid extends Block
             'animation'=> null,
             'border-radius'=> "0",
             'img-column' => '',
-			'content-column' => ''
+			'content-column' => '',
+            'gutter' => '3'
         ],
         'query' =>[
             'post_type'  => "post",

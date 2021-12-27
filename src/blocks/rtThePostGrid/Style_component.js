@@ -5,7 +5,7 @@ export const Titlea = styled.a`
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	&:hover{
-	    color: ${props => (props.css.h_color)? props.css.h_color: props.primary} !important;
+	    color: ${props => (props.css.h_color)? props.css.h_color: '#2271b1'} !important;
 	}
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;

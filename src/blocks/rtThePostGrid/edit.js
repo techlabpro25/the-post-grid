@@ -32,6 +32,7 @@ import $ from 'jquery';
 import {PredefaultAttr} from "./components/PredefaultAttr";
 import Pagination from "./components/style/Pagination";
 import {PaginationStyle, Pageprivnext} from "./Style_component";
+import Content_Wrap from "./components/settings/Content_Wrap";
 
 
 const {__} = wp.i18n;
@@ -441,6 +442,7 @@ export default function Edit(props) {
                                                                     ) : ("")
 
                                                             }
+                                                            <Content_Wrap attr={global_attr}/>
 
                                                             {/* Image */}
                                                             <Image attr={global_attr}/>
@@ -606,62 +608,6 @@ export default function Edit(props) {
                         </>
                     )
                 }
-
-
-                {/*=========================================================*/}
-
-                {/*{*/}
-                {/*    isloading ? (*/}
-                {/*        <div className="rt-tpg-lds-dual-ring2"></div>*/}
-                {/*    ) : (*/}
-                {/*        <>*/}
-                {/*            {*/}
-                {/*                (message.length) ? (*/}
-                {/*                    <div className={"no_notice"}>*/}
-                {/*                        {message}*/}
-                {/*                    </div>*/}
-
-                {/*                ) : (*/}
-                {/*                    <RenderView {...attributes} setattr = {setAttributes} data={data}/>*/}
-                {/*                )*/}
-                {/*            }*/}
-                {/*        </>*/}
-
-                {/*    )*/}
-                {/*}*/}
-                {/*{*/}
-                {/*    pagination.show ? (*/}
-                {/*        <div className={"pagination"}>*/}
-                {/*            {*/}
-                {/*                //Here paginationNumber = 3*/}
-                {/*                (paginationNumber > 1) ?(*/}
-                {/*                    <>*/}
-                {/*                        {prevbtn(paginationNumber)}*/}
-                {/*                        {*/}
-                {/*                            Array(paginationNumber).fill().map((_, i) => {*/}
-
-                {/*                                if(((i+1) >= minlimit) && (i+1) <= maxlimit){*/}
-                {/*                                    if ((i == 0) && (pageindex == 1) ){*/}
-                {/*                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number active ${i+1}`} data-value={i + 1}*/}
-                {/*                                                       key={i}*/}
-                {/*                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
-                {/*                                    }else{*/}
-                {/*                                        return <PaginationStyle css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number ${i+1}`} data-value={i + 1}*/}
-                {/*                                                       key={i}*/}
-                {/*                                                       onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>*/}
-                {/*                                    }*/}
-                {/*                                }*/}
-                {/*                            })*/}
-                {/*                        }*/}
-
-                {/*                        {nextbtn(paginationNumber)}*/}
-
-                {/*                    </>*/}
-                {/*                ):("")*/}
-                {/*            }*/}
-                {/*        </div>*/}
-                {/*    ) : ("")*/}
-                {/*}*/}
             </div>
         </>
     );
