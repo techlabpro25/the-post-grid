@@ -150,7 +150,7 @@ class All_Post{
                     $data[]=[
                         'id' => $id,
                         "title" => esc_html(get_the_title()),
-                        "excerpt" => ($excerpt_type == "full") ? get_the_content() : get_the_excerpt(),
+                        "excerpt" => ($excerpt_type == "fullex") ? get_the_excerpt(): get_the_content(),
                         "comment_count" => esc_html(wp_count_comments($id)->all),
                         "post_date" => esc_html(get_the_date('M d, y')),
                         "image_url" => esc_url_raw(get_the_post_thumbnail_url(null, $size)),

@@ -117,9 +117,7 @@ const Layout1 = (props) => {
 								postexcerpt = trimbyword(postexcerpt, excerpt.limit, excerpt.more_text)
 							}
 
-							if (excerpt.type == "full") {
-								postexcerpt = trimbychar(postexcerpt, excerpt.limit, excerpt.more_text)
-							}
+
 
 							// Title
 							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.target, link: post.post_link, post_title }

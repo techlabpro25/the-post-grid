@@ -25,11 +25,12 @@ function Excerpt(props) {
                 options={ [
                     { label: __( 'Character', "the-post-grid"), value: 'char' },
                     { label: __( 'Word', "the-post-grid"), value: 'word' },
+                    { label: __( 'Full excerpt', "the-post-grid"), value: 'fullex' },
                     { label: __( 'Full content', "the-post-grid"), value: 'full' },
                 ] }
                 onChange={
                     ( value ) =>
-                        props.attr.setAttributes( {excerpt: {...excerpt, "type": value, 'limit': ''} } )
+                        props.attr.setAttributes( {excerpt: {...excerpt, "type": value} } )
                 }
             />
 

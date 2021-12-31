@@ -1,5 +1,4 @@
 export const trimbychar = (str, max, suffix) => {
-    console.log(max+" , "+suffix)
     if(max.length == 0){
         max = 300
     }

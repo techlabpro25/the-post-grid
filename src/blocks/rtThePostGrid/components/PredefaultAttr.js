@@ -14,13 +14,7 @@ export const PredefaultAttr = (props) =>{
                     'bottom': '15px',
                     'left': '15px'
                 },
-            content_wrap:
-                {
-                    ...content_wrap,
-                    "border-width": '1px',
-                    "border-color": "#d9d9d9",
-                    "background-color": '#fff'
-                },
+
             image:
                 {
                     ...image,
@@ -30,22 +24,12 @@ export const PredefaultAttr = (props) =>{
                     'animation': 1.1,
                     'border-radius': '0px'
                 },
-            columns:
-                {
-                    ...columns,
-                    "desktop": '4'
-                },
             button:
                 {
                     ...button,
                     "border-radius": '0px',
                     "h-boder-radius": "0px"
                 },
-            title_style:
-                {
-                    ...title_style,
-                    "font-weight": 500
-                }
         })
 
     }
@@ -62,23 +46,6 @@ export const PredefaultAttr = (props) =>{
                     'right': "0px",
                     'bottom': '0px',
                     'left': '0px'
-                },
-            columns:
-                {
-                    ...columns,
-                    "desktop": '6'
-                },
-            content_wrap:
-                {
-                    ...content_wrap,
-                    "border-width": '0px',
-                    "border-color": "transparent",
-                    "background-color": '#fff'
-                },
-            title_style:
-                {
-                    ...title_style,
-                    "font-weight": 400
                 },
             image:
                 {
@@ -106,23 +73,7 @@ export const PredefaultAttr = (props) =>{
                             'bottom': '0px',
                             'left': '0px'
                         },
-                    content_wrap:
-                        {
-                            ...content_wrap,
-                            "border-width": '0px',
-                            "border-color": "transparent",
-                            "background-color": '#fff'
-                        },
-                    title_style:
-                        {
-                            ...title_style,
-                            "font-weight": 400
-                        },
-                    columns:
-                        {
-                            ...columns,
-                            "desktop": '6'
-                        },
+
                     image:
                         {
                             ...image,
