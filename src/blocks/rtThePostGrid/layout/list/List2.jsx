@@ -172,7 +172,7 @@ export const List2 = (props) =>{
 
                             return(
                                 <>
-                                    <Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item`} data-id={post.id}>
+                                    <Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item list_layout two`} data-id={post.id}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className={`rt-row`}>
                                                 {

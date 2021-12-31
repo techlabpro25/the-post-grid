@@ -6,14 +6,7 @@ export const PredefaultAttr = (props) =>{
 
     if ((layout.value == 'grid1') || (layout.value == "isotope1")) {
         props.setAttributes({
-            content_padding:
-                {
-                    ...content_padding,
-                    "top": '15px',
-                    'right': "15px",
-                    'bottom': '15px',
-                    'left': '15px'
-                },
+
 
             image:
                 {
@@ -24,12 +17,6 @@ export const PredefaultAttr = (props) =>{
                     'animation': 1.1,
                     'border-radius': '0px'
                 },
-            button:
-                {
-                    ...button,
-                    "border-radius": '0px',
-                    "h-boder-radius": "0px"
-                },
         })
 
     }
@@ -39,14 +26,6 @@ export const PredefaultAttr = (props) =>{
 
     if (layout.value == 'list1') {
         props.setAttributes({
-            content_padding:
-                {
-                    ...content_padding,
-                    "top": '0px',
-                    'right': "0px",
-                    'bottom': '0px',
-                    'left': '0px'
-                },
             image:
                 {
                     ...image,
@@ -65,15 +44,6 @@ export const PredefaultAttr = (props) =>{
 
     if (layout.value == 'list2') {
                 props.setAttributes({
-                    content_padding:
-                        {
-                            ...content_padding,
-                            "top": '0px',
-                            'right': "0px",
-                            'bottom': '0px',
-                            'left': '0px'
-                        },
-
                     image:
                         {
                             ...image,
