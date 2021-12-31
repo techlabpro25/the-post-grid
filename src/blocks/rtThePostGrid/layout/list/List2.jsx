@@ -9,7 +9,8 @@ import {
     MetaStyle_align,
     Content_wrap,
     Content_padding,
-    ImgParent, Dot_style
+    ImgParent, Dot_style,
+    ImgCol, ContentCol, Colgut
 } from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
 import {Titles} from "../elements/Titles";
@@ -171,12 +172,12 @@ export const List2 = (props) =>{
 
                             return(
                                 <>
-                                    <div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item`} data-id={post.id}>
+                                    <Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height even-grid-item`} data-id={post.id}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
-                                            <div className={`rt-row rt-g-${(image.gutter == "")? '3': image.gutter}`}>
+                                            <div className={`rt-row`}>
                                                 {
                                                     image.show_hide?(
-                                                        <div className={`rt-col-sm-${(image['img-column'])? image['img-column']: ''} rt-col-xs-12 `}>
+                                                        <ImgCol css={image} className={`rt-col-sm-${(image['img-column'])? image['img-column']: ''} rt-col-xs-12 `}>
                                                             <div className="rt-img-holder" id={"circle"}>
                                                                 {
                                                                     image.show_hide?(
@@ -192,10 +193,10 @@ export const List2 = (props) =>{
                                                                     ) : ("")
                                                                 }
                                                             </div>
-                                                        </div>
+                                                        </ImgCol>
                                                     ):("")
                                                 }
-                                                <div className={`rt-col-sm-${(!image.show_hide)? "12":((image['content-column'])? image['content-column']: '')} rt-col-xs-12 `}>
+                                                <ContentCol css={image} className={`rt-col-sm-${(!image.show_hide)? "12":((image['content-column'])? image['content-column']: '')} rt-col-xs-12 `}>
                                                     <Content_padding css_pad={content_padding} className="rt-detail">
                                                         {
                                                             (category.position == "above-title") ? (
@@ -377,10 +378,10 @@ export const List2 = (props) =>{
                                                             ) : ("")
                                                         }
                                                     </Content_padding>
-                                                </div>
+                                                </ContentCol>
                                             </div>
                                         </Content_wrap>
-                                    </div>
+                                    </Colgut>
                                 </>
                             )
                         })

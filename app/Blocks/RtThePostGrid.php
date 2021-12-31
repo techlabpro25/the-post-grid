@@ -35,14 +35,15 @@ class RtThePostGrid extends Block
             "text-align"=> "left",
             "color"=> "",
             "h_color"=> "",
-            "font-size"=> "",
+            "font-size"=> "28px",
             "font-weight"=> null,
             'line-height' => "",
-            'letter-spaceing' => '',
+            'letter-spacing' => '',
 			'transform' => ''
 		],
 		'category_style' =>[
             'color' => "",
+            'h-color' => '',
             "background-color" => "",
             'font-size' => '',
             'border-radius' => "",
@@ -64,6 +65,7 @@ class RtThePostGrid extends Block
         ],
         'meta_style' =>[
             'color' => "",
+            'h-color' => "",
             "text-align" => "left",
             'font-size' => '15px',
             'font-weight' => "400",
@@ -77,7 +79,7 @@ class RtThePostGrid extends Block
             "text-align" => "left",
             'text' => 'View More',
             'border-color' => '#e0e0e0',
-			'h-border-color' => '#e0e0e0',
+			'h-border-color' => '#2271b1',
 			'border-width'=> '1px',
 			'h-border-width'=> '1px',
 			'border-style' => 'solid',
@@ -147,7 +149,7 @@ class RtThePostGrid extends Block
             'radius' => '',
             'border-color' => '',
             'border-width' => '',
-            'gutter' => "4"
+            'gutter' => ""
         ],
         'constent_box_padding' =>[],
         'content_padding' =>[
@@ -178,7 +180,7 @@ class RtThePostGrid extends Block
             'border-radius'=> "0",
             'img-column' => '',
 			'content-column' => '',
-            'gutter' => '3'
+            'gutter' => ''
         ],
         'query' =>[
             'post_type'  => "post",

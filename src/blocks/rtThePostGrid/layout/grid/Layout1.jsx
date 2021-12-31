@@ -9,7 +9,7 @@ import {
 	MetaStyle_align,
 	Content_wrap,
 	Content_padding,
-	ImgParent, Dot_style
+	ImgParent, Dot_style, Colgut
 } from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
 import {Titles} from "../elements/Titles";
@@ -132,7 +132,7 @@ const Layout1 = (props) => {
 
 							return (
 								<>
-									<div className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 rt-equal-height even-grid-item`}>
+									<Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 rt-equal-height even-grid-item`}>
 										<Content_wrap css={content_wrap} layout={layout} css_pad={constent_box_padding} className="rt-holder">
 											<div className="rt-img-holder">
 												{
@@ -332,7 +332,7 @@ const Layout1 = (props) => {
 
 											</Content_padding>
 										</Content_wrap>
-									</div>
+									</Colgut>
 								</>
 							)
 						})

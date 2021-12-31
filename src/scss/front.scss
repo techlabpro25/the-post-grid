@@ -2595,6 +2595,7 @@ a, .rt-thepostgrid a{
 }
 .rt-thepostgrid {
     max-width: 100% !important;
+    min-height: 80vh !important;
 }
 
 .read-more a{
@@ -2607,6 +2608,7 @@ a, .rt-thepostgrid a{
 
 h1,h2,h3,h4,h5,h6{
     margin-top: 0 !important;
+    margin-bottom: 10px !important;
 }
 
 .grid-layout-1 .rt-holder {
@@ -2663,6 +2665,10 @@ ins.adsbygoogle {
 
 .layout_parent{
     margin-bottom: 30px;
+}
+
+a:hover {
+    color: #2973be;
 }
 
 

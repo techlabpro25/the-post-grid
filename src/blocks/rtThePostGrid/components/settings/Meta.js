@@ -21,7 +21,7 @@ function Meta(props) {
             value: "above"
         },
         {
-            label: __( "Between Title and Excerpt", "the-post-grid"),
+            label: __( "Above Excerpt", "the-post-grid"),
             value: "between"
         },
         {

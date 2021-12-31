@@ -116,6 +116,7 @@ const RtThePostGrid = (props) => {
         setPageindex((prev) => prev - 1)
     }
 
+
     return (
         <div className="rt-thepostgrid-frontend" ref={listingWrapRef}>
             {

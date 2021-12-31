@@ -111,7 +111,7 @@ export const PredefaultAttr = (props) =>{
                             ...content_wrap,
                             "border-width": '0px',
                             "border-color": "transparent",
-                            "background-color": 'transparent'
+                            "background-color": '#fff'
                         },
                     title_style:
                         {

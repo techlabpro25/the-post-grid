@@ -1,6 +1,7 @@
 import {
     PanelBody,
     SelectControl,
+    __experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
 import { useState, useEffect } from '@wordpress/element';
 
@@ -10,20 +11,14 @@ function Content_Wrap(props) {
     return (
         <PanelBody title={__( "Column", "the-post-grid")} initialOpen={false}>
 
-            <SelectControl
-                className={"rt-selectcontrol column"}
-                label={__( "Column Spacing:", "the-post-grid")}
+            <NumberControl
+                className={"rt-numbercontrol column"}
+                label={__( "Gutter Control:", "the-post-grid")}
                 value={ content_wrap.gutter }
-                options={
-                    [
-                        {label:"1", value: "1"},
-                        {label:"2", value: "2"},
-                        {label:"3", value: "3"},
-                        {label:"4", value: "4"},
-                        {label:"5", value: "5"},
-                    ]
-                }
                 onChange={ ( value ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "gutter": value} } ) }
+                min={ 0 }
+                max={ 100 }
+                step={1}
             />
         
         </PanelBody>

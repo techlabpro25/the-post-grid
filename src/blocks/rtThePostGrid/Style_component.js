@@ -7,14 +7,15 @@ export const Titlea = styled.a`
 	&:hover{
 	    color: ${props => (props.css.h_color)? props.css.h_color: '#2271b1'} !important;
 	}
-	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
-	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
-	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
+	
 	font-family: ${props => (props.css['font-family'])? props.css['font-family'].label+", "+props.css['font-family'].value : ""} !important;
 `;
 
 export const Titletag = styled.div`
 	text-align: ${props => props.css['text-align']} !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
 `;
 
 export const Excerpts = styled.div`
@@ -59,12 +60,24 @@ export const Cat_style = styled.a`
 	letter-spacing: ${props => ((!props.css['letter-spacing'])?((props.meta['letter-spacing'])? props.meta['letter-spacing']: "") : props.css['letter-spacing'])} !important;
 	text-transform: ${props => ((!props.css['transform'])?((props.meta['transform'])? props.meta['transform']: "") : props.css['transform'])} !important;
 	font-weight: ${props => (props.css['font-weight'] == '')? (props.meta['font-weight']? props.meta['font-weight'] : 400) : props.css['font-weight']} !important;
+    &:hover{
+         color: ${props => 
+        (props.css['h-color'] != "")?
+            (props.css['h-color'] != undefined?
+                props.css['h-color']: ((props.meta['h-color'] != "")?
+                    (props.meta['h-color'] != undefined?
+                        props.meta['h-color']: "#2973be"):
+                    "#2973be"))
+            :
+            (props.meta['h-color'] != "")? 
+                (props.meta['h-color'] != undefined? 
+                    props.meta['h-color']: "#2973be"):
+                "#2973be" 
+        } !important;
+    }
 `;
 
 export const Cat_style_non_default = styled.a`
-${(props) =>{
-    console.log(props)}}
-
 	color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;
@@ -98,6 +111,21 @@ ${(props) =>{
 	&::after{
 		border-top-color: ${props => props.css['background-color']} !important;;
 	}
+	&:hover{
+         color: ${props =>
+    (props.css['h-color'] != "")?
+        (props.css['h-color'] != undefined?
+            props.css['h-color']: ((props.meta['h-color'] != "")?
+                (props.meta['h-color'] != undefined?
+                    props.meta['h-color']: "#2973be"):
+                "#2973be"))
+        :
+        (props.meta['h-color'] != "")?
+            (props.meta['h-color'] != undefined?
+                props.meta['h-color']: "#2973be"):
+            "#2973be"
+} !important;
+    }
 `;
 
 export const MetaStyle = styled.span`
@@ -116,6 +144,10 @@ export const MetaTagStyle = styled.a`
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
 	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
+	&:hover{
+	    color: ${props => (props.css['h-color'] != "")? ((props.css['h-color'] != undefined)? props.css['h-color']: "#2973be"): "#2973be"} !important;
+	}
+	
 `;
 
 export const MetaStyle_align = styled.div`
@@ -130,9 +162,9 @@ export const Button_style = styled.a`
 	border-style: ${props => (props.css_btn['border-style']) ? props.css_btn['border-style'] : ""} !important;
 	border-width: ${props => (props.css_btn['border-width']) ? props.css_btn['border-width'] : ""} !important;
 	&:hover{
-		color: ${props => props.css.h_color} !important;
+		color: ${props => (props.css.h_color == "")? '#2271b1': (props.css.h_color != undefined? props.css.h_color: "#2271b1")} !important;
 		background-color: ${props => props.css.h_bg_color} !important;
-		border-color: ${props => (props.css_btn['h-border-color']) ? props.css_btn['h-border-color'] : ""} !important;
+		border-color: ${props => (props.css_btn['h-border-color'] != "") ? (props.css_btn['h-border-color'] != undefined? props.css_btn['h-border-color']: "#2271b1") : "#2271b1"} !important;
         border-style: ${props => (props.css_btn['h-border-style']) ? props.css_btn['h-border-style'] : ""} !important;
         border-width: ${props => (props.css_btn['h-border-width']) ? props.css_btn['h-border-width'] : ""} !important;
         border-radius: ${props => props.css_btn['h-border-radius']} !important;
@@ -289,6 +321,9 @@ export const MetaIcona = styled.div`
     padding-right: 4px !important;
     font-size: ${props => props.css['font-size']} !important;
     width: unset !important;
+    &:hover{
+	    color: ${props => (props.css['h-color'] != "")? ((props.css['h-color'] != undefined)? props.css['h-color']: "#2973be"): "#2973be"} !important;
+	}
 `
 export const MetaIconspan = styled.div`
     color: ${props => (props.css.color)? props.css.color: '#333'} !important;
@@ -323,6 +358,21 @@ export const MetaCatIcon = styled.div`
         )} !important;
         
     width: unset !important;
+    &:hover{
+         color: ${props =>
+            (props.css['h-color'] != "")?
+                (props.css['h-color'] != undefined?
+                    props.css['h-color']: ((props.meta['h-color'] != "")?
+                        (props.meta['h-color'] != undefined?
+                            props.meta['h-color']: "#2973be"):
+                        "#2973be"))
+                :
+                (props.meta['h-color'] != "")?
+                    (props.meta['h-color'] != undefined?
+                        props.meta['h-color']: "#2973be"):
+                    "#2973be"
+        } !important;
+    }
 `
 export const CatIcon = styled.div`
     color: ${props => (props.css.color)? props.css.color: props.primary}
@@ -385,6 +435,19 @@ export const Pageprivnext = styled.button`
         letter-spacing: ${props => (props.css['h-letter-spacing'])?props.css['h-letter-spacing']: ""} !important;
         text-transform: ${props => (props.css['h-transform'])?props.css['h-transform']: ""} !important;
 	}
+`
+export const ImgCol = styled.div`
+    padding-right: ${props => (props.css.gutter == "")? "7.5": (props.css.show_hide)? String(parseInt(props.css.gutter)/2): ""}px !important;
+`
+export const ContentCol = styled.div`
+    padding-left: ${props => (props.css.gutter == "")? "7.5": (props.css.show_hide)? String(parseInt(props.css.gutter)/2): ""}px !important;
+`
+
+export const Colgut = styled.div`
+    padding-top: ${props => (props.css.gutter == "")? "7.5": props.css.gutter }px !important;
+    padding-right: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
+    padding-bottom: ${props => (props.css.gutter == "")? "7.5": props.css.gutter }px !important;
+    padding-left: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
 `
 
 

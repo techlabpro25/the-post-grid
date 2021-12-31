@@ -190,7 +190,7 @@ const attributes = {
 			["text-align"]: "Left",
 			color: "",
 			h_color: "",
-			["font-size"]: "",
+			["font-size"]: "28px",
 			["font-weight"]: null,
 			['line-height']: "",
 			['letter-spacing']: '',
@@ -229,6 +229,7 @@ const attributes = {
 		type: "object",
 		default: {
 			color: "",
+			['h-color']: '',
 			["background-color"]: "",
 			["font-size"]: "",
 			["border-radius"]: "",
@@ -268,6 +269,7 @@ const attributes = {
 		default: {
 			["text-align"]: "Left",
 			color: "",
+			['h-color']: '',
 			["font-size"]: "15px",
 			["font-weight"]: 400,
 			['line-height']: '',
@@ -283,7 +285,7 @@ const attributes = {
 			text: "View More",
 			["text-align"]: "Left",
 			['border-color']: '#e0e0e0',
-			['h-border-color']: '#e0e0e0',
+			['h-border-color']: '#2271b1',
 			['border-width']: '1px',
 			['h-border-width']: '1px',
 			['border-style']: 'solid',
@@ -320,7 +322,7 @@ const attributes = {
 			["border-radius"]: "",
 			['img-column']: '',
 			['content-column']: '',
-			gutter: "3"
+			gutter: ""
 		},
 	},
 	parent_class: {
@@ -339,7 +341,7 @@ const attributes = {
 			radius: "",
 			["border-color"]: "",
 			["border-width"]: "",
-			gutter: '4',
+			gutter: '',
 		},
 	},
 	constent_box_padding: {

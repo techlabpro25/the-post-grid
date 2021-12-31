@@ -31,6 +31,17 @@ function Meta(props) {
             />
 
             <Text>
+               Link Hover Color:
+            </Text>
+            <ColorPalette
+                className={"rt-colorcontrol meta"}
+                label = {__( "Select Color", "the-post-grid")}
+                colors={ props.attr.colors }
+                value={ meta_style['h-color'] }
+                onChange={ ( color ) => props.attr.setAttributes( {meta_style: {...meta_style, 'h-color': color}} ) }
+            />
+
+            <Text>
                 {__( "Text Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left"

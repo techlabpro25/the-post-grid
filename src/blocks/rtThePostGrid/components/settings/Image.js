@@ -3,7 +3,8 @@ import {
     __experimentalUnitControl as UnitControl,
 	__experimentalNumberControl as NumberControl,
     SelectControl,
-    ToggleControl 
+    ToggleControl ,
+    RangeControl
 } from "@wordpress/components";
 import { useState, useEffect } from '@wordpress/element';
 import apiFetch from "@wordpress/api-fetch";
@@ -63,20 +64,15 @@ function Image(props) {
                         ] }
                         onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "img-column": value, "content-column": (12 - value)} } ) }
                     />
-                    <SelectControl
-                        className={"rt-selectcontrol image"}
-                        label={__( "Column Spacing:", "the-post-grid")}
+
+                    <NumberControl
+                        className={"rt-numbercontrol image"}
+                        label={__( "Gutter Control:", "the-post-grid")}
                         value={ image.gutter }
-                        options={
-                            [
-                                {label:"1", value: "1"},
-                                {label:"2", value: "2"},
-                                {label:"3", value: "3"},
-                                {label:"4", value: "4"},
-                                {label:"5", value: "5"},
-                            ]
-                        }
                         onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "gutter": value} } ) }
+                        min={ 0 }
+                        max={ 100 }
+                        step={1}
                     />
                 </>
             ):("")}

@@ -300,7 +300,6 @@ export default function Edit(props) {
 
 
     const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform, border_style}
-
     return (
         <>
             <InspectorControls>

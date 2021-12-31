@@ -30,7 +30,17 @@ function Category(props) {
                 value={ category_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, "color": color}} ) }
             />
-            	
+
+            <Text>
+                Link Hover Color:
+            </Text>
+            <ColorPalette
+                className={"rt-colorcontrol meta"}
+                label = {__( "Select Color", "the-post-grid")}
+                colors={ props.attr.colors }
+                value={ category_style['h-color'] }
+                onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, 'h-color': color}} ) }
+            />
 
             <Text>
                 {__( "Background-Color:", "the-post-grid")}
