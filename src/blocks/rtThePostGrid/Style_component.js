@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 export const Titlea = styled.a`
-	color: ${props => (props.css.color)? props.css.color: "#333"} !important;
-	font-size: ${props => props.css['font-size']} !important;
-	font-weight: ${props => props.css['font-weight']} !important;
+	color: inherit !important;
+	font-size: inherit !important;
+	font-weight: inherit !important;
 	&:hover{
-	    color: ${props => (props.css.h_color)? props.css.h_color: '#2271b1'} !important;
+	    color: inherit !important;
 	}
 	
-	font-family: ${props => (props.css['font-family'])? props.css['font-family'].label+", "+props.css['font-family'].value : ""} !important;
 `;
 
 export const Titletag = styled.div`
@@ -16,6 +15,12 @@ export const Titletag = styled.div`
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
 	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
+	color: ${props => (props.css.color)? props.css.color: "#333"} !important;
+	font-size: ${props => props.css['font-size']} !important;
+	font-weight: ${props => props.css['font-weight']} !important;
+	&:hover{
+	    color: ${props => (props.css.h_color)? props.css.h_color: '#2271b1'} !important;
+	}
 `;
 
 export const Excerpts = styled.div`
@@ -158,9 +163,9 @@ export const Button_style = styled.a`
 	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
 	border-radius: ${props => props.css_btn['border-radius']} !important;
 	background-color: ${props => props.css['background-color']} !important;
-	border-color: ${props => (props.css_btn['border-color']) ? props.css_btn['border-color'] : ""} !important;
-	border-style: ${props => (props.css_btn['border-style']) ? props.css_btn['border-style'] : ""} !important;
-	border-width: ${props => (props.css_btn['border-width']) ? props.css_btn['border-width'] : ""} !important;
+	border-color: ${props => (props.css_btn['border-color'] != "") ? props.css_btn['border-color'] : ""} !important;
+	border-style: ${props => (props.css_btn['border-style'] != "") ? props.css_btn['border-style'] : ""} !important;
+	border-width: ${props => (props.css_btn['border-width'] != "") ? props.css_btn['border-width'] : ""} !important;
 	&:hover{
 		color: ${props => (props.css.h_color == "")? '#2271b1': (props.css.h_color != undefined? props.css.h_color: "#2271b1")} !important;
 		background-color: ${props => props.css.h_bg_color} !important;
@@ -182,6 +187,12 @@ export const Btn_align = styled.div`
 `;
 
 export const Head_title = styled.div`
+    color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
+	font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
+	font-size: ${props => (props.css['font-size'])?props.css['font-size']: ""} !important;
+	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
+	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
     padding: ${props => (
         props.css_pad != undefined) ? 
             (
@@ -224,19 +235,19 @@ export const Dot_style = styled.span`
             )?
                 (
                     ((props.css_mar.top == "") && (props.css_mar.right == "") && (props.css_mar.bottom == "") && (props.css_mar.left == ""))
-                        ? "0px 12px": props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left)
-                : "0px 12px"):
-        '0px 12px'
+                        ? "0px 0px 0px 15px": props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left)
+                : "0px 0px 0px 15px"):
+        '0px 0px 0px 15px'
 } !important;
 `;
 
 export const Head_color = styled.div`
-	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
-	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
-	font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
-	font-size: ${props => (props.css['font-size'])?props.css['font-size']: ""} !important;
-	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
-	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
+	color: inherit !important;
+	line-height: inherit !important;
+	font-weight: inherit !important;
+	font-size: inherit !important;
+	letter-spacing: inherit} !important;
+	text-transform: inherit !important;
 `;
 
 export const Head_border = styled.div`
@@ -311,9 +322,6 @@ export const Content_padding = styled.div`
 
 export const ImgAnimation = styled.img`
 	border-radius: ${props => (props.css['border-radius'] == 0)? ((props.layout == "list2")? "50%" : '0px') : props.css['border-radius']} !important;
-	&:hover{
-	    transform: scale(${props => props.css.animation})
-	}
 `;
 
 export const MetaIcona = styled.div`
@@ -333,7 +341,7 @@ export const MetaIconspan = styled.div`
 `
 
 export const MetaCatIcon = styled.div`
-    font-size: ${(props)=> (props.css['font-size'] == "")? ((props.meta['font-size'] == "")? "12px": props.meta['font-size']): props.css['font-size']} !important;
+    font-size: ${(props)=> (props.css['font-size'] == "")? ((props.meta['font-size'] == "")? "": props.meta['font-size']): props.css['font-size']} !important;
     color: ${props => 
     (props?.css?.['background-color'])? 
         props?.css?.['background-color']: 

@@ -8,9 +8,8 @@ export const Titles = (props) =>{
         return txt.value;
     }
     return(
-        <Titletag as={Title} css={title_style} className="">
-            <Titlea css={title_style} primary={primary_color} data-id={id} target={target} className="" href={link}>
-                {htmltotextconvert(post_title)}
+        <Titletag as={Title} css={title_style} className="tpg-post-title-tag">
+            <Titlea css={title_style} primary={primary_color} data-id={id} target={target} className="tpg-title" href={link} dangerouslySetInnerHTML={{__html: post_title}}>
             </Titlea>
         </Titletag>
     )

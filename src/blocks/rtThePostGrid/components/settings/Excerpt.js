@@ -7,7 +7,7 @@ import {
 
 function Excerpt(props) {
     const {__} = wp.i18n;
-    const { excerpt } = props.attr.attributes
+    const { excerpt, loaders } = props.attr.attributes
     return (
         <PanelBody title={__( "Excerpt", "the-post-grid")} initialOpen={false}>
             <NumberControl
@@ -29,8 +29,11 @@ function Excerpt(props) {
                     { label: __( 'Full content', "the-post-grid"), value: 'full' },
                 ] }
                 onChange={
-                    ( value ) =>
+                    ( value ) =>{
+
                         props.attr.setAttributes( {excerpt: {...excerpt, "type": value} } )
+                    }
+
                 }
             />
 

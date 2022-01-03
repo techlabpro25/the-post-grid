@@ -15,7 +15,7 @@ export const Category_Default = (props) =>{
                         {
                             category.icon?(
                                 <a id={"terms_icon"} href={"#"}>
-                                    <MetaCatIcon as={FontAwesomeIcon} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} />
+                                    <MetaCatIcon as={FontAwesomeIcon} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
                                 </a>
                             ):("")
                         }
@@ -66,7 +66,7 @@ export const Non_Category_Default = (props) =>{
                         {
                             category.icon?(
                                 <a id={"terms_icon"} href={"#"}>
-                                    <MetaCatIcon as={FontAwesomeIcon} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} />
+                                    <MetaCatIcon as={FontAwesomeIcon} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
                                 </a>
                             ):("")
                         }

@@ -35,8 +35,8 @@ class RtThePostGrid extends Block
             "text-align"=> "left",
             "color"=> "",
             "h_color"=> "",
-            "font-size"=> "28px",
-            "font-weight"=> null,
+            "font-size"=> "22px",
+            "font-weight"=> '500',
             'line-height' => "",
             'letter-spacing' => '',
 			'transform' => ''
@@ -176,7 +176,7 @@ class RtThePostGrid extends Block
         'image' => [
             'show_hide' => true,
             'size'=> "",
-            'animation'=> null,
+            'animation'=> 'img_zoom_in',
             'border-radius'=> "0",
             'img-column' => '',
 			'content-column' => '',
@@ -214,7 +214,7 @@ class RtThePostGrid extends Block
         'primary_color' =>'',
         'parent_class' =>"default",
         'columns' =>[
-            'desktop' => "",
+            'desktop' => "4",
             'tablet' => "6",
             'mobile' => "12"
         ],
@@ -275,6 +275,9 @@ class RtThePostGrid extends Block
             'bottom' => '1px',
             'left' => '1px',
         ],
+        'loaders' =>[
+            'excerpt' => false
+        ]
 	];
 
 	public function __construct()

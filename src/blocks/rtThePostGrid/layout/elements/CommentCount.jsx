@@ -9,7 +9,7 @@ export const CommentCount = (props) =>{
             {
                 meta.icon?(
                     <a href={`${link}/#respond`}>
-                        <MetaIcona as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faComments} />
+                        <MetaIcona as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faComments} className={'iconclass'} />
                     </a>
                 ):("")
             }

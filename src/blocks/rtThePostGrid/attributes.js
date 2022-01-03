@@ -35,7 +35,7 @@ const attributes = {
 	columns: {
 		type: "object",
 		default: {
-			desktop: "",
+			desktop: "4",
 			tablet: "6",
 			mobile: "12",
 		},
@@ -190,8 +190,8 @@ const attributes = {
 			["text-align"]: "Left",
 			color: "",
 			h_color: "",
-			["font-size"]: "28px",
-			["font-weight"]: null,
+			["font-size"]: "22px",
+			["font-weight"]: '500',
 			['line-height']: "",
 			['letter-spacing']: '',
 			['transform']: ''
@@ -317,8 +317,8 @@ const attributes = {
 		type: "object",
 		default: {
 			show_hide: true,
-			size: "",
-			animation: null,
+			size: "300x300",
+			animation: "img_zoom_in",
 			["border-radius"]: "",
 			['img-column']: '',
 			['content-column']: '',
@@ -380,6 +380,12 @@ const attributes = {
 	plugin_path:{
 		type: 'text'
 	},
+	loaders:{
+		type: 'object',
+		default:{
+			excerpt: false
+		}
+	}
 
 };
 

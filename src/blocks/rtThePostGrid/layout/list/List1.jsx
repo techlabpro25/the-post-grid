@@ -76,7 +76,7 @@ export const List1 = (props) =>{
 
     return(
         <>
-            <div className={`${parent_class}`}>
+            <div className={`${parent_class} rt-container-fluid rt-tpg-container`}>
                 {
                     general.heading?(
                         <Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
@@ -95,7 +95,7 @@ export const List1 = (props) =>{
                         </Head_border>
                     ):("")
                 }
-                <div className={`rt-row rt-content-loader layout2 list1 layout_parent tpg-even rt-row`}>
+                <div className={`rt-row rt-content-loader layout2 list1 layout_parent tpg-even`}>
                     {
                         data.length && data.map((post) => {
                             var postexcerpt = post.excerpt;
@@ -164,7 +164,7 @@ export const List1 = (props) =>{
 
                             return(
                                 <>
-                                    <Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-equal-height list_layout one even-grid-item`} data-id={post.id}>
+                                    <Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} list_layout one even-grid-item ${image.animation}`} data-id={post.id}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className={`rt-row`}>
                                                 {
@@ -358,12 +358,10 @@ export const List1 = (props) =>{
                                                         {/*See more button*/}
                                                         {
                                                             general.see_more ? (
-                                                                <Btn_align css_btn={button} className="post-meta ">
-															<span className="read-more">
-																<Button_style css={button_style} css_pad={button_padding} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="" href={post.post_link}>
-																	{button.text}
-																</Button_style>
-															</span>
+                                                                <Btn_align css_btn={button} className="read-more" >
+                                                                    <Button_style css={button_style} lay_sty={layout} css_pad={button_padding} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="see_more_button" href={post.post_link}>
+                                                                        {button.text}
+                                                                    </Button_style>
                                                                 </Btn_align>
                                                             ) : ("")
                                                         }

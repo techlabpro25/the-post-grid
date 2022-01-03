@@ -8,7 +8,7 @@ export const Date = (props) =>{
         <span className="date">
             {
                 meta.icon?(
-                    <MetaIconspan as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faCalendarAlt} />
+                    <MetaIconspan as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faCalendarAlt} className={'iconclass'}/>
                 ):("")
             }
 

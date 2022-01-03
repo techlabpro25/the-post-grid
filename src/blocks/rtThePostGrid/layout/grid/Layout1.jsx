@@ -50,7 +50,8 @@ const Layout1 = (props) => {
 		columns,
 		linking,
 		layout,
-		heading_dot_margin
+		heading_dot_margin,
+		loaders
 	} = props
 
 	let Heading = "";
@@ -75,7 +76,7 @@ const Layout1 = (props) => {
 
 	return (
 		<>
-			<div className={`${parent_class}`}>
+			<div className={`${parent_class} rt-container-fluid rt-tpg-container`}>
 				{
 					(general.heading && (heading_title.length > 0))?(
 						<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
@@ -95,7 +96,7 @@ const Layout1 = (props) => {
 					):("")
 				}
 				
-				<div className={`rt-container-fluid rt-tpg-container grid-layout-1 layout_parent rt-row rt-g-${(content_wrap.gutter == "")? '4': content_wrap.gutter}`}>
+				<div className={`rt-row rt-content-loader layout1 tpg-even grid-layout-1 layout_parent`}>
 					{
 						data.length && data.map((post) => {
 							var postexcerpt = post.excerpt;
@@ -116,9 +117,7 @@ const Layout1 = (props) => {
 							if (excerpt.type == "word") {
 								postexcerpt = trimbyword(postexcerpt, excerpt.limit, excerpt.more_text)
 							}
-
-
-
+							
 							// Title
 							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.target, link: post.post_link, post_title }
 							const image_props = { id:post.id, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value }
@@ -130,7 +129,7 @@ const Layout1 = (props) => {
 
 							return (
 								<>
-									<Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 rt-equal-height even-grid-item`}>
+									<Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 even-grid-item ${image.animation}`}>
 										<Content_wrap css={content_wrap} layout={layout} css_pad={constent_box_padding} className="rt-holder">
 											<div className="rt-img-holder">
 												{
@@ -188,14 +187,6 @@ const Layout1 = (props) => {
 															}
 
 
-
-															{/*Tag*/}
-															{/*{*/}
-															{/*	general.tag ? (*/}
-															{/*		<Tags data={tag_props}/>*/}
-															{/*	) : ("")*/}
-															{/*}*/}
-
 															{/*Comment count*/}
 															{
 																general.comment_count ? (
@@ -239,14 +230,6 @@ const Layout1 = (props) => {
 																) : ("")
 															}
 
-
-
-															{/*Tag*/}
-															{/*{*/}
-															{/*	general.tag ? (*/}
-															{/*		<Tags data={tag_props}/>*/}
-															{/*	) : ("")*/}
-															{/*}*/}
 
 															{/*Comment count*/}
 															{
@@ -296,14 +279,6 @@ const Layout1 = (props) => {
 															}
 
 
-
-															{/*Tag*/}
-															{/*{*/}
-															{/*	general.tag ? (*/}
-															{/*		<Tags data={tag_props}/>*/}
-															{/*	) : ("")*/}
-															{/*}*/}
-
 															{/*Comment count*/}
 															{
 																general.comment_count ? (
@@ -320,7 +295,7 @@ const Layout1 = (props) => {
 													general.see_more ? (
 														<Btn_align css_btn={button} className="post-meta ">
 															<span className="read-more">
-																<Button_style css={button_style} css_pad={button_padding} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="" href={post.post_link}>
+																<Button_style css={button_style} lay_sty={layout} css_pad={button_padding} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="see_more_button" href={post.post_link}>
 																	{button.text}
 																</Button_style>
 															</span>

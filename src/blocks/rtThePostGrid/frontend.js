@@ -122,7 +122,10 @@ const RtThePostGrid = (props) => {
             {
                 (isrootloading)?(
 
-                    <div className="rt-tpg-lds-dual-ring"></div>
+                    <div className="lds-ripple">
+                        <div></div>
+                        <div></div>
+                    </div>
                 ):(
                     <>
                         {
@@ -136,7 +139,10 @@ const RtThePostGrid = (props) => {
                                     {
                                         isloading?(
                                             <div className="loader-wrapper">
-                                                <div className="rt-tpg-lds-dual-ring"></div>
+                                                <div className="lds-ripple2">
+                                                    <div></div>
+                                                    <div></div>
+                                                </div>
                                             </div>
                                         ):("")
                                     }

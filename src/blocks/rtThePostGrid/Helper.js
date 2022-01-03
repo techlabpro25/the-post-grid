@@ -24,3 +24,7 @@ export const trimbyword = (textToLimit, wordLimit, suffix) =>{
         return textToLimit;
 }
 
+export const full_content = (content) =>{
+    return content;
+}
+

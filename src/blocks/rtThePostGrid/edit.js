@@ -67,75 +67,75 @@ export default function Edit(props) {
 
     const matrix_position = [
         {
-            label: "Default",
+            label: __("Default", 'the-post-grid'),
             value: ""
         },
         {
-            label: "Above Title",
+            label: __("Above Title", 'the-post-grid'),
             value: "above-title"
         },
         {
-            label: "Over Image (Top Left)",
+            label: __("Over Image (Top Left)", 'the-post-grid'),
             value: "over-image top_left"
         },
         {
-            label: "Over Image (Top Right)",
+            label: __("Over Image (Top Right)", 'the-post-grid'),
             value: "over-image top_right"
         },
         {
-            label: "Over Image (Bottom Left)",
+            label: __("Over Image (Bottom Left)", 'the-post-grid'),
             value: "over-image bottom_left"
         },
         {
-            label: "Over Image (Bottom Right)",
+            label: __("Over Image (Bottom Right)", 'the-post-grid'),
             value: "over-image bottom_right"
         },
         {
-            label: "Over Image (Center)",
+            label: __("Over Image (Center)", 'the-post-grid'),
             value: "over-image image_center"
         },
 
     ];
 
     const units = [
-        { value: 'px', label: 'px', default: 0 },
-        { value: '%', label: '%', default: 10 },
-        { value: 'em', label: 'em', default: 0 },
+        { value: 'px', label: __('px', 'the-post-grid'), default: 0 },
+        { value: '%', label: __('%', 'the-post-grid'), default: 10 },
+        { value: 'em', label: __('em', 'the-post-grid'), default: 0 },
     ];
     const border_style = [
-        {value: 'dotted', label: 'Dotted'},
-        {value: 'dashed', label: 'Dashed'},
-        {value: 'solid', label: 'Solid'},
-        {value: 'double', label: 'Double'},
-        {value: 'groove', label: 'Groove'},
-        {value: 'ridge', label: 'Ridge'},
-        {value: 'inset', label: 'Inset'},
-        {value: 'outset', label: 'Outset'},
+        {value: 'dotted', label: __('Dotted', 'the-post-grid')},
+        {value: 'dashed', label: __('Dashed', 'the-post-grid')},
+        {value: 'solid', label: __('Solid', 'the-post-grid')},
+        {value: 'double', label: __('Double', 'the-post-grid')},
+        {value: 'groove', label: __('Groove', 'the-post-grid')},
+        {value: 'ridge', label: __('Ridge', 'the-post-grid')},
+        {value: 'inset', label: __('Inset', 'the-post-grid')},
+        {value: 'outset', label: __('Outset', 'the-post-grid')},
     ]
 
     const transform = [
         {
-            label: "None",
+            label: __("None", 'the-post-grid'),
             value: ""
         },
         {
-            label: "Capitalize",
+            label: __("Capitalize", 'the-post-grid'),
             value: "capitalize"
         },
         {
-            label: "Uppercase",
+            label: __("Uppercase", 'the-post-grid'),
             value: "uppercase"
         },
         {
-            label: "Lowercase",
+            label: __("Lowercase", 'the-post-grid'),
             value: "lowercase"
         },
         {
-            label: "Initial",
+            label: __("Initial", 'the-post-grid'),
             value: "initial"
         },
         {
-            label: "Inherit",
+            label: __("Inherit", 'the-post-grid'),
             value: "inherit"
         },
     ]
@@ -212,7 +212,7 @@ export default function Edit(props) {
             setIsrootloading(false)
 
         });
-    }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
+    }, [query, pagination, newOffset, pageindex, excerpt.type == "fullex", image.size]);
 
     const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -547,7 +547,10 @@ export default function Edit(props) {
             <div className="rt-postsreact-editor" ref={listingWrapRef}>
                 {
                     (isrootloading)?(
-                        <div className="rt-tpg-lds-dual-ring"></div>
+                        <div className="lds-ripple">
+                            <div></div>
+                            <div></div>
+                        </div>
                     ):(
                         <>
                             {
@@ -561,7 +564,10 @@ export default function Edit(props) {
                                         {
                                             isloading ? (
                                                 <div className="loader-wrapper2">
-                                                    <div className="rt-tpg-lds-dual-ring"></div>
+                                                    <div className="lds-ripple2">
+                                                        <div></div>
+                                                        <div></div>
+                                                    </div>
                                                 </div>
                                             ):("")
                                         }

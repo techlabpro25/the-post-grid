@@ -9,7 +9,7 @@ export const Author = (props) => {
             {
                 meta.icon ? (
                     <a href={author_url}>
-                        <MetaIcona as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faUser}/>
+                        <MetaIcona as={FontAwesomeIcon} css={meta_style} primary={primary_color} icon={faUser} className={'iconclass'}/>
                     </a>
 
                 ) : ("")
