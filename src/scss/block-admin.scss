@@ -1,293 +1,323 @@
 .content_block {
-    padding: 10px;
-    text-align: center;
+  padding: 10px;
+  text-align: center;
 }
 
 .column_block {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
-a:hover{
-    text-decoration: none !important;
+a:hover {
+  text-decoration: none !important;
 }
 
 // Tab Panel Start
 .custom-tab-panel button.panel_tab {
-    margin: 5px 1px 5px 1px;
+  margin: 0;
 }
 .custom-tab-panel .tab-advanced.parent_tab {
-    position: relative;
+  position: relative;
 }
 
-
 .custom-tab-panel .components-tab-panel__tabs {
-    justify-content: center;
+  gap: 5px;
+  margin-bottom: 16px;
 }
 
 .custom-tab-panel .tab-advanced.parent_tab.active-tab:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 10px 8px 0 8px;
-    border-color: #4c6fff transparent transparent transparent;
-    bottom: -10px;
-    left: 0;
-    right: 0;
-    margin: auto;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 8px 0 8px;
+  border-color: #4c6fff transparent transparent transparent;
+  bottom: -10px;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
-.components-button:focus:not(:disabled){
-    box-shadow: unset !important;
+.components-button:focus:not(:disabled) {
+  box-shadow: unset !important;
 }
 
-.custom-tab-panel .child_tab.active-tab, .custom-tab-panel button.child_tab.panel_tab:hover {
-    color: #4c6fff !important;
-    border-bottom: solid 2px #4c6fff;
+.custom-tab-panel .child_tab.active-tab,
+.custom-tab-panel button.child_tab.panel_tab:hover {
+  color: #4c6fff !important;
+  border-bottom: solid 2px #4c6fff;
 }
-.custom-tab-panel .child_tab{
-    color: #333 !important;
+.custom-tab-panel .child_tab {
+  color: #333 !important;
 }
 
 .custom-tab-panel button.parent_tab {
-    background-color: aliceblue;
-    color: #333 !important;
-    border-radius: 5px;
-    height: 40px;
+  background-color: aliceblue;
+  color: #333 !important;
+  border-radius: 5px;
+  height: 40px;
 }
 
-.custom-tab-panel button.parent_tab.active-tab, .custom-tab-panel button.parent_tab.panel_tab:hover {
-    background-color: #4c6fff;
-    color: white !important;
+.custom-tab-panel button.parent_tab.active-tab,
+.custom-tab-panel button.parent_tab.panel_tab:hover {
+  background-color: #4c6fff;
+  color: white !important;
 }
 
-.popovercomponent{
-    width: 100%;
-    background-color: #2b7cba;
-    color: white;
-    margin: 10px 0;
+.popovercomponent {
+  width: 100%;
+  background-color: #2b7cba;
+  color: white;
+  margin: 10px 0;
 }
-.popovercomponent.com_1{
-    margin-top: 20px;
+.popovercomponent.com_1 {
+  margin-top: 20px;
 }
 
-.components-input-control__container select[multiple]{
-    min-height: 80px !important;
+.components-input-control__container select[multiple] {
+  min-height: 80px !important;
 }
 .tax_first_child {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
-div.tax_first_child .components-checkbox-control {margin-left: 10px;margin-bottom: 0;}
+div.tax_first_child .components-checkbox-control {
+  margin-left: 10px;
+  margin-bottom: 0;
+}
 
 div.tax_second_child .components-base-control {
-    margin-left: 25px;
+  margin-left: 25px;
 }
 
 .items.selected {
-    border: solid 2px gray;
-    border-radius: 5px;
+  border: solid 2px gray;
+  border-radius: 5px;
 }
 
-.components-button-group, .components-number-control{
-    //margin-bottom: 24px;
+.components-button-group,
+.components-number-control {
+  //margin-bottom: 24px;
 }
 
 .post_grid_blocks h2.components-panel__body-title {
-    background-color: #F7FAFC;
-    border-radius: 5px;
+  background-color: #f7fafc;
+  border-radius: 5px;
+  margin-bottom: 0 !important;
 }
 
 .post_grid_blocks .components-panel__body {
-    border-radius: 5px;
+  border-radius: 5px;
 }
 
 .post_grid_blocks button.components-button {
-    color: #4c6fff;
+  color: #4c6fff;
 }
 
-.post_grid_blocks svg.components-panel__arrow {color: #4c6fff !important;}
+.post_grid_blocks svg.components-panel__arrow {
+  color: #4c6fff !important;
+}
 
 .post_grid_blocks h2.components-panel__body-title:hover {
-    background-color: #4c6fff;
+  background-color: #4c6fff;
 }
 
-.post_grid_blocks h2.components-panel__body-title:hover button.components-button {
-    color: white;
+.post_grid_blocks
+  h2.components-panel__body-title:hover
+  button.components-button {
+  color: white;
 }
 
-.post_grid_blocks h2.components-panel__body-title:hover svg.components-panel__arrow {
-    color: white !important;
+.post_grid_blocks
+  h2.components-panel__body-title:hover
+  svg.components-panel__arrow {
+  color: white !important;
 }
 
 .post_grid_blocks .components-panel__body-toggle.components-button:focus {
-    box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) #4c6fff;
-    border-radius: 5px;
+  box-shadow: inset 0 0 0 var(--wp-admin-border-width-focus) #4c6fff;
+  border-radius: 5px;
 }
 
-.post_grid_blocks .components-form-toggle.is-checked .components-form-toggle__track{
-    background-color: #4c6fff;
+.post_grid_blocks
+  .components-form-toggle.is-checked
+  .components-form-toggle__track {
+  background-color: #4c6fff;
 }
-.post_grid_blocks .components-form-toggle .components-form-toggle__input:focus+.components-form-toggle__track{
-    box-shadow: unset !important;
+.post_grid_blocks
+  .components-form-toggle
+  .components-form-toggle__input:focus
+  + .components-form-toggle__track {
+  box-shadow: unset !important;
 }
 
-.post_grid_blocks .components-tab-panel__tabs-item{
-    height: 35px;
+.post_grid_blocks .components-tab-panel__tabs-item {
+  height: 35px;
 }
 
 .post_grid_blocks .components-tab-panel__tab-content {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
-.post_grid_blocks .components-button.is-primary{
-	color: white !important;
-	background-color: #566fff;
+.post_grid_blocks .components-button.is-primary {
+  color: white !important;
+  background-color: #566fff;
 }
 
-.post_grid_blocks .components-button.is-primary:hover{
-	background-color: #566fff;
+.post_grid_blocks .components-button.is-primary:hover {
+  background-color: #566fff;
 }
 
 .post_grid_blocks button.components-button.popovercomponent {
-    color: white;
-    background-color: #4c6fff;
+  color: white;
+  background-color: #4c6fff;
 }
 
 .components-popover .components-popover__content {
-    padding: 15px !important;
+  padding: 15px !important;
 }
 
 .post_grid_blocks .post-meta-user {
-    text-align: center;
+  text-align: center;
 }
 
-.parent input.active + img, .child input.active + img {
-    border: solid 2px #4c6fff;
-    border-radius: 5px;
+.parent input.active + img,
+.child input.active + img {
+  border: solid 2px #4c6fff;
+  border-radius: 5px;
 }
 .parent .layout img:hover {
-    border-color: #4c6fff;
+  border-color: #4c6fff;
 }
 /* HIDE RADIO */
-.parent [type=radio], .child [type=radio] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+.parent [type="radio"],
+.child [type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 /* IMAGE STYLES */
-.parent [type=radio] + img, .child [type=radio] + img {
-    cursor: pointer;
-    width: 50%;
+.parent [type="radio"] + img,
+.child [type="radio"] + img {
+  cursor: pointer;
+  width: 50%;
 }
 
 .rt-postsreact-editor {
-    padding-bottom: 30px;
+  padding-bottom: 30px;
 }
 
-.rt-react-select2 input:focus{
-    box-shadow: none !important;
+.rt-react-select2 input:focus {
+  box-shadow: none !important;
 }
 .rt-react-select2 {
-    margin: 5px 0 20px 25px !important;
+  margin: 5px 0 20px 25px !important;
 }
-.tax_second_child .title{
-    margin-left: 25px !important;
+.tax_second_child .title {
+  margin-left: 25px !important;
 }
 .tax_second_child {
-    margin: 30px 0px;
+  margin: 30px 0px;
 }
 
 .button-color-panel .components-tab-panel__tabs {
-    width: 100%;
+  width: 100%;
 }
 
 .button-color-panel button.tab_panel {
-    border: solid 1px gray;
-    width: 100%;
-    justify-content: center;
-    height: 38px;
+  border: solid 1px gray;
+  width: 100%;
+  justify-content: center;
+  height: 38px;
 }
 
-.components-dropdown__content .components-popover__content>div {
-    padding: 7px !important;
+.components-dropdown__content .components-popover__content > div {
+  padding: 7px !important;
 }
 
 .button-color-panel .components-tab-panel__tab-content {
-    padding: 15px;
-    margin: 0;
-    background-color: aliceblue;
+  padding: 15px;
+  margin: 0;
+  background-color: aliceblue;
 }
 
 .button-color-panel button.tab_panel.active-tab {
-    background-color: #4c6fff;
-    color: white;
-    border: solid 1px #4c6fff;
+  background-color: #4c6fff;
+  color: white;
+  border: solid 1px #4c6fff;
 }
 
-.button-color-panel button.tab_panel:hover{
-    background-color: #4b6adb;
-    color: white;
-    border: solid 1px #4b6adb;
+.button-color-panel button.tab_panel:hover {
+  background-color: #4b6adb;
+  color: white;
+  border: solid 1px #4b6adb;
 }
 .rt-font-family {
-    margin-bottom: 18px;
+  margin-bottom: 18px;
 }
-.rt-font-family input:focus{
-    box-shadow: unset !important;
+.rt-font-family input:focus {
+  box-shadow: unset !important;
 }
 
 .rttpg-typography-base .components-base-control__field {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .rttpg-typography-base .components-dropdown.rttpg-typography-dropdown {
-    background-color: #ededed;
-    border-radius: 5px;
-    padding: 5px;
+  background-color: #ededed;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .rttpg-typography-base span.components-base-control__label {
-    padding-top: 8px;
-    font-size: 14px;
+  padding-top: 8px;
+  font-size: 14px;
 }
-.popover-slot .components-popover.components-dropdown__content.my-popover-content-classname .components-popover__content {
-    left: -220px;
-    padding: 0 !important;
-}
-
-.rt-selectcontrol, .rt-unitcontrol, .rt-numbercontrol, .rt-colorcontrol, .rt-radiocontrol, .rt-togglecontrol, .rt-textcontrol {
-    margin-bottom: 15px !important;
-    margin-top: 8px !important;
+.popover-slot
+  .components-popover.components-dropdown__content.my-popover-content-classname
+  .components-popover__content {
+  left: -220px;
+  padding: 0 !important;
 }
 
-.components-text{
-    font-size: 14px;
-    color: #333;
+.rt-selectcontrol,
+.rt-unitcontrol,
+.rt-numbercontrol,
+.rt-colorcontrol,
+.rt-radiocontrol,
+.rt-togglecontrol,
+.rt-textcontrol {
+  margin-bottom: 15px !important;
+  margin-top: 8px !important;
 }
 
-.rt-radiocontrol .components-radio-control__input:focus{
-    box-shadow: unset !important;
+.components-text {
+  font-size: 14px;
+  color: #333;
 }
-.components-checkbox-control__input[type=checkbox]:focus, .components-radio-control__input[type=radio]:focus {
-    box-shadow: unset !important;
-    outline: unset !important;
+
+.rt-radiocontrol .components-radio-control__input:focus {
+  box-shadow: unset !important;
+}
+.components-checkbox-control__input[type="checkbox"]:focus,
+.components-radio-control__input[type="radio"]:focus {
+  box-shadow: unset !important;
+  outline: unset !important;
 }
 
 .custom-tab-panel {
-    .components-panel__body {
-        &.is-opened {
-            padding-top: 0;
-        }
+  .components-panel__body {
+    &.is-opened {
+      padding-top: 0;
     }
+  }
 }
 
-
-
-
-
-
-
-
+.the_post_grid_blocks {
+  .components-panel {
+    &__body-title {
+      margin-bottom: 0 !important;
+    }
+  }
+}
