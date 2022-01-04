@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\RadiusBlocks\Helpers;
+namespace RT\TpgBlocks\Helpers;
 defined('ABSPATH') || exit;
 
 class Installer

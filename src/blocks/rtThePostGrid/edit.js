@@ -141,8 +141,7 @@ export default function Edit(props) {
     ]
     const listingWrapRef = useRef();
 
-
-    useEffect(() => {
+    const call_all_post = (query, pagination, image, excerpt) =>{
         let authors = [];
         let status = [];
         query.author.map((i)=>{
@@ -176,7 +175,6 @@ export default function Edit(props) {
         }
 
         apiFetch({
-
             path: '/rt/v1/query',
             method: 'POST',
             data: {
@@ -212,7 +210,19 @@ export default function Edit(props) {
             setIsrootloading(false)
 
         });
-    }, [query, pagination, newOffset, pageindex, excerpt.type == "fullex", image.size]);
+    }
+
+
+    useEffect(() => {
+        call_all_post(query, pagination, image, excerpt)
+    }, [query, pagination, newOffset, pageindex, image.size]);
+
+    //Excerpt dependent
+    useEffect(() =>{
+        if(excerpt.type === 'fullex'){
+            call_all_post(query, pagination, image, excerpt)
+        }
+    }, [excerpt.type])
 
     const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
 

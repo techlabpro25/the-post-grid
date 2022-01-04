@@ -61,7 +61,7 @@ if (
 		fs.ensureDir(languages, function (err) {
 			if (err) return console.error(err); // if file or folder does not exist
 			wpPot({
-				package: "Radius Block",
+				package: "The Post Grid",
 				bugReport: "",
 				src: "app/**/*.php",
 				domain: package_slug,

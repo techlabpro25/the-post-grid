@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\RadiusBlocks\Models;
+namespace RT\TpgBlocks\Models;
 defined('ABSPATH') || exit;
 
 class Dependencies

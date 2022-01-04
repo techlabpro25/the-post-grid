@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\RadiusBlocks\Abstracts;
+namespace RT\TpgBlocks\Abstracts;
 
 abstract class Block
 {

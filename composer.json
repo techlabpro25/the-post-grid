@@ -2,7 +2,7 @@
 	"name": "rt/the-post-grid",
 	"autoload": {
 		"psr-4": {
-			"RT\\RadiusBlocks\\": "app/"
+			"RT\\TpgBlocks\\": "app/"
 		}
 	},
 	"authors": [

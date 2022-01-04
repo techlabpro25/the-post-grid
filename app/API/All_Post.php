@@ -1,5 +1,5 @@
 <?php
-namespace RT\RadiusBlocks\API;
+namespace RT\TpgBlocks\API;
 use WP_Query;
 
 class All_Post{

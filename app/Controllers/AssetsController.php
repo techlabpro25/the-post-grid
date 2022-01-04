@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\RadiusBlocks\Controllers;
+namespace RT\TpgBlocks\Controllers;
 
 class AssetsController
 {
@@ -35,20 +35,20 @@ class AssetsController
         // Scripts.
         wp_register_script(
             $this->plugin_name . '-frontend-js',
-            radiusBlocks()->get_dist_uri('frontend.js'),
+            tpgBlocks()->get_dist_uri('frontend.js'),
             $script_dep,
             $script_info['version'],
             true
         );
 
-        wp_enqueue_style($this->plugin_name, radiusBlocks()->get_assets_uri('css/front.css'), [], $this->version);
+        wp_enqueue_style($this->plugin_name, tpgBlocks()->get_assets_uri('css/front.css'), [], $this->version);
     }
 
     public function admin_assets() {
-        wp_enqueue_style($this->plugin_name, radiusBlocks()->get_assets_uri('css/block-admin.css'), [], $this->version);
-        wp_enqueue_style("default-css", radiusBlocks()->get_assets_uri('css/thepostgrid.css'), [], $this->version);
-        wp_enqueue_style("rtrb_common_front_css", radiusBlocks()->get_assets_uri('css/front.css'), [], $this->version);
-        wp_enqueue_script($this->plugin_name, radiusBlocks()->get_assets_uri('js/admin.js'), ['jquery'], $this->version, false);
+        wp_enqueue_style($this->plugin_name, tpgBlocks()->get_assets_uri('css/block-admin.css'), [], $this->version);
+        wp_enqueue_style("default-css", tpgBlocks()->get_assets_uri('css/thepostgrid.css'), [], $this->version);
+        wp_enqueue_style("rtrb_common_front_css", tpgBlocks()->get_assets_uri('css/front.css'), [], $this->version);
+        wp_enqueue_script($this->plugin_name, tpgBlocks()->get_assets_uri('js/admin.js'), ['jquery'], $this->version, false);
     }
 
     public function editor_assets() {
@@ -56,7 +56,7 @@ class AssetsController
         // Scripts.
         wp_enqueue_script(
             $this->plugin_name . '-cgb-block-js',
-            radiusBlocks()->get_dist_uri('blocks.build.js'),
+            tpgBlocks()->get_dist_uri('blocks.build.js'),
             ['wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-api'],
             $this->version,
             true
@@ -64,7 +64,7 @@ class AssetsController
 
         wp_enqueue_script(
             $this->plugin_name . '-cgb-deactivator-js',
-            radiusBlocks()->get_dist_uri('deactivator.build.js'),
+            tpgBlocks()->get_dist_uri('deactivator.build.js'),
             ['wp-editor', 'wp-blocks', 'wp-i18n', 'wp-element'],
             $this->version,
             true
@@ -75,7 +75,7 @@ class AssetsController
             $this->plugin_name . '-cgb-block-editor-css',
             file_exists(wp_upload_dir()['basedir'] . '/' . $this->plugin_name . '/blocks.editor.build.css') ?
                 content_url('/uploads/' . $this->plugin_name . '/blocks.editor.build.css') :
-                radiusBlocks()->get_dist_uri('blocks.editor.build.css'),
+                tpgBlocks()->get_dist_uri('blocks.editor.build.css'),
             ['wp-edit-blocks'],
             $this->version
         );

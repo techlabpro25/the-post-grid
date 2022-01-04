@@ -4,20 +4,20 @@ require_once __DIR__ . './../vendor/autoload.php';
 
 defined('ABSPATH') || exit;
 
-use RT\RadiusBlocks\Helpers\Fns;
-use RT\RadiusBlocks\API\All_Post;
-use RT\RadiusBlocks\API\Get_Terms;
-use RT\RadiusBlocks\API\Get_Image_Sizes;
-use RT\RadiusBlocks\API\Get_Title;
-use RT\RadiusBlocks\API\Isotope_Terms;
-use RT\RadiusBlocks\Abstracts\Block;
-use RT\RadiusBlocks\Helpers\Installer;
-use RT\RadiusBlocks\API\Get_Categories;
-use RT\RadiusBlocks\Models\Dependencies;
-use RT\RadiusBlocks\Blocks\RtThePostGrid;
-use RT\RadiusBlocks\Controllers\AssetsController;
+use RT\TpgBlocks\Helpers\Fns;
+use RT\TpgBlocks\API\All_Post;
+use RT\TpgBlocks\API\Get_Terms;
+use RT\TpgBlocks\API\Get_Image_Sizes;
+use RT\TpgBlocks\API\Get_Title;
+use RT\TpgBlocks\API\Isotope_Terms;
+use RT\TpgBlocks\Abstracts\Block;
+use RT\TpgBlocks\Helpers\Installer;
+use RT\TpgBlocks\API\Get_Categories;
+use RT\TpgBlocks\Models\Dependencies;
+use RT\TpgBlocks\Blocks\RtThePostGrid;
+use RT\TpgBlocks\Controllers\AssetsController;
 
-final class RadiusBlocks{
+final class ThePostGrid{
 	/**
 	 * Store the singleton object.
 	 */
@@ -28,9 +28,11 @@ final class RadiusBlocks{
 	 */
 	private function __construct(){
 		$this->define_constants();
-		$dependence = Dependencies::getInstance();
+//		$dependence = Dependencies::getInstance();
 		//if ($dependence->check()) {
 		$assets = new AssetsController();
+        print_r($assets);
+        die();
 		$assets->init();
 		$this->init_hooks();
 		//}
@@ -155,11 +157,11 @@ final class RadiusBlocks{
 }
 
 /**
- * @return bool|RadiusBlocks
+ * @return bool|ThePostGrid
  */
-function radiusBlocks()
+function tpgBlocks()
 {
-	return RadiusBlocks::getInstance();
+	return ThePostGrid::getInstance();
 }
 
-radiusBlocks();
+tpgBlocks();
