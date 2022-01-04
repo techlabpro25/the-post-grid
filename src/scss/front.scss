@@ -464,6 +464,19 @@ post-meta-user .date span{
     }
 }
 
+.rt-tpg-container .even-grid-item{
+    animation: gridfadeInAnimation 1s linear;
+}
+@keyframes gridfadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
 
 
 
