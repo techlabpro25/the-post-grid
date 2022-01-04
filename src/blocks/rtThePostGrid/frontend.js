@@ -77,7 +77,6 @@ const RtThePostGrid = (props) => {
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
             setIsrootloading(false)
-
         });
     }, [query, pagination, loadingindex, image.size]);
 

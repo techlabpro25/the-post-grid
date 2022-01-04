@@ -66,7 +66,7 @@ function Image(props) {
                     />
 
                     <NumberControl
-                        className={"rt-numbercontrol image"}
+                        className={"image"}
                         label={__( "Gutter Control:", "the-post-grid")}
                         value={ image.gutter }
                         onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "gutter": value} } ) }
@@ -74,6 +74,7 @@ function Image(props) {
                         max={ 100 }
                         step={1}
                     />
+                    <small>{__("(Unit is 'PX' in use)")}</small>
                 </>
             ):("")}
 

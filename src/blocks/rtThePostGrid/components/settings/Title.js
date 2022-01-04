@@ -2,7 +2,8 @@ import {
     PanelBody,
     __experimentalNumberControl as NumberControl,
     RadioControl,
-    SelectControl
+    SelectControl,
+    TextControl,
 } from "@wordpress/components";
 
 function Title(props) {
@@ -72,7 +73,13 @@ function Title(props) {
                 onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "type": value} } ) }
             />
 
-        
+            <TextControl
+                className={"rt-textcontrol terms"}
+                label={__( "Title More Text", "the-post-grid")}
+                value={title.more_text}
+                onChange={(val) =>props.attr.setAttributes({title: {...title, "more_text": val}})}
+            />
+
         </PanelBody>
     );
 }
