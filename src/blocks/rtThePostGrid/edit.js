@@ -303,7 +303,7 @@ export default function Edit(props) {
     return (
         <>
             <InspectorControls>
-                <PanelBody className="post_grid_blocks" title={__("The Post Grid", 'the-post-grid')}>
+                <PanelBody className="the_post_grid_blocks" title={__("The Post Grid", 'the-post-grid')}>
                     <TabPanel
                         className="custom-tab-panel"
                         activeClass="active-tab"

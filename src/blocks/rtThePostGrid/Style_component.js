@@ -179,8 +179,30 @@ export const Button_style = styled.a`
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
 	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
-	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: ''} !important;
-	
+	padding: ${props =>
+    (props.css_pad != undefined) ?
+        ((props.css_pad.top != "") && (props.css_pad.right != "") && (props.css_pad.bottom != "") && (props.css_pad.left != ""))?
+            ((props.css_pad.top != null) && (props.css_pad.right != null) && (props.css_pad.bottom != null) && (props.css_pad.left != null))?
+                props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left
+                :
+                ""
+            :
+            ""
+        :
+        ''
+    } !important;
+	margin: ${props => 
+        (props.css_mar != undefined) ?
+            ((props.css_mar.top != "") && (props.css_mar.right != "") && (props.css_mar.bottom != "") && (props.css_mar.left != ""))?
+                ((props.css_mar.top != null) && (props.css_mar.right != null) && (props.css_mar.bottom != null) && (props.css_mar.left != null))?
+                    props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left
+                    :
+                    "0px"
+                :
+                "0px"
+            : 
+            '0px'
+    } !important;
 `;
 
 export const Btn_align = styled.div`

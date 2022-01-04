@@ -35,6 +35,7 @@ const Layout1 = (props) => {
 		button,
 		button_style,
 		button_padding,
+		button_margin,
 		general,
 		heading,
 		heading_style,
@@ -295,7 +296,7 @@ const Layout1 = (props) => {
 													general.see_more ? (
 														<Btn_align css_btn={button} className="post-meta ">
 															<span className="read-more">
-																<Button_style css={button_style} lay_sty={layout} css_pad={button_padding} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="see_more_button" href={post.post_link}>
+																<Button_style css={button_style} lay_sty={layout} css_pad={button_padding} css_mar={button_margin} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="see_more_button" href={post.post_link}>
 																	{button.text}
 																</Button_style>
 															</span>
