@@ -180,6 +180,7 @@ export const Button_style = styled.a`
 	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
 	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
 	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: ''} !important;
+	
 `;
 
 export const Btn_align = styled.div`

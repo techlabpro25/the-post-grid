@@ -16,7 +16,7 @@ import {
 import { useState, useEffect } from '@wordpress/element';
 
 function Read_More(props) {
-    const { button, button_style, button_padding} = props.attr.attributes
+    const { button, button_style, button_padding, button_margin} = props.attr.attributes
     const {__} = wp.i18n;
 
     return (
@@ -337,6 +337,15 @@ function Read_More(props) {
                     props.attr.setAttributes({button_padding: val})
                 }}
             />
+            <BoxControl
+                label={__( "Margin:", "the-post-grid")}
+                values={ button_margin }
+                splitOnAxis={true}
+                onChange={ ( val ) => {
+                    props.attr.setAttributes({button_margin: val})
+                }}
+            />
+
         
         </PanelBody>
     );

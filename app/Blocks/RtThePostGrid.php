@@ -98,10 +98,16 @@ class RtThePostGrid extends Block
             'transform' => ''
         ],
         'button_padding' =>[
-                'top' => '8px',
-                'right' => '15px',
-                'bottom' => '8px',
-                'left' => '15px',
+            'top' => '8px',
+            'right' => '15px',
+            'bottom' => '8px',
+            'left' => '15px',
+        ],
+        'button_margin' =>[
+            'top' => "0px",
+            'right' => '0px',
+            'bottom' => '0px',
+            'left' => '0px'
         ],
         'excerpt_style' =>[
             'color' => "",

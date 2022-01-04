@@ -121,9 +121,11 @@ const RtThePostGrid = (props) => {
             {
                 (isrootloading)?(
 
-                    <div className="lds-ripple">
-                        <div></div>
-                        <div></div>
+                    <div className={"root-loader-wrapper"}>
+                        <div className="lds-ripple">
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
                 ):(
                     <>

@@ -276,6 +276,14 @@ div.tax_second_child .components-base-control {
     outline: unset !important;
 }
 
+.custom-tab-panel {
+    .components-panel__body {
+        &.is-opened {
+            padding-top: 0;
+        }
+    }
+}
+
 
 
 
