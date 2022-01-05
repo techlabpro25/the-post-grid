@@ -1,11 +1,12 @@
 import {
-    PanelBody, SelectControl, 
+    PanelBody, SelectControl,
+    __experimentalNumberControl as NumberControl,
 } from "@wordpress/components";
 
 
 function Columns(props) {
     const {__} = wp.i18n;
-    const {columns} = props.attr.attributes
+    const {columns, content_wrap} = props.attr.attributes
     const column = [
         {
             label: __( "Column 1", "the-post-grid"),
@@ -53,6 +54,16 @@ function Columns(props) {
                 options={column}
                 value ={columns.mobile}
                 onChange={(val)=>props.attr.setAttributes( {columns: {...columns, "mobile": val} })}
+            />
+
+            <NumberControl
+                className={"rt-numbercontrol column"}
+                label={__( "Gutter Control:", "the-post-grid")}
+                value={ content_wrap.gutter }
+                onChange={ ( value ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "gutter": value} } ) }
+                min={ 0 }
+                max={ 100 }
+                step={1}
             />
         </PanelBody>
     );

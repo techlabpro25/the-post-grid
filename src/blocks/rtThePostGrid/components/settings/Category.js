@@ -47,7 +47,7 @@ function Category(props) {
 
             <ToggleControl
                 className={"rt-togglecontrol terms"}
-                label={__( "Icon", "the-post-grid")}
+                label={__( " Show Icon", "the-post-grid")}
                 checked={ category.icon }
                 onChange={ (val) => {
                     useHasicon( ( state ) => ! state );

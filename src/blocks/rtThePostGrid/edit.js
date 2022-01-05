@@ -32,7 +32,6 @@ import $ from 'jquery';
 import {PredefaultAttr} from "./components/PredefaultAttr";
 import Pagination from "./components/style/Pagination";
 import {PaginationStyle, Pageprivnext} from "./Style_component";
-import Content_Wrap from "./components/settings/Content_Wrap";
 
 
 const {__} = wp.i18n;
@@ -46,11 +45,12 @@ export default function Edit(props) {
     const [isrootloading, setIsrootloading] = useState(true);
     const [paginationNumber, setPaginationNumber] = useState(0);
     const [pageindex, setPageindex] = useState(1);
+    const [scrolltop, setscrolltop] = useState(false);
     const [message, setMessage] = useState("");
     const [newOffset, setNewOffset] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const {query, columns, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, layout, pagination_style} = attributes
+    const {query, columns, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, loaders, layout, pagination_style} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -141,8 +141,7 @@ export default function Edit(props) {
     ]
     const listingWrapRef = useRef();
 
-
-    useEffect(() => {
+    const call_all_post = (query, pagination, image, excerpt) =>{
         let authors = [];
         let status = [];
         query.author.map((i)=>{
@@ -210,9 +209,18 @@ export default function Edit(props) {
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
             setIsrootloading(false)
+            // props.attr.setAttributes( {loaders: {...loaders, 'image': true} } )
 
         });
-    }, [query, pagination, newOffset, pageindex, excerpt.type == "fullex", image.size]);
+    }
+
+    useEffect(() => {
+        call_all_post(query, pagination, image, excerpt)
+    }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
+
+    useEffect(() => {
+        call_all_post(query, pagination, image, excerpt)
+    }, [excerpt.type]);
 
     const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -247,7 +255,9 @@ export default function Edit(props) {
     useEffect(()=>{
         $('.layout_parent').css('opacity', 0.2);
         setIsloading(true);
-        executeScroll();
+        if(scrolltop){
+            executeScroll();
+        }
         setAttributes({query: {...query, 'loader':false}})
     },[query.loader])
 
@@ -441,7 +451,6 @@ export default function Edit(props) {
                                                                     ) : ("")
 
                                                             }
-                                                            <Content_Wrap attr={global_attr}/>
 
                                                             {/* Image */}
                                                             <Image attr={global_attr}/>
@@ -450,13 +459,6 @@ export default function Edit(props) {
                                                 } else if (tab?.name == "style") {
                                                     return (
                                                         <>
-                                                            <TextControl
-                                                                className={'.rt-textcontrol'}
-                                                                label={__("Parent Class:", "the-post-grid")}
-                                                                value={parent_class}
-                                                                onChange={(val) => props.setAttributes({parent_class: val})}
-                                                            />
-
                                                             <Text>
                                                                 Primary Color:
                                                             </Text>
@@ -544,7 +546,7 @@ export default function Edit(props) {
                 </PanelBody>
 
             </InspectorControls>
-            <div className="rt-postsreact-editor" ref={listingWrapRef}>
+            <div className="rt-postsreact-editor rt-tpg-root" ref={listingWrapRef}>
                 {
                     (isrootloading)?(
                         <div className="lds-ripple">
@@ -597,7 +599,10 @@ export default function Edit(props) {
                                                                             className={`pagination_number ${i+1}${activeClass}`}
                                                                             data-value={i + 1}
                                                                             key={i}
-                                                                            onClick={() => {setPageindex(i + 1)}}>{i + 1}</PaginationStyle>
+                                                                            onClick={() => {
+                                                                                setPageindex(i + 1)
+                                                                                setscrolltop(true)
+                                                                            }}>{i + 1}</PaginationStyle>
                                                             }
                                                         })
                                                     }

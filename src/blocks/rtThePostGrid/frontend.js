@@ -11,6 +11,7 @@ const RtThePostGrid = (props) => {
     const {query, pagination, image, pagination_style, pagination_padding, pagination_margin, excerpt} = props
     const [pagestate, setPagestate] = useState(0);
     const [pageindex, setPageindex] = useState(1);
+    const [scrolltop, setscrolltop] = useState(false);
     const [message, setMessage] = useState("");
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
@@ -80,9 +81,12 @@ const RtThePostGrid = (props) => {
         });
     }, [query, pagination, loadingindex, image.size]);
 
+
     useEffect(()=>{
         $('.layout_parent').css('opacity', 0.2);
-        executeScroll();
+        if(scrolltop){
+            executeScroll();
+        }
         setTimeout(function(){
             setLoadingindex((prev)=> prev + 1)
         }, 500)
@@ -117,7 +121,7 @@ const RtThePostGrid = (props) => {
 
 
     return (
-        <div className="rt-thepostgrid-frontend" ref={listingWrapRef}>
+        <div className="rt-thepostgrid-frontend rt-tpg-root" ref={listingWrapRef}>
             {
                 (isrootloading)?(
 
@@ -167,7 +171,10 @@ const RtThePostGrid = (props) => {
                                                     css_mar={pagination_margin}
                                                     className={`pagination_number ${i+1} ${activeClass}`}
                                                     data-value={i+1}
-                                                    key={i} onClick={()=> {setPageindex(i+1)}}>{i+1}
+                                                    key={i} onClick={()=> {
+                                                        setPageindex(i+1)
+                                                        setscrolltop(true)
+                                                    }}>{i+1}
                                                 </PaginationStyle>
                                             }
                                         }

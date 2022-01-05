@@ -475,10 +475,11 @@ export const ContentCol = styled.div`
 `
 
 export const Colgut = styled.div`
-    padding-top: ${props => (props.css.gutter == "")? "7.5": props.css.gutter }px !important;
+    padding-top: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
     padding-right: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
-    padding-bottom: ${props => (props.css.gutter == "")? "7.5": props.css.gutter }px !important;
+    padding-bottom: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
     padding-left: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
+    margin: 0px !important;
 `
 
 
