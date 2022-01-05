@@ -209,8 +209,6 @@ export default function Edit(props) {
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
             setIsrootloading(false)
-            // props.attr.setAttributes( {loaders: {...loaders, 'image': true} } )
-
         });
     }
 

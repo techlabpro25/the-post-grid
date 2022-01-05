@@ -5,47 +5,37 @@ import $ from 'jquery'
 function Layout(props) {
 	const {__} = wp.i18n;
 	const  {layout, plugin_path, general} = props.attr.attributes;
-	const layout_type_root = $('.rt-tpg-layout-control-wrapper');
 
 	const clickHandler = (e) =>{
-		console.log("hello")
 		props.attr.setAttributes({layout: {...layout, 'type': e.target.value}})
 
-		layout_type_root.each(function(){
-			if($(this).find('.rt-tpg-layout-control-parent input.active').hasClass('active')){
-				$(this).find('.rt-tpg-layout-control-parent input.active').removeClass('active');
-				$(this).find('.rt-tpg-layout-control-parent .'+e.target.value).addClass("active");
+			if($('.rt-tpg-layout-control-parent input.active').hasClass('active')){
+				$('.rt-tpg-layout-control-parent input.active').removeClass('active');
+				$('.rt-tpg-layout-control-parent .'+e.target.value).addClass("active");
 			}else{
-				$(this).find('.rt-tpg-layout-control-parent .'+e.target.value).addClass("active");
+				$('.rt-tpg-layout-control-parent .'+e.target.value).addClass("active");
 			}
-		})
-
 	}
 
 	const layoutClickHandler = (e) =>{
 		props.attr.setAttributes({layout: {...layout, 'value': e.target.value}})
 		props.attr.setAttributes({general: {...general, 'presdefault': true}})
 
-		layout_type_root.each(function(){
-			if($(this).find('.rt-tpg-layout-control-child input.active').hasClass('active')){
-				$(this).find('.rt-tpg-layout-control-child input.active').removeClass('active');
-				$(this).find('.rt-tpg-layout-control-child .'+e.target.value).addClass("active");
-			}else{
-				$(this).find('.rt-tpg-layout-control-child .'+e.target.value).addClass("active");
-			}
-		})
-
+		if($('.rt-tpg-layout-control-child input.active').hasClass('active')){
+			$('.rt-tpg-layout-control-child input.active').removeClass('active');
+			$('.rt-tpg-layout-control-child .'+e.target.value).addClass("active");
+		}else{
+			$('.rt-tpg-layout-control-child .'+e.target.value).addClass("active");
+		}
 	}
 
 	useEffect(() =>{
-		layout_type_root.each(function (){
-			if(layout.type.length != 0){
-				$(this).find('.rt-tpg-layout-control-parent .'+layout.type).addClass("active");
-			}
-			if(layout.value.length != 0){
-				$(this).find('.rt-tpg-layout-control-child .'+layout.value).addClass("active");
-			}
-		})
+		if(layout.type.length != 0){
+			$('.rt-tpg-layout-control-parent .'+layout.type).addClass("active");
+		}
+		if(layout.value.length != 0){
+			$('.rt-tpg-layout-control-child .'+layout.value).addClass("active");
+		}
 	}, [])
 
 
