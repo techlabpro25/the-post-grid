@@ -9,12 +9,12 @@ function Layout(props) {
 	const clickHandler = (e) =>{
 		props.attr.setAttributes({layout: {...layout, 'type': e.target.value}})
 
-			if($('.rt-tpg-layout-control-parent input.active').hasClass('active')){
-				$('.rt-tpg-layout-control-parent input.active').removeClass('active');
-				$('.rt-tpg-layout-control-parent .'+e.target.value).addClass("active");
-			}else{
-				$('.rt-tpg-layout-control-parent .'+e.target.value).addClass("active");
-			}
+		if($('.rt-tpg-layout-control-parent input.active').hasClass('active')){
+			$('.rt-tpg-layout-control-parent input.active').removeClass('active');
+			$('.rt-tpg-layout-control-parent .'+e.target.value).addClass("active");
+		}else{
+			$('.rt-tpg-layout-control-parent .'+e.target.value).addClass("active");
+		}
 	}
 
 	const layoutClickHandler = (e) =>{
@@ -39,69 +39,67 @@ function Layout(props) {
 	}, [])
 
 
-    return (
-			<PanelBody title={__( "Layout Type", "the-post-grid")} initialOpen={true}>
-				<div className="rt-tpg-layout-control-wrapper">
-					<div className="rt-tpg-layout-control-parent">
-						<label>{__( "Layout Type:", "the-post-grid")}</label>
-						<br/>
+	return (
+		<PanelBody title={__( "Layout Type", "the-post-grid")} initialOpen={true}>
+			<div className="rt-tpg-layout-control-parent">
+				<label>{__( "Layout Type:", "the-post-grid")}</label>
+				<br/>
+				<label>
+					<input className={`grid`} type="radio" name="laytype" value="grid" onClick={clickHandler}/>
+					<img src={plugin_path+'grid.png'}/>
+				</label>
+
+				<label>
+					<input className={"list"} type="radio" name="laytype" value="list" onClick={clickHandler}/>
+					<img src={plugin_path+'list.png'}/>
+				</label>
+
+				{/*<label>*/}
+				{/*	<input className={"isotope"} type="radio" name="laytype" value="isotope" onClick={clickHandler}/>*/}
+				{/*	<img src={plugin_path+'isotope.png'}/>*/}
+				{/*</label>*/}
+			</div>
+
+			<div className="rt-tpg-layout-control-child">
+				<label>{__( "Layout: ", "the-post-grid")}</label>
+				<br/>
+				{
+					layout.type == "grid"?(
 						<label>
-							<input className={`grid`} type="radio" name="laytype" value="grid" onClick={clickHandler}/>
-							<img src={plugin_path+'grid.png'}/>
+							<input className={`grid1`} type="radio" name="layout" value="grid1" onClick={layoutClickHandler}/>
+							<img src={plugin_path+'grid1.png'}/>
 						</label>
+					):("")
+				}
 
-						<label>
-							<input className={"list"} type="radio" name="laytype" value="list" onClick={clickHandler}/>
-							<img src={plugin_path+'list.png'}/>
-						</label>
+				{
+					layout.type == "list"?(
+						<>
+							<label>
+								<input className={"list1"} type="radio" name="layout" value="list1" onClick={layoutClickHandler}/>
+								<img src={plugin_path+'list1.png'}/>
+							</label>
+							<label>
+								<input className={"list2"} type="radio" name="layout" value="list2" onClick={layoutClickHandler}/>
+								<img src={plugin_path+'list2.png'}/>
+							</label>
+						</>
+					):("")
+				}
 
-						{/*<label>*/}
-						{/*	<input className={"isotope"} type="radio" name="laytype" value="isotope" onClick={clickHandler}/>*/}
-						{/*	<img src={plugin_path+'isotope.png'}/>*/}
-						{/*</label>*/}
-					</div>
-
-					<div className="rt-tpg-layout-control-child">
-						<label>{__( "Layout: ", "the-post-grid")}</label>
-						<br/>
-						{
-							layout.type == "grid"?(
-								<label>
-									<input className={`grid1`} type="radio" name="layout" value="grid1" onClick={layoutClickHandler}/>
-									<img src={plugin_path+'grid1.png'}/>
-								</label>
-							):("")
-						}
-
-						{
-							layout.type == "list"?(
-								<>
-									<label>
-										<input className={"list1"} type="radio" name="layout" value="list1" onClick={layoutClickHandler}/>
-										<img src={plugin_path+'list1.png'}/>
-									</label>
-									<label>
-										<input className={"list2"} type="radio" name="layout" value="list2" onClick={layoutClickHandler}/>
-										<img src={plugin_path+'list2.png'}/>
-									</label>
-								</>
-							):("")
-						}
-
-						{/*{*/}
-						{/*	layout.type == "isotope"?(*/}
-						{/*		<label>*/}
-						{/*			<input className={"isotope1"} type="radio" name="layout" value="isotope1" onClick={layoutClickHandler}/>*/}
-						{/*			<img src={plugin_path+'isotope1.png'}/>*/}
-						{/*		</label>*/}
-						{/*	):("")*/}
-						{/*}*/}
+				{/*{*/}
+				{/*	layout.type == "isotope"?(*/}
+				{/*		<label>*/}
+				{/*			<input className={"isotope1"} type="radio" name="layout" value="isotope1" onClick={layoutClickHandler}/>*/}
+				{/*			<img src={plugin_path+'isotope1.png'}/>*/}
+				{/*		</label>*/}
+				{/*	):("")*/}
+				{/*}*/}
 
 
-					</div>
-				</div>
-			</PanelBody>
-		);
+			</div>
+		</PanelBody>
+	);
 }
 
 export default Layout;

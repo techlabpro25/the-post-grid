@@ -243,7 +243,9 @@ export default function Edit(props) {
         }
         $('.layout_parent').css('opacity', 0.2);
         setIsloading(true);
-        executeScroll();
+        if(scrolltop){
+            executeScroll();
+        }
     }, [pageindex])
 
     useEffect(()=>{
