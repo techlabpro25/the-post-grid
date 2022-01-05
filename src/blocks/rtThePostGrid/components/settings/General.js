@@ -20,7 +20,7 @@ function General(props) {
         <PanelBody title={__( "General", "the-post-grid")} className="general_tab" initialOpen={true}>
             <ToggleControl
                 className={"rt-togglecontrol general"}
-                label={__( "Block Heading", "the-post-grid")}
+                label={__( "Show Block Heading", "the-post-grid")}
                 checked={ general.heading }
                 onChange={ (val) => {
                     useHasheading( ( state ) => ! state );
@@ -30,7 +30,7 @@ function General(props) {
 
             <ToggleControl
                 className={"rt-togglecontrol general"}
-                label={__( "Title", "the-post-grid")}
+                label={__( "Show Title", "the-post-grid")}
                 checked={ general.title }
                 onChange={ (val) => {
                     useHastitle( ( state ) => ! state );
@@ -40,7 +40,7 @@ function General(props) {
 
             <ToggleControl
                 className={"rt-togglecontrol general"}
-                label={__( "Excerpt", "the-post-grid")}
+                label={__( "Show Excerpt", "the-post-grid")}
                 checked={ general.excerpt }
                 onChange={ (val) => {
                     useHasexcerpt( ( state ) => ! state );
@@ -50,7 +50,7 @@ function General(props) {
 
             <ToggleControl
                 className={"rt-togglecontrol general"}
-                label={__( "Category", "the-post-grid")}
+                label={__( "Show Category", "the-post-grid")}
                 checked={ general.category }
                 onChange={ (val) => {
                     useHascategory( ( state ) => ! state );
@@ -60,7 +60,7 @@ function General(props) {
 
             <ToggleControl
                 className={"rt-togglecontrol general"}
-                label={__( "Author", "the-post-grid")}
+                label={__( "Show Author", "the-post-grid")}
                 checked={ general.author }
                 onChange={ (val) => {
                     useHasauthor( ( state ) => ! state );
@@ -70,7 +70,7 @@ function General(props) {
 
             <ToggleControl
                 className={"rt-togglecontrol general"}
-                label={__( "Post Date", "the-post-grid")}
+                label={__( "Show Post Date", "the-post-grid")}
                 checked={ general.post_date }
                 onChange={ (val) => {
                     useHaspost_date( ( state ) => ! state );
@@ -78,18 +78,9 @@ function General(props) {
                 } }
             />
 
-            {/*<ToggleControl*/}
-            {/*    label={__( "Tag", "the-post-grid")}*/}
-            {/*    checked={ general.tag }*/}
-            {/*    onChange={ (val) => {*/}
-            {/*        useHastag( ( state ) => ! state );*/}
-            {/*        props.attr.setAttributes({general: {...general, "tag": val}})*/}
-            {/*    } }*/}
-            {/*/>*/}
-
             <ToggleControl
                 className={"rt-togglecontrol general"}
-                label={__( "Comment Count", "the-post-grid")}
+                label={__( "Show Comment Count", "the-post-grid")}
                 checked={ general.comment_count }
                 onChange={ (val) => {
                     useHascommentcount( ( state ) => ! state );
@@ -99,7 +90,7 @@ function General(props) {
 
             <ToggleControl
                 className={"rt-togglecontrol general"}
-                label={__( "Read More", "the-post-grid")}
+                label={__( "Show Read More", "the-post-grid")}
                 checked={ general.see_more }
                 onChange={ (val) => {
                     useHasseemore( ( state ) => ! state );

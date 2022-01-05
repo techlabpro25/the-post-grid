@@ -52,7 +52,8 @@ const Layout1 = (props) => {
 		linking,
 		layout,
 		heading_dot_margin,
-		loaders
+		loaders,
+		className
 	} = props
 
 	let Heading = "";
@@ -77,7 +78,7 @@ const Layout1 = (props) => {
 
 	return (
 		<>
-			<div className={`${parent_class} rt-container-fluid rt-tpg-container`}>
+			<div className={`${(className != undefined)? className: ""} rt-container-fluid rt-tpg-container`}>
 				{
 					(general.heading && (heading_title.length > 0))?(
 						<Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
@@ -135,7 +136,19 @@ const Layout1 = (props) => {
 											<div className="rt-img-holder">
 												{
 													image.show_hide?(
-														<Image data={image_props}/>
+														<>
+															{
+																loaders.image? (
+																	<div className={"image-loader"}>
+																		{/*<div className="lds-ripple3">*/}
+																		{/*	<div></div>*/}
+																		{/*	<div></div>*/}
+																		{/*</div>*/}
+																	</div>
+																): (<Image data={image_props}/>)
+															}
+														</>
+
 													):("")
 												}
 												{

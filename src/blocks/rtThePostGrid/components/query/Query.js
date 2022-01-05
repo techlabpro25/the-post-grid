@@ -505,6 +505,7 @@ const Query = (props) => {
 			) : (
 				""
 			)}
+
 			<CheckboxControl
 				label={__( "Order", "the-post-grid")}
 				checked={query.order_bool}

@@ -53,7 +53,8 @@ export const List2 = (props) =>{
         columns,
         linking,
         layout,
-        heading_dot_margin
+        heading_dot_margin,
+        className
     } = props
 
 
@@ -79,7 +80,7 @@ export const List2 = (props) =>{
 
     return(
         <>
-            <div className={`${parent_class} rt-container-fluid rt-tpg-container`}>
+            <div className={`${(className != undefined)? className: ""} rt-container-fluid rt-tpg-container`}>
                 {
                     general.heading?(
                         <Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>

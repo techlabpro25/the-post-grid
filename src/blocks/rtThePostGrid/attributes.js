@@ -331,10 +331,6 @@ const attributes = {
 			gutter: ""
 		},
 	},
-	parent_class: {
-		type: "string",
-		default: "default"
-	},
 	primary_color: {
 		type: "string",
 		default: "",
@@ -389,7 +385,8 @@ const attributes = {
 	loaders:{
 		type: 'object',
 		default:{
-			excerpt: false
+			excerpt: false,
+			image: false
 		}
 	}
 

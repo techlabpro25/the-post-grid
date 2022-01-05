@@ -11,7 +11,7 @@ import apiFetch from "@wordpress/api-fetch";
 
 function Image(props) {
     const {__} = wp.i18n;
-    const { image, layout, category } = props.attr.attributes
+    const { image, layout, category, loaders } = props.attr.attributes
     const [ showimage, setShowimage ] = useState( true );
     const [sizes, setSizes] = useState([])
 

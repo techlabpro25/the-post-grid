@@ -57,7 +57,7 @@ function Meta(props) {
 
             <ToggleControl
                 className={"rt-togglecontrol meta"}
-                label={__( "Icon", "the-post-grid")}
+                label={__( "Show Icon", "the-post-grid")}
                 checked={ meta.icon }
                 onChange={ (val) => {
                     useHasmetaicon( ( state ) => ! state );

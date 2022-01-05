@@ -218,7 +218,6 @@ class RtThePostGrid extends Block
             'filter'=> true,
         ],
         'primary_color' =>'',
-        'parent_class' =>"default",
         'columns' =>[
             'desktop' => "4",
             'tablet' => "6",
