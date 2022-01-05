@@ -24,6 +24,9 @@ a:hover {
   margin-bottom: 20px;
 }
 
+.custom-tab-panel .components-tab-panel__tabs-item {
+  height: 30px;
+}
 .custom-tab-panel .parent_tab {
   position: relative;
 }
@@ -79,7 +82,7 @@ a:hover {
 }
 
 .custom-tab-panel button.parent_tab {
-  background-color: #dedede;
+  background-color: #eeeeee;
   color: #333 !important;
   border-radius: 5px;
   height: 35px;
@@ -340,9 +343,6 @@ div.tax_second_child .components-base-control {
   --rt-tpg-color-primary: #4c6fff;
   --rt-tpg-color-border: #e7e7e7;
 }
-.the_post_grid_blocks .custom-tab-panel {
-  padding-top: 16px;
-}
 .the_post_grid_blocks .components-button:hover,
 .the_post_grid_blocks .components-button[aria-expanded=true] {
   color: var(--rt-tpg-color-primary);
@@ -525,7 +525,7 @@ div.tax_second_child .components-base-control {
   color: var(--rt-tpg-color-primary);
 }
 .the_post_grid_blocks .components-unit-control__select:focus {
-  border-color: var(--rt-tpg-color-primary);
+  border-color: var(--rt-tpg-color-border);
 }
 .the_post_grid_blocks .components-unit-control-wrapper .components-input-control {
   margin-bottom: 0;
@@ -633,6 +633,16 @@ div.tax_second_child .components-base-control {
 
 .rt-react-select2 .css-1s2u09g-control {
   min-height: 36px;
+}
+.rt-react-select2 .css-1pahdxg-control,
+.rt-react-select2 [class*=-control] {
+  border-color: var(--rt-tpg-color-border);
+}
+.rt-react-select2 .css-1pahdxg-control:active, .rt-react-select2 .css-1pahdxg-control:focus, .rt-react-select2 .css-1pahdxg-control:hover,
+.rt-react-select2 [class*=-control]:active,
+.rt-react-select2 [class*=-control]:focus,
+.rt-react-select2 [class*=-control]:hover {
+  border-color: var(--rt-tpg-color-border);
 }
 .rt-react-select2 [class*=-ValueContainer] {
   padding: 0 8px;
