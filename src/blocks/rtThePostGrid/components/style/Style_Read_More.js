@@ -318,7 +318,7 @@ function Read_More(props) {
                 {__( "Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left"
-                className={".rt-radiocontrol"}
+                className={"rt-radiocontrol"}
                 onChange={ (val) =>props.attr.setAttributes({button: {...button, "text-align": val}}) }
                 checked={ button["text-align"] }
             >
