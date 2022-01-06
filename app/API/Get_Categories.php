@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\RadiusBlocks\API;
+namespace RT\RtTpgBlocks\API;
 
 class Get_Categories{
     public function __construct(){

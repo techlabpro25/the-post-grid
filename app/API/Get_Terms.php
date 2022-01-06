@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\RadiusBlocks\API;
+namespace RT\RtTpgBlocks\API;
 
 class Get_Terms{
     public function __construct(){

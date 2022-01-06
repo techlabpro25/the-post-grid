@@ -1,8 +1,8 @@
 <?php
 
-namespace RT\RadiusBlocks\Blocks;
+namespace RT\RtTpgBlocks\Blocks;
 
-use RT\RadiusBlocks\Abstracts\Block;
+use RT\RtTpgBlocks\Abstracts\Block;
 
 class RtThePostGrid extends Block
 {
@@ -309,7 +309,7 @@ class RtThePostGrid extends Block
 			), 
 			$attributes
 		);
-		wp_enqueue_script(RT_RADIUS_BLOCKS_SLUG . '-frontend-js');
+		wp_enqueue_script(RT_TPG_BLOCKS_SLUG . '-frontend-js');
 		//        }
 		ob_start(); ?>
         <div class="rt-tpg-ph rt-thepostgrid">

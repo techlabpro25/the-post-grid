@@ -1,5 +1,5 @@
 <?php
-namespace RT\RadiusBlocks\API;
+namespace RT\RtTpgBlocks\API;
 
 class Get_Title{
     public function __construct(){

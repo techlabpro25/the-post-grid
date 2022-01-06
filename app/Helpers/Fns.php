@@ -1,9 +1,9 @@
 <?php
 
-namespace RT\RadiusBlocks\Helpers;
+namespace RT\RtTpgBlocks\Helpers;
 
 
-use RT\RadiusBlocks\Blocks\RtThePostGrid;
+use RT\RtTpgBlocks\Blocks\RtThePostGrid;
 
 class Fns
 {
@@ -12,6 +12,6 @@ class Fns
             RtThePostGrid::class,
         ];
 
-        return apply_filters('rt_radius_blocks_registered_blocks', $blocks);
+        return apply_filters('RT_TPG_BLOCKS_registered_blocks', $blocks);
     }
 }

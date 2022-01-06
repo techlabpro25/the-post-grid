@@ -4,20 +4,20 @@ require_once __DIR__ . './../vendor/autoload.php';
 
 defined('ABSPATH') || exit;
 
-use RT\RadiusBlocks\Helpers\Fns;
-use RT\RadiusBlocks\API\All_Post;
-use RT\RadiusBlocks\API\Get_Terms;
-use RT\RadiusBlocks\API\Get_Image_Sizes;
-use RT\RadiusBlocks\API\Get_Title;
-use RT\RadiusBlocks\API\Isotope_Terms;
-use RT\RadiusBlocks\Abstracts\Block;
-use RT\RadiusBlocks\Helpers\Installer;
-use RT\RadiusBlocks\API\Get_Categories;
-use RT\RadiusBlocks\Models\Dependencies;
-use RT\RadiusBlocks\Blocks\RtThePostGrid;
-use RT\RadiusBlocks\Controllers\AssetsController;
+use RT\RtTpgBlocks\Helpers\Fns;
+use RT\RtTpgBlocks\API\All_Post;
+use RT\RtTpgBlocks\API\Get_Terms;
+use RT\RtTpgBlocks\API\Get_Image_Sizes;
+use RT\RtTpgBlocks\API\Get_Title;
+use RT\RtTpgBlocks\API\Isotope_Terms;
+use RT\RtTpgBlocks\Abstracts\Block;
+use RT\RtTpgBlocks\Helpers\Installer;
+use RT\RtTpgBlocks\API\Get_Categories;
+use RT\RtTpgBlocks\Models\Dependencies;
+use RT\RtTpgBlocks\Blocks\RtThePostGrid;
+use RT\RtTpgBlocks\Controllers\AssetsController;
 
-final class RadiusBlocks{
+final class ThePostGrid{
 	/**
 	 * Store the singleton object.
 	 */
@@ -101,7 +101,7 @@ final class RadiusBlocks{
 	{
 		$file = ltrim($file, '/');
 
-		return trailingslashit(RT_RADIUS_BLOCKS_URL . '/assets') . $file;
+		return trailingslashit(RT_TPG_BLOCKS_URL . '/assets') . $file;
 	}
 
 	/**
@@ -113,23 +113,23 @@ final class RadiusBlocks{
 	{
 		$file = ltrim($file, '/');
 
-		return trailingslashit(RT_RADIUS_BLOCKS_URL . '/dist') . $file;
+		return trailingslashit(RT_TPG_BLOCKS_URL . '/dist') . $file;
 	}
 
 	private function define_constants()
 	{
-		$this->define('RT_RADIUS_BLOCKS_DIR', plugin_dir_path(RT_RADIUS_BLOCKS_FILE));
-		$this->define('RT_RADIUS_BLOCKS_URL', plugins_url('', RT_RADIUS_BLOCKS_FILE));
-		$this->define('RT_RADIUS_BLOCKS_SLUG', basename(dirname(RT_RADIUS_BLOCKS_FILE)));
+		$this->define('RT_TPG_BLOCKS_DIR', plugin_dir_path(RT_TPG_BLOCKS_FILE));
+		$this->define('RT_TPG_BLOCKS_URL', plugins_url('', RT_TPG_BLOCKS_FILE));
+		$this->define('RT_TPG_BLOCKS_SLUG', basename(dirname(RT_TPG_BLOCKS_FILE)));
 	}
 
 	private function load_language()
 	{
 		$locale = determine_locale();
-		$locale = apply_filters('plugin_locale', $locale, RT_RADIUS_BLOCKS_SLUG);
-		unload_textdomain(RT_RADIUS_BLOCKS_SLUG);
-		load_textdomain(RT_RADIUS_BLOCKS_SLUG, WP_LANG_DIR . '/' . RT_RADIUS_BLOCKS_SLUG . '/' . RT_RADIUS_BLOCKS_SLUG . '-' . $locale . '.mo');
-		load_plugin_textdomain(RT_RADIUS_BLOCKS_SLUG, false, plugin_basename(dirname(RT_RADIUS_BLOCKS_FILE)) . '/languages');
+		$locale = apply_filters('plugin_locale', $locale, RT_TPG_BLOCKS_SLUG);
+		unload_textdomain(RT_TPG_BLOCKS_SLUG);
+		load_textdomain(RT_TPG_BLOCKS_SLUG, WP_LANG_DIR . '/' . RT_TPG_BLOCKS_SLUG . '/' . RT_TPG_BLOCKS_SLUG . '-' . $locale . '.mo');
+		load_plugin_textdomain(RT_TPG_BLOCKS_SLUG, false, plugin_basename(dirname(RT_TPG_BLOCKS_FILE)) . '/languages');
 	}
 
 	/**
@@ -148,16 +148,16 @@ final class RadiusBlocks{
 	public function log_errors()
 	{
 		$error = error_get_last();
-		do_action('rt_radius_blocks_shutdown_error', $error);
+		do_action('RT_TPG_BLOCKS_shutdown_error', $error);
 	}
 }
 
 /**
- * @return bool|RadiusBlocks
+ * @return bool|ThePostGrid
  */
-function radiusBlocks()
+function rtTpgBlocks()
 {
-	return RadiusBlocks::getInstance();
+	return ThePostGrid::getInstance();
 }
 
-radiusBlocks();
+rtTpgBlocks();

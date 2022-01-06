@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'RT\\RadiusBlocks\\' => array($baseDir . '/app'),
+    'RT\\RtTpgBlocks\\' => array($baseDir . '/app'),
 );

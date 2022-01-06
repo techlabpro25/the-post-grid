@@ -32,9 +32,9 @@ require( 'lib/init.php' );
 defined('ABSPATH') || exit('Keep Silent');
 
 // Define WP_BLOCKS_PLUGIN_FILE.
-define('RT_RADIUS_BLOCKS_VERSION', '0.0.1');
-define('RT_RADIUS_BLOCKS_FILE', __FILE__);
+define('RT_TPG_BLOCKS_VERSION', '0.0.1');
+define('RT_TPG_BLOCKS_FILE', __FILE__);
 
-if (!class_exists('RadiusBlocks')) {
-    require_once 'app/RadiusBlocks.php';
+if (!class_exists('ThePostGrid')) {
+    require_once 'app/ThePostGrid.php';
 }
