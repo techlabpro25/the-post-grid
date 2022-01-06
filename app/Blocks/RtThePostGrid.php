@@ -181,7 +181,7 @@ class RtThePostGrid extends Block
         ],
         'image' => [
             'show_hide' => true,
-            'size'=> "",
+            'size'=> "300x300",
             'animation'=> 'img_zoom_in',
             'border-radius'=> "0",
             'img-column' => '',

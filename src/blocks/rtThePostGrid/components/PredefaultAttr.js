@@ -11,7 +11,6 @@ export const PredefaultAttr = (props) =>{
             image:
                 {
                     ...image,
-                    "size": '300x300',
                     'img-column': '12',
                     'content-column': '12',
                     'border-radius': '0px'
@@ -28,7 +27,6 @@ export const PredefaultAttr = (props) =>{
             image:
                 {
                     ...image,
-                    "size": '300x300',
                     'img-column': '4',
                     'content-column': '8',
                     'border-radius': '0px'
@@ -45,7 +43,6 @@ export const PredefaultAttr = (props) =>{
                     image:
                         {
                             ...image,
-                            "size": '150x150',
                             'img-column': '4',
                             'content-column': '8',
                             'border-radius': '50%'
