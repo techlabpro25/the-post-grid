@@ -112,15 +112,6 @@ a:hover {
     margin-bottom: 25px;
 }
 
-div.tax_first_child .components-checkbox-control {
-    margin-left: 10px;
-    margin-bottom: 0;
-}
-
-div.tax_second_child .components-base-control {
-    margin-left: 25px;
-}
-
 .items.selected {
     border: solid 2px gray;
     border-radius: 5px;
@@ -238,11 +229,9 @@ svg.components-panel__arrow {
     box-shadow: none !important;
 }
 .rt-react-select2 {
-    margin: 5px 0 20px 25px !important;
+    margin: 5px 0 20px 0 !important;
 }
-.tax_second_child .title {
-    margin-left: 25px !important;
-}
+
 .tax_second_child {
     margin: 30px 0px;
 }
@@ -335,9 +324,9 @@ svg.components-panel__arrow {
 
 .custom-tab-panel {
     .components-panel__body {
-        &.is-opened {
-            padding-top: 0;
-        }
+        //&.is-opened {
+        //    padding-top: 0;
+        //}
     }
 }
 
@@ -516,6 +505,7 @@ svg.components-panel__arrow {
     .custom-tab-panel {
         .components-panel__body-title {
             border-radius: 4px;
+            margin-bottom: 10px;
         }
         .components-panel__body-toggle {
             background-color: #eaf5ff;
@@ -681,4 +671,11 @@ svg.components-panel__arrow {
 .block-editor-block-inspector .components-base-control,
 .block-editor-block-inspector .components-input-control {
     margin-bottom: 10px;
+}
+.rt-tpg-order-child-wrapper {
+    //margin-left: 12px;
+    margin-bottom: 16px;
+}
+.rt-tpg-query-checkbox-first-child, .rt-tpg-query-checkbox-second-child, .rt-tpg-query-checkbox-third-child {
+    margin-left: 16px;
 }
