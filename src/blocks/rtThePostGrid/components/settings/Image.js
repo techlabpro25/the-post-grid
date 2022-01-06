@@ -8,11 +8,13 @@ import {
 } from "@wordpress/components";
 import { useState, useEffect } from '@wordpress/element';
 import apiFetch from "@wordpress/api-fetch";
+import $ from 'jquery';
 
 function Image(props) {
     const {__} = wp.i18n;
     const { image, layout, category, loaders } = props.attr.attributes
     const [ showimage, setShowimage ] = useState( true );
+    const [ imagesize, setImagesize ] = useState("");
     const [sizes, setSizes] = useState([])
 
     // Get all Image Size
@@ -21,6 +23,24 @@ function Image(props) {
             setSizes(sizes)
         })
     }, []);
+
+    // useEffect(()=>{
+    //     $.ajax({
+    //         type: "POST",
+    //         url: editor_ajax_call.ajax_url,
+    //         dataType:"json",
+    //         data: {
+    //             action: 'get_post_image_url',
+    //             size: imagesize,
+    //         },
+    //         success: function (data){
+    //             console.log(data)
+    //         },
+    //         error: function (e){
+    //             console.log(e)
+    //         }
+    //     })
+    // }, [imagesize])
 
     return (
         <PanelBody title={__( "Image", "the-post-grid")} initialOpen={false}>
@@ -44,7 +64,11 @@ function Image(props) {
                         label={__( "Featured Image Size:", "the-post-grid")}
                         value={ image.size }
                         options={ sizes }
-                        onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "size": value} } ) }
+                        onChange={ ( value ) => {
+                            setImagesize(value)
+
+                            props.attr.setAttributes( {image: {...image, "size": value}, loaders: {...loaders, 'image': true} } ) }
+                        }
                     />
 
                 ):("")

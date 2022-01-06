@@ -40,6 +40,7 @@ final class RadiusBlocks{
 		new Get_Title();
 		new Isotope_Terms();
 		new Get_Image_Sizes();
+
 	}
 
 	/**
@@ -93,6 +94,7 @@ final class RadiusBlocks{
 	//         }
 	//     }
 	// }
+
 
 	/**
 	 * @param $file

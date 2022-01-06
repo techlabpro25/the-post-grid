@@ -122,7 +122,7 @@ const Layout1 = (props) => {
 							
 							// Title
 							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.target, link: post.post_link, post_title }
-							const image_props = { id:post.id, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value }
+							const image_props = { id:post.id, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value, loaders: loaders.image }
 							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name}
 							const date_props = { meta, meta_style, primary_color, date: post.post_date}
 							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
@@ -133,7 +133,7 @@ const Layout1 = (props) => {
 								<>
 									<Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 even-grid-item ${image.animation}`}>
 										<Content_wrap css={content_wrap} layout={layout} css_pad={constent_box_padding} className="rt-holder">
-											<div className="rt-img-holder">
+											<div className={`rt-img-holder ${loaders.image? "show_loader": ""}`}>
 												{
 													image.show_hide?(
 														<>

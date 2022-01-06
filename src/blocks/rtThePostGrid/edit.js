@@ -206,6 +206,7 @@ export default function Edit(props) {
                 setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
             }
 
+            setAttributes({loaders: {...loaders, "image":false}})
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
             setIsrootloading(false)

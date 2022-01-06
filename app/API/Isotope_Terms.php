@@ -4,6 +4,8 @@ namespace RT\RadiusBlocks\API;
 class Isotope_Terms{
     public function __construct(){
         add_action("rest_api_init", [$this, 'register_isotope_terms']);
+//        add_action('wp_ajax_nopriv_get_post_image_url', array( $this, 'data_custom_ajax'));
+//        add_action('wp_ajax_get_post_image_url', array($this, 'data_custom_ajax'));
     }
 
     public function register_isotope_terms(){
@@ -35,4 +37,13 @@ class Isotope_Terms{
 
         return rest_ensure_response($data);
     }
+
+//    public function data_custom_ajax(){
+//        $image_size = $_POST['size'];
+//        wp_send_json_success( array(
+//            'name' => 'Andrew',
+//            'call' => 'From some API/trigger',
+//            'size' => $image_size
+//        ), 200 );
+//    }
 }
