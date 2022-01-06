@@ -47,7 +47,6 @@ const Layout1 = (props) => {
 		content_padding,
 		image,
 		primary_color,
-		parent_class,
 		columns,
 		linking,
 		layout,

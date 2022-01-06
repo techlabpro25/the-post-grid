@@ -48,7 +48,7 @@ export const List1 = (props) =>{
         content_padding,
         image,
         primary_color,
-        parent_class,
+        loaders,
         columns,
         linking,
         layout,
@@ -136,7 +136,8 @@ export const List1 = (props) =>{
                                 target: linking.target,
                                 image,
                                 image_url: post.image_url,
-                                layout: layout.value
+                                layout: layout.value,
+                                loaders: loaders.image
                             }
                             const author_props = {
                                 meta,
@@ -172,7 +173,7 @@ export const List1 = (props) =>{
                                                 {
                                                     image.show_hide?(
                                                         <ImgCol css={image} className={`rt-col-sm-${(image['img-column'])? image['img-column']: ''} rt-col-xs-12 `}>
-                                                            <div className="rt-img-holder">
+                                                            <div className={`rt-img-holder ${loaders.image? "show_loader": ""}`}>
                                                                 {
                                                                     image.show_hide?(
                                                                         <Image data={image_props}/>
