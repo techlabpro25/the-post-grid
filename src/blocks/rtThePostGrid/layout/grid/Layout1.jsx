@@ -137,16 +137,7 @@ const Layout1 = (props) => {
 												{
 													image.show_hide?(
 														<>
-															{
-																loaders.image? (
-																	<div className={"image-loader"}>
-																		{/*<div className="lds-ripple3">*/}
-																		{/*	<div></div>*/}
-																		{/*	<div></div>*/}
-																		{/*</div>*/}
-																	</div>
-																): (<Image data={image_props}/>)
-															}
+															<Image data={image_props}/>
 														</>
 
 													):("")

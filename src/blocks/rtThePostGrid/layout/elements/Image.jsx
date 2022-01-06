@@ -6,6 +6,7 @@ export const Image = (props) =>{
 
     return(
         <>
+
             {
                 (image_url.length > 0)? (
                     <a data-id={id} className="" href={link} target={target}>

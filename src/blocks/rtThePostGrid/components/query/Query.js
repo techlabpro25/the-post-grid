@@ -17,7 +17,8 @@ import Select from "react-select";
 const Query = (props) => {
 	const {__} = wp.i18n;
 	const [pt, setPt] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [posttypeloading, setPosttypeloading] = useState(true);
+	const [taxonomyloading, setTaxonomyloading] = useState(true);
 	const [term_cat, setTerm_cat] = useState([]);
 	const [post_term, setPost_term] = useState([]);
 	const [tax_warning, setTax_warning] = useState("");
@@ -135,7 +136,7 @@ const Query = (props) => {
 				})
 			setPt(loop_var.filter(e => e))
 		});
-		setLoading(false);
+		setPosttypeloading(false);
 	}, []);
 
 	// Get terms by post
@@ -156,7 +157,7 @@ const Query = (props) => {
 				})
 				setPost_term(taxonomy_loop.filter(e => e))
 			}
-
+			setTaxonomyloading(false)
 		});
 	}, [query.post_type, query.taxonomy_bool]);
 
@@ -194,30 +195,38 @@ const Query = (props) => {
 
 	return (
 		<>
-			<SelectControl
-				label={__( "Post Type:", "the-post-grid")}
-				value={query.post_type}
-				options={pt}
-				onChange={(value) =>{
-					const taxonomy = [];
-					const tax_term = {};
-					const tax_item = {};
+			{posttypeloading?(
+				<div className="rt-tpg-control-lds-ripple">
+					<div></div>
+					<div></div>
+				</div>
+			):(
+				<SelectControl
+					label={__( "Post Type:", "the-post-grid")}
+					value={query.post_type}
+					options={pt}
+					onChange={(value) =>{
+						const taxonomy = [];
+						const tax_term = {};
+						const tax_item = {};
 
 
-					props.attr.setAttributes({ query: {
-						...query,
-							post_type: value,
-							taxonomy_bool: false,
-							taxonomy:taxonomy,
-							tax_term:tax_term,
-							tax_item:tax_item,
-							filter: true,
-							pageindex: 1,
-							loader: true
-					} })
-				}
-				}
-			/>
+						props.attr.setAttributes({ query: {
+								...query,
+								post_type: value,
+								taxonomy_bool: false,
+								taxonomy:taxonomy,
+								tax_term:tax_term,
+								tax_item:tax_item,
+								filter: true,
+								pageindex: 1,
+								loader: true
+							} })
+					}
+					}
+				/>
+			)}
+
 
 			<NumberControl
 				className={"rt-numbercontrol query"}
@@ -363,151 +372,160 @@ const Query = (props) => {
 					}
 					}
 				/>
-				<div className="rt-tpg-query-checkbox-first-child rt-tpg-taxonomy">
-					{
-						(tax_warning.length && query.taxonomy_bool)?(
-							<div className={'no_notice'}>
-								{__( tax_warning, "the-post-grid")}
-							</div>
-						):(
-							<>
-								{post_term?.length &&
-								post_term?.map((term_item) => {
-									if (query.taxonomy_bool) {
-										return (
-											<>
-												<div className="tax_first_child">
-													<CheckboxControl
-														label={__( term_item.label, "the-post-grid")}
-														checked={query.taxonomy.includes(term_item.value)}
-														onChange={(value) => {
-															let taxonomy = [...query.taxonomy];
-															let newTaxItem  = {...query.tax_term}
-															let newTermItem  = {...query.tax_item}
-															if (value) {
-																taxonomy.push(term_item.value);
-															} else {
-																taxonomy = taxonomy.filter((i) => {
-																	return i !== term_item.value;
-																});
+				{
+					taxonomyloading?(
+						<div className="rt-tpg-control-lds-ripple">
+							<div></div>
+							<div></div>
+						</div>
+					):(
+						<div className="rt-tpg-query-checkbox-first-child rt-tpg-taxonomy">
+							{
+								(tax_warning.length && query.taxonomy_bool)?(
+									<div className={'no_notice'}>
+										{__( tax_warning, "the-post-grid")}
+									</div>
+								):(
+									<>
+										{post_term?.length &&
+										post_term?.map((term_item) => {
+											if (query.taxonomy_bool) {
+												return (
+													<>
+														<div className="tax_first_child">
+															<CheckboxControl
+																label={__( term_item.label, "the-post-grid")}
+																checked={query.taxonomy.includes(term_item.value)}
+																onChange={(value) => {
+																	let taxonomy = [...query.taxonomy];
+																	let newTaxItem  = {...query.tax_term}
+																	let newTermItem  = {...query.tax_item}
+																	if (value) {
+																		taxonomy.push(term_item.value);
+																	} else {
+																		taxonomy = taxonomy.filter((i) => {
+																			return i !== term_item.value;
+																		});
 
-																// Remove from array if not checked
-																delete newTaxItem[term_item.value]
-																delete newTermItem[term_item.value]
-															}
+																		// Remove from array if not checked
+																		delete newTaxItem[term_item.value]
+																		delete newTermItem[term_item.value]
+																	}
 
-															props.attr.setAttributes({
-																query: { ...query, taxonomy: taxonomy, tax_term: newTaxItem, tax_item: newTermItem},
-															});
+																	props.attr.setAttributes({
+																		query: { ...query, taxonomy: taxonomy, tax_term: newTaxItem, tax_item: newTermItem},
+																	});
 
-															if(value){
-																termHandler(term_item.value, taxonomy)
-															}
+																	if(value){
+																		termHandler(term_item.value, taxonomy)
+																	}
 
-														}}
-													/>
-												</div>
-											</>
-										);
-									}
-								})}
-							</>
-						)
-					}
-
-					<div className="rt-tpg-query-checkbox-second-child rt-tpg-taxonomies">
-						{query.taxonomy.length > 0 && query.taxonomy.map((taxonomy) => {
-
-							return(
-								<div className="tax_second_child">
-									<Text className={"title"}>{(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))}:</Text>
-									<Select
-										className={"rt-react-select2"}
-										options={query.tax_item?.[taxonomy] || []}
-										value={query.tax_term[taxonomy]?.data || []}
-										isMulti ={true}
-										onChange={(value) => {
-											// console.log(value)
-											const tax_term = { ...query.tax_term };
-											if(tax_term[taxonomy]){
-												tax_term[taxonomy].data = value
-											}else{
-												tax_term[taxonomy] ={
-													data:value,
-													operator: null
-												}
+																}}
+															/>
+														</div>
+													</>
+												);
 											}
+										})}
+									</>
+								)
+							}
 
-											props.attr.setAttributes({
-												query: {
-													...query,
-													tax_term: tax_term,
-													filter: true,
-													pageindex: 1,
-													loader: true
-												},
-											});
-										}}
-									/>
+							<div className="rt-tpg-query-checkbox-second-child rt-tpg-taxonomies">
+								{query.taxonomy.length > 0 && query.taxonomy.map((taxonomy) => {
 
-									 <SelectControl
-										label={__( `${(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))} operator:`, "the-post-grid")}
-										value={query.tax_term[taxonomy]?.operator}
-										options={operator}
-										onChange={(value) =>
-											{
-												const tax_term = { ...query.tax_term };
-												if(tax_term[taxonomy]){
-													tax_term[taxonomy].operator = value
-												}else{
-													tax_term[taxonomy] ={
-														data:[],
-														operator: value
+									return(
+										<div className="tax_second_child">
+											<Text className={"title"}>{(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))}:</Text>
+											<Select
+												className={"rt-react-select2"}
+												options={query.tax_item?.[taxonomy] || []}
+												value={query.tax_term[taxonomy]?.data || []}
+												isMulti ={true}
+												onChange={(value) => {
+													// console.log(value)
+													const tax_term = { ...query.tax_term };
+													if(tax_term[taxonomy]){
+														tax_term[taxonomy].data = value
+													}else{
+														tax_term[taxonomy] ={
+															data:value,
+															operator: null
+														}
 													}
+
+													props.attr.setAttributes({
+														query: {
+															...query,
+															tax_term: tax_term,
+															filter: true,
+															pageindex: 1,
+															loader: true
+														},
+													});
+												}}
+											/>
+
+											<SelectControl
+												label={__( `${(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))} operator:`, "the-post-grid")}
+												value={query.tax_term[taxonomy]?.operator}
+												options={operator}
+												onChange={(value) =>
+												{
+													const tax_term = { ...query.tax_term };
+													if(tax_term[taxonomy]){
+														tax_term[taxonomy].operator = value
+													}else{
+														tax_term[taxonomy] ={
+															data:[],
+															operator: value
+														}
+													}
+
+													props.attr.setAttributes({
+														query: { ...query, tax_term: tax_term, loader: true },
+													});
 												}
+												}
+											/>
+										</div>
+									)
+								})}
 
-												props.attr.setAttributes({
-													query: { ...query, tax_term: tax_term, loader: true },
-												});
+								{(query.taxonomy.length > 1) ? (
+									<div className="tax_second_child">
+										<SelectControl
+											label={__( "Relation: ", "the-post-grid")}
+											value={query.relation}
+											options={[
+												{
+													label: __( "AND — show posts which match all settings", "the-post-grid"),
+													value: "AND",
+												},
+												{
+													label: __( "OR — show posts which match one or more settings", "the-post-grid"),
+													value: "OR",
+												},
+											]}
+											onChange={(value) =>{
+
+												props.attr.setAttributes({ query: {
+														...query,
+														relation: value,
+														loader: true
+													} })
 											}
-										}
-									/>
-								</div>
-							)
-						})}
 
-						{(query.taxonomy.length > 1) ? (
-							<div className="tax_second_child">
-								<SelectControl
-									label={__( "Relation: ", "the-post-grid")}
-									value={query.relation}
-									options={[
-										{
-											label: __( "AND — show posts which match all settings", "the-post-grid"),
-											value: "AND",
-										},
-										{
-											label: __( "OR — show posts which match one or more settings", "the-post-grid"),
-											value: "OR",
-										},
-									]}
-									onChange={(value) =>{
-
-										props.attr.setAttributes({ query: {
-											...query,
-												relation: value,
-												loader: true
-										} })
-									}
-
-									}
-								/>
+											}
+										/>
+									</div>
+								) : (
+									""
+								)}
 							</div>
-						) : (
-							""
-						)}
-					</div>
-				</div>
+						</div>
+					)
+				}
 
 				<CheckboxControl
 					label={__( "Order", "the-post-grid")}

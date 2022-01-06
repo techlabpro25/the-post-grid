@@ -84,9 +84,10 @@ function Image(props) {
                 label={__( "Hover Animation:", "the-post-grid")}
                 value={ image.animation }
                 options={ [
-                    { label: __( 'None', "the-post-grid"), value: "img_no_effect" },
+                    { label: __( 'Default', "the-post-grid"), value: "" },
                     { label: __( 'Zoom In', "the-post-grid"), value: 'img_zoom_in'},
                     { label: __( 'Zoom Out', "the-post-grid"), value: 'img_zoom_out' },
+                    { label: __( 'None', "the-post-grid"), value: "img_no_effect" },
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "animation": value} } ) }
             />
