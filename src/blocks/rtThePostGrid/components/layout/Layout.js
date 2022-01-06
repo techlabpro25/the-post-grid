@@ -43,7 +43,6 @@ function Layout(props) {
 		<PanelBody title={__( "Layout Type", "the-post-grid")} initialOpen={true}>
 			<div className="rt-tpg-layout-control-parent">
 				<label>{__( "Layout Type:", "the-post-grid")}</label>
-				<br/>
 				<label>
 					<input className={`grid`} type="radio" name="laytype" value="grid" onClick={clickHandler}/>
 					<img src={plugin_path+'grid.png'}/>
@@ -62,7 +61,6 @@ function Layout(props) {
 
 			<div className="rt-tpg-layout-control-child">
 				<label>{__( "Layout: ", "the-post-grid")}</label>
-				<br/>
 				{
 					layout.type == "grid"?(
 						<label>

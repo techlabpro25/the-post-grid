@@ -343,362 +343,363 @@ const Query = (props) => {
 
 			{/*Pagination End*/}
 
+			<div className="rt-tpg-query-checkbox-wrapper">
+				<CheckboxControl
+					label={__( "Taxonomy", "the-post-grid")}
+					checked={query.taxonomy_bool}
+					onChange={(value) =>{
+						let tax_term = {...query.tax_term}
+						let tax_item = {...query.tax_item}
+						let taxonomy = [...query.taxonomy]
 
-			<CheckboxControl
-				label={__( "Taxonomy", "the-post-grid")}
-				checked={query.taxonomy_bool}
-				onChange={(value) =>{
-					let tax_term = {...query.tax_term}
-					let tax_item = {...query.tax_item}
-					let taxonomy = [...query.taxonomy]
-
-					if(!value){
-						taxonomy = [];
-						tax_term = {};
-						tax_item = {};
+						if(!value){
+							taxonomy = [];
+							tax_term = {};
+							tax_item = {};
+						}
+						props.attr.setAttributes({
+							query: {...query, taxonomy_bool: value, taxonomy:taxonomy, tax_term:tax_term, tax_item:tax_item},
+						})
 					}
-					props.attr.setAttributes({
-						query: {...query, taxonomy_bool: value, taxonomy:taxonomy, tax_term:tax_term, tax_item:tax_item},
-					})
-				}
-				}
-			/>
-			{
-				(tax_warning.length && query.taxonomy_bool)?(
-					<div className={'no_notice'}>
-						{__( tax_warning, "the-post-grid")}
-					</div>
-				):(
-					<>
-						{post_term?.length &&
-						post_term?.map((term_item) => {
-							if (query.taxonomy_bool) {
-								return (
-									<>
-										<div className="tax_first_child">
-											<CheckboxControl
-												label={__( term_item.label, "the-post-grid")}
-												checked={query.taxonomy.includes(term_item.value)}
-												onChange={(value) => {
-													let taxonomy = [...query.taxonomy];
-													let newTaxItem  = {...query.tax_term}
-													let newTermItem  = {...query.tax_item}
-													if (value) {
-														taxonomy.push(term_item.value);
-													} else {
-														taxonomy = taxonomy.filter((i) => {
-															return i !== term_item.value;
+					}
+				/>
+				{
+					(tax_warning.length && query.taxonomy_bool)?(
+						<div className={'no_notice'}>
+							{__( tax_warning, "the-post-grid")}
+						</div>
+					):(
+						<>
+							{post_term?.length &&
+							post_term?.map((term_item) => {
+								if (query.taxonomy_bool) {
+									return (
+										<>
+											<div className="tax_first_child">
+												<CheckboxControl
+													label={__( term_item.label, "the-post-grid")}
+													checked={query.taxonomy.includes(term_item.value)}
+													onChange={(value) => {
+														let taxonomy = [...query.taxonomy];
+														let newTaxItem  = {...query.tax_term}
+														let newTermItem  = {...query.tax_item}
+														if (value) {
+															taxonomy.push(term_item.value);
+														} else {
+															taxonomy = taxonomy.filter((i) => {
+																return i !== term_item.value;
+															});
+
+															// Remove from array if not checked
+															delete newTaxItem[term_item.value]
+															delete newTermItem[term_item.value]
+														}
+
+														props.attr.setAttributes({
+															query: { ...query, taxonomy: taxonomy, tax_term: newTaxItem, tax_item: newTermItem},
 														});
 
-														// Remove from array if not checked
-														delete newTaxItem[term_item.value]
-														delete newTermItem[term_item.value]
-													}
+														if(value){
+															termHandler(term_item.value, taxonomy)
+														}
 
-													props.attr.setAttributes({
-														query: { ...query, taxonomy: taxonomy, tax_term: newTaxItem, tax_item: newTermItem},
-													});
-
-													if(value){
-														termHandler(term_item.value, taxonomy)
-													}
-
-												}}
-											/>
-										</div>
-									</>
-								);
-							}
-						})}
-					</>
-				)
-			}
-
-
-			{query.taxonomy.length > 0 && query.taxonomy.map((taxonomy) => {
-
-				return(
-					<div className="tax_second_child">
-						<Text className={"title"}>{(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))}:</Text>
-						<Select
-							className={"rt-react-select2"}
-							options={query.tax_item?.[taxonomy] || []}
-							value={query.tax_term[taxonomy]?.data || []}
-							isMulti ={true}
-							onChange={(value) => {
-								// console.log(value)
-								const tax_term = { ...query.tax_term };
-								if(tax_term[taxonomy]){
-									tax_term[taxonomy].data = value
-								}else{
-									tax_term[taxonomy] ={
-										data:value,
-										operator: null
-									}
+													}}
+												/>
+											</div>
+										</>
+									);
 								}
+							})}
+						</>
+					)
+				}
 
-								props.attr.setAttributes({
-									query: {
-										...query,
-										tax_term: tax_term,
-										filter: true,
-										pageindex: 1,
-										loader: true
-									},
-								});
-							}}
-						/>
 
-						 <SelectControl
-							label={__( `${(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))} operator:`, "the-post-grid")}
-							value={query.tax_term[taxonomy]?.operator}
-							options={operator}
-							onChange={(value) =>
-								{
+				{query.taxonomy.length > 0 && query.taxonomy.map((taxonomy) => {
+
+					return(
+						<div className="tax_second_child">
+							<Text className={"title"}>{(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))}:</Text>
+							<Select
+								className={"rt-react-select2"}
+								options={query.tax_item?.[taxonomy] || []}
+								value={query.tax_term[taxonomy]?.data || []}
+								isMulti ={true}
+								onChange={(value) => {
+									// console.log(value)
 									const tax_term = { ...query.tax_term };
 									if(tax_term[taxonomy]){
-										tax_term[taxonomy].operator = value
+										tax_term[taxonomy].data = value
 									}else{
 										tax_term[taxonomy] ={
-											data:[],
-											operator: value
+											data:value,
+											operator: null
 										}
 									}
 
 									props.attr.setAttributes({
-										query: { ...query, tax_term: tax_term, loader: true },
+										query: {
+											...query,
+											tax_term: tax_term,
+											filter: true,
+											pageindex: 1,
+											loader: true
+										},
 									});
+								}}
+							/>
+
+							 <SelectControl
+								label={__( `${(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))} operator:`, "the-post-grid")}
+								value={query.tax_term[taxonomy]?.operator}
+								options={operator}
+								onChange={(value) =>
+									{
+										const tax_term = { ...query.tax_term };
+										if(tax_term[taxonomy]){
+											tax_term[taxonomy].operator = value
+										}else{
+											tax_term[taxonomy] ={
+												data:[],
+												operator: value
+											}
+										}
+
+										props.attr.setAttributes({
+											query: { ...query, tax_term: tax_term, loader: true },
+										});
+									}
 								}
+							/>
+						</div>
+					)
+				})}
+
+				{(query.taxonomy.length > 1) ? (
+					<div className="tax_second_child">
+						<SelectControl
+							label={__( "Relation: ", "the-post-grid")}
+							value={query.relation}
+							options={[
+								{
+									label: __( "AND — show posts which match all settings", "the-post-grid"),
+									value: "AND",
+								},
+								{
+									label: __( "OR — show posts which match one or more settings", "the-post-grid"),
+									value: "OR",
+								},
+							]}
+							onChange={(value) =>{
+
+								props.attr.setAttributes({ query: {
+									...query,
+										relation: value,
+										loader: true
+								} })
+							}
+
 							}
 						/>
 					</div>
-				)
-			})}
+				) : (
+					""
+				)}
 
-			{(query.taxonomy.length > 1) ? (
-				<div className="tax_second_child">
-					<SelectControl
-						label={__( "Relation: ", "the-post-grid")}
-						value={query.relation}
-						options={[
-							{
-								label: __( "AND — show posts which match all settings", "the-post-grid"),
-								value: "AND",
-							},
-							{
-								label: __( "OR — show posts which match one or more settings", "the-post-grid"),
-								value: "OR",
-							},
-						]}
-						onChange={(value) =>{
+				<CheckboxControl
+					label={__( "Order", "the-post-grid")}
+					checked={query.order_bool}
+					onChange={(value) =>
+						{
+							let order_by = query.order_by
+							let order =query.order
+							if(!value){
+								order_by = "title";
+								order = "DESC";
+							}
 
 							props.attr.setAttributes({ query: {
 								...query,
-									relation: value,
-									loader: true
+									order_bool: value,
+									order_by: order_by,
+									order: order,
+									filter: true,
+									pageindex: 1
 							} })
 						}
 
-						}
-					/>
-				</div>
-			) : (
-				""
-			)}
-
-			<CheckboxControl
-				label={__( "Order", "the-post-grid")}
-				checked={query.order_bool}
-				onChange={(value) =>
-					{
-						let order_by = query.order_by
-						let order =query.order
-						if(!value){
-							order_by = "title";
-							order = "DESC";
-						}
-
-						props.attr.setAttributes({ query: {
-							...query,
-								order_bool: value,
-								order_by: order_by,
-								order: order,
-								filter: true,
-								pageindex: 1
-						} })
 					}
+				/>
 
-				}
-			/>
+				{query.order_bool ? (
+					<>
+						<SelectControl
+							label={__( "Order BY:", "the-post-grid")}
+							value={query.order_by}
+							options={order_type}
+							onChange={(value) =>{
 
-			{query.order_bool ? (
-				<>
-					<SelectControl
-						label={__( "Order BY:", "the-post-grid")}
-						value={query.order_by}
-						options={order_type}
-						onChange={(value) =>{
+								props.attr.setAttributes({
+									query: {
+										...query,
+										order_by: value,
+										filter: true,
+										pageindex: 1,
+										loader: true
+									},
+								})
+							}
 
-							props.attr.setAttributes({
-								query: {
+							}
+						/>
+
+						<RadioControl
+							label={__( "Order:", "the-post-grid")}
+							selected={query.order}
+							options={[
+								{ label: "Ascending", value: "ASC" },
+								{ label: "Descending", value: "DESC" },
+							]}
+							onChange={(value) =>{
+
+								props.attr.setAttributes({ query: {
 									...query,
-									order_by: value,
-									filter: true,
-									pageindex: 1,
-									loader: true
-								},
-							})
+										order: value,
+										filter: true,
+										pageindex: 1,
+										loader: true
+								} })
+							}
+
+							}
+						/>
+					</>
+				) : (
+					""
+				)}
+
+				<CheckboxControl
+					label={__( "Author", "the-post-grid")}
+					checked={query.author_bool}
+					onChange={(value) => {
+						let author  = [...query.author]
+						if(!value){
+							author = []
 						}
-
+							props.attr.setAttributes({query: {
+								...query,
+									author: author,
+									author_bool: value
+							}})
 						}
-					/>
+					}
+				/>
 
-					<RadioControl
-						label={__( "Order:", "the-post-grid")}
-						selected={query.order}
-						options={[
-							{ label: "Ascending", value: "ASC" },
-							{ label: "Descending", value: "DESC" },
-						]}
-						onChange={(value) =>{
+				{query.author_bool ? (
+					<>
+						<Select
+							className={"rt-react-select2"}
+							options={authors}
+							value={query.author}
+							isMulti ={true}
+							onChange={(value) =>{
 
+								props.attr.setAttributes({ query: {
+									...query,
+										author: value,
+										filter: true,
+										pageindex: 1,
+										loader: true
+								} })
+							}
+							}
+						/>
+					</>
+				) : (
+					""
+				)}
+
+				<CheckboxControl
+					label={__( "Status", "the-post-grid")}
+					checked={query.status_bool}
+					onChange={(value) =>
+						{
+							let status = [...query.status]
+							if (!value){
+								status = []
+							}
 							props.attr.setAttributes({ query: {
 								...query,
-									order: value,
-									filter: true,
-									pageindex: 1,
-									loader: true
+									status_bool: value,
+									status: status
 							} })
 						}
 
-						}
-					/>
-				</>
-			) : (
-				""
-			)}
-
-			<CheckboxControl
-				label={__( "Author", "the-post-grid")}
-				checked={query.author_bool}
-				onChange={(value) => {
-					let author  = [...query.author]
-					if(!value){
-						author = []
 					}
-						props.attr.setAttributes({query: {
-							...query,
-								author: author,
-								author_bool: value
-						}})
-					}
-				}
-			/>
+				/>
 
-			{query.author_bool ? (
-				<>
-					<Select
-						className={"rt-react-select2"}
-						options={authors}
-						value={query.author}
-						isMulti ={true}
-						onChange={(value) =>{
+				{query.status_bool ? (
+					<>
+						<Select
+							className={"rt-react-select2"}
+							options={publish_type}
+							value={query.status}
+							isMulti ={true}
+							defaultValue = {{label: 'Publish', value: 'publish'}}
+							onChange={(value) =>{
 
-							props.attr.setAttributes({ query: {
-								...query,
-									author: value,
-									filter: true,
-									pageindex: 1,
-									loader: true
-							} })
-						}
-						}
-					/>
-				</>
-			) : (
-				""
-			)}
+								props.attr.setAttributes({ query: {
+									...query,
+										status: value,
+										filter: true,
+										pageindex: 1,
+										loader: true
+								} })
+							}
 
-			<CheckboxControl
-				label={__( "Status", "the-post-grid")}
-				checked={query.status_bool}
-				onChange={(value) =>
-					{
-						let status = [...query.status]
-						if (!value){
-							status = []
-						}
-						props.attr.setAttributes({ query: {
-							...query,
-								status_bool: value,
-								status: status
-						} })
-					}
+							}
+						/>
+					</>
 
-				}
-			/>
+				) : (
+					""
+				)}
 
-			{query.status_bool ? (
-				<>
-					<Select
-						className={"rt-react-select2"}
-						options={publish_type}
-						value={query.status}
-						isMulti ={true}
-						defaultValue = {{label: 'Publish', value: 'publish'}}
-						onChange={(value) =>{
-
-							props.attr.setAttributes({ query: {
-								...query,
-									status: value,
-									filter: true,
-									pageindex: 1,
-									loader: true
-							} })
-						}
-
-						}
-					/>
-				</>
-
-			) : (
-				""
-			)}
-
-			<CheckboxControl
-				label={__( "Keyword", "the-post-grid")}
-				checked={query.keyword_bool}
-				onChange={(value) =>{
-					let keyword = query.keyword
-					if(!value){
-						keyword = ""
-					}
-					props.attr.setAttributes({ query: { ...query, keyword_bool: value, keyword:keyword } })
-				}
-
-				}
-			/>
-
-			{query.keyword_bool ? (
-				<TextControl
-					label={__( "Enter Keyword:", "the-post-grid")}
-					value={query.keyword}
+				<CheckboxControl
+					label={__( "Keyword", "the-post-grid")}
+					checked={query.keyword_bool}
 					onChange={(value) =>{
-
-						props.attr.setAttributes({ query: {
-							...query,
-								keyword: value,
-								filter: true,
-								pageindex: 1,
-								loader: true
-						} })
+						let keyword = query.keyword
+						if(!value){
+							keyword = ""
+						}
+						props.attr.setAttributes({ query: { ...query, keyword_bool: value, keyword:keyword } })
 					}
 
 					}
 				/>
-			) : (
-				""
-			)}
+
+				{query.keyword_bool ? (
+					<TextControl
+						label={__( "Enter Keyword:", "the-post-grid")}
+						value={query.keyword}
+						onChange={(value) =>{
+
+							props.attr.setAttributes({ query: {
+								...query,
+									keyword: value,
+									filter: true,
+									pageindex: 1,
+									loader: true
+							} })
+						}
+
+						}
+					/>
+				) : (
+					""
+				)}
+			</div>
 		</>
 	);
 };
