@@ -28,8 +28,6 @@ final class RadiusBlocks{
 	 */
 	private function __construct(){
 		$this->define_constants();
-		$dependence = Dependencies::getInstance();
-		//if ($dependence->check()) {
 		$assets = new AssetsController();
 		$assets->init();
 		$this->init_hooks();
@@ -68,8 +66,6 @@ final class RadiusBlocks{
 
 	private function init_hooks()
 	{
-		register_activation_hook(RT_RADIUS_BLOCKS_FILE, [Installer::class, 'activate']);
-		register_deactivation_hook(RT_RADIUS_BLOCKS_FILE, [Installer::class, 'deactivate']);
 		register_shutdown_function([$this, 'log_errors']);
 		add_action('plugins_loaded', [$this, 'on_plugins_loaded'], -1);
 		// add_action('init', [$this, 'register_blocks']);
