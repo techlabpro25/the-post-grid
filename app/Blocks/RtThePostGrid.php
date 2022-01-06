@@ -1,8 +1,8 @@
 <?php
 
-namespace RT\TpgBlocks\Blocks;
+namespace RT\RadiusBlocks\Blocks;
 
-use RT\TpgBlocks\Abstracts\Block;
+use RT\RadiusBlocks\Abstracts\Block;
 
 class RtThePostGrid extends Block
 {

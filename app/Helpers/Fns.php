@@ -1,9 +1,9 @@
 <?php
 
-namespace RT\TpgBlocks\Helpers;
+namespace RT\RadiusBlocks\Helpers;
 
 
-use RT\TpgBlocks\Blocks\RtThePostGrid;
+use RT\RadiusBlocks\Blocks\RtThePostGrid;
 
 class Fns
 {

@@ -1,5 +1,5 @@
 <?php
-namespace RT\TpgBlocks\API;
+namespace RT\RadiusBlocks\API;
 
 class Isotope_Terms{
     public function __construct(){

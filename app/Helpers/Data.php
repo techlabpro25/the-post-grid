@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\TpgBlocks\Helpers;
+namespace RT\RadiusBlocks\Helpers;
 
 class Data
 {

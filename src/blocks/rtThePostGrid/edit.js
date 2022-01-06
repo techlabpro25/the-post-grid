@@ -175,6 +175,7 @@ export default function Edit(props) {
         }
 
         apiFetch({
+
             path: '/rt/v1/query',
             method: 'POST',
             data: {

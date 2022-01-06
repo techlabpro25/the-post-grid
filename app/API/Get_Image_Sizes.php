@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\TpgBlocks\API;
+namespace RT\RadiusBlocks\API;
 
 class Get_Image_Sizes{
     public function __construct(){
