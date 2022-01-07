@@ -100,7 +100,7 @@ export const List1 = (props) =>{
                 <div className={`rt-row rt-content-loader layout2 list1 layout_parent tpg-even`}>
                     {
                         data.length && data.map((post) => {
-                            var postexcerpt = post.excerpt;
+                            var postexcerpt = (excerpt.type == "fullex")? post.excerpt : post.content;
                             var post_title = post.title;
 
                             if (title.type == "char") {

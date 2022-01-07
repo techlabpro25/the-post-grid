@@ -66,7 +66,7 @@ class AssetsController
             $this->version,
             true
         );
-//        wp_localize_script( $this->plugin_name . '-cgb-block-js', 'editor_ajax_call', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
+        wp_localize_script( $this->plugin_name . '-cgb-block-js', 'editor_ajax_call', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 
         wp_enqueue_script(
             $this->plugin_name . '-cgb-deactivator-js',

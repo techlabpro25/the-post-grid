@@ -24,7 +24,7 @@ function Category(props) {
                 Color:
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol terms"}
+                className={"rt-tpg-colorcontrol terms"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ category_style.color }
@@ -35,7 +35,7 @@ function Category(props) {
                 Link Hover Color:
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol meta"}
+                className={"rt-tpg-colorcontrol meta"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ category_style['h-color'] }
@@ -46,7 +46,7 @@ function Category(props) {
                 {__( "Background-Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol terms"}
+                className={"rt-tpg-colorcontrol terms"}
                 colors={ props.attr.colors }
                 value={ category_style["background-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, "background-color": color}} ) }
@@ -70,7 +70,7 @@ function Category(props) {
                 }}
             />
             <NumberControl
-                className={"rt-numbercontrol terms"}
+                className={"rt-tpg-numbercontrol terms"}
                 label={__( "Border Radius:", "the-post-grid")}
                 labelPosition="side"
                 value={category_style["border-radius"]}
@@ -98,14 +98,14 @@ function Category(props) {
                                 {__( "Font Size:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol terms"}
+                                className={"rt-tpg-unitcontrol terms"}
                                 value={ category_style["font-size"] }
                                 onChange={ ( value ) => props.attr.setAttributes( { category_style: {...category_style, "font-size": value} }) }
                             />
 
                             <SelectControl
                                 label={__( "Font Weight:", "the-post-grid")}
-                                className={"rt-selectcontrol terms"}
+                                className={"rt-tpg-selectcontrol terms"}
                                 value={ category_style["font-weight"] }
                                 options={ [
                                     { label: 'Default', value: "" },
@@ -124,7 +124,7 @@ function Category(props) {
 
                             <SelectControl
                                 label={__( "Text Transform", "the-post-grid")}
-                                className={"rt-selectcontrol terms"}
+                                className={"rt-tpg-selectcontrol terms"}
                                 value={ category_style["transform"] }
                                 options={ props.attr.transform}
                                 onChange={ ( value ) => props.attr.setAttributes( {category_style: {...category_style, "transform": value} } ) }
@@ -134,14 +134,14 @@ function Category(props) {
                                 {__( "Letter Spacing:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol terms"}
+                                className={"rt-tpg-unitcontrol terms"}
                                 units={props.attr.units}
                                 value={ category_style["letter-spacing"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {category_style: {...category_style, "letter-spacing": val}} ) }
                             />
 
                             <UnitControl
-                                className={"rt-unitcontrol terms"}
+                                className={"rt-tpg-unitcontrol terms"}
                                 label={__('Line Height:', 'the-post-grid')}
                                 units={props.attr.units}
                                 onChange={ (value) =>{props.attr.setAttributes({category_style: {...category_style,"line-height":value}})}}

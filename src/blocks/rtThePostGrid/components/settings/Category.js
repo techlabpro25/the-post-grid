@@ -14,7 +14,7 @@ function Category(props) {
     return (
         <PanelBody title={__( "Category", "the-post-grid")} initialOpen={false}>
             <SelectControl
-                className={"rt-selectcontrol terms"}
+                className={"rt-tpg-selectcontrol terms"}
                 label={__( "Category Position:", "the-post-grid")}
                 value={ category.position }
                 options={ props.attr.matrix_position }
@@ -34,7 +34,7 @@ function Category(props) {
             />
 
             <SelectControl
-                className={"rt-selectcontrol terms"}
+                className={"rt-tpg-selectcontrol terms"}
                 label={__( "Style", "the-post-grid")}
                 value={ category.style }
                 options={ [
@@ -46,7 +46,7 @@ function Category(props) {
             />
 
             <ToggleControl
-                className={"rt-togglecontrol terms"}
+                className={"rt-tpg-togglecontrol terms"}
                 label={__( " Show Icon", "the-post-grid")}
                 checked={ category.icon }
                 onChange={ (val) => {

@@ -4,8 +4,6 @@ namespace RT\ThePostGrid\API;
 class Isotope_Terms{
     public function __construct(){
         add_action("rest_api_init", [$this, 'register_isotope_terms']);
-//        add_action('wp_ajax_nopriv_get_post_image_url', array( $this, 'data_custom_ajax'));
-//        add_action('wp_ajax_get_post_image_url', array($this, 'data_custom_ajax'));
     }
 
     public function register_isotope_terms(){

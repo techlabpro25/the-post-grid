@@ -305,9 +305,9 @@ class RtThePostGrid extends Block
 			array_map(
 				function ($attribute) {
 					return $attribute;
-				}, 
+				},
 				$this->getAttributes()
-			), 
+			),
 			$attributes
 		);
 		wp_enqueue_script(RT_TPG_BLOCKS_SLUG . '-frontend-js');
@@ -316,6 +316,6 @@ class RtThePostGrid extends Block
         <div class="rt-tpg-ph rt-thepostgrid">
             <pre style="display:none;"><?php echo wp_json_encode($_attributes) ?></pre>
         </div>
-<?php return ob_get_clean();
+        <?php return ob_get_clean();
 	}
 }

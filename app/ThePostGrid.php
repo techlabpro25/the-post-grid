@@ -4,11 +4,12 @@ require_once __DIR__ . './../vendor/autoload.php';
 
 defined('ABSPATH') || exit;
 
+use RT\ThePostGrid\API\PostTypeTaxonomy;
 use RT\ThePostGrid\Helpers\Fns;
 use RT\ThePostGrid\API\All_Post;
-use RT\ThePostGrid\API\Get_Terms;
 use RT\ThePostGrid\API\Get_Image_Sizes;
 use RT\ThePostGrid\API\Get_Title;
+use RT\ThePostGrid\API\PostTypeAjax;
 use RT\ThePostGrid\API\Isotope_Terms;
 use RT\ThePostGrid\Abstracts\Block;
 use RT\ThePostGrid\Helpers\Installer;
@@ -31,9 +32,9 @@ final class ThePostGrid{
 		$assets = new AssetsController();
 		$assets->init();
 		$this->init_hooks();
+        $this->ajax_call();
 		//}
 		new Get_Categories();
-		new Get_Terms();
 		new All_Post();
 		new Get_Title();
 		new Isotope_Terms();
@@ -58,6 +59,12 @@ final class ThePostGrid{
 		do_action('wp_blocks_loaded');
 	}
 
+    public function ajax_call()
+    {
+        new PostTypeAjax();
+        new PostTypeTaxonomy();
+    }
+
 	public function init()
 	{
 		$this->load_language();
@@ -68,28 +75,28 @@ final class ThePostGrid{
 	{
 		register_shutdown_function([$this, 'log_errors']);
 		add_action('plugins_loaded', [$this, 'on_plugins_loaded'], -1);
-		// add_action('init', [$this, 'register_blocks']);
+//		 add_action('init', [$this, 'register_blocks']);
 		add_action('init', [$this, 'init'], 0);
 		new RtThePostGrid();
 	}
 
-	// public function register_blocks() {
-	//     if (function_exists('register_block_type')) {
-	//         $blocks = Fns::getRegisteredBlocks();
-	//         if (!empty($blocks) && is_array($blocks)) {
-	//             foreach ($blocks as $block) {
-	//                 /** @var Block $loadedBlock */
-	//                 $loadedBlock = is_string($block) ? new $block() : $block;
-	//                 if (!$loadedBlock->getName() || !$loadedBlock->is_dynamic()) {
-	//                     continue;
-	//                 }
-	//                 register_block_type($loadedBlock->getName(), [
-	//                     'render_callback' => [$block, 'render_callback'],
-	//                 ]);
-	//             }
-	//         }
-	//     }
-	// }
+//	 public function register_blocks() {
+//	     if (function_exists('register_block_type')) {
+//	         $blocks = Fns::getRegisteredBlocks();
+//	         if (!empty($blocks) && is_array($blocks)) {
+//	             foreach ($blocks as $block) {
+//	                 /** @var Block $loadedBlock */
+//	                 $loadedBlock = is_string($block) ? new $block() : $block;
+//	                 if (!$loadedBlock->getName() || !$loadedBlock->is_dynamic()) {
+//	                     continue;
+//	                 }
+//	                 register_block_type($loadedBlock->getName(), [
+//	                     'render_callback' => [$block, 'render_callback'],
+//	                 ]);
+//	             }
+//	         }
+//	     }
+//	 }
 
 
 	/**

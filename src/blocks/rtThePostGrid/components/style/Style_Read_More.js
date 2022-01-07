@@ -62,7 +62,7 @@ function Read_More(props) {
                                                     {__( "Text Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ button_style.color }
                                                     onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "color": color}} ) }
@@ -72,7 +72,7 @@ function Read_More(props) {
                                                     {__( "Background Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     label = "Select Color"
                                                     colors={props.attr.colors }
                                                     value={ button_style["background-color"] }
@@ -88,7 +88,7 @@ function Read_More(props) {
                                                     {__( "Text Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ button_style.h_color }
                                                     onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "h_color": color}} ) }
@@ -98,7 +98,7 @@ function Read_More(props) {
                                                     {__( "Background Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ button_style.h_bg_color }
                                                     onChange={ ( color ) => props.attr.setAttributes( {button_style: {...button_style, "h_bg_color": color}} ) }
@@ -134,14 +134,14 @@ function Read_More(props) {
                                 {__( "Font Size:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol"}
+                                className={"rt-tpg-unitcontrol"}
                                 value={ button_style["font-size"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {button_style: {...button_style, "font-size": val}} ) }
                             />
 
                             <SelectControl
                                 label={__( "Font Weight:", "the-post-grid")}
-                                className={"rt-selectcontrol"}
+                                className={"rt-tpg-selectcontrol"}
                                 value={ button_style["font-weight"] }
                                 options={ [
                                     { label: '100', value: 100 },
@@ -158,7 +158,7 @@ function Read_More(props) {
                             />
                             <SelectControl
                                 label={__( "Text Transform", "the-post-grid")}
-                                className={"rt-selectcontrol meta"}
+                                className={"rt-tpg-selectcontrol meta"}
                                 value={ button_style["transform"] }
                                 options={ props.attr.transform}
                                 onChange={ ( value ) => props.attr.setAttributes( {button_style: {...button_style, "transform": value} } ) }
@@ -168,14 +168,14 @@ function Read_More(props) {
                                 {__( "Letter Spacing:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol"}
+                                className={"rt-tpg-unitcontrol"}
                                 units={props.attr.units}
                                 value={ button_style["letter-spacing"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {button_style: {...button_style, "letter-spacing": val}} ) }
                             />
 
                             <UnitControl
-                            className={"rt-unitcontrol "}
+                            className={"rt-tpg-unitcontrol "}
                             units={props.attr.units}
                                 label={__('Line Height:', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({button_style: {...button_style,"line-height":value}})}}
@@ -228,7 +228,7 @@ function Read_More(props) {
                                                     {__( "Border Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ button['border-color'] }
                                                     onChange={ ( color ) => props.attr.setAttributes( {button: {...button, "border-color": color}} ) }
@@ -238,20 +238,20 @@ function Read_More(props) {
                                                     {__( "Border Width:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     units={[{ value: 'px', label: 'px', default: 0 }]}
                                                     value={ button["border-width"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {button: {...button, "border-width": val}} ) }
                                                 />
                                                 <SelectControl
                                                     label={__( "Border Style:", "the-post-grid")}
-                                                    className={"rt-selectcontrol"}
+                                                    className={"rt-tpg-selectcontrol"}
                                                     value={ button["border-style"] }
                                                     options={ props.attr.border_style }
                                                     onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "border-style": value} }) }
                                                 />
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     units={[
                                                         { value: 'px', label: 'px', default: 0 },
                                                         { value: '%', label: '%', default: 10 },
@@ -269,7 +269,7 @@ function Read_More(props) {
                                                     {__( "Border Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ button['h-border-color'] }
                                                     onChange={ ( color ) => props.attr.setAttributes( {button: {...button, "h-border-color": color}} ) }
@@ -279,20 +279,20 @@ function Read_More(props) {
                                                     {__( "Border Width:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     units={[{ value: 'px', label: 'px', default: 0 }]}
                                                     value={ button["h-border-width"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {button: {...button, "h-border-width": val}} ) }
                                                 />
                                                 <SelectControl
                                                     label={__( "Border Style:", "the-post-grid")}
-                                                    className={"rt-selectcontrol"}
+                                                    className={"rt-tpg-selectcontrol"}
                                                     value={ button["h-border-style"] }
                                                     options={ props.attr.border_style }
                                                     onChange={ ( value ) => props.attr.setAttributes( { button: {...button, "h-border-style": value} }) }
                                                 />
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     units={[
                                                         { value: 'px', label: 'px', default: 0 },
                                                         { value: '%', label: '%', default: 10 },
@@ -318,7 +318,7 @@ function Read_More(props) {
                 {__( "Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left"
-                className={".rt-radiocontrol"}
+                className={"rt-tpg-radiocontrol"}
                 onChange={ (val) =>props.attr.setAttributes({button: {...button, "text-align": val}}) }
                 checked={ button["text-align"] }
             >

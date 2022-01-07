@@ -48,13 +48,13 @@ function Style_Content_wrap(props) {
                 {__( "Border Width:", "the-post-grid")}
             </Text>
             <UnitControl
-                className={"rt-unitcontrol content-wrap"}
+                className={"rt-tpg-unitcontrol content-wrap"}
                 value={ content_wrap["border-width"] }
                 onChange={ ( val ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "border-width": val}} ) }
             />
 
             <NumberControl
-                className={"rt-numbercontrol content-wrap"}
+                className={"rt-tpg-numbercontrol content-wrap"}
                 label={__( "Border Radius", "the-post-grid")}
                 labelPosition="side"
                 value={content_wrap["radius"]}

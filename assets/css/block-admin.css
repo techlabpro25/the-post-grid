@@ -296,13 +296,13 @@ a:hover {
 }
 
 .components-circular-option-picker,
-.rt-selectcontrol,
-.rt-unitcontrol,
-.rt-numbercontrol,
-.rt-colorcontrol,
-.rt-radiocontrol,
-.rt-togglecontrol,
-.rt-textcontrol {
+.rt-tpg-selectcontrol,
+.rt-tpg-unitcontrol,
+.rt-tpg-numbercontrol,
+.rt-tpg-colorcontrol,
+.rt-tpg-radiocontrol,
+.rt-tpg-togglecontrol,
+.rt-tpg-textcontrol {
   margin-bottom: 15px !important;
   margin-top: 8px !important;
 }
@@ -312,7 +312,7 @@ a:hover {
   color: #333;
 }
 
-.rt-radiocontrol .components-radio-control__input:focus {
+.rt-tpg-radiocontrol .components-radio-control__input:focus {
   box-shadow: unset !important;
 }
 
@@ -320,6 +320,14 @@ a:hover {
 .components-radio-control__input[type=radio]:focus {
   box-shadow: unset !important;
   outline: unset !important;
+}
+
+.the_post_grid_blocks .no_notice {
+  padding: 10px 0px 10px 16px;
+  background-color: #fff3cd;
+  margin: 0px 16px 10px 16px;
+  color: #856404;
+  border-radius: 5px;
 }
 
 .the_post_grid_blocks {

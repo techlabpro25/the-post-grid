@@ -23,7 +23,7 @@ function Meta(props) {
                 Color:
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol meta"}
+                className={"rt-tpg-colorcontrol meta"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ meta_style.color }
@@ -34,7 +34,7 @@ function Meta(props) {
                Link Hover Color:
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol meta"}
+                className={"rt-tpg-colorcontrol meta"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ meta_style['h-color'] }
@@ -45,7 +45,7 @@ function Meta(props) {
                 {__( "Text Alignment:", "the-post-grid")}
             </Text>
             <RadioGroup defaultChecked="left"
-                className={"rt-radiocontrol meta"}
+                className={"rt-tpg-radiocontrol meta"}
                 onChange={ (val) =>props.attr.setAttributes({meta_style: {...meta_style, "text-align": val}}) } 
                 checked={ meta_style["text-align"] }
             >
@@ -74,13 +74,13 @@ function Meta(props) {
                                 {__( "Font Size:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol meta"}
+                                className={"rt-tpg-unitcontrol meta"}
                                 value={ meta_style["font-size"] }
                                 onChange={ ( value ) => props.attr.setAttributes( { meta_style: {...meta_style, "font-size": value} }) }
                             />
 
                             <SelectControl
-                                className={"rt-selectcontrol meta"}
+                                className={"rt-tpg-selectcontrol meta"}
                                 label={__( "Font Weight:", "the-post-grid")}
                                 value={ meta_style["font-weight"] }
                                 options={ [
@@ -99,7 +99,7 @@ function Meta(props) {
 
                             <SelectControl
                                 label={__( "Text Transform", "the-post-grid")}
-                                className={"rt-selectcontrol meta"}
+                                className={"rt-tpg-selectcontrol meta"}
                                 value={ meta_style["transform"] }
                                 options={ props.attr.transform}
                                 onChange={ ( value ) => props.attr.setAttributes( {meta_style: {...meta_style, "transform": value} } ) }
@@ -109,14 +109,14 @@ function Meta(props) {
                                 {__( "Letter Spacing:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol meta"}
+                                className={"rt-tpg-unitcontrol meta"}
                                 units={props.attr.units}
                                 value={ meta_style["letter-spacing"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {meta_style: {...meta_style, "letter-spacing": val}} ) }
                             />
 
                             <UnitControl
-                                className={"rt-unitcontrol meta"}
+                                className={"rt-tpg-unitcontrol meta"}
                                 units={props.attr.units}
                                 label={__('Line Height', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({meta_style: {...meta_style,"line-height":value}})}}

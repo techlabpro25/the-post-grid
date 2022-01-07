@@ -25,7 +25,7 @@ function Title(props) {
                 {__( "Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol title"}
+                className={"rt-tpg-colorcontrol title"}
                 colors={ props.attr.colors }
                 value={ title_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {title_style: {...title_style, "color": color}} ) }
@@ -34,7 +34,7 @@ function Title(props) {
                 {__( "Hover Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol title"}
+                className={"rt-tpg-colorcontrol title"}
                 colors={ props.attr.colors }
                 value={ title_style.h_color }
                 onChange={ ( color ) => props.attr.setAttributes( {title_style: {...title_style, "h_color": color}} ) }
@@ -44,7 +44,7 @@ function Title(props) {
             <Text>
                 {__( "Text Alignment:", "the-post-grid")}
             </Text>
-            <RadioGroup className={"rt-radiocontrol title"} defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({title_style: {...title_style, "text-align": val}}) } checked={ title_style["text-align"] }>
+            <RadioGroup className={"rt-tpg-radiocontrol title"} defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({title_style: {...title_style, "text-align": val}}) } checked={ title_style["text-align"] }>
                 <Radio value="Left"></Radio>
                 <Radio value="Center"></Radio>
                 <Radio value="Right"></Radio>
@@ -71,14 +71,14 @@ function Title(props) {
                                 {__( "Font Size:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol title"}
+                                className={"rt-tpg-unitcontrol title"}
                                 value={ title_style["font-size"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {title_style: {...title_style, "font-size": val}} ) }
                             />
 
                             <SelectControl
                                 label={__( "Font Weight:", "the-post-grid")}
-                                className={"rt-selectcontrol title"}
+                                className={"rt-tpg-selectcontrol title"}
                                 value={ title_style["font-weight"] }
                                 options={ [
                                     { label: '100', value: 100 },
@@ -96,7 +96,7 @@ function Title(props) {
 
                             <SelectControl
                                 label={__( "Text Transform", "the-post-grid")}
-                                className={"rt-selectcontrol title"}
+                                className={"rt-tpg-selectcontrol title"}
                                 value={ title_style["transform"] }
                                 options={ props.attr.transform}
                                 onChange={ ( value ) => props.attr.setAttributes( {title_style: {...title_style, "transform": value} } ) }
@@ -106,14 +106,14 @@ function Title(props) {
                                 {__( "Letter Spacing:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol title"}
+                                className={"rt-tpg-unitcontrol title"}
                                 units={props.attr.units}
                                 value={ title_style["letter-spacing"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {title_style: {...title_style, "letter-spacing": val}} ) }
                             />
 
                             <UnitControl
-                                className={"rt-unitcontrol title"}
+                                className={"rt-tpg-unitcontrol title"}
                                 units={props.attr.units}
                                 label={__('Line Height:', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({title_style: {...title_style,"line-height":value}})}}

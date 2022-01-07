@@ -21,7 +21,7 @@ function Heading(props) {
                 {__( "Text Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol heading"}
+                className={"rt-tpg-colorcontrol heading"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ heading_style.color }
@@ -33,7 +33,7 @@ function Heading(props) {
                 Background Color:
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol heading"}
+                className={"rt-tpg-colorcontrol heading"}
                 label = {__( "Select Background Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ heading_style["background-color"] }
@@ -45,7 +45,7 @@ function Heading(props) {
                 {__( "Border Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol heading"}
+                className={"rt-tpg-colorcontrol heading"}
                 colors={ props.attr.colors }
                 value={ heading_style["border-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {heading_style: {...heading_style, "border-color": color}} ) }
@@ -54,7 +54,7 @@ function Heading(props) {
                 {__( "Border Width:", "the-post-grid")}
             </Text>
             <UnitControl
-                className={"rt-unitcontrol heading"}
+                className={"rt-tpg-unitcontrol heading"}
                 value={ heading_style["border-width"] }
                 onChange={ ( val ) => props.attr.setAttributes( {heading_style: {...heading_style, "border-width": val}} ) }
             />
@@ -80,7 +80,7 @@ function Heading(props) {
                                 {__( "Font Size:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol heading"}
+                                className={"rt-tpg-unitcontrol heading"}
                                 value={ heading_style["font-size"] }
                                 units={props.attr.units}
                                 onChange={ ( val ) => props.attr.setAttributes( {heading_style: {...heading_style, "font-size": val}} ) }
@@ -88,7 +88,7 @@ function Heading(props) {
 
                             <SelectControl
                                 label={__( "Font Weight:", "the-post-grid")}
-                                className={"rt-selectcontrol heading"}
+                                className={"rt-tpg-selectcontrol heading"}
                                 value={ heading_style["font-weight"] }
                                 options={ [
                                     { label: '100', value: 100 },
@@ -106,7 +106,7 @@ function Heading(props) {
 
                             <SelectControl
                                 label={__( "Text Transform", "the-post-grid")}
-                                className={"rt-selectcontrol heading"}
+                                className={"rt-tpg-selectcontrol heading"}
                                 value={ heading_style["transform"] }
                                 options={ props.attr.transform}
                                 onChange={ ( value ) => props.attr.setAttributes( {heading_style: {...heading_style, "transform": value} } ) }
@@ -116,14 +116,14 @@ function Heading(props) {
                                 {__( "Letter Spacing:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol heading"}
+                                className={"rt-tpg-unitcontrol heading"}
                                 units={props.attr.units}
                                 value={ heading_style["letter-spacing"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {heading_style: {...heading_style, "letter-spacing": val}} ) }
                             />
 
                             <UnitControl
-                                className={"rt-unitcontrol heading"}
+                                className={"rt-tpg-unitcontrol heading"}
                                 units={props.attr.units}
                                 label={__('Line Height:', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({heading_style: {...heading_style,"line-height":value}})}}
@@ -158,7 +158,7 @@ function Heading(props) {
                 {__( "Dot Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol heading"}
+                className={"rt-tpg-colorcontrol heading"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ heading_style['dot-color'] }

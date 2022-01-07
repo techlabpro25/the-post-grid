@@ -11,7 +11,7 @@ function Excerpt(props) {
     return (
         <PanelBody title={__( "Excerpt", "the-post-grid")} initialOpen={false}>
             <NumberControl
-                className={"rt-numbercontrol terms"}
+                className={"rt-tpg-numbercontrol terms"}
                 label={__( "Excerpt Limit", "the-post-grid")}
                 value={ excerpt.limit }
                 min={1}
@@ -19,7 +19,7 @@ function Excerpt(props) {
                 onChange={( value ) => props.attr.setAttributes( {excerpt: {...excerpt, "limit": value} } )}
             />
             <RadioControl
-                className={"rt-radiocontrol terms"}
+                className={"rt-tpg-radiocontrol terms"}
                 label={__( "Limit Type", "the-post-grid")}
                 selected={ excerpt.type }
                 options={ [
@@ -30,7 +30,6 @@ function Excerpt(props) {
                 ] }
                 onChange={
                     ( value ) =>{
-
                         props.attr.setAttributes( {excerpt: {...excerpt, "type": value} } )
                     }
 
@@ -38,7 +37,7 @@ function Excerpt(props) {
             />
 
             <TextControl
-                className={"rt-textcontrol terms"}
+                className={"rt-tpg-textcontrol terms"}
                 label={__( "Excerpt More Text", "the-post-grid")}
                 value={excerpt.more_text}
                 onChange={(val) =>props.attr.setAttributes({excerpt: {...excerpt, "more_text": val}})}	

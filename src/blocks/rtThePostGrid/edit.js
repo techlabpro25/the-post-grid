@@ -215,11 +215,7 @@ export default function Edit(props) {
 
     useEffect(() => {
         call_all_post(query, pagination, image, excerpt)
-    }, [query, pagination, newOffset, pageindex, excerpt.type, image.size]);
-
-    useEffect(() => {
-        call_all_post(query, pagination, image, excerpt)
-    }, [excerpt.type]);
+    }, [query, pagination, newOffset, pageindex, image.size]);
 
     const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
 

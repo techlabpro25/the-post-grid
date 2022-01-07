@@ -2,25 +2,20 @@
 
 namespace RT\ThePostGrid\API;
 
-class Get_Terms{
-    public function __construct(){
-        add_action("rest_api_init", [$this, 'register_term_route']);
+class PostTypeTaxonomy
+{
+    public function __construct()
+    {
+        add_action('wp_ajax_nopriv_get_all_taxonomy', [$this, 'get_all_taxonomy']);
+        add_action('wp_ajax_get_all_taxonomy', [$this, 'get_all_taxonomy']);
     }
 
-    public function register_term_route(){
-        register_rest_route( 'rt/v1', 'taxonomy',array(
-            'methods'  => 'GET',
-            'callback' => [$this, 'get_posts_terms'],
-            'permission_callback' => function() { return true; }
-        ));
-    }
-
-    public function get_posts_terms($request){
-        $post_type = sanitize_text_field($request["post_type"]);
+    public function get_all_taxonomy()
+    {
+        $post_type = sanitize_text_field($_REQUEST["post_type"]);
         $taxonomy_objects = get_object_taxonomies( $post_type, 'objects' );
 
         $data = [];
-
 
         if(!empty($taxonomy_objects)){
             if(!empty($taxonomy_objects)){
@@ -34,9 +29,6 @@ class Get_Terms{
         }else{
             $data['message'] = esc_html("No Taxonomies found");
         }
-
-
-    
-        return rest_ensure_response($data);
+        wp_send_json_success( $data, 200 );
     }
 }

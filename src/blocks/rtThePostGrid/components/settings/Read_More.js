@@ -10,7 +10,7 @@ function Read_More(props) {
     return (
         <PanelBody title={__( "Read More Button", "the-post-grid")} initialOpen={false}>
             <TextControl
-                className={'rt-textcontrol'}
+                className={'rt-tpg-textcontrol'}
                 label={__( "Button Text:", "the-post-grid")}
                 value={button.text}
                 onChange={(val) =>props.attr.setAttributes({button: {...button, "text": val}})}

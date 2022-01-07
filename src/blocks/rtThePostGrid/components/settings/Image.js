@@ -24,28 +24,10 @@ function Image(props) {
         })
     }, []);
 
-    // useEffect(()=>{
-    //     $.ajax({
-    //         type: "POST",
-    //         url: editor_ajax_call.ajax_url,
-    //         dataType:"json",
-    //         data: {
-    //             action: 'get_post_image_url',
-    //             size: imagesize,
-    //         },
-    //         success: function (data){
-    //             console.log(data)
-    //         },
-    //         error: function (e){
-    //             console.log(e)
-    //         }
-    //     })
-    // }, [imagesize])
-
     return (
         <PanelBody title={__( "Image", "the-post-grid")} initialOpen={false}>
             <ToggleControl
-                className={"rt-togglecontrol image"}
+                className={"rt-tpg-togglecontrol image"}
                 label={__( "Show Image", "the-post-grid")}
                 checked={ image.show_hide }
                 onChange={ (val) => {
@@ -60,7 +42,7 @@ function Image(props) {
             {
                 image.show_hide?(
                     <SelectControl
-                        className={"rt-selectcontrol image"}
+                        className={"rt-tpg-selectcontrol image"}
                         label={__( "Featured Image Size:", "the-post-grid")}
                         value={ image.size }
                         options={ sizes }
@@ -77,7 +59,7 @@ function Image(props) {
             {((layout.value == "list1")|| (layout.value == "list2"))? (
                 <>
                     <SelectControl
-                        className={"rt-selectcontrol image"}
+                        className={"rt-tpg-selectcontrol image"}
                         label={__( "Image Column:", "the-post-grid")}
                         value={ image['img-column'] }
                         options={ [
@@ -104,7 +86,7 @@ function Image(props) {
 
 
             <SelectControl
-                className={"rt-selectcontrol image"}
+                className={"rt-tpg-selectcontrol image"}
                 label={__( "Hover Animation:", "the-post-grid")}
                 value={ image.animation }
                 options={ [
@@ -117,7 +99,7 @@ function Image(props) {
             />
 
             <UnitControl
-                className={"rt-unitcontrol image"}
+                className={"rt-tpg-unitcontrol image"}
                 units={[{label: "px", value: "px"}, {label: "%", value: "%"}]}
                 label={__('Border Radius', 'the-post-grid')}
                 onChange={ ( value ) => props.attr.setAttributes( { image: {...image, "border-radius": value} })}

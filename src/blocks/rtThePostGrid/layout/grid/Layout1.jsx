@@ -100,7 +100,8 @@ const Layout1 = (props) => {
 				<div className={`rt-row rt-content-loader layout1 tpg-even grid-layout-1 layout_parent`}>
 					{
 						data.length && data.map((post) => {
-							var postexcerpt = post.excerpt;
+
+							var postexcerpt = (excerpt.type == "fullex")? post.excerpt : post.content;
 							var post_title = post.title;
 
 							if (title.type == "char") {

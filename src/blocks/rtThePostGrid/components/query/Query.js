@@ -123,42 +123,67 @@ const Query = (props) => {
 
 	// Post Type
 	useEffect(() => {
-		apiFetch({ path: "/wp/v2/types" }).then((types) => {
-			var newarrobj = Object.keys(types);
-				let loop_var= newarrobj.map((item_key) => {
-					if (!typefilter.includes(item_key)) {
-						return {
-							label: types[item_key].name,
-							value: types[item_key].slug,
-						};
-					}
-					return false
-				})
-			setPt(loop_var.filter(e => e))
-		});
+		$.ajax({
+			type: "POST",
+			url: editor_ajax_call.ajax_url,
+			dataType:"json",
+			data: {
+				action: 'get_all_post_type'
+			},
+			success: function (data){
+				if(data.success){
+					let loop_var= data.data.map((item_key) => {
+						if (!typefilter.includes(item_key.value)) {
+							return {
+								label: item_key.label,
+								value: item_key.value,
+							};
+						}
+						return false
+					})
+					setPt(loop_var.filter(e => e))
+				}
+
+			},
+			error: function (e){
+				alert(__('There are some problem with post type.', 'the-post-grid'))
+			}
+		})
 		setPosttypeloading(false);
 	}, []);
 
 	// Get terms by post
 	useEffect(() => {
-		apiFetch({ path: "/rt/v1/taxonomy?post_type="+query.post_type }).then((term) => {
-			if("message" in term){
-				setTax_warning(term.message)
-			}else{
-				setTax_warning('');
-				let taxonomy_loop = term.map((item_key) => {
-					if (!typefilter.includes(item_key.name)) {
-						return {
-							label: item_key.label,
-							value: item_key.name,
-						};
-					}
-					return false;
-				})
-				setPost_term(taxonomy_loop.filter(e => e))
+		$.ajax({
+			type: "POST",
+			url: editor_ajax_call.ajax_url,
+			dataType:"json",
+			data: {
+				action: 'get_all_taxonomy',
+				post_type: query.post_type
+			},
+			success: function (data){
+				if("message" in data.data){
+					setTax_warning(data.data.message)
+				}else{
+					setTax_warning('');
+					let taxonomy_loop = data.data.map((item_key) => {
+						if (!typefilter.includes(item_key.name)) {
+							return {
+								label: item_key.label,
+								value: item_key.name,
+							};
+						}
+						return false;
+					})
+					setPost_term(taxonomy_loop.filter(e => e))
+				}
+				setTaxonomyloading(false)
+			},
+			error: function (e){
+				alert(__('There are some problem with taxonomy.', 'the-post-grid'))
 			}
-			setTaxonomyloading(false)
-		});
+		})
 	}, [query.post_type, query.taxonomy_bool]);
 
 
@@ -229,7 +254,7 @@ const Query = (props) => {
 
 
 			<NumberControl
-				className={"rt-numbercontrol query"}
+				className={"rt-tpg-numbercontrol query"}
 				label={__( "limit:", "the-post-grid")}
 				help={__( "The number of posts to show. Set -1 to show all found posts.", "the-post-grid")}
 				value={query.limit}
@@ -286,7 +311,7 @@ const Query = (props) => {
 			/>
 
 			<NumberControl
-				className={"rt-numbercontrol query"}
+				className={"rt-tpg-numbercontrol query"}
 				label={__( "Offset", "the-post-grid")}
 				labelPosition="side"
 				onChange={(value) =>{
@@ -313,7 +338,7 @@ const Query = (props) => {
 				pagination.show?(
 					<>
 						<NumberControl
-							className={"rt-numbercontrol querytio"}
+							className={"rt-tpg-numbercontrol querytio"}
 							label={__( "Display per page:", "the-post-grid")}
 							labelPosition="side"
 							min={1}

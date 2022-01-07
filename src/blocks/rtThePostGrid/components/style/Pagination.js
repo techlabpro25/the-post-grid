@@ -67,7 +67,7 @@ function Pagination(props) {
                                                     {__( "Text Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ pagination_style.color }
                                                     onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "color": color}} ) }
@@ -77,7 +77,7 @@ function Pagination(props) {
                                                     {__( "Background Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     label = "Select Color"
                                                     colors={props.attr.colors }
                                                     value={ pagination_style["bg-color"] }
@@ -93,7 +93,7 @@ function Pagination(props) {
                                                     {__( "Text Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ pagination_style['h-color'] }
                                                     onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-color": color}} ) }
@@ -103,7 +103,7 @@ function Pagination(props) {
                                                     {__( "Background Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ pagination_style['h-bg-color'] }
                                                     onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-bg-color": color}} ) }
@@ -117,7 +117,7 @@ function Pagination(props) {
                                                     {__( "Text Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ pagination_style['a-color'] }
                                                     onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-color": color}} ) }
@@ -127,7 +127,7 @@ function Pagination(props) {
                                                     {__( "Background Color:", "the-post-grid")}
                                                 </Text>
                                                 <ColorPalette
-                                                    className={"rt-colorcontrol"}
+                                                    className={"rt-tpg-colorcontrol"}
                                                     colors={ props.attr.colors }
                                                     value={ pagination_style['a-bg-color'] }
                                                     onChange={ ( color ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-bg-color": color}} ) }
@@ -188,14 +188,14 @@ function Pagination(props) {
                                                     {__( "Font Size:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     value={ pagination_style["font-size"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "font-size": val}} ) }
                                                 />
 
                                                 <SelectControl
                                                     label={__( "Font Weight:", "the-post-grid")}
-                                                    className={"rt-selectcontrol"}
+                                                    className={"rt-tpg-selectcontrol"}
                                                     value={ pagination_style["font-weight"] }
                                                     options={ [
                                                         { label: '100', value: 100 },
@@ -212,7 +212,7 @@ function Pagination(props) {
                                                 />
                                                 <SelectControl
                                                     label={__( "Text Transform", "the-post-grid")}
-                                                    className={"rt-selectcontrol meta"}
+                                                    className={"rt-tpg-selectcontrol meta"}
                                                     value={ pagination_style["transform"] }
                                                     options={ props.attr.transform}
                                                     onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "transform": value} } ) }
@@ -222,14 +222,14 @@ function Pagination(props) {
                                                     {__( "Letter Spacing:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     units={props.attr.units}
                                                     value={ pagination_style["letter-spacing"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "letter-spacing": val}} ) }
                                                 />
 
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
                                                     onChange={ (value) =>{props.attr.setAttributes({pagination_style: {...pagination_style,"line-height":value}})}}
@@ -244,14 +244,14 @@ function Pagination(props) {
                                                     {__( "Font Size:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     value={ pagination_style["h-font-size"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-font-size": val}} ) }
                                                 />
 
                                                 <SelectControl
                                                     label={__( "Font Weight:", "the-post-grid")}
-                                                    className={"rt-selectcontrol"}
+                                                    className={"rt-tpg-selectcontrol"}
                                                     value={ pagination_style["h-font-weight"] }
                                                     options={ [
                                                         { label: '100', value: 100 },
@@ -268,7 +268,7 @@ function Pagination(props) {
                                                 />
                                                 <SelectControl
                                                     label={__( "Text Transform", "the-post-grid")}
-                                                    className={"rt-selectcontrol meta"}
+                                                    className={"rt-tpg-selectcontrol meta"}
                                                     value={ pagination_style["h-transform"] }
                                                     options={ props.attr.transform}
                                                     onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-transform": value} } ) }
@@ -278,14 +278,14 @@ function Pagination(props) {
                                                     {__( "Letter Spacing:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol meta"}
+                                                    className={"rt-tpg-unitcontrol meta"}
                                                     units={props.attr.units}
                                                     value={ pagination_style["h-letter-spacing"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "h-letter-spacing": val}} ) }
                                                 />
 
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
                                                     onChange={ (value) =>{props.attr.setAttributes({pagination_style: {...pagination_style,"h-line-height":value}})}}
@@ -300,14 +300,14 @@ function Pagination(props) {
                                                     {__( "Font Size:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     value={ pagination_style["a-font-size"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-font-size": val}} ) }
                                                 />
 
                                                 <SelectControl
                                                     label={__( "Font Weight:", "the-post-grid")}
-                                                    className={"rt-selectcontrol"}
+                                                    className={"rt-tpg-selectcontrol"}
                                                     value={ pagination_style["a-font-weight"] }
                                                     options={ [
                                                         { label: '100', value: 100 },
@@ -324,7 +324,7 @@ function Pagination(props) {
                                                 />
                                                 <SelectControl
                                                     label={__( "Text Transform", "the-post-grid")}
-                                                    className={"rt-selectcontrol meta"}
+                                                    className={"rt-tpg-selectcontrol meta"}
                                                     value={ pagination_style["a-transform"] }
                                                     options={ props.attr.transform}
                                                     onChange={ ( value ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-transform": value} } ) }
@@ -334,14 +334,14 @@ function Pagination(props) {
                                                     {__( "Letter Spacing:", "the-post-grid")}
                                                 </Text>
                                                 <UnitControl
-                                                    className={"rt-unitcontrol meta"}
+                                                    className={"rt-tpg-unitcontrol meta"}
                                                     units={props.attr.units}
                                                     value={ pagination_style["a-letter-spacing"] }
                                                     onChange={ ( val ) => props.attr.setAttributes( {pagination_style: {...pagination_style, "a-letter-spacing": val}} ) }
                                                 />
 
                                                 <UnitControl
-                                                    className={"rt-unitcontrol"}
+                                                    className={"rt-tpg-unitcontrol"}
                                                     units={props.attr.units}
                                                     label={__('Line Height:', 'the-post-grid')}
                                                     onChange={ (value) =>{props.attr.setAttributes({pagination_style: {...pagination_style,"a-line-height":value}})}}

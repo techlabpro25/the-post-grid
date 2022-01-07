@@ -27,7 +27,7 @@ function Title(props) {
     return (
         <PanelBody title={__( "Title", "the-post-grid")} initialOpen={false}>
             <SelectControl
-                className={'rt-selectcontrol title'}
+                className={'rt-tpg-selectcontrol title'}
                 label={__( "Tag:", "the-post-grid")}
                 value={ title["tag"] }
                 options={ [
@@ -51,7 +51,7 @@ function Title(props) {
 
             {(title.type != "full")?(
                 <NumberControl
-                    className={'rt-numbercontrol title'}
+                    className={'rt-tpg-numbercontrol title'}
                     label={__( "Title Limit:", "the-post-grid")}
                     value={ title.word_limit }
                     min={1}
@@ -62,7 +62,7 @@ function Title(props) {
 
 
             <RadioControl
-                className={'rt-radiocontrol title'}
+                className={'rt-tpg-radiocontrol title'}
                 label={__( "Limit Type", "the-post-grid")}
                 selected={ title.type }
                 options={ [
@@ -74,7 +74,7 @@ function Title(props) {
             />
 
             <TextControl
-                className={"rt-textcontrol terms"}
+                className={"rt-tpg-textcontrol terms"}
                 label={__( "Title More Text", "the-post-grid")}
                 value={title.more_text}
                 onChange={(val) =>props.attr.setAttributes({title: {...title, "more_text": val}})}

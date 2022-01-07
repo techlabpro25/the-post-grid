@@ -22,7 +22,7 @@ function Excerpt(props) {
                 {__( "Color:", "the-post-grid")}
             </Text>
             <ColorPalette
-                className={"rt-colorcontrol excerpt"}
+                className={"rt-tpg-colorcontrol excerpt"}
                 label = {__( "Select Color", "the-post-grid")}
                 colors={ props.attr.colors }
                 value={ excerpt_style.color }
@@ -32,7 +32,7 @@ function Excerpt(props) {
             <Text>
                 {__( "Text Alignment:", "the-post-grid")}
             </Text>
-            <RadioGroup className={"rt-radiocontrol"} defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({excerpt_style: {...excerpt_style, "text-align": val}}) } checked={ excerpt_style["text-align"] }>
+            <RadioGroup className={"rt-tpg-radiocontrol"} defaultChecked="left" onChange={ (val) =>props.attr.setAttributes({excerpt_style: {...excerpt_style, "text-align": val}}) } checked={ excerpt_style["text-align"] }>
                 <Radio value="Left"></Radio>
                 <Radio value="Center"></Radio>
                 <Radio value="Right"></Radio>
@@ -58,13 +58,13 @@ function Excerpt(props) {
                                 {__( "Font Size:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol excerpt"}
+                                className={"rt-tpg-unitcontrol excerpt"}
                                 value={ excerpt_style["font-size"] }
                                 onChange={ ( value ) => props.attr.setAttributes( { excerpt_style: {...excerpt_style, "font-size": value} }) }
                             />
 
                             <SelectControl
-                                className={"rt-selectcontrol excerpt"}
+                                className={"rt-tpg-selectcontrol excerpt"}
                                 label={__( "Font Weight:", "the-post-grid")}
                                 value={ excerpt_style["font-weight"] }
                                 options={ [
@@ -82,7 +82,7 @@ function Excerpt(props) {
                             />
                             <SelectControl
                                 label={__( "Text Transform", "the-post-grid")}
-                                className={"rt-selectcontrol excerpt"}
+                                className={"rt-tpg-selectcontrol excerpt"}
                                 value={ excerpt_style["transform"] }
                                 options={ props.attr.transform}
                                 onChange={ ( value ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "transform": value} } ) }
@@ -92,7 +92,7 @@ function Excerpt(props) {
                                 {__( "Letter Spacing:", "the-post-grid")}
                             </Text>
                             <UnitControl
-                                className={"rt-unitcontrol excerpt"}
+                                className={"rt-tpg-unitcontrol excerpt"}
                                 units={props.attr.units}
                                 value={ excerpt_style["letter-spacing"] }
                                 onChange={ ( val ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "letter-spacing": val}} ) }
@@ -100,7 +100,7 @@ function Excerpt(props) {
 
 
                             <UnitControl
-                                className={"rt-unitcontrol excerpt"}
+                                className={"rt-tpg-unitcontrol excerpt"}
                                 units={props.attr.units}
                                 label={__('Line Height', 'the-post-grid')}
                                 onChange={ (value) =>{props.attr.setAttributes({excerpt_style: {...excerpt_style,"line-height":value}})}}

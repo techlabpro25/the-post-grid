@@ -57,7 +57,7 @@ function Columns(props) {
             />
 
             <NumberControl
-                className={"rt-numbercontrol column"}
+                className={"rt-tpg-numbercontrol column"}
                 label={__( "Gutter Control:", "the-post-grid")}
                 value={ content_wrap.gutter }
                 onChange={ ( value ) => props.attr.setAttributes( {content_wrap: {...content_wrap, "gutter": value} } ) }

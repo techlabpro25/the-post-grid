@@ -297,13 +297,13 @@ svg.components-panel__arrow {
     padding: 0 !important;
 }
 .components-circular-option-picker,
-.rt-selectcontrol,
-.rt-unitcontrol,
-.rt-numbercontrol,
-.rt-colorcontrol,
-.rt-radiocontrol,
-.rt-togglecontrol,
-.rt-textcontrol {
+.rt-tpg-selectcontrol,
+.rt-tpg-unitcontrol,
+.rt-tpg-numbercontrol,
+.rt-tpg-colorcontrol,
+.rt-tpg-radiocontrol,
+.rt-tpg-togglecontrol,
+.rt-tpg-textcontrol {
     margin-bottom: 15px !important;
     margin-top: 8px !important;
 }
@@ -313,7 +313,7 @@ svg.components-panel__arrow {
     color: #333;
 }
 
-.rt-radiocontrol .components-radio-control__input:focus {
+.rt-tpg-radiocontrol .components-radio-control__input:focus {
     box-shadow: unset !important;
 }
 .components-checkbox-control__input[type="checkbox"]:focus,
@@ -322,12 +322,12 @@ svg.components-panel__arrow {
     outline: unset !important;
 }
 
-.custom-tab-panel {
-    .components-panel__body {
-        //&.is-opened {
-        //    padding-top: 0;
-        //}
-    }
+.the_post_grid_blocks .no_notice {
+    padding: 10px 0px 10px 16px;
+    background-color: #fff3cd;
+    margin: 0px 16px 10px 16px;
+    color: #856404;
+    border-radius: 5px;
 }
 
 .the_post_grid_blocks {
