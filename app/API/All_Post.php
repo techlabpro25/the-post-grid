@@ -1,5 +1,5 @@
 <?php
-namespace RT\RtTpgBlocks\API;
+namespace RT\ThePostGrid\API;
 use WP_Query;
 
 class All_Post{

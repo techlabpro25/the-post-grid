@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\RtTpgBlocks\API;
+namespace RT\ThePostGrid\API;
 
 class Get_Image_Sizes{
     public function __construct(){

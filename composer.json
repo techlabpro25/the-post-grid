@@ -2,13 +2,13 @@
 	"name": "rt/the-post-grid",
 	"autoload": {
 		"psr-4": {
-			"RT\\RtTpgBlocks\\": "app/"
+			"RT\\ThePostGrid\\": "app/"
 		}
 	},
 	"authors": [
 		{
-			"name": "Mahbubur Rahman",
-			"email": "mahbubur001@gmail.com"
+			"name": "Radius Theme",
+			"email": "admin@radiustheme.com"
 		}
 	],
 	"require": {}

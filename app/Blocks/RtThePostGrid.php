@@ -1,8 +1,8 @@
 <?php
 
-namespace RT\RtTpgBlocks\Blocks;
+namespace RT\ThePostGrid\Blocks;
 
-use RT\RtTpgBlocks\Abstracts\Block;
+use RT\ThePostGrid\Abstracts\Block;
 
 class RtThePostGrid extends Block
 {
@@ -48,8 +48,9 @@ class RtThePostGrid extends Block
             'font-size' => '',
             'border-radius' => "",
             "font-weight" => '',
-            'letter-spaceing' => '',
-            'transform' => ''
+            'letter-spacing' => '',
+            'transform' => '',
+            'line-height' => ''
 		],
 		'category_padding' =>[
                 'top' => '',

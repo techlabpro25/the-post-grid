@@ -1,6 +1,6 @@
 <?php
 
-namespace RT\RtTpgBlocks\Abstracts;
+namespace RT\ThePostGrid\Abstracts;
 
 abstract class Block
 {

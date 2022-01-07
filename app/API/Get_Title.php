@@ -1,5 +1,5 @@
 <?php
-namespace RT\RtTpgBlocks\API;
+namespace RT\ThePostGrid\API;
 
 class Get_Title{
     public function __construct(){

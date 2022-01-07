@@ -556,7 +556,7 @@ const Query = (props) => {
 					{query.order_bool ? (
 						<>
 							<SelectControl
-								label={__( "Order BY:", "the-post-grid")}
+								label={__( "Order By:", "the-post-grid")}
 								value={query.order_by}
 								options={order_type}
 								onChange={(value) =>{

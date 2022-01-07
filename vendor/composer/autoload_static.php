@@ -9,12 +9,12 @@ class ComposerStaticInit288b44662987a247bf2ccdd5e8a56297
     public static $prefixLengthsPsr4 = array (
         'R' => 
         array (
-            'RT\\RtTpgBlocks\\' => 16,
+            'RT\\ThePostGrid\\' => 16,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'RT\\RtTpgBlocks\\' => 
+        'RT\\ThePostGrid\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),

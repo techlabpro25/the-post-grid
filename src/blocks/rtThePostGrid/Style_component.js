@@ -37,6 +37,7 @@ export const Cat_style = styled.a`
 	color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => (props.css['font-size'] == "")? ((props.meta['font-size'] == "")? "15px": props.meta['font-size']): props.css['font-size']} !important;
+	line-height: ${props => (props.css['line-height'] == "")? ((props.meta['line-height'] == "")? "": props.meta['line-height']): props.css['line-height']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
 	padding: ${props => 
         ((props.css_pad.right != "") && (props.css_pad.left != ""))
@@ -61,7 +62,6 @@ export const Cat_style = styled.a`
             )
         } !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
-	line-height: ${props => (props.meta['line-height'])?props.meta['line-height']: ""} !important;
 	letter-spacing: ${props => ((!props.css['letter-spacing'])?((props.meta['letter-spacing'])? props.meta['letter-spacing']: "") : props.css['letter-spacing'])} !important;
 	text-transform: ${props => ((!props.css['transform'])?((props.meta['transform'])? props.meta['transform']: "") : props.css['transform'])} !important;
 	font-weight: ${props => (props.css['font-weight'] == '')? (props.meta['font-weight']? props.meta['font-weight'] : 400) : props.css['font-weight']} !important;
@@ -112,7 +112,7 @@ export const Cat_style_non_default = styled.a`
 } !important;
 	margin: ${props => (props.css_mar != undefined) ? props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left: '0px'} !important;
     font-weight: ${props => (props.css['font-weight'])?props.css['font-weight']: ""} !important;
-    line-height: 22px !important;
+    line-height: ${props => (props.css['line-height'] == "")? ((props.meta['line-height'] == "")? "": props.meta['line-height']): props.css['line-height']} !important;
 	&::after{
 		border-top-color: ${props => props.css['background-color']} !important;;
 	}

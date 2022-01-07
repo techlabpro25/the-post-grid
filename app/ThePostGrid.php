@@ -4,18 +4,18 @@ require_once __DIR__ . './../vendor/autoload.php';
 
 defined('ABSPATH') || exit;
 
-use RT\RtTpgBlocks\Helpers\Fns;
-use RT\RtTpgBlocks\API\All_Post;
-use RT\RtTpgBlocks\API\Get_Terms;
-use RT\RtTpgBlocks\API\Get_Image_Sizes;
-use RT\RtTpgBlocks\API\Get_Title;
-use RT\RtTpgBlocks\API\Isotope_Terms;
-use RT\RtTpgBlocks\Abstracts\Block;
-use RT\RtTpgBlocks\Helpers\Installer;
-use RT\RtTpgBlocks\API\Get_Categories;
-use RT\RtTpgBlocks\Models\Dependencies;
-use RT\RtTpgBlocks\Blocks\RtThePostGrid;
-use RT\RtTpgBlocks\Controllers\AssetsController;
+use RT\ThePostGrid\Helpers\Fns;
+use RT\ThePostGrid\API\All_Post;
+use RT\ThePostGrid\API\Get_Terms;
+use RT\ThePostGrid\API\Get_Image_Sizes;
+use RT\ThePostGrid\API\Get_Title;
+use RT\ThePostGrid\API\Isotope_Terms;
+use RT\ThePostGrid\Abstracts\Block;
+use RT\ThePostGrid\Helpers\Installer;
+use RT\ThePostGrid\API\Get_Categories;
+use RT\ThePostGrid\Models\Dependencies;
+use RT\ThePostGrid\Blocks\RtThePostGrid;
+use RT\ThePostGrid\Controllers\AssetsController;
 
 final class ThePostGrid{
 	/**
@@ -155,9 +155,9 @@ final class ThePostGrid{
 /**
  * @return bool|ThePostGrid
  */
-function rtTpgBlocks()
+function ThePostGrid()
 {
 	return ThePostGrid::getInstance();
 }
 
-rtTpgBlocks();
+ThePostGrid();

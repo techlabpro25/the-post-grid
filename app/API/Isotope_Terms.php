@@ -1,5 +1,5 @@
 <?php
-namespace RT\RtTpgBlocks\API;
+namespace RT\ThePostGrid\API;
 
 class Isotope_Terms{
     public function __construct(){

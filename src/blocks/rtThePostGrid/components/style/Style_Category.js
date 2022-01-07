@@ -140,12 +140,13 @@ function Category(props) {
                                 onChange={ ( val ) => props.attr.setAttributes( {category_style: {...category_style, "letter-spacing": val}} ) }
                             />
 
-                            {/*<NumberControl*/}
-                            {/*    className={"rt-numbercontrol terms"}*/}
-                            {/*    label={__('Line Height:', 'the-post-grid')}*/}
-                            {/*    onChange={ (value) =>{props.attr.setAttributes({category_style: {...category_style,"line-height":value}})}}*/}
-                            {/*    value={ category_style['line-height'] }*/}
-                            {/*/>*/}
+                            <UnitControl
+                                className={"rt-unitcontrol terms"}
+                                label={__('Line Height:', 'the-post-grid')}
+                                units={props.attr.units}
+                                onChange={ (value) =>{props.attr.setAttributes({category_style: {...category_style,"line-height":value}})}}
+                                value={ category_style['line-height'] }
+                            />
 
 
                         </div>

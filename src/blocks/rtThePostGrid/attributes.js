@@ -235,7 +235,8 @@ const attributes = {
 			["border-radius"]: "",
 			["font-weight"]: '',
 			['letter-spacing']: '',
-			['transform']: ''
+			['transform']: '',
+			['line-height']: ''
 		},
 	},
 	category_padding: {
