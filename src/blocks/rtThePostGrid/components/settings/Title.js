@@ -49,16 +49,14 @@ function Title(props) {
             {/*    onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }*/}
             {/*/>*/}
 
-            {(title.type != "full")?(
-                <NumberControl
-                    className={'rt-tpg-numbercontrol title'}
-                    label={__( "Title Limit:", "the-post-grid")}
-                    value={ title.word_limit }
-                    min={1}
-                    step={1}
-                    onChange={( value ) => props.attr.setAttributes( {title: {...title, "word_limit": value} } )}
-                />
-            ):("")}
+            <NumberControl
+                className={'rt-tpg-numbercontrol title'}
+                label={__( "Title Limit:", "the-post-grid")}
+                value={ title.word_limit }
+                min={1}
+                step={1}
+                onChange={( value ) => props.attr.setAttributes( {title: {...title, "word_limit": value} } )}
+            />
 
 
             <RadioControl
@@ -70,7 +68,18 @@ function Title(props) {
                     { label: __( 'Word', "the-post-grid"), value: 'word' },
                     { label: __( 'Full Title', "the-post-grid"), value: 'full' },
                 ] }
-                onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "type": value} } ) }
+                onChange={ ( value ) => {
+                    var word_limit = title.word_limit
+                    if(value == "full"){
+                        word_limit = ""
+                    }else{
+                        if(word_limit == ""){
+                            word_limit = 25
+                        }
+                    }
+
+                    props.attr.setAttributes( {title: {...title, "type": value, 'word_limit': word_limit} } )
+                } }
             />
 
             <TextControl

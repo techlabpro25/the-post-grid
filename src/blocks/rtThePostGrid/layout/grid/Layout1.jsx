@@ -8,7 +8,7 @@ import {
 	Head_border_style1,
 	MetaStyle_align,
 	Content_wrap,
-	Content_padding,
+	Content_padding_grid,
 	ImgParent, Dot_style, Colgut
 } from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
@@ -154,7 +154,7 @@ const Layout1 = (props) => {
 												}
 											</div>
 
-											<Content_padding css_pad={content_padding} className="rt-detail">
+											<Content_padding_grid css={content_wrap} css_pad={content_padding} className="rt-detail">
 												{
 													(category.position == "above-title") ? (
 														<div className={`cat-above-title ${category.style}`}>
@@ -307,8 +307,7 @@ const Layout1 = (props) => {
 														</Btn_align>
 													) : ("")
 												}
-
-											</Content_padding>
+											</Content_padding_grid>
 										</Content_wrap>
 									</Colgut>
 								</>

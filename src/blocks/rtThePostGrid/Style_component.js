@@ -296,7 +296,7 @@ export const Content_wrap = styled.div`
         )+" solid "+
         (
             (
-                (props.css['border-width'] == "") || (props.css['border-color'] == undefined)
+                (props.css['border-color'] == "") || (props.css['border-color'] == undefined)
             ) ? 
                 "#d9d9d9"
                 : 
@@ -307,13 +307,13 @@ export const Content_wrap = styled.div`
     (
         (
             (props.css['border-width'] == "") ?
-                "0px"
+                "1px"
                 :
                 props.css['border-width']
         )+" solid "+
         (
             (
-                (props.css['border-width'] == "") || (props.css['border-color'] == undefined)
+                (props.css['border-color'] == "") || (props.css['border-color'] == undefined)
             ) ?
                 "transparent"
                 :
@@ -337,6 +337,11 @@ export const Content_wrap = styled.div`
             : 
             "15px")
 } !important;
+`;
+
+export const Content_padding_grid = styled.div`
+    background-color: ${props => ((props.css['background-color'] == "") || (props.css['background-color'] == undefined))? "#fff":props.css['background-color']} !important;
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
 `;
 
 export const Content_padding = styled.div`
