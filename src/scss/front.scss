@@ -11,18 +11,18 @@ button:focus{
     position: relative;
 }
 .rt-tpg-root .loader-wrapper{
-    position: fixed;
+    position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    top: 300px;
+    transform: translateX(-50%);
     z-index: 1;
 }
 
 .rt-tpg-root .loader-wrapper2 {
-    position: fixed;
-    left: 42%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    position: absolute;
+    left: 50%;
+    top: 300px;
+    transform: translateX(-50%);
     z-index: 1;
 }
 
@@ -500,6 +500,14 @@ html{
         height: 72px;
         opacity: 0;
     }
+}
+
+.rt-thepostgrid .rt-tpg-container a {
+    text-decoration: none !important;
+}
+
+.rt-tpg-root{
+    position: relative;
 }
 
 

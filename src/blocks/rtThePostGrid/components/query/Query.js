@@ -243,6 +243,8 @@ const Query = (props) => {
 								taxonomy:taxonomy,
 								tax_term:tax_term,
 								tax_item:tax_item,
+								keyword_bool: false,
+								keyword: "",
 								filter: true,
 								pageindex: 1,
 								loader: true

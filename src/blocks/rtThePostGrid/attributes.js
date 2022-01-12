@@ -179,7 +179,7 @@ const attributes = {
 		default: {
 			tag: "3",
 			position: "",
-			word_limit: 25,
+			word_limit: "",
 			type: "full",
 			more_text: "",
 		},
@@ -340,9 +340,9 @@ const attributes = {
 		type: "object",
 		default: {
 			["background-color"]: "",
-			["box-shadow-color"]: "transparent",
+			["box-shadow-color"]: "#fff",
 			radius: "",
-			["border-color"]: "transparent",
+			["border-color"]: "",
 			["border-width"]: "1px",
 			gutter: '',
 		},

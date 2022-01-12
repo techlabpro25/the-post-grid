@@ -47,7 +47,7 @@ export default function Edit(props) {
     const [pageindex, setPageindex] = useState(1);
     const [scrolltop, setscrolltop] = useState(false);
     const [message, setMessage] = useState("");
-    const [newOffset, setNewOffset] = useState(0);
+    const [changestate, setChangestate] = useState(0);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
     const {query, columns, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, loaders, layout, pagination_style} = attributes
@@ -154,28 +154,17 @@ export default function Edit(props) {
 
         let nawauthor = authors.toString();
         let newstatus = status.toString();
-        var post_per_page;
+        var post_per_page = 0;
+        var testoffset = 0;
         if (pagination.show) {
             post_per_page = pagination.post_per_page
-            if (query.filter) {
-                setNewOffset(0+query.offset)
-
-            } else {
-                if (pageindex == 1) {
-                    setNewOffset(0+query.offset)
-
-                } else {
-                    setNewOffset(((post_per_page * pageindex) - post_per_page)+query.offset)
-                }
-            }
+            testoffset = ((post_per_page * pageindex) - post_per_page) + query.offset
         } else {
             post_per_page = query.limit
-            setNewOffset(query.offset)
-            setPageindex(1)
+            testoffset = query.offset
         }
 
         apiFetch({
-
             path: '/rt/v1/query',
             method: 'POST',
             data: {
@@ -183,7 +172,7 @@ export default function Edit(props) {
                 post_per_page: post_per_page,
                 include: query.include,
                 exclude: query.exclude,
-                offset: newOffset,
+                offset: testoffset,
                 order_by: query.order_by,
                 order: query.order,
                 author: nawauthor,
@@ -215,7 +204,7 @@ export default function Edit(props) {
 
     useEffect(() => {
         call_all_post(query, pagination, image, excerpt)
-    }, [query, pagination, newOffset, pageindex, image.size]);
+    }, [pageindex, query, pagination, image.size]);
 
     const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -235,29 +224,21 @@ export default function Edit(props) {
     }, [])
 
     useEffect(() => {
-        if (pageindex > 0) {
-            setAttributes({query: {...query, "filter": false, "pageindex":pageindex}})
-        }
         $('.layout_parent').css('opacity', 0.2);
-        setIsloading(true);
         if(scrolltop){
             executeScroll();
         }
+        setIsloading(true);
     }, [pageindex])
 
+    //Set pageindex 0 when query change
     useEffect(()=>{
-        setPageindex(query.pageindex)
-    }, [query.pageindex])
-
-    useEffect(()=>{
-        $('.layout_parent').css('opacity', 0.2);
-        setIsloading(true);
-        if(scrolltop){
-            executeScroll();
-        }
-        setAttributes({query: {...query, 'loader':false}})
-    },[query.loader])
-
+        setTimeout(() => {
+            setPageindex(1)
+            setMaxlimit(5)
+            setMinlimit(1)
+        }, 5);
+    },[query, pagination, image.size])
 
     useEffect(()=>{
         if((columns.desktop == "") || (general.presdefault)){
@@ -270,10 +251,6 @@ export default function Edit(props) {
             })
         }
     },[layout.value])
-
-    useEffect(()=>{
-        setPageindex(1)
-    },[])
 
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
@@ -297,14 +274,6 @@ export default function Edit(props) {
         setMinlimit((prev) => prev - 1)
         setPageindex((prev) => prev - 1)
     }
-
-    useEffect(()=>{
-        if(query.filter){
-            setMaxlimit(5)
-            setMinlimit(1)
-        }
-    }, [query.filter])
-
 
     const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform, border_style}
     return (

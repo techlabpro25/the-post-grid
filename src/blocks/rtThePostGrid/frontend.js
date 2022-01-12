@@ -35,15 +35,12 @@ const RtThePostGrid = (props) => {
         let newstatus = status.toString();
         let newOffset = 0;
         let newLimit = 0;
-        let paginationLimit = 0;
         if(pagination.show){
             newLimit = pagination.post_per_page
             newOffset = ((pageindex * newLimit)-newLimit) + query.offset
-            paginationLimit = newLimit
         }else{
             newLimit = query.limit
             newOffset = query.offset
-            paginationLimit = query.limit
         }
         apiFetch({
             path: '/rt/v1/query',
@@ -72,14 +69,14 @@ const RtThePostGrid = (props) => {
             }else{
                 setMessage("")
                 setData(posts);
-                setPagestate(Math.ceil((posts?.[0]?.total_post - query.offset)/((paginationLimit == 0)||(paginationLimit == -1)? 1:paginationLimit)))
+                setPagestate(Math.ceil((posts?.[0]?.total_post - query.offset)/((newLimit == 0)||(newLimit == -1)? 1:newLimit)))
             }
 
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
             setIsrootloading(false)
         });
-    }, [query, pagination, loadingindex, image.size]);
+    }, [loadingindex]);
 
 
     useEffect(()=>{
@@ -87,9 +84,10 @@ const RtThePostGrid = (props) => {
         if(scrolltop){
             executeScroll();
         }
-        setTimeout(function(){
-            setLoadingindex((prev)=> prev + 1)
-        }, 500)
+        // setTimeout(function(){
+        //     setLoadingindex((prev)=> prev + 1)
+        // }, 500)
+        setLoadingindex((prev)=> prev + 1)
 
         setIsloading(true);
     },[pageindex])

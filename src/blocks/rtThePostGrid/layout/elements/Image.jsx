@@ -7,10 +7,11 @@ export const Image = (props) =>{
     return(
         <>
             {loaders?(
-                <div className="rt-tpg-lds-ripple-image">
-                    <div></div>
-                    <div></div>
-                </div>
+                // <div className="rt-tpg-lds-ripple-image">
+                //     <div></div>
+                //     <div></div>
+                // </div>
+                ""
             ):('')}
             {
                 (image_url.length > 0)? (

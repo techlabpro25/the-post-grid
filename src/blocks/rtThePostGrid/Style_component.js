@@ -243,7 +243,7 @@ export const Head_title = styled.div`
 	
 	:after{
 	    background-color: ${props => ((props.head_sty.style == 2)? "": ((props.css.color)? props.css.color: ((props.primary)? props.primary: "#333")))} !important;
-	    border-color: ${props => (props.css != undefined)? ((props.css['background-color'] == "transparent")?((props.head_sty.style != 1)?"#1e73be":"transparent"): props.css['background-color']): "#1e73be"} transparent !important;
+	    border-color: ${props => (props.css['background-color'] != undefined)? ((props.css['background-color'] == "transparent")?((props.head_sty.style != 1)?"#1e73be":"transparent"): props.css['background-color']): "#1e73be"} transparent !important;
 	}
 
 `;
@@ -258,9 +258,9 @@ export const Dot_style = styled.span`
             )?
                 (
                     ((props.css_mar.top == "") && (props.css_mar.right == "") && (props.css_mar.bottom == "") && (props.css_mar.left == ""))
-                        ? "0px 0px 0px 15px": props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left)
-                : "0px 0px 0px 15px"):
-        '0px 0px 0px 15px'
+                        ? "0px 15px 0px 15px": props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left)
+                : "0px 15px 0px 15px"):
+        '0px 15px 0px 15px'
 } !important;
 `;
 
@@ -274,7 +274,7 @@ export const Head_color = styled.div`
 `;
 
 export const Head_border = styled.div`
-	border-bottom: ${props => (props.css_head.style != '1')? props.css['border-width']+" solid "+((props.css['border-color'].length != 0)? props.css['border-color']: '#1e73be') : ""} !important;
+	border-bottom: ${props => (props.css_head.style != '1')? props.css['border-width']+" solid "+((props.css['border-color'] != undefined)? props.css['border-color']: '#1e73be') : ""} !important;
 `;
 export const Head_border_style1 = styled.div`
 	border-style: ${props => props.css['border-style'] } !important;

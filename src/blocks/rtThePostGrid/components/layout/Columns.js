@@ -65,6 +65,7 @@ function Columns(props) {
                 max={ 100 }
                 step={1}
             />
+            <div className="rt-tpg-small-notice">{__("(Unit is 'PX' in use)")}</div>
         </PanelBody>
     );
 }

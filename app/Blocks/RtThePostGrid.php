@@ -27,7 +27,7 @@ class RtThePostGrid extends Block
         'title'=> [
             'tag'=> "3",
             'position'=> "",
-            'word_limit'=> 25,
+            'word_limit'=> "",
             'type'=> "full",
             'more_text'=> "",
         ],
@@ -152,10 +152,10 @@ class RtThePostGrid extends Block
         ],
         'content_wrap' =>[
             'background-color' => "",
-            'box-shadow-color' => 'transparent',
+            'box-shadow-color' => '#fff',
             'radius' => '',
             'border-color' => '',
-            'border-width' => '',
+            'border-width' => '1px',
             'gutter' => ""
         ],
         'constent_box_padding' =>[],

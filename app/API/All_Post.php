@@ -30,11 +30,11 @@ class All_Post{
         $status = explode(",",$request["status"]);
         $keyword = sanitize_text_field($request["keyword"]);
         $pagination = $request['pagination'];
-        $limit = $request['limit'];
+        $limit = (($request['limit'] == '') || ($request['limit'] == 0))? -1 : $request['limit'];
         $excerpt_type = $request['excerpt_type'];
         $size = explode('x', $request['imgsize']);
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
-        $post_per_page =  ($request["post_per_page"] === null )? -1: $request["post_per_page"];
+        $post_per_page =  (($request["post_per_page"] === "") || ($request["post_per_page"] === 0) )? -1: $request["post_per_page"];
 
         $args = array(
             'post_type' => $post_type,
@@ -149,9 +149,9 @@ class All_Post{
 
                     $data[]=[
                         'id' => $id,
-                        "title" => esc_html(get_the_title()),
+                        "title" => strip_tags(esc_html(get_the_title())),
                         "content" => get_the_content(),
-                        "excerpt" => get_the_excerpt(),
+                        "excerpt" => strip_tags(get_the_excerpt()),
                         "comment_count" => esc_html(wp_count_comments($id)->all),
                         "post_date" => esc_html(get_the_date('M d, y')),
                         "image_url" => esc_url_raw(get_the_post_thumbnail_url(null, $size)),

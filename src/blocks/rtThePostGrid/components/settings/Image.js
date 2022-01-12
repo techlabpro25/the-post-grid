@@ -48,7 +48,6 @@ function Image(props) {
                         options={ sizes }
                         onChange={ ( value ) => {
                             setImagesize(value)
-
                             props.attr.setAttributes( {image: {...image, "size": value}, loaders: {...loaders, 'image': true} } ) }
                         }
                     />
@@ -80,7 +79,7 @@ function Image(props) {
                         max={ 100 }
                         step={1}
                     />
-                    <small>{__("(Unit is 'PX' in use)")}</small>
+                    <div className="rt-tpg-small-notice">{__("(Unit is 'PX' in use)")}</div>
                 </>
             ):("")}
 
