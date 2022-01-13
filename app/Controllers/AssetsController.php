@@ -11,8 +11,8 @@ class AssetsController
     private $version;
 
     public function __construct() {
-        $this->plugin_name = RT_TPG_BLOCKS_SLUG;
-        $this->version = RT_TPG_BLOCKS_VERSION;
+        $this->plugin_name = RT_THE_POST_GRID_PLUGIN_SLUG;
+        $this->version = RT_THE_POST_GRID_VERSION;
     }
 
     public function init() {
@@ -23,7 +23,8 @@ class AssetsController
     }
 
     public function frontend_assets() {
-        $script_dep_path = RT_TPG_BLOCKS_DIR . 'dist/frontend.asset.php';
+
+        $script_dep_path = RT_THE_POST_GRID_PLUGIN_DIR . 'dist/frontend.asset.php';
         $script_info = file_exists($script_dep_path)
             ? include $script_dep_path
             : array(
@@ -31,26 +32,26 @@ class AssetsController
                 'version'      => $this->version,
             );
         $script_dep = array_merge($script_info['dependencies'], array('wp-i18n', 'wp-element', 'wp-api-fetch'));
-
         // Scripts.
         wp_register_script(
             $this->plugin_name . '-frontend-js',
-            ThePostGrid()->get_dist_uri('frontend.js'),
+            rtTPG()->get_dist_uri('frontend.js'),
             $script_dep,
             $script_info['version'],
             true
         );
-        wp_enqueue_style($this->plugin_name, ThePostGrid()->get_assets_uri('css/front.css'), [], $this->version);
+        wp_enqueue_style($this->plugin_name, rtTPG()->get_assets_uri('css/front.css'), [], $this->version);
+        wp_enqueue_style("rt-tpg-frontend-common-css", rtTPG()->get_assets_uri('css/thepostgrid.css'), [], $this->version);
     }
 
     public function admin_assets() {
         global $current_screen;
         $current_screen = get_current_screen();
         if($current_screen->is_block_editor){
-            wp_enqueue_style($this->plugin_name, ThePostGrid()->get_assets_uri('css/block-admin.css'), [], $this->version);
-            wp_enqueue_style("rt-tpg-common-css", ThePostGrid()->get_assets_uri('css/thepostgrid.css'), [], $this->version);
-            wp_enqueue_style("rt-tpg-common-front-css", ThePostGrid()->get_assets_uri('css/front.css'), [], $this->version);
-            wp_enqueue_script($this->plugin_name, ThePostGrid()->get_assets_uri('js/admin.js'), ['jquery'], $this->version, false);
+            wp_enqueue_style($this->plugin_name, rtTPG()->get_assets_uri('css/block-admin.css'), [], $this->version);
+            wp_enqueue_style("rt-tpg-common-css", rtTPG()->get_assets_uri('css/thepostgrid.css'), [], $this->version);
+            wp_enqueue_style("rt-tpg-common-front-css", rtTPG()->get_assets_uri('css/front.css'), [], $this->version);
+            wp_enqueue_script($this->plugin_name, rtTPG()->get_assets_uri('js/admin.js'), ['jquery'], $this->version, false);
         }
 
     }
@@ -61,7 +62,7 @@ class AssetsController
         // Scripts.
         wp_enqueue_script(
             $this->plugin_name . '-cgb-block-js',
-            ThePostGrid()->get_dist_uri('blocks.build.js'),
+            rtTPG()->get_dist_uri('blocks.build.js'),
             ['wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-api'],
             $this->version,
             true
@@ -70,7 +71,7 @@ class AssetsController
 
         wp_enqueue_script(
             $this->plugin_name . '-cgb-deactivator-js',
-            ThePostGrid()->get_dist_uri('deactivator.build.js'),
+            rtTPG()->get_dist_uri('deactivator.build.js'),
             ['wp-editor', 'wp-blocks', 'wp-i18n', 'wp-element'],
             $this->version,
             true
@@ -81,7 +82,7 @@ class AssetsController
             $this->plugin_name . '-cgb-block-editor-css',
             file_exists(wp_upload_dir()['basedir'] . '/' . $this->plugin_name . '/blocks.editor.build.css') ?
                 content_url('/uploads/' . $this->plugin_name . '/blocks.editor.build.css') :
-                ThePostGrid()->get_dist_uri('blocks.editor.build.css'),
+                rtTPG()->get_dist_uri('blocks.editor.build.css'),
             ['wp-edit-blocks'],
             $this->version
         );

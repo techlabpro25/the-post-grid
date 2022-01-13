@@ -310,7 +310,7 @@ class RtThePostGrid extends Block
 			),
 			$attributes
 		);
-		wp_enqueue_script(RT_TPG_BLOCKS_SLUG . '-frontend-js');
+		wp_enqueue_script(RT_THE_POST_GRID_PLUGIN_SLUG . '-frontend-js');
 		//        }
 		ob_start(); ?>
         <div class="rt-tpg-ph rt-thepostgrid">
