@@ -1,9 +1,5 @@
 <?php
-
-
 namespace RT\ThePostGrid\Helpers;
-
-
 use RT\ThePostGrid\Models\Field;
 
 class Fns {

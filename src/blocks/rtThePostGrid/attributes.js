@@ -387,7 +387,8 @@ const attributes = {
 		type: 'object',
 		default:{
 			excerpt: false,
-			image: false
+			image: false,
+			disable: false
 		}
 	}
 

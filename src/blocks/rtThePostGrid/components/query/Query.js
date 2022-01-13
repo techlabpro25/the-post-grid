@@ -24,7 +24,7 @@ const Query = (props) => {
 	const [tax_warning, setTax_warning] = useState("");
 	const [authors, setAuthors] = useState([]);
 	const [haspagination, useHaspagination] = useState(true)
-	const { query, pagination } = props.attr.attributes;
+	const { query, pagination, loaders } = props.attr.attributes;
 
 	const operator = [
 		{
@@ -440,7 +440,7 @@ const Query = (props) => {
 																	}
 
 																	props.attr.setAttributes({
-																		query: { ...query, taxonomy: taxonomy, tax_term: newTaxItem, tax_item: newTermItem},
+																		query: { ...query, taxonomy: taxonomy, tax_term: newTaxItem, tax_item: newTermItem}
 																	});
 
 																	if(value){
@@ -469,6 +469,7 @@ const Query = (props) => {
 												options={query.tax_item?.[taxonomy] || []}
 												value={query.tax_term[taxonomy]?.data || []}
 												isMulti ={true}
+												isDisabled={loaders.disable}
 												onChange={(value) => {
 													// console.log(value)
 													const tax_term = { ...query.tax_term };
@@ -497,6 +498,7 @@ const Query = (props) => {
 												label={__( `${(taxonomy.replace(/_/g, ' ')).charAt(0).toUpperCase() + (taxonomy.replace(/_/g, ' ').slice(1))} operator:`, "the-post-grid")}
 												value={query.tax_term[taxonomy]?.operator}
 												options={operator}
+												disabled={loaders.disable}
 												onChange={(value) =>
 												{
 													const tax_term = { ...query.tax_term };
@@ -534,6 +536,7 @@ const Query = (props) => {
 													value: "OR",
 												},
 											]}
+											disabled={loaders.disable}
 											onChange={(value) =>{
 
 												props.attr.setAttributes({ query: {
@@ -586,6 +589,7 @@ const Query = (props) => {
 								label={__( "Order By:", "the-post-grid")}
 								value={query.order_by}
 								options={order_type}
+								disabled={loaders.disable}
 								onChange={(value) =>{
 
 									props.attr.setAttributes({
@@ -652,6 +656,7 @@ const Query = (props) => {
 								options={authors}
 								value={query.author}
 								isMulti ={true}
+								isDisabled={loaders.disable}
 								onChange={(value) =>{
 
 									props.attr.setAttributes({ query: {
@@ -697,6 +702,7 @@ const Query = (props) => {
 								options={publish_type}
 								value={query.status}
 								isMulti ={true}
+								isDisabled={loaders.disable}
 								defaultValue = {{label: 'Publish', value: 'publish'}}
 								onChange={(value) =>{
 

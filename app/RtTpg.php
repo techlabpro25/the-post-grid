@@ -1,5 +1,4 @@
 <?php
-
 use RT\ThePostGrid\Controllers\Admin\AdminAjaxController;
 use RT\ThePostGrid\Controllers\Admin\MetaController;
 use RT\ThePostGrid\Controllers\Admin\NoticeController;

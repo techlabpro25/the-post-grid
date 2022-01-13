@@ -163,7 +163,7 @@ export default function Edit(props) {
             post_per_page = query.limit
             testoffset = query.offset
         }
-
+        setAttributes({loaders: {...loaders, "disable":true}})
         apiFetch({
             path: '/rt/v1/query',
             method: 'POST',
@@ -195,7 +195,7 @@ export default function Edit(props) {
                 setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
             }
 
-            setAttributes({loaders: {...loaders, "image":false}})
+            setAttributes({loaders: {...loaders, "image":false, 'disable': false}})
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
             setIsrootloading(false)
@@ -204,7 +204,7 @@ export default function Edit(props) {
 
     useEffect(() => {
         call_all_post(query, pagination, image, excerpt)
-    }, [pageindex, query, pagination, image.size]);
+    }, [ query, pageindex, pagination, image.size]);
 
     const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -240,7 +240,7 @@ export default function Edit(props) {
             setMaxlimit(5)
             setMinlimit(1)
         }, 5);
-    },[query, pagination])
+    },[ query, pagination])
 
     // Only for image as image already has loader
     useEffect(()=>{

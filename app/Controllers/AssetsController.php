@@ -1,5 +1,4 @@
 <?php
-
 namespace RT\ThePostGrid\Controllers;
 
 class AssetsController
