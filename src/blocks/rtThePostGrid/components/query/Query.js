@@ -561,8 +561,8 @@ const Query = (props) => {
 						{
 							let order_by = query.order_by
 							let order =query.order
-							if(!value){
-								order_by = "title";
+							if(value == false){
+								order_by = "date";
 								order = "DESC";
 							}
 

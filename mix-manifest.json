@@ -1,14 +1,1 @@
-{
-    "/assets/js/admin-block.js": "/assets/js/admin-block.js",
-    "/assets/js/admin-block.asset.php": "/assets/js/admin-block.asset.php",
-    "/assets/js/deactivator.build.js": "/assets/js/deactivator.build.js",
-    "/assets/js/deactivator.build.asset.php": "/assets/js/deactivator.build.asset.php",
-    "/scripts/blocks.js": "/scripts/blocks.js",
-    "/scripts/blocks.asset.php": "/scripts/blocks.asset.php",
-    "/dist/blocks.build.js": "/dist/blocks.build.js",
-    "/dist/blocks.build.asset.php": "/dist/blocks.build.asset.php",
-    "/dist/frontend.js": "/dist/frontend.js",
-    "/dist/frontend.asset.php": "/dist/frontend.asset.php",
-    "/assets/css/front.css": "/assets/css/front.css",
-    "/assets/css/block-admin.css": "/assets/css/block-admin.css"
-}
+{}

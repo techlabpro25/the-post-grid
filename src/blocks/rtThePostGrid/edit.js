@@ -233,12 +233,23 @@ export default function Edit(props) {
 
     //Set pageindex 0 when query change
     useEffect(()=>{
+        $('.layout_parent').css('opacity', 0.2);
+        setIsloading(true);
         setTimeout(() => {
             setPageindex(1)
             setMaxlimit(5)
             setMinlimit(1)
         }, 5);
-    },[query, pagination, image.size])
+    },[query, pagination])
+
+    // Only for image as image already has loader
+    useEffect(()=>{
+        setTimeout(() => {
+            setPageindex(1)
+            setMaxlimit(5)
+            setMinlimit(1)
+        }, 5);
+    },[image.size])
 
     useEffect(()=>{
         if((columns.desktop == "") || (general.presdefault)){
