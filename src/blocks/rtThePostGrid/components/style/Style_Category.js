@@ -15,7 +15,7 @@ import { useState, useEffect } from '@wordpress/element';
 
 function Category(props) {
     const {__} = wp.i18n;
-    const { category, category_style, category_padding, category_margin, } = props.attr.attributes
+    const { category, category_style, category_padding, category_margin, layout, grid_2_body_hover } = props.attr.attributes
     const [hasicon, useHasicon] = useState(true)
     return (
         <PanelBody title={__( "Category", "the-post-grid")} initialOpen={false}>
@@ -51,6 +51,32 @@ function Category(props) {
                 value={ category_style["background-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, "background-color": color}} ) }
             />
+            {
+                layout.value === "grid2"?(
+                    <>
+                        <Text>
+                            {__( "Content Hover Color:", "the-post-grid")}
+                        </Text>
+                        <ColorPalette
+                            className={"rt-tpg-colorcontrol title"}
+                            colors={ props.attr.colors }
+                            value={ grid_2_body_hover.category }
+                            onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "category": color}} ) }
+                        />
+
+                        <Text>
+                            {__( "Content Hover Background Color:", "the-post-grid")}
+                        </Text>
+                        <ColorPalette
+                            className={"rt-tpg-colorcontrol title"}
+                            colors={ props.attr.colors }
+                            value={ grid_2_body_hover.category_bg }
+                            onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "category_bg": color}} ) }
+                        />
+                    </>
+                ):("")
+            }
+
 
             <BoxControl
                 label={__( "Padding:", "the-post-grid")}

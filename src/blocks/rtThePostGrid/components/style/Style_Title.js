@@ -14,7 +14,7 @@ import {
 
 function Title(props) {
     const {__} = wp.i18n;
-    const {title, title_style} = props.attr.attributes
+    const {title, title_style, layout, grid_2_body_hover} = props.attr.attributes
     const {useState, useEffect} = wp.element;
     const [googlefont, setGooglefont] = useState([]);
 
@@ -39,6 +39,22 @@ function Title(props) {
                 value={ title_style.h_color }
                 onChange={ ( color ) => props.attr.setAttributes( {title_style: {...title_style, "h_color": color}} ) }
             />
+
+            {
+                layout.value === "grid2"?(
+                    <>
+                        <Text>
+                            {__( "Content Hover Color:", "the-post-grid")}
+                        </Text>
+                        <ColorPalette
+                            className={"rt-tpg-colorcontrol title"}
+                            colors={ props.attr.colors }
+                            value={ grid_2_body_hover.title }
+                            onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "title": color}} ) }
+                        />
+                    </>
+                ):("")
+            }
 
 
             <Text>

@@ -16,7 +16,7 @@ import {
 import { useState, useEffect } from '@wordpress/element';
 
 function Read_More(props) {
-    const { button, button_style, button_padding, button_margin} = props.attr.attributes
+    const { button, button_style, button_padding, button_margin, layout, grid_2_body_hover} = props.attr.attributes
     const {__} = wp.i18n;
 
     return (
@@ -311,7 +311,120 @@ function Read_More(props) {
                 />
             </BaseControl>
 
+            {
+                layout.value === "grid2"?(
+                    <>
+                        <BaseControl label={__("Content Hover Property", "the-post-grid")} className="rttpg-typography-base">
+                            <Dropdown
+                                className="rttpg-typography-dropdown"
+                                contentClassName="my-popover-content-classname"
+                                position="bottom left"
+                                renderToggle={({ isOpen, onToggle }) => (
+                                    <Button
+                                        isSmall
+                                        onClick={onToggle}
+                                        aria-expanded={isOpen}
+                                        icon="edit"
+                                    ></Button>
+                                )}
+                                renderContent={() => (
 
+                                    <div className="rttpg-panel-control rtcl-gb-typography-component-panel">
+                                        <TabPanel
+                                            className="button-color-panel"
+                                            activeClass="active-tab"
+                                            tabs={ [
+                                                {
+                                                    name: 'normal',
+                                                    title: __('Normal', 'the-post-grid'),
+                                                    className: 'btn-normal tab_panel',
+                                                },
+                                                {
+                                                    name: 'hover',
+                                                    title: __('Hover', 'the-post-grid'),
+                                                    className: 'btn-hover tab_panel',
+                                                },
+                                            ] }
+                                        >
+                                            { ( tab ) => {
+                                                if(tab.name == "normal"){
+                                                    return(
+                                                        <>
+                                                            <Text>
+                                                                {__( "Color:", "the-post-grid")}
+                                                            </Text>
+                                                            <ColorPalette
+                                                                className={"rt-tpg-colorcontrol"}
+                                                                colors={ props.attr.colors }
+                                                                value={ grid_2_body_hover.button }
+                                                                onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "button": color}} ) }
+                                                            />
+
+                                                            <Text>
+                                                                {__( "Background:", "the-post-grid")}
+                                                            </Text>
+                                                            <ColorPalette
+                                                                className={"rt-tpg-colorcontrol"}
+                                                                colors={ props.attr.colors }
+                                                                value={ grid_2_body_hover.button_bg }
+                                                                onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "button_bg": color}} ) }
+                                                            />
+
+                                                            <Text>
+                                                                {__( "Border-Color:", "the-post-grid")}
+                                                            </Text>
+                                                            <ColorPalette
+                                                                className={"rt-tpg-colorcontrol"}
+                                                                colors={ props.attr.colors }
+                                                                value={ grid_2_body_hover.button_border }
+                                                                onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "button_border": color}} ) }
+                                                            />
+                                                        </>
+                                                    )
+                                                }else if (tab.name == "hover"){
+                                                    return (
+                                                        <>
+                                                            <Text>
+                                                                {__( "Color:", "the-post-grid")}
+                                                            </Text>
+                                                            <ColorPalette
+                                                                className={"rt-tpg-colorcontrol"}
+                                                                colors={ props.attr.colors }
+                                                                value={ grid_2_body_hover.button_h }
+                                                                onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "button_h": color}} ) }
+                                                            />
+
+                                                            <Text>
+                                                                {__( "Background:", "the-post-grid")}
+                                                            </Text>
+                                                            <ColorPalette
+                                                                className={"rt-tpg-colorcontrol"}
+                                                                colors={ props.attr.colors }
+                                                                value={ grid_2_body_hover.button_bg_h }
+                                                                onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "button_bg_h": color}} ) }
+                                                            />
+
+                                                            <Text>
+                                                                {__( "Border-Color:", "the-post-grid")}
+                                                            </Text>
+                                                            <ColorPalette
+                                                                className={"rt-tpg-colorcontrol"}
+                                                                colors={ props.attr.colors }
+                                                                value={ grid_2_body_hover.button_border_h }
+                                                                onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "button_border_h": color}} ) }
+                                                            />
+                                                        </>
+                                                    )
+                                                }
+                                            } }
+                                        </TabPanel>
+                                    </div>
+                                )}
+                            />
+                        </BaseControl>
+                    </>
+                ):("")
+            }
 
 
             <Text>

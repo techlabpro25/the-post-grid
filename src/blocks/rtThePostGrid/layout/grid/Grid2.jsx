@@ -7,8 +7,8 @@ import {
 	Head_border,
 	Head_border_style1,
 	MetaStyle_align,
-	Content_wrap,
-	Content_padding_grid,
+	Content_wrap_grid_2,
+	Content_padding_grid_2,
 	ImgParent, Dot_style, Colgut
 } from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
@@ -52,7 +52,8 @@ const Layout1 = (props) => {
 		layout,
 		heading_dot_margin,
 		loaders,
-		className
+		className,
+		grid_2_body_hover
 	} = props
 
 	let Heading = "";
@@ -97,7 +98,7 @@ const Layout1 = (props) => {
 					):("")
 				}
 				
-				<div className={`rt-row rt-content-loader layout1 tpg-even grid-layout-1 layout_parent`}>
+				<div className={`rt-row rt-content-loader layout1 tpg-even grid-layout-2 layout_parent`}>
 					{
 						data.length && data.map((post) => {
 
@@ -132,7 +133,13 @@ const Layout1 = (props) => {
 							return (
 								<>
 									<Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 even-grid-item ${image.animation}`}>
-										<Content_wrap css={content_wrap} layout={layout} css_pad={constent_box_padding} className="rt-holder">
+										<Content_wrap_grid_2
+											css={content_wrap}
+											hover={grid_2_body_hover}
+											category={category}
+											layout={layout}
+											css_pad={constent_box_padding}
+											className="rt-holder">
 											<div className={`rt-img-holder ${loaders.image? "show_loader": ""}`}>
 												{
 													image.show_hide?(
@@ -154,7 +161,7 @@ const Layout1 = (props) => {
 												}
 											</div>
 
-											<Content_padding_grid  layout={layout} css={content_wrap} css_pad={content_padding} className="rt-detail">
+											<Content_padding_grid_2 layout={layout} css={content_wrap} css_pad={content_padding} className="rt-detail">
 												{
 													(category.position == "above-title") ? (
 														<div className={`cat-above-title ${category.style}`}>
@@ -307,8 +314,8 @@ const Layout1 = (props) => {
 														</Btn_align>
 													) : ("")
 												}
-											</Content_padding_grid>
-										</Content_wrap>
+											</Content_padding_grid_2>
+										</Content_wrap_grid_2>
 									</Colgut>
 								</>
 							)

@@ -74,6 +74,8 @@ if ( ! class_exists( RtTpg::class ) ) {
             new Get_Title();
             new Isotope_Terms();
             new Get_Image_Sizes();
+            add_action( 'block_categories', [$this, 'rt_tpg_block_category'], 10, 2 );
+
 		}
 
 		/**
@@ -164,6 +166,17 @@ if ( ! class_exists( RtTpg::class ) ) {
         {
             $error = error_get_last();
             do_action('RT_THE_POST_GRID_PLUGIN_shutdown_error', $error);
+        }
+        public function rt_tpg_block_category($category){
+            return array_merge(
+                $category,
+                [
+                    [
+                        'slug'  => 'the_post_grid',
+                        'title' => __( 'The Post Grid', 'the-post-grid' ),
+                    ],
+                ]
+            );
         }
 
         public function ajax_call()

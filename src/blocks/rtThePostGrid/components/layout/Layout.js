@@ -63,10 +63,16 @@ function Layout(props) {
 				<label>{__( "Layout: ", "the-post-grid")}</label>
 				{
 					layout.type == "grid"?(
-						<label>
-							<input className={`grid1`} type="radio" name="layout" value="grid1" onClick={layoutClickHandler}/>
-							<img src={plugin_path+'grid1.png'}/>
-						</label>
+						<>
+							<label>
+								<input className={`grid1`} type="radio" name="layout" value="grid1" onClick={layoutClickHandler}/>
+								<img src={plugin_path+'grid1.png'}/>
+							</label>
+							<label>
+								<input className={`grid2`} type="radio" name="layout" value="grid2" onClick={layoutClickHandler}/>
+								<img src={plugin_path+'grid10.png'}/>
+							</label>
+						</>
 					):("")
 				}
 

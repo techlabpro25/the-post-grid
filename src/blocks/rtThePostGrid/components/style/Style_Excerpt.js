@@ -14,7 +14,7 @@ import {
 
 function Excerpt(props) {
     const {__} = wp.i18n;
-    const { excerpt_style } = props.attr.attributes
+    const { excerpt_style, layout, grid_2_body_hover } = props.attr.attributes
     return (
         <PanelBody title={__( "Excerpt", "the-post-grid")} initialOpen={false}>
             
@@ -28,6 +28,22 @@ function Excerpt(props) {
                 value={ excerpt_style.color }
                 onChange={ ( color ) => props.attr.setAttributes( {excerpt_style: {...excerpt_style, "color": color}} ) }
             />
+
+            {
+                layout.value === "grid2"?(
+                    <>
+                        <Text>
+                            {__( "Content Hover Color:", "the-post-grid")}
+                        </Text>
+                        <ColorPalette
+                            className={"rt-tpg-colorcontrol title"}
+                            colors={ props.attr.colors }
+                            value={ grid_2_body_hover.excerpt }
+                            onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "excerpt": color}} ) }
+                        />
+                    </>
+                ):("")
+            }
 
             <Text>
                 {__( "Text Alignment:", "the-post-grid")}

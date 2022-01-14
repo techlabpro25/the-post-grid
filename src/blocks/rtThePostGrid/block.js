@@ -13,4 +13,5 @@ registerBlockType("rt-tpg/thepostgrid", {
     edit,
     save: () => null,
     example: {},
+    category: "the_post_grid"
 });

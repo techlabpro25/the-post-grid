@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const Titlea = styled.a`
 	color: inherit !important;
@@ -10,6 +10,7 @@ export const Titlea = styled.a`
 	
 `;
 
+// Grid 1
 export const Titletag = styled.div`
 	text-align: ${props => props.css['text-align']} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
@@ -22,6 +23,8 @@ export const Titletag = styled.div`
 	    color: ${props => (props.css.h_color)? props.css.h_color: '#2271b1'} !important;
 	}
 `;
+
+
 
 export const Excerpts = styled.div`
 	color: ${props => (props.css.color)? props.css.color: '#333'} !important;
@@ -282,26 +285,428 @@ export const Head_border_style1 = styled.div`
 	border-color: ${props => props.css['border-color'] } !important;
 
 `;
-
+// Grid 1
 export const Content_wrap = styled.div`
 	background-color: ${props => ((props.css['background-color'] == "") || (props.css['background-color'] == undefined))? "#fff":props.css['background-color']} !important;
 	border-radius: ${props => props.css.radius}px !important;
-	border: ${props => (props?.layout?.value == "grid1") ?
+	border: ${props => ((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2")) ?
+        (
+            (
+                (props.css['border-width'] == "") ? 
+                    "1px"
+                    : 
+                    props.css['border-width']
+            )+" solid "+
+            (
+                (
+                    (props.css['border-color'] == "") || (props.css['border-color'] == undefined)
+                ) ? 
+                    "#d9d9d9"
+                    : 
+                    props.css['border-color']
+            ) 
+        )
+        :
+        (
+            (
+                (props.css['border-width'] == "") ?
+                    "1px"
+                    :
+                    props.css['border-width']
+            )+" solid "+
+            (
+                (
+                    (props.css['border-color'] == "") || (props.css['border-color'] == undefined)
+                ) ?
+                    "transparent"
+                    :
+                    props.css['border-color']
+            )
+        )
+    } !important;
+	box-shadow: ${props => '0px 0px 5px 0px '+props.css['box-shadow-color']} !important;
+	padding: ${props => 
+    (props.css_pad != undefined) ?
+        (((props.css_pad.top == null) && (props.css_pad.right == null) && (props.css_pad.bottom == null) && (props.css_pad.left == null))?
+            (((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2"))?
+                "0px"
+                :
+                "15px")
+            : props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left
+        )
+        :
+        (((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2"))? 
+            "0px"
+            : 
+            "15px")
+} !important;
+`;
+
+// Grid 2
+export const Content_wrap_grid_2 = styled.div`
+    &:hover .rt-detail{
+        ${props =>{
+            // Background color
+            if ((props.hover['background'] === "") || (props.hover['background'] === undefined)){
+                return css`
+                    background-color: #0367bf !important;
+                `
+            }else{
+                return css`
+                    background-color: ${props.hover['background']} !important;
+                `
+            }
+        }}
+    }
+    
+    &:hover .rt-detail .tpg-post-title{
+        ${props =>{
+            // Title color
+            if ((props.hover['title'] === "") || (props.hover['title'] === undefined)){
+                return css`
+                    color: #fff !important;
+                `
+            }else{
+                return css`
+                    color: ${props.hover['title']} !important;
+                `
+            }
+        }}
+    }
+    
+    &:hover .rt-detail .tpg-excerpt{
+        ${props =>{
+            // Excerpt color
+            if ((props.hover['excerpt'] === "") || (props.hover['excerpt'] === undefined)){
+                return css`
+                    color: #fff !important;
+                `
+            }else{
+                return css`
+                    color: ${props.hover['excerpt']} !important;
+                `
+            }
+        }}
+    }
+    
+    &:hover .rt-detail .post-meta-user .author a, 
+    &:hover .rt-detail .post-meta-user .author a svg,
+    &:hover .rt-detail .post-meta-user .date span, 
+    &:hover .rt-detail .post-meta-user .date svg, 
+    &:hover .rt-detail .post-meta-user .comment-count a,
+    &:hover .rt-detail .post-meta-user .comment-count a svg{
+        ${props =>{
+            // Meta color
+            if ((props.hover['meta'] === "") || (props.hover['meta'] === undefined)){
+                return css`
+                    color: #fff !important;
+                `
+            }else{
+                return css`
+                    color: ${props.hover['meta']} !important;
+                `
+            }
+        }}
+    }
+    
+    &:hover .rt-detail .categories-links a{
+        ${props =>{
+            // Category Name
+            if(props.category.position == "") { // if position default
+                // Category color
+                if ((props.hover['category'] === "") || (props.hover['category'] === undefined)) {
+                    if ((props.hover['meta'] === "") || (props.hover['meta'] === undefined)) {
+                        return css`
+                    color: #fff !important;
+                `
+                    } else {
+                        return css`
+                    color: ${props.hover['meta']} !important;
+                `
+                    }
+                } else {
+                    return css`
+                    color: ${props.hover['category']} !important;
+                `
+                }
+            }else{
+                if((props.category.style != "style1") && (props.category.position == "above-title")){ // Position for above title  and style non style 1
+                    // Category color
+                    if ((props.hover['category'] === "") || (props.hover['category'] === undefined)) {
+                        if ((props.hover['meta'] === "") || (props.hover['meta'] === undefined)) {
+                            if ((props.hover['category_bg'] === "") || (props.hover['category_bg'] === undefined)){
+                                return css`
+                                    color: #0367bf !important;
+                                    background-color: #fff !important;
+                                `
+                            }else{
+                                return css`
+                                    color: #0367bf !important;
+                                    background-color: ${props.hover['category_bg']} !important;
+                                `
+                            }
+                            
+                        } else {
+                            if ((props.hover['category_bg'] === "") || (props.hover['category_bg'] === undefined)){
+                                return css`
+                                    color: ${props.hover['meta']} !important;
+                                    background-color: #fff !important;
+                                `
+                            }else{
+                                return css`
+                                    color: ${props.hover['meta']} !important;
+                                    background-color: ${props.hover['category_bg']} !important;
+                                `
+                            }
+                        }
+                    } else {
+                        if ((props.hover['category_bg'] === "") || (props.hover['category_bg'] === undefined)){
+                            return css`
+                                    color: ${props.hover['category']} !important;
+                                    background-color: #fff !important;
+                                `
+                        }else{
+                            return css`
+                                    color: ${props.hover['category']} !important;
+                                    background-color: ${props.hover['category_bg']} !important;
+                                `
+                        }
+                        
+                    }
+                    
+                }else if((props.category.style == "style1") && (props.category.position == "above-title")){ // Position above title and style1
+                    // Category color
+                    if ((props.hover['category'] === "") || (props.hover['category'] === undefined)) {
+                        if ((props.hover['meta'] === "") || (props.hover['meta'] === undefined)) {
+                            return css`
+                                color: #fff !important;
+                            `
+                        } else {
+                            return css`
+                                color: ${props.hover['meta']} !important;
+                            `
+                        }
+                    } else {
+                        return css`
+                            color: ${props.hover['category']} !important;
+                        `
+                    }
+                }
+            }
+        }}
+    }
+    
+    &:hover .rt-detail .categories-links a svg{
+        ${props =>{
+            // Category icon
+            if(props.category.position == "") { // if position default
+                // Category color
+                if ((props.hover['category'] === "") || (props.hover['category'] === undefined)) {
+                    if ((props.hover['meta'] === "") || (props.hover['meta'] === undefined)) {
+                        return css`
+                            color: #fff !important;
+                        `
+                    } else {
+                        return css`
+                            color: ${props.hover['meta']} !important;
+                        `
+                    }
+                } else {
+                    return css`
+                            color: ${props.hover['category']} !important;
+                        `
+                }
+            }else{
+                if((props.category.style != "style1") && (props.category.position == "above-title")){ // Position for above title  and style non style 1
+                    // Category color
+                    if ((props.hover['category_bg'] === "") || (props.hover['category_bg'] === undefined)){
+                        return css`
+                            color: #fff !important;
+                        `
+                    }else{
+                        return css`
+                            color: ${props.hover['category_bg']} !important;
+                        `
+                    }
+        
+                }else if((props.category.style == "style1") && (props.category.position == "above-title")){ // Position above title and style1
+                    // Category color
+                    if ((props.hover['category'] === "") || (props.hover['category'] === undefined)) {
+                        if ((props.hover['meta'] === "") || (props.hover['meta'] === undefined)) {
+                            return css`
+                                        color: #fff !important;
+                                    `
+                        } else {
+                            return css`
+                                        color: ${props.hover['meta']} !important;
+                                    `
+                        }
+                    } else {
+                        return css`
+                                    color: ${props.hover['category']} !important;
+                                `
+                    }
+                }
+            }
+        }}
+    }
+    
+    &:hover .rt-detail .read-more a.see_more_button:hover{
+        ${props =>{
+            // Button color
+            if ((props.hover['button_h'] === "") || (props.hover['button_h'] === undefined)){
+                if((props.hover['button_bg_h'] === "") || (props.hover['button_bg_h'] === undefined)){
+                    if((props.hover['button_border_h'] === "") || (props.hover['button_border_h'] === undefined)){
+                        return css`
+                            color: #0367bf !important;
+                            background-color: #fff !important;
+                            border-color: #fff !important;
+                        `
+                    }else{
+                        return css`
+                            color: #0367bf !important;
+                            background-color: #fff !important;
+                            border-color: ${props.hover['button_border_h']} !important;
+                        ` 
+                    }
+                    
+                }else{
+                    if((props.hover['button_border_h'] === "") || (props.hover['button_border_h'] === undefined)){
+                        return css`
+                             color: #fff !important;
+                            background-color: ${props.hover['button_bg_h']} !important;
+                            border-color: #fff !important;
+                        `
+                    }else{
+                        return css`
+                            color: #fff !important;
+                            background-color: ${props.hover['button_bg_h']} !important;
+                            border-color: ${props.hover['button_border_h']} !important;
+                        `
+                    }
+                }
+                
+            }else{
+                if((props.hover['button_bg_h'] === "") || (props.hover['button_bg_h'] === undefined)){
+                    if((props.hover['button_border_h'] === "") || (props.hover['button_border_h'] === undefined)){
+                        return css`
+                            color: ${props.hover['button_h']} !important;
+                            background-color: #fff !important;
+                            border-color: #fff !important;
+                        `
+                    }else{
+                        return css`
+                            color: ${props.hover['button_h']} !important;
+                            background-color: #fff !important;
+                            border-color: ${props.hover['button_border_h']} !important;
+                        `
+                    }
+                }else{
+                    if((props.hover['button_border_h'] === "") || (props.hover['button_border_h'] === undefined)){
+                        return css`
+                            color: ${props.hover['button_h']} !important;
+                            background-color: ${props.hover['button_bg_h']} !important;
+                            border-color: #fff !important;
+                        `
+                    }else{
+                        return css`
+                            color: ${props.hover['button_h']} !important;
+                            background-color: ${props.hover['button_bg_h']} !important;
+                            border-color: ${props.hover['button_border_h']} !important;
+                        `
+                    }
+                }
+            }
+        }}
+    }
+    
+    &:hover .rt-detail .read-more a.see_more_button{
+        ${props =>{
+            // Button color
+            if ((props.hover['button'] === "") || (props.hover['button'] === undefined)){
+                if((props.hover['button_bg'] === "") || (props.hover['button_bg'] === undefined)){
+                    if((props.hover['button_border'] === "") || (props.hover['button_border'] === undefined)){
+                        return css`
+                                    color: #fff !important;
+                                    background-color: transparent !important;
+                                    border-color: #fff !important;
+                                `
+                    }else{
+                        return css`
+                                    color: #fff !important;
+                                    background-color: transparent !important;
+                                    border-color: ${props.hover['button_border']} !important;
+                                `
+                    }
+        
+                }else{
+                    if((props.hover['button_border'] === "") || (props.hover['button_border'] === undefined)){
+                        return css`
+                                     color: #fff !important;
+                                    background-color: ${props.hover['button_bg']} !important;
+                                    border-color: #fff !important;
+                                `
+                    }else{
+                        return css`
+                                    color: #fff !important;
+                                    background-color: ${props.hover['button_bg']} !important;
+                                    border-color: ${props.hover['button_border']} !important;
+                                `
+                    }
+                }
+        
+            }else{
+                if((props.hover['button_bg'] === "") || (props.hover['button_bg'] === undefined)){
+                    if((props.hover['button_border'] === "") || (props.hover['button_border'] === undefined)){
+                        return css`
+                                    color: ${props.hover['button']} !important;
+                                    background-color: transparent !important;
+                                    border-color: #fff !important;
+                                `
+                    }else{
+                        return css`
+                                    color: ${props.hover['button']} !important;
+                                    background-color: transparent !important;
+                                    border-color: ${props.hover['button_border']} !important;
+                                `
+                    }
+                }else{
+                    if((props.hover['button_border'] === "") || (props.hover['button_border'] === undefined)){
+                        return css`
+                                    color: ${props.hover['button']} !important;
+                                    background-color: ${props.hover['button_bg']} !important;
+                                    border-color: #fff !important;
+                                `
+                    }else{
+                        return css`
+                                    color: ${props.hover['button']} !important;
+                                    background-color: ${props.hover['button_bg']} !important;
+                                    border-color: ${props.hover['button_border']} !important;
+                                `
+                    }
+                }
+            }
+        }}
+    }
+    
+	background-color: ${props => ((props.css['background-color'] == "") || (props.css['background-color'] == undefined))? "#fff":props.css['background-color']} !important;
+	border-radius: ${props => props.css.radius}px !important;
+	border: ${props => ((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2")) ?
     (
         (
-            (props.css['border-width'] == "") ? 
+            (props.css['border-width'] == "") ?
                 "1px"
-                : 
+                :
                 props.css['border-width']
         )+" solid "+
         (
             (
                 (props.css['border-color'] == "") || (props.css['border-color'] == undefined)
-            ) ? 
+            ) ?
                 "#d9d9d9"
-                : 
+                :
                 props.css['border-color']
-        ) 
+        )
     )
     :
     (
@@ -322,26 +727,35 @@ export const Content_wrap = styled.div`
     )
 } !important;
 	box-shadow: ${props => '0px 0px 5px 0px '+props.css['box-shadow-color']} !important;
-	padding: ${props => 
+	padding: ${props =>
     (props.css_pad != undefined) ?
         (((props.css_pad.top == null) && (props.css_pad.right == null) && (props.css_pad.bottom == null) && (props.css_pad.left == null))?
-            ((props?.layout?.value == "grid1")?
-                "0px"
-                :
-                "15px")
-            : props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left
+                (((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2"))?
+                    "0px"
+                    :
+                    "15px")
+                : props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left
         )
         :
-        ((props?.layout?.value == "grid1")? 
+        (((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2"))?
             "0px"
-            : 
+            :
             "15px")
 } !important;
 `;
 
+// Grid 1
 export const Content_padding_grid = styled.div`
     background-color: ${props => ((props.css['background-color'] == "") || (props.css['background-color'] == undefined))? "#fff":props.css['background-color']} !important;
 	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
+`;
+
+// Grid 2
+export const Content_padding_grid_2 = styled.div`
+   
+    background-color: ${props => ((props.css['background-color'] == "") || (props.css['background-color'] == undefined))? "#fff":props.css['background-color']} !important;
+	padding: ${props => (props.css_pad != undefined) ? props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left: '0px'} !important;
+    
 `;
 
 export const Content_padding = styled.div`

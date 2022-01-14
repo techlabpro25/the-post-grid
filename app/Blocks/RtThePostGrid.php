@@ -156,7 +156,8 @@ class RtThePostGrid extends Block
             'radius' => '',
             'border-color' => '',
             'border-width' => '1px',
-            'gutter' => ""
+            'gutter' => "",
+            'h-content-background' => ""
         ],
         'constent_box_padding' =>[],
         'content_padding' =>[
@@ -283,6 +284,20 @@ class RtThePostGrid extends Block
         ],
         'loaders' =>[
             'excerpt' => false
+        ],
+        'grid_2_body_hover' =>[
+            'background' => "",
+			'title'=> "",
+			'excerpt'=> "",
+			'meta'=> "",
+			'category'=> "",
+			'category_bg'=> "",
+			'button'=> "",
+			'button_bg'=> "",
+			'button_border'=> "",
+            'button_h'=> "",
+            'button_bg_h'=> "",
+            'button_border_h'=> "",
         ]
 	];
 

@@ -344,7 +344,8 @@ const attributes = {
 			radius: "",
 			["border-color"]: "",
 			["border-width"]: "1px",
-			gutter: '',
+			["h-content-background"]: "",
+			gutter: ''
 		},
 	},
 	constent_box_padding: {
@@ -389,6 +390,24 @@ const attributes = {
 			excerpt: false,
 			image: false,
 			disable: false
+		}
+	},
+	// For grid 2
+	grid_2_body_hover:{
+		type:"object",
+		default:{
+			background: "",
+			title: "",
+			excerpt: "",
+			meta: "",
+			category: "",
+			category_bg: "",
+			button: "",
+			button_bg: "",
+			button_border: "",
+			button_h: "",
+			button_bg_h: "",
+			button_border_h: "",
 		}
 	}
 
