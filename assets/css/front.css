@@ -626,3 +626,8 @@ html {
 .rt-tpg-root {
   position: relative;
 }
+
+/* Temporary */
+.rt-detail.rt-el-content-wrapper-flex {
+  display: flex;
+}

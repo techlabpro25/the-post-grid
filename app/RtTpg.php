@@ -173,7 +173,7 @@ if ( ! class_exists( RtTpg::class ) ) {
                 [
                     [
                         'slug'  => 'the_post_grid',
-                        'title' => __( 'The Post Grid', 'the-post-grid' ),
+                        'title' => __( 'The Post Grid', 'the-post-grid' )
                     ],
                 ]
             );

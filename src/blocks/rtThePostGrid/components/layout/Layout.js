@@ -68,9 +68,15 @@ function Layout(props) {
 								<input className={`grid1`} type="radio" name="layout" value="grid1" onClick={layoutClickHandler}/>
 								<img src={plugin_path+'grid1.png'}/>
 							</label>
+
 							<label>
 								<input className={`grid2`} type="radio" name="layout" value="grid2" onClick={layoutClickHandler}/>
 								<img src={plugin_path+'grid10.png'}/>
+							</label>
+
+							<label>
+								<input className={`grid3`} type="radio" name="layout" value="grid3" onClick={layoutClickHandler}/>
+								<img src={plugin_path+'grid2.png'}/>
 							</label>
 						</>
 					):("")

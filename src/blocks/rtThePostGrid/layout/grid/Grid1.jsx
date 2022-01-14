@@ -19,7 +19,7 @@ import {Date} from "../elements/Date";
 import {CommentCount} from "../elements/CommentCount";
 import {Category_Default, Non_Category_Default} from "../elements/Category";
 
-const Layout1 = (props) => {
+const Grid1 = (props) => {
 	const {
 		title,
 		title_style,
@@ -320,4 +320,4 @@ const Layout1 = (props) => {
 	);
 }
 
-export default Layout1;
+export default Grid1;

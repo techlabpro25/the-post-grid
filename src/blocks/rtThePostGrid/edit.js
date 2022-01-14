@@ -47,7 +47,7 @@ export default function Edit(props) {
     const [pageindex, setPageindex] = useState(1);
     const [scrolltop, setscrolltop] = useState(false);
     const [message, setMessage] = useState("");
-    const [changestate, setChangestate] = useState(0);
+    const [changestate, setChangestate] = useState(true);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
     const {query, columns, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, loaders, layout, pagination_style} = attributes
@@ -198,7 +198,8 @@ export default function Edit(props) {
             setAttributes({loaders: {...loaders, "image":false, 'disable': false}})
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
-            setIsrootloading(false)
+            setIsrootloading(false);
+
         });
     }
 
