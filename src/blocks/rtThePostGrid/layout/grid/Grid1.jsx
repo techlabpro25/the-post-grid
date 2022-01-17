@@ -121,17 +121,17 @@ const Grid1 = (props) => {
 							}
 							
 							// Title
-							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.target, link: post.post_link, post_title }
+							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.target, link: post.post_link, post_title, layout: layout.value }
 							const image_props = { id:post.id, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value, loaders: loaders.image }
-							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name}
-							const date_props = { meta, meta_style, primary_color, date: post.post_date}
-							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
-							const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin }
+							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name, layout: layout.value}
+							const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value}
+							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value}
+							const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin, layout: layout.value }
 							// const tag_props = { meta, meta_style, primary_color, post_tags: post?.tags }
 
 							return (
 								<>
-									<Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 even-grid-item ${image.animation}`}>
+									<Colgut lay_sty={layout.value} css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 even-grid-item ${image.animation}`}>
 										<Content_wrap css={content_wrap} layout={layout} css_pad={constent_box_padding} className="rt-holder">
 											<div className={`rt-img-holder ${loaders.image? "show_loader": ""}`}>
 												{
@@ -252,7 +252,7 @@ const Grid1 = (props) => {
 												{/*Excerpt*/}
 												{
 													general.excerpt ? (
-														<Excerpts css={excerpt_style} primary={primary_color} className="tpg-excerpt" dangerouslySetInnerHTML={{__html: postexcerpt}}>
+														<Excerpts css={excerpt_style} lay_sty={layout.value} primary={primary_color} className="tpg-excerpt" dangerouslySetInnerHTML={{__html: postexcerpt}}>
 														</Excerpts>
 													) : ("")
 												}

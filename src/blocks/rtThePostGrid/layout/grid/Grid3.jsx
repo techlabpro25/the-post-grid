@@ -8,7 +8,6 @@ import {
 	Head_border_style1,
 	MetaStyle_align,
 	Content_wrap,
-	Content_padding_grid,
 	ImgParent, Dot_style, Colgut
 } from "../../Style_component";
 import { trimbychar, trimbyword } from './../../Helper';
@@ -18,6 +17,7 @@ import {Author} from "../elements/Author";
 import {Date} from "../elements/Date";
 import {CommentCount} from "../elements/CommentCount";
 import {Category_Default, Non_Category_Default} from "../elements/Category";
+import {Content_padding_grid_3} from "../../styled_commponent/Styled-grid3";
 
 const Grid3 = (props) => {
 	const {
@@ -52,7 +52,8 @@ const Grid3 = (props) => {
 		layout,
 		heading_dot_margin,
 		loaders,
-		className
+		className,
+		grid_3
 	} = props
 
 	let Heading = "";
@@ -75,7 +76,6 @@ const Grid3 = (props) => {
 		return txt.value;
 	}
 
-	console.log(3%2)
 	let positionindex = 1;
 
 	return (
@@ -100,7 +100,7 @@ const Grid3 = (props) => {
 					):("")
 				}
 				
-				<div className={`rt-row rt-content-loader grid-layout2 tpg-even grid-behaviour grid_layout_wrapper`}>
+				<div className={`rt-row rt-content-loader grid-layout3 tpg-even grid-behaviour grid_layout_wrapper layout_parent`}>
 					{
 						data.length && data.map((post, i) => {
 
@@ -124,73 +124,199 @@ const Grid3 = (props) => {
 							}
 							
 							// Title
-							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.target, link: post.post_link, post_title }
+							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.target, link: post.post_link, post_title, layout: layout.value }
 							const image_props = { id:post.id, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value, loaders: loaders.image }
-							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name}
-							const date_props = { meta, meta_style, primary_color, date: post.post_date}
-							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link}
-							const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin }
+							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name, layout: layout.value}
+							const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value}
+							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value}
+							const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin, layout: layout.value }
 							// const tag_props = { meta, meta_style, primary_color, post_tags: post?.tags }
 
 							return (
 								<>
-									<div
-										className="rt-col-md-6 rt-col-sm-12 rt-col-xs-12 rt-ready-animation animated fadeIn default rt-grid-item">
-										<div className="rt-holder tpg-post-holder">
-											<div className="rt-detail rt-el-content-wrapper-flex">
-												<div className="rt-img-holder tpg-el-image-wrap has-thumbnail">
-													<a data-id="3601"
-													   href="https://radiustheme.net/habib/postgrid/2018/10/04/future-iphones-and-ipads-could-have-stretchy-screens/"
-													   className="tpg-post-link" target="_self">
-														<img width="768"
-															 height="410"
-															 src="https://radiustheme.net/habib/postgrid/wp-content/uploads/2018/10/tech_2-1-768x410.jpg"
-															 className="elementor-animation-default attachment-medium_large size-medium_large"
-															 alt=""
-															 loading="lazy"/>
-													</a>
+									<Colgut css={content_wrap} lay_sty={layout.value} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} rt-ready-animation animated fadeIn default rt-grid-item ${image.animation}`}>
+										<Content_wrap css={content_wrap} layout={layout} css_pad={constent_box_padding} className="rt-holder tpg-post-holder">
+											<div className="rt-detail rt-content-wrapper-flex">
+												<div className={`rt-img-holder tpg-image-wrap has-thumbnail ${loaders.image? "show_loader": ""}`}>
+													{
+														image.show_hide?(
+															<>
+																<Image data={image_props}/>
+															</>
 
-													<div className="overlay always"></div>
+														):("")
+													}
+													{
+														(category.position.includes('over-image')) ? (
+															<div className={`cat-${category.position} ${category.style}`}>
+																<>
+																	<Non_Category_Default data={category_props}/>
+																</>
+
+															</div>
+														) : ("")
+													}
 												</div>
 
-												<div className="post-right-content">
+												<Content_padding_grid_3 layout={layout} css={content_wrap} css_self={grid_3} css_pad={content_padding} className="post-right-content">
+													{
+														(category.position == "above-title") ? (
+															<div className={`cat-above-title ${category.style}`}>
+																<>
+																	<Non_Category_Default data={category_props}/>
+																</>
+															</div>
+														) : ('')
+													}
 
-													<div className="entry-title-wrapper"><h3 className="entry-title"><a
-														data-id="3601"
-														href="https://radiustheme.net/habib/postgrid/2018/10/04/future-iphones-and-ipads-could-have-stretchy-screens/"
-														className="tpg-post-link" target="_self">9 Future iPhones and
-														iPads could have stretchy screens</a></h3></div>
+													{
+														(meta.position == "above") ? (
+															<MetaStyle_align css={meta_style} className="post-meta-tags rt-post-meta  ">
+																{
+																	general.author ? (
+																		<Author data={author_props}/>
+																	) : ("")
+																}
 
-													<div className="post-meta-tags rt-el-post-meta">
-						                				<span className="author ">
-                											<i className="fa fa-user"></i><a href="https://radiustheme.net/habib/postgrid/author/admin/">admin</a>
-														</span>
-														<span className="categories-links">
-                											<i className="fas fa-folder-open"></i>
-															<a href="https://radiustheme.net/habib/postgrid/category/security/" rel="tag">Security</a>			</span>
-														<span className="date">
-                											<i className="far fa-calendar-alt"></i>
-															October 4, 2018
-														</span>
+																{/*Post date*/}
+																{
+																	general.post_date ? (
+																		<Date data={date_props}/>
+																	) : ('')
+																}
+
+																{/*Category*/}
+																{
+																	(category.position.length == 0) && general.category ? (
+																		<>
+																			<Category_Default data={category_props}/>
+																			{" " + meta.seperator}
+																		</>
+																	) : ("")
+																}
+
+
+																{/*Comment count*/}
+																{
+																	general.comment_count ? (
+																		<CommentCount data={comment_count_props}/>
+																	) : ("")
+																}
+
+															</MetaStyle_align>
+														) : ("")
+													}
+
+													<div className="entry-title-wrapper">
+														{
+															general.title ? (
+																<Titles data={title_props} />
+															) : ('')
+														}
 													</div>
 
+													{
+														(meta.position == "between" || meta.position == "default") ? (
+															<MetaStyle_align css={meta_style} className="post-meta-tags rt-post-meta ">
+																{
+																	general.author ? (
+																		<Author data={author_props}/>
+																	) : ("")
+																}
 
-													<div className="tpg-excerpt tpg-el-excerpt">
-														Nmply dummy text of the printing and typesetting industry. Lorem
-														...
-													</div>
+																{/*Post date*/}
+																{
+																	general.post_date ? (
+																		<Date data={date_props}/>
+																	) : ('')
+																}
 
-													<div className="post-footer">
-														<div className="read-more">
-															<a data-id="3601"
-															   href="https://radiustheme.net/habib/postgrid/2018/10/04/future-iphones-and-ipads-could-have-stretchy-screens/"
-															   className="tpg-post-link" target="_self">Read More</a>
-														</div>
-													</div>
-												</div>
+																{/*Category*/}
+																{
+																	(category.position.length == 0) && general.category ? (
+																		<>
+																			<Category_Default data={category_props}/>
+																			{" " + meta.seperator}
+																		</>
+																	) : ("")
+																}
+
+
+																{/*Comment count*/}
+																{
+																	general.comment_count ? (
+																		<CommentCount data={comment_count_props}/>
+																	) : ("")
+																}
+
+															</MetaStyle_align>
+														) : ('')
+													}
+
+
+
+													{/*Excerpt*/}
+													{
+														general.excerpt ? (
+															<Excerpts css={excerpt_style} primary={primary_color} lay_sty={layout.value} className="tpg-excerpt" dangerouslySetInnerHTML={{__html: postexcerpt}}>
+															</Excerpts>
+														) : ("")
+													}
+
+													{
+														(meta.position == "below") ? (
+															<MetaStyle_align css={meta_style} className="post-meta-tags rt-post-meta  ">
+																{
+																	general.author ? (
+																		<Author data={author_props}/>
+																	) : ("")
+																}
+
+																{/*Post date*/}
+																{
+																	general.post_date ? (
+																		<Date data={date_props}/>
+																	) : ('')
+																}
+
+																{/*Category*/}
+																{
+																	(category.position.length == 0) && general.category ? (
+																		<>
+																			<Category_Default data={category_props}/>
+																			{" " + meta.seperator}
+																		</>
+																	) : ("")
+																}
+
+
+																{/*Comment count*/}
+																{
+																	general.comment_count ? (
+																		<CommentCount data={comment_count_props}/>
+																	) : ("")
+																}
+
+															</MetaStyle_align>
+														) : ('')
+													}
+
+													{/*See more button*/}
+													{
+														general.see_more ? (
+															<Btn_align css_btn={button} className="post-footer ">
+															<span className="read-more">
+																<Button_style css={button_style} lay_sty={layout} css_pad={button_padding} css_mar={button_margin} primary={primary_color} target={linking.target} css_btn={button} data-id={post.id} className="see_more_button" href={post.post_link}>
+																	{button.text}
+																</Button_style>
+															</span>
+															</Btn_align>
+														) : ("")
+													}
+												</Content_padding_grid_3>
 											</div>
-										</div>
-									</div>
+										</Content_wrap>
+									</Colgut>
 								</>
 							)
 						})

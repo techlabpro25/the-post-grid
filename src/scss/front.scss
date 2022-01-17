@@ -510,12 +510,193 @@ html{
     position: relative;
 }
 
+//====================================================
+//================== Grid Layout 3 ===================
+//====================================================
 
-/* Temporary */
-
-.rt-detail.rt-el-content-wrapper-flex{
+.rt-tpg-container .grid-layout3 .rt-grid-item .rt-holder .rt-content-wrapper-flex {
     display: flex;
 }
+
+.rt-tpg-container .grid-layout3 .rt-grid-item .rt-holder .rt-content-wrapper-flex .rt-img-holder {
+    width: 50%;
+}
+
+.rt-tpg-container .grid-layout3 .rt-grid-item .rt-holder .rt-content-wrapper-flex .post-right-content {
+    width: 50%;
+}
+
+
+// Mobile Device
+@media (max-width: 767px) {
+    // For single column
+    .rt-tpg-container .grid-layout3 .rt-col-xs-12:nth-child(even) .rt-content-wrapper-flex{
+        flex-direction: row-reverse;
+    }
+
+    // For 2 columns
+    .rt-tpg-container .grid-layout3 .rt-col-xs-6:nth-child(4n+3) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-6:nth-child(4n+4) .rt-content-wrapper-flex{
+        flex-direction: row-reverse;
+    }
+
+    // For 3 columns
+    .rt-tpg-container .grid-layout3 .rt-col-xs-4:nth-child(6n+4) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-4:nth-child(6n+5) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-4:nth-child(6n+6) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 4 columns
+    .rt-tpg-container .grid-layout3 .rt-col-xs-3:nth-child(8n+5) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-3:nth-child(8n+6) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-3:nth-child(8n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-3:nth-child(8n+8) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 5 columns
+    .rt-tpg-container .grid-layout3 .rt-col-xs-24:nth-child(10n+6) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-24:nth-child(10n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-24:nth-child(10n+8) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-24:nth-child(10n+9) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-24:nth-child(10n+10) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 6 columns
+    .rt-tpg-container .grid-layout3 .rt-col-xs-2:nth-child(12n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-2:nth-child(12n+9) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-2:nth-child(12n+10) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-2:nth-child(12n+11) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-2:nth-child(12n+12) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-xs-2:nth-child(12n+13) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+}
+
+// Tablet Device
+@media (min-width: 768px) and (max-width: 991px) {
+    // For single column
+    .rt-tpg-container .grid-layout3 .rt-col-sm-12:nth-child(even) .rt-content-wrapper-flex{
+        flex-direction: row-reverse;
+    }
+
+    // For 2 columns
+    .rt-tpg-container .grid-layout3 .rt-col-sm-6:nth-child(4n+3) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-6:nth-child(4n+4) .rt-content-wrapper-flex{
+        flex-direction: row-reverse;
+    }
+
+    // For 3 columns
+    .rt-tpg-container .grid-layout3 .rt-col-sm-4:nth-child(6n+4) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-4:nth-child(6n+5) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-4:nth-child(6n+6) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 4 columns
+    .rt-tpg-container .grid-layout3 .rt-col-sm-3:nth-child(8n+5) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-3:nth-child(8n+6) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-3:nth-child(8n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-3:nth-child(8n+8) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 5 columns
+    .rt-tpg-container .grid-layout3 .rt-col-sm-24:nth-child(10n+6) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-24:nth-child(10n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-24:nth-child(10n+8) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-24:nth-child(10n+9) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-24:nth-child(10n+10) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 6 columns
+    .rt-tpg-container .grid-layout3 .rt-col-sm-2:nth-child(12n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-2:nth-child(12n+9) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-2:nth-child(12n+10) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-2:nth-child(12n+11) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-2:nth-child(12n+12) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-sm-2:nth-child(12n+13) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+}
+
+// Desktop Device
+@media (min-width: 992px) {
+    // For single column
+    .rt-tpg-container .grid-layout3 .rt-col-md-12:nth-child(even) .rt-content-wrapper-flex{
+        flex-direction: row-reverse;
+    }
+
+    // For 2 columns
+    .rt-tpg-container .grid-layout3 .rt-col-md-6:nth-child(4n+3) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-6:nth-child(4n+4) .rt-content-wrapper-flex{
+        flex-direction: row-reverse;
+    }
+
+    // For 3 columns
+    .rt-tpg-container .grid-layout3 .rt-col-md-4:nth-child(6n+4) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-4:nth-child(6n+5) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-4:nth-child(6n+6) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 4 columns
+    .rt-tpg-container .grid-layout3 .rt-col-md-3:nth-child(8n+5) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-3:nth-child(8n+6) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-3:nth-child(8n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-3:nth-child(8n+8) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 5 columns
+    .rt-tpg-container .grid-layout3 .rt-col-md-24:nth-child(10n+6) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-24:nth-child(10n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-24:nth-child(10n+8) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-24:nth-child(10n+9) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-24:nth-child(10n+10) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+
+    // For 6 columns
+    .rt-tpg-container .grid-layout3 .rt-col-md-2:nth-child(12n+7) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-2:nth-child(12n+9) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-2:nth-child(12n+10) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-2:nth-child(12n+11) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-2:nth-child(12n+12) .rt-content-wrapper-flex,
+    .rt-tpg-container .grid-layout3 .rt-col-md-2:nth-child(12n+13) .rt-content-wrapper-flex
+    {
+        flex-direction: row-reverse;
+    }
+}
+
+.rt-tpg-container .grid-layout3 .rt-content-wrapper-flex .post-right-content{
+    padding: 15px;
+}
+.rt-tpg-container .grid-layout3 .rt-grid-item .rt-holder .rt-content-wrapper-flex .rt-img-holder a {
+    height: 100%;
+}
+
+.rt-tpg-container .grid-layout3 .rt-grid-item .rt-holder .rt-content-wrapper-flex .rt-img-holder a .rt-img-responsive {
+    height: 100%;
+}
+
+
+
+
 
 
 

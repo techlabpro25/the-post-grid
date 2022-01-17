@@ -20,8 +20,6 @@ const RenderView = (props) => {
                     <List1 {...props} data={data}/>
                 ):(layout.value == "list2")?(
                     <List2 {...props} data={data}/>
-                ):(layout.value == "isotope1")?(
-                    <Isotope1 {...props} data={data}/>
                 ):("")
             }
         </>

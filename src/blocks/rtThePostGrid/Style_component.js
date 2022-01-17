@@ -10,24 +10,71 @@ export const Titlea = styled.a`
 	
 `;
 
-// Grid 1
+
 export const Titletag = styled.div`
 	text-align: ${props => props.css['text-align']} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
 	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
-	color: ${props => (props.css.color)? props.css.color: "#333"} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	&:hover{
 	    color: ${props => (props.css.h_color)? props.css.h_color: '#2271b1'} !important;
 	}
+	
+	${props => {
+        if (props.lay_sty == "grid3") {
+            // For grid 3
+            if((props.css.color == "") || (props.css.color == undefined)){
+                return css`
+                    color: #fff !important;
+                `
+            }else{
+                return css`
+                    color: ${props.css.color} !important;
+                `
+            }
+        }else{
+            if((props.css.color == "") || (props.css.color == undefined)){
+                return css`
+                    color: #333 !important;
+                `
+            }else{
+                return css`
+                    color: ${props.css.color} !important;
+                `
+            }
+        }
+    }
+    }
 `;
 
 
 
 export const Excerpts = styled.div`
-	color: ${props => (props.css.color)? props.css.color: '#333'} !important;
+    ${props =>{
+        if(props.lay_sty === "grid3"){
+            if((props.css.color == "") || (props.css.color == undefined)){
+                return css`
+                    color: #fff !important;
+                `
+            }else{
+                return css`
+                    color: ${props.css.color} !important;
+                `
+            }
+        }else{
+            if((props.css.color == "") || (props.css.color == undefined)){
+                return css`
+                    color: #333 !important;
+                `
+            }else{
+                return css`
+                    color: ${props.css.color} !important;
+                `
+            }
+        }
+    }}
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	text-align: ${props => props.css['text-align']} !important;
@@ -37,7 +84,55 @@ export const Excerpts = styled.div`
 `;
 
 export const Cat_style = styled.a`
-	color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
+    ${props =>{
+        // For Grid 3
+        if(props.lay_sty == "grid3"){
+            if((props.css.color == "") || (props.css.color == undefined)){
+                if((props.meta.color == "") || (props.meta.color == undefined)){
+                    if((props.primary == "") || (props.primary == undefined)){
+                        return css`
+                        color: #fff !important;
+                    `
+                    }else{
+                        return css`
+                        color: ${props.primary} !important;
+                    `
+                    }
+                }else{
+                    return css`
+                    color: ${props.meta.color} !important;
+                `
+                }
+            }else{
+                return css`
+                color: ${props.css.color} !important;
+            `
+            }
+        }else{
+            if((props.css.color == "") || (props.css.color == undefined)){
+                if((props.meta.color == "") || (props.meta.color == undefined)){
+                    if((props.primary == "") || (props.primary == undefined)){
+                        return css`
+                        color: "" !important;
+                    `
+                    }else{
+                        return css`
+                        color: ${props.primary} !important;
+                    `
+                    }
+                }else{
+                    return css`
+                    color: ${props.meta.color} !important;
+                `
+                }
+            }else{
+                return css`
+                color: ${props.css.color} !important;
+            `
+            }
+        }
+        
+    }}
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => (props.css['font-size'] == "")? ((props.meta['font-size'] == "")? "15px": props.meta['font-size']): props.css['font-size']} !important;
 	line-height: ${props => (props.css['line-height'] == "")? ((props.meta['line-height'] == "")? "": props.meta['line-height']): props.css['line-height']} !important;
@@ -86,7 +181,64 @@ export const Cat_style = styled.a`
 `;
 
 export const Cat_style_non_default = styled.a`
-	color: ${props => (!props?.css?.color)? ((props?.meta?.color)? props.meta.color:props.primary):props.css.color} !important;
+    ${props =>{
+        // For Grid 3
+        if(props.lay_sty == "grid3"){
+            if((props.css.color == "") || (props.css.color == undefined)){
+                if((props.meta.color == "") || (props.meta.color == undefined)){
+                    if((props.primary == "") || (props.primary == undefined)){
+                        if((props.cat_style.position != "") && (props.cat_style.style != 'style1')){
+                            return css`
+                                    color: #fff !important;
+                                `
+                        }else{
+                            if((props.cat_style.position != "") && (props.cat_style.style === 'style1')){
+                                return css`
+                                    color: #1e73be !important;
+                                `
+                            }
+                            
+                        }
+                    }else{
+                        return css`
+                            color: ${props.primary} !important;
+                        `
+                    }
+                }else{
+                    return css`
+                        color: ${props.meta.color} !important;
+                    `
+                }
+            }else{
+                return css`
+                    color: ${props.css.color} !important;
+                `
+            }
+        }else{
+            if((props.css.color == "") || (props.css.color == undefined)){
+                if((props.meta.color == "") || (props.meta.color == undefined)){
+                    if((props.primary == "") || (props.primary == undefined)){
+                        return css`
+                            color: "" !important;
+                        `
+                    }else{
+                        return css`
+                            color: ${props.primary} !important;
+                        `
+                    }
+                }else{
+                    return css`
+                        color: ${props.meta.color} !important;
+                    `
+                }
+            }else{
+                return css`
+                    color: ${props.css.color} !important;
+                `
+            }
+        }
+    
+    }}
 	background-color: ${props => props.css['background-color']} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	border-radius: ${props => props.css['border-radius']}px !important;
@@ -137,12 +289,36 @@ export const Cat_style_non_default = styled.a`
 `;
 
 export const MetaStyle = styled.span`
-	color: ${props => (props.css.color)? props.css.color: '#333'} !important;
 	font-size: ${props => props.css['font-size']} !important;
 	font-weight: ${props => props.css['font-weight']} !important;
 	line-height: ${props => (props.css['line-height'])?props.css['line-height']: ""} !important;
 	letter-spacing: ${props => (props.css['letter-spacing'])?props.css['letter-spacing']: ""} !important;
 	text-transform: ${props => (props.css['transform'])?props.css['transform']: ""} !important;
+	
+	${props =>{
+        if (props.lay_sty == "grid3") {
+            // For grid 3
+            if((props.css.color == "") || (props.css.color == undefined)){
+                return css`
+                        color: #fff !important;
+                    `
+            }else{
+                return css`
+                        color: ${props.css.color} !important;
+                    `
+            }
+        }else{
+            if((props.css.color == "") || (props.css.color == undefined)){
+                return css`
+                        color: #333 !important;
+                    `
+            }else{
+                return css`
+                        color: ${props.css.color} !important;
+                    `
+            }
+        }
+    }}
 	
 `;
 export const MetaTagStyle = styled.a`
@@ -155,7 +331,42 @@ export const MetaTagStyle = styled.a`
 	&:hover{
 	    color: ${props => (props.css['h-color'] != "")? ((props.css['h-color'] != undefined)? props.css['h-color']: "#2973be"): "#2973be"} !important;
 	}
-	
+	${props =>{
+        if (props.lay_sty == "grid3") {
+            // For grid 3
+            if((props.css.color == "") || (props.css.color == undefined)){
+                if((props.primary == "") || (props.primary == undefined)){
+                    return  css`
+                        color: #fff !important;
+                    `
+                }else{
+                    return css`
+                        color: ${props.primary} !important;
+                    `
+                }
+            }else{
+                return css`
+                            color: ${props.css.color} !important;
+                        `
+            }
+        }else{
+            if((props.css.color == "") || (props.css.color == undefined)){
+                if((props.primary == "") || (props.primary == undefined)){
+                    return  css`
+                        color: #333 !important;
+                    `
+                }else{
+                    return css`
+                        color: ${props.primary} !important;
+                    `
+                }
+            }else{
+                return css`
+                            color: ${props.css.color} !important;
+                        `
+            }
+        }
+    }}
 `;
 
 export const MetaStyle_align = styled.div`
@@ -163,13 +374,106 @@ export const MetaStyle_align = styled.div`
 `;
 
 export const Button_style = styled.a`
-	color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+    ${props =>{
+        if(props.lay_sty.value === "grid3"){
+            if((props.css.color === "") || (props.css.color === undefined)){
+                if((props.css_btn['border-color'] === "") || (props.css_btn['border-color'] === undefined)){
+                    return css`
+                        color: #fff !important;
+                        border-color: #fff !important;
+                    `
+                }else{
+                    return css`
+                        color: #fff !important;
+                        border-color: ${props.css_btn['border-color']} !important;
+                    `
+                }
+            }else{
+                if((props.css_btn['border-color'] === "") || (props.css_btn['border-color'] === undefined)){
+                    return css`
+                        color: ${props.css.color} !important;
+                        border-color: #fff !important;
+                    `
+                }else{
+                    return css`
+                        color: ${props.css.color} !important;
+                        border-color: ${props.css_btn['border-color']} !important;
+                    `
+                }
+            }
+        }
+    }}
 	border-radius: ${props => props.css_btn['border-radius']} !important;
 	background-color: ${props => props.css['background-color']} !important;
-	border-color: ${props => (props.css_btn['border-color'] != "") ? props.css_btn['border-color'] : ""} !important;
 	border-style: ${props => (props.css_btn['border-style'] != "") ? props.css_btn['border-style'] : ""} !important;
 	border-width: ${props => (props.css_btn['border-width'] != "") ? props.css_btn['border-width'] : ""} !important;
 	&:hover{
+	    ${props =>{
+            if(props.lay_sty.value === "grid3"){
+                if((props.css.color === "") || (props.css.color === undefined)){
+                    if((props.css_btn['border-color'] === "") || (props.css_btn['border-color'] === undefined)){
+                        if((props.css.h_bg_color === "") || (props.css.h_bg_color === undefined)){
+                            return css`
+                                color: #4c6fff !important;
+                                border-color: #fff !important;
+                                background-color: #fff !important;
+                            `
+                        }else{
+                            return css`
+                                color: #4c6fff !important;
+                                border-color: #fff !important;
+                                background-color: ${props.css.h_bg_color} !important;
+                            `
+                        }
+                        
+                    }else{
+                        if((props.css.h_bg_color === "") || (props.css.h_bg_color === undefined)){
+                            return css`
+                                color: #4c6fff !important;
+                                border-color: ${props.css_btn['border-color']} !important;
+                                background-color: #fff !important;
+                            `
+                        }else{
+                            return css`
+                                color: #4c6fff !important;
+                                border-color: ${props.css_btn['border-color']} !important;
+                                background-color: ${props.css.h_bg_color} !important;
+                            `
+                        }
+                    }
+                }else{
+                    if((props.css_btn['border-color'] === "") || (props.css_btn['border-color'] === undefined)){
+                        if((props.css.h_bg_color === "") || (props.css.h_bg_color === undefined)){
+                            return css`
+                                color: ${props.css.color} !important;
+                                border-color: #fff !important;
+                                background-color: #fff !important;
+                            `
+                        }else{
+                            return css`
+                                color: ${props.css.color} !important;
+                                border-color: #fff !important;
+                                background-color: ${props.css.h_bg_color} !important;
+                            `
+                        }
+                    }else{
+                        if((props.css.h_bg_color === "") || (props.css.h_bg_color === undefined)){
+                            return css`
+                                color: ${props.css.color} !important;
+                                border-color: ${props.css_btn['border-color']} !important;
+                                background-color: #fff !important;
+                            `
+                        }else{
+                            return css`
+                                color: ${props.css.color} !important;
+                                border-color: ${props.css_btn['border-color']} !important;
+                                background-color: ${props.css.h_bg_color} !important;
+                            `
+                        }
+                    }
+                }
+            }
+        }}
 		color: ${props => (props.css.h_color == "")? '#2271b1': (props.css.h_color != undefined? props.css.h_color: "#2271b1")} !important;
 		background-color: ${props => props.css.h_bg_color} !important;
 		border-color: ${props => (props.css_btn['h-border-color'] != "") ? (props.css_btn['h-border-color'] != undefined? props.css_btn['h-border-color']: "#2271b1") : "#2271b1"} !important;
@@ -328,14 +632,14 @@ export const Content_wrap = styled.div`
 	padding: ${props => 
     (props.css_pad != undefined) ?
         (((props.css_pad.top == null) && (props.css_pad.right == null) && (props.css_pad.bottom == null) && (props.css_pad.left == null))?
-            (((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2"))?
+            (((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2") || (props?.layout?.value == "grid3"))?
                 "0px"
                 :
                 "15px")
             : props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left
         )
         :
-        (((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2"))? 
+        (((props?.layout?.value == "grid1") || (props?.layout?.value == "grid2") || (props?.layout?.value == "grid3"))? 
             "0px"
             : 
             "15px")
@@ -774,38 +1078,158 @@ export const MetaIcona = styled.div`
     &:hover{
 	    color: ${props => (props.css['h-color'] != "")? ((props.css['h-color'] != undefined)? props.css['h-color']: "#2973be"): "#2973be"} !important;
 	}
+	
+	${props =>{
+        if (props.lay_sty == "grid3") {
+            // For grid 3
+            if((props.css.color == "") || (props.css.color == undefined)){
+                if((props.primary == "") || (props.primary == undefined)){
+                    return  css`
+                            color: #fff !important;
+                        `
+                }else{
+                    return css`
+                            color: ${props.primary} !important;
+                        `
+                }
+            }else{
+                return css`
+                                color: ${props.css.color} !important;
+                            `
+            }
+        }else{
+            if((props.css.color == "") || (props.css.color == undefined)){
+                if((props.primary == "") || (props.primary == undefined)){
+                    return  css`
+                            color: #333 !important;
+                        `
+                }else{
+                    return css`
+                            color: ${props.primary} !important;
+                        `
+                }
+            }else{
+                return css`
+                                color: ${props.css.color} !important;
+                            `
+            }
+        }
+    }}
 `
 export const MetaIconspan = styled.div`
-    color: ${props => (props.css.color)? props.css.color: '#333'} !important;
+
     padding-right: 4px !important;
     font-size: ${props => props.css['font-size']} !important;
     width: unset !important;
+    ${props =>{
+        if (props.lay_sty == "grid3") {
+            // For grid 3
+            if((props.css.color == "") || (props.css.color == undefined)){
+                return css`
+                            color: #fff !important;
+                        `
+            }else{
+                return css`
+                            color: ${props.css.color} !important;
+                        `
+            }
+        }else{
+            if((props.css.color == "") || (props.css.color == undefined)){
+                return css`
+                            color: #333 !important;
+                        `
+            }else{
+                return css`
+                            color: ${props.css.color} !important;
+                        `
+            }
+        }
+    }}
 `
 
 export const MetaCatIcon = styled.div`
+    
     font-size: ${(props)=> (props.css['font-size'] == "")? ((props.meta['font-size'] == "")? "": props.meta['font-size']): props.css['font-size']} !important;
-    color: ${props => 
-    (props?.css?.['background-color'])? 
-        props?.css?.['background-color']: 
-        (
-            (!props?.css?.color)? 
-                ((props?.meta?.color)? 
-                    props.meta.color:
-                    (
-                        (props?.primary)? 
-                            props.primary: 
-                            (
-                                (
-                                    (props.cat_type.position != "") && (props.cat_type.style != 'style1')
-                                )?
-                                "#1e73be": 
-                                ""
-                            )
-                    )
-                )
-                :
-                props.css.color
-        )} !important;
+        ${props => {
+            if (props.lay_sty == "grid3") {
+                // For grid 3
+                if ((props.css['background-color'] == "") || (props.css['background-color'] == undefined)) {
+                    if((props.css.color == "") || (props.css.color == undefined)){
+                        if((props.meta.color == "") || (props.meta.color == undefined)){
+                            if((props.primary == "") || (props.primary == undefined)){
+                                if((props.cat_type.position != "") && (props.cat_type.style != 'style1')){
+                                    return css`
+                                        color: #1e73be !important;
+                                    `
+                                }else{
+                                    if((props.cat_type.position != "") && (props.cat_type.style === 'style1')){
+                                        return css`
+                                            color: #1e73be !important;
+                                        `
+                                    }else{
+                                        return css`
+                                            color: #fff !important;
+                                        `
+                                    }
+                                }
+                            }else{
+                                return css`
+                                    color: ${props.primary} !important;
+                                `
+                            }
+                        }else{
+                            return css`
+                                color: ${props.meta.color} !important;
+                            `
+                        }
+                    }else{
+                        return css`
+                            color: ${props.css.color} !important;
+                        `
+                    }
+                }
+                 else {
+                    return css`
+                        color: ${props.css['background-color']} !important;
+                    `
+                }
+            } else {
+                if ((props.css['background-color'] == "") || (props.css['background-color'] == undefined)) {
+                    if((props.css.color == "") || (props.css.color == undefined)){
+                        if((props.meta.color == "") || (props.meta.color == undefined)){
+                            if((props.primary == "") || (props.primary == undefined)){
+                                if((props.cat_type.position != "") && (props.cat_type.style != 'style1')){
+                                    return css`
+                                        color: #1e73be !important;
+                                    `
+                                }else{
+                                    return css`
+                                        color: #fff !important;
+                                    `
+                                }
+                            }else{
+                                return css`
+                                    color: ${props.primary} !important;
+                                `
+                            }
+                        }else{
+                            return css`
+                                color: ${props.meta.color} !important;
+                            `
+                        }
+                    }else{
+                        return css`
+                            color: ${props.css.color} !important;
+                        `
+                    }
+                }
+                else {
+                    return css`
+                        color: ${props.css['background-color']} !important;
+                    `
+                }
+            }
+        }}
         
     width: unset !important;
     &:hover{
@@ -894,10 +1318,29 @@ export const ContentCol = styled.div`
 `
 
 export const Colgut = styled.div`
-    padding-top: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
-    padding-right: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
-    padding-bottom: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
-    padding-left: ${props => (props.css.gutter == "")? "15": props.css.gutter }px !important;
+    ${props =>{
+        if(props.lay_sty === "grid3"){
+            if(props.css.gutter == ""){
+                return css`
+                    padding: 0px !important;
+                `
+            }else{
+                return css`
+                    padding: ${props.css.gutter}px !important;
+                `
+            }
+        }else{
+            if(props.css.gutter == ""){
+                return css`
+                    padding: 15px !important;
+                `
+            }else{
+                return css`
+                    padding: ${props.css.gutter}px !important;
+                `
+            }
+        }
+    }}
     margin: 0px !important;
 `
 

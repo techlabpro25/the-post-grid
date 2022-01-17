@@ -285,6 +285,7 @@ class RtThePostGrid extends Block
         'loaders' =>[
             'excerpt' => false
         ],
+        // For Grid 2
         'grid_2_body_hover' =>[
             'background' => "",
 			'title'=> "",
@@ -298,7 +299,11 @@ class RtThePostGrid extends Block
             'button_h'=> "",
             'button_bg_h'=> "",
             'button_border_h'=> "",
-        ]
+        ],
+        // For Grid 3
+        'grid_3' =>[
+			'content-background-color' => "",
+		]
 	];
 
 	public function __construct()

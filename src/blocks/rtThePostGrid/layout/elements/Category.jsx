@@ -5,7 +5,7 @@ import {Cat_style, Cat_style_non_default, MetaCatIcon, MetaIcon} from "../../Sty
 
 // For Default
 export const Category_Default = (props) =>{
-    const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin } = props.data
+    const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin, layout } = props.data
 
     return(
         <>
@@ -15,7 +15,7 @@ export const Category_Default = (props) =>{
                         {
                             category.icon?(
                                 <a id={"terms_icon"} href={"#"}>
-                                    <MetaCatIcon as={FontAwesomeIcon} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
+                                    <MetaCatIcon as={FontAwesomeIcon} lay_sty={layout} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
                                 </a>
                             ):("")
                         }
@@ -32,7 +32,7 @@ export const Category_Default = (props) =>{
                                                         <>
                                                             {/*=*/}
                                                             {((category.style == 'style1') && (i > 0) && (category_style['background-color'] == "")) ? ", " : "   "}
-                                                            <Cat_style css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} className={"terms"} rel="category">
+                                                            <Cat_style lay_sty={layout} css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} className={"terms"} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style>
                                                         </>
@@ -57,7 +57,7 @@ export const Category_Default = (props) =>{
 
 // For Non Default
 export const Non_Category_Default = (props) =>{
-    const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin } = props.data
+    const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin, layout } = props.data
     return(
         <>
             {
@@ -66,7 +66,7 @@ export const Non_Category_Default = (props) =>{
                         {
                             category.icon?(
                                 <a id={"terms_icon"} href={"#"}>
-                                    <MetaCatIcon as={FontAwesomeIcon} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
+                                    <MetaCatIcon as={FontAwesomeIcon} lay_sty={layout} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
                                 </a>
                             ):("")
                         }
@@ -81,7 +81,7 @@ export const Non_Category_Default = (props) =>{
                                                     return (
                                                         <>
                                                             {((category.style == 'style1') && (i > 0) && ((category_style['background-color'] == "") || (category_style['background-color'] == undefined))) ? ", " : "   "}
-                                                            <Cat_style_non_default cat_style={category} css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} className={"terms"} rel="category">
+                                                            <Cat_style_non_default lay_sty={layout} cat_style={category} css={category_style} meta={meta_style} primary={primary_color} css_pad={category_padding} css_mar={category_margin} href={items.term_link} className={"terms"} rel="category">
                                                                 {items.term_name}
                                                             </Cat_style_non_default>
                                                         </>

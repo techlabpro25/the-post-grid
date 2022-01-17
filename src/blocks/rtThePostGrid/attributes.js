@@ -409,8 +409,15 @@ const attributes = {
 			button_bg_h: "",
 			button_border_h: "",
 		}
-	}
+	},
 
+	// For Grid 3
+	grid_3:{
+		type: "object",
+		default:{
+			['content-background-color']: ""
+		}
+	}
 };
 
 export default attributes;

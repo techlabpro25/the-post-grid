@@ -129,7 +129,8 @@ export const List2 = (props) =>{
                                 id: post.id,
                                 target: linking.target,
                                 link: post.post_link,
-                                post_title
+                                post_title,
+                                layout: layout.value
                             }
                             const image_props = {
                                 id: post.id,
@@ -145,15 +146,17 @@ export const List2 = (props) =>{
                                 author_url: post.author_url,
                                 meta_style,
                                 primary_color,
-                                name: post.author_name
+                                name: post.author_name,
+                                layout: layout.value
                             }
-                            const date_props = {meta, meta_style, primary_color, date: post.post_date}
+                            const date_props = {meta, meta_style, primary_color, date: post.post_date, layout: layout.value}
                             const comment_count_props = {
                                 meta,
                                 meta_style,
                                 primary_color,
                                 count: post.comment_count,
-                                link: post.post_link
+                                link: post.post_link,
+                                layout: layout.value
                             }
                             const category_props = {
                                 meta,
@@ -163,7 +166,8 @@ export const List2 = (props) =>{
                                 post_terms: post?.terms,
                                 category_style,
                                 category_padding,
-                                category_margin
+                                category_margin,
+                                layout: layout.value
                             }
                             // const tag_props = {
                             //     meta,
@@ -175,7 +179,7 @@ export const List2 = (props) =>{
 
                             return(
                                 <>
-                                    <Colgut css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} even-grid-item list_layout two ${image.animation}`} data-id={post.id}>
+                                    <Colgut lay_sty={layout.value} css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} even-grid-item list_layout two ${image.animation}`} data-id={post.id}>
                                         <Content_wrap css={content_wrap} css_pad={constent_box_padding} className="rt-holder">
                                             <div className={`rt-row`}>
                                                 {
@@ -314,7 +318,7 @@ export const List2 = (props) =>{
                                                         }
                                                         {
                                                             general.excerpt ? (
-                                                                <Excerpts css={excerpt_style} primary={primary_color} className="tpg-excerpt" dangerouslySetInnerHTML={{__html: postexcerpt}}>
+                                                                <Excerpts css={excerpt_style} lay_sty={layout.value} primary={primary_color} className="tpg-excerpt" dangerouslySetInnerHTML={{__html: postexcerpt}}>
                                                                 </Excerpts>
                                                             ) : ("")
                                                         }

@@ -9,7 +9,7 @@ import {
 
 function Style_Content_wrap(props) {
     const {__} = wp.i18n;
-    const { content_wrap, content_padding, constent_box_padding, layout, grid_2_body_hover} = props.attr.attributes
+    const { content_wrap, content_padding, constent_box_padding, layout, grid_2_body_hover, grid_3} = props.attr.attributes
     return (
         <PanelBody title={__( "Content Wrap", "the-post-grid")} initialOpen={false}>
             <Text>
@@ -44,6 +44,22 @@ function Style_Content_wrap(props) {
                             colors={ props.attr.colors }
                             value={ grid_2_body_hover["background"] }
                             onChange={ ( color ) => props.attr.setAttributes( {grid_2_body_hover: {...grid_2_body_hover, "background": color}} ) }
+                        />
+                    </>
+                ):("")
+            }
+
+            {
+                layout.value == "grid3"?(
+                    <>
+                        <Text>
+                            {__( "Content Background Color:", "the-post-grid")}
+                        </Text>
+                        <ColorPalette
+                            label = {__( "Select Color:", "the-post-grid")}
+                            colors={ props.attr.colors }
+                            value={ grid_3["content-background-color"] }
+                            onChange={ ( color ) => props.attr.setAttributes( {grid_3: {...grid_3, "content-background-color": color}} ) }
                         />
                     </>
                 ):("")
