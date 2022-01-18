@@ -52,7 +52,8 @@ const Grid1 = (props) => {
 		layout,
 		heading_dot_margin,
 		loaders,
-		className
+		className,
+		meta_icon
 	} = props
 
 	let Heading = "";
@@ -123,10 +124,10 @@ const Grid1 = (props) => {
 							// Title
 							const title_props = { Title, title_style, primary_color, id:post.id, target:linking.target, link: post.post_link, post_title, layout: layout.value }
 							const image_props = { id:post.id, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value, loaders: loaders.image }
-							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name, layout: layout.value}
-							const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value}
-							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value}
-							const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin, layout: layout.value }
+							const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name, layout: layout.value, meta_icon}
+							const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value, meta_icon}
+							const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value, meta_icon}
+							const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin, layout: layout.value, meta_icon }
 							// const tag_props = { meta, meta_style, primary_color, post_tags: post?.tags }
 
 							return (

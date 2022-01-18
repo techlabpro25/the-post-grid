@@ -16,7 +16,7 @@ import { useState, useEffect } from '@wordpress/element';
 
 function Meta(props) {
     const {__} = wp.i18n;
-    const { meta_style, layout, grid_2_body_hover} = props.attr.attributes
+    const { meta_style, layout, grid_2_body_hover, meta_icon} = props.attr.attributes
     return (
         <PanelBody title={__( "Meta", "the-post-grid")} initialOpen={false}>
             <Text>
@@ -143,7 +143,26 @@ function Meta(props) {
                     )}
                 />
             </BaseControl>
-        
+
+            <Text>
+                Icon Color:
+            </Text>
+            <ColorPalette
+                className={"rt-tpg-colorcontrol meta"}
+                label = {__( "Select Color", "the-post-grid")}
+                colors={ props.attr.colors }
+                value={ meta_icon.color }
+                onChange={ ( color ) => props.attr.setAttributes( {meta_icon: {...meta_icon, 'color': color}} ) }
+            />
+
+            <Text>
+                {__( "Icon Size:", "the-post-grid")}
+            </Text>
+            <UnitControl
+                className={"rt-tpg-unitcontrol meta"}
+                value={ meta_icon["font-size"] }
+                onChange={ ( value ) => props.attr.setAttributes( { meta_icon: {...meta_icon, "font-size": value} }) }
+            />
         </PanelBody>
     );
 }

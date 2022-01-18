@@ -74,6 +74,10 @@ class RtThePostGrid extends Block
             'letter-spaceing' => '',
 			'transform' => ''
         ],
+        'meta_icon'=>[
+			'color'=> "",
+			'font-size'=> ''
+        ],
         'button' =>[
             'border-radius' => "",
             'h-boder-radius' => '',

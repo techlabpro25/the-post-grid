@@ -147,16 +147,18 @@ export const List2 = (props) =>{
                                 meta_style,
                                 primary_color,
                                 name: post.author_name,
-                                layout: layout.value
+                                layout: layout.value,
+                                meta_icon
                             }
-                            const date_props = {meta, meta_style, primary_color, date: post.post_date, layout: layout.value}
+                            const date_props = {meta, meta_style, primary_color, date: post.post_date, layout: layout.value, meta_icon}
                             const comment_count_props = {
                                 meta,
                                 meta_style,
                                 primary_color,
                                 count: post.comment_count,
                                 link: post.post_link,
-                                layout: layout.value
+                                layout: layout.value,
+                                meta_icon
                             }
                             const category_props = {
                                 meta,
@@ -167,7 +169,8 @@ export const List2 = (props) =>{
                                 category_style,
                                 category_padding,
                                 category_margin,
-                                layout: layout.value
+                                layout: layout.value,
+                                meta_icon
                             }
                             // const tag_props = {
                             //     meta,

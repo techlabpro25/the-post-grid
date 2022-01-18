@@ -5,7 +5,7 @@ import {Cat_style, Cat_style_non_default, MetaCatIcon, MetaIcon} from "../../Sty
 
 // For Default
 export const Category_Default = (props) =>{
-    const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin, layout } = props.data
+    const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin, layout, meta_icon } = props.data
 
     return(
         <>
@@ -15,7 +15,7 @@ export const Category_Default = (props) =>{
                         {
                             category.icon?(
                                 <a id={"terms_icon"} href={"#"}>
-                                    <MetaCatIcon as={FontAwesomeIcon} lay_sty={layout} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
+                                    <MetaCatIcon as={FontAwesomeIcon} icon_props={meta_icon} lay_sty={layout} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
                                 </a>
                             ):("")
                         }
@@ -57,7 +57,7 @@ export const Category_Default = (props) =>{
 
 // For Non Default
 export const Non_Category_Default = (props) =>{
-    const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin, layout } = props.data
+    const { meta, meta_style, primary_color, category, post_terms, category_style, category_padding, category_margin, layout, meta_icon } = props.data
     return(
         <>
             {
@@ -66,7 +66,7 @@ export const Non_Category_Default = (props) =>{
                         {
                             category.icon?(
                                 <a id={"terms_icon"} href={"#"}>
-                                    <MetaCatIcon as={FontAwesomeIcon} lay_sty={layout} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
+                                    <MetaCatIcon as={FontAwesomeIcon} icon_props={meta_icon} lay_sty={layout} cat_type={category} meta={meta_style} css={category_style} primary={primary_color} icon={faFolderOpen} className={'iconclass'} />
                                 </a>
                             ):("")
                         }

@@ -1071,9 +1071,19 @@ export const ImgAnimation = styled.img`
 `;
 
 export const MetaIcona = styled.div`
-    color: ${props => (props.css.color)? props.css.color: props.primary} !important;
+    ${props =>{
+        if(props.icon_props['font-size'] == ""){
+            return css`
+                font-size: ${props.css['font-size']} !important;
+            `
+        }else{
+            return css`
+                font-size: ${props.icon_props['font-size']} !important;
+            `
+        }
+    }}
     padding-right: 4px !important;
-    font-size: ${props => props.css['font-size']} !important;
+    
     width: unset !important;
     &:hover{
 	    color: ${props => (props.css['h-color'] != "")? ((props.css['h-color'] != undefined)? props.css['h-color']: "#2973be"): "#2973be"} !important;
@@ -1082,36 +1092,48 @@ export const MetaIcona = styled.div`
 	${props =>{
         if (props.lay_sty == "grid3") {
             // For grid 3
-            if((props.css.color == "") || (props.css.color == undefined)){
-                if((props.primary == "") || (props.primary == undefined)){
-                    return  css`
-                            color: #fff !important;
-                        `
-                }else{
+            if((props.icon_props.color == "") || (props.icon_props.color == undefined)) {
+                if ((props.css.color == "") || (props.css.color == undefined)) {
+                    if ((props.primary == "") || (props.primary == undefined)) {
+                        return css`
+                                color: #fff !important;
+                            `
+                    } else {
+                        return css`
+                                color: ${props.primary} !important;
+                            `
+                    }
+                } else {
                     return css`
-                            color: ${props.primary} !important;
-                        `
+                        color: ${props.css.color} !important;
+                    `
                 }
             }else{
                 return css`
-                                color: ${props.css.color} !important;
-                            `
+                    color: ${props.icon_props.color} !important;
+                `
             }
         }else{
-            if((props.css.color == "") || (props.css.color == undefined)){
-                if((props.primary == "") || (props.primary == undefined)){
-                    return  css`
-                            color: #333 !important;
-                        `
-                }else{
+            if((props.icon_props.color == "") || (props.icon_props.color == undefined)) {
+                if ((props.css.color == "") || (props.css.color == undefined)) {
+                    if ((props.primary == "") || (props.primary == undefined)) {
+                        return css`
+                                color: #333 !important;
+                            `
+                    } else {
+                        return css`
+                                color: ${props.primary} !important;
+                            `
+                    }
+                } else {
                     return css`
-                            color: ${props.primary} !important;
-                        `
+                                    color: ${props.css.color} !important;
+                                `
                 }
             }else{
                 return css`
-                                color: ${props.css.color} !important;
-                            `
+                    color: ${props.icon_props.color} !important;
+                `
             }
         }
     }}
@@ -1119,117 +1141,172 @@ export const MetaIcona = styled.div`
 export const MetaIconspan = styled.div`
 
     padding-right: 4px !important;
-    font-size: ${props => props.css['font-size']} !important;
+    ${props =>{
+        if(props.icon_props['font-size'] == ""){
+            return css`
+                    font-size: ${props.css['font-size']} !important;
+                `
+        }else{
+            return css`
+                    font-size: ${props.icon_props['font-size']} !important;
+                `
+        }
+    }}
     width: unset !important;
     ${props =>{
         if (props.lay_sty == "grid3") {
             // For grid 3
-            if((props.css.color == "") || (props.css.color == undefined)){
-                return css`
-                            color: #fff !important;
-                        `
+            if((props.icon_props.color == "") || (props.icon_props.color == undefined)) {
+                if ((props.css.color == "") || (props.css.color == undefined)) {
+                    return css`
+                                color: #fff !important;
+                            `
+                } else {
+                    return css`
+                        color: ${props.css.color} !important;
+                    `
+                }
             }else{
                 return css`
-                            color: ${props.css.color} !important;
-                        `
+                    color: ${props.icon_props.color} !important;
+                `
             }
         }else{
-            if((props.css.color == "") || (props.css.color == undefined)){
-                return css`
-                            color: #333 !important;
-                        `
+            if((props.icon_props.color == "") || (props.icon_props.color == undefined)) {
+                if ((props.css.color == "") || (props.css.color == undefined)) {
+                    return css`
+                                color: #333 !important;
+                            `
+                } else {
+                    return css`
+                                color: ${props.css.color} !important;
+                            `
+                }
             }else{
                 return css`
-                            color: ${props.css.color} !important;
-                        `
+                    color: ${props.icon_props.color} !important;
+                `
             }
         }
     }}
 `
 
 export const MetaCatIcon = styled.div`
-    
-    font-size: ${(props)=> (props.css['font-size'] == "")? ((props.meta['font-size'] == "")? "": props.meta['font-size']): props.css['font-size']} !important;
-        ${props => {
-            if (props.lay_sty == "grid3") {
-                // For grid 3
-                if ((props.css['background-color'] == "") || (props.css['background-color'] == undefined)) {
-                    if((props.css.color == "") || (props.css.color == undefined)){
-                        if((props.meta.color == "") || (props.meta.color == undefined)){
-                            if((props.primary == "") || (props.primary == undefined)){
-                                if((props.cat_type.position != "") && (props.cat_type.style != 'style1')){
-                                    return css`
-                                        color: #1e73be !important;
-                                    `
-                                }else{
-                                    if((props.cat_type.position != "") && (props.cat_type.style === 'style1')){
-                                        return css`
-                                            color: #1e73be !important;
-                                        `
-                                    }else{
-                                        return css`
-                                            color: #fff !important;
-                                        `
-                                    }
-                                }
-                            }else{
-                                return css`
-                                    color: ${props.primary} !important;
-                                `
-                            }
-                        }else{
-                            return css`
-                                color: ${props.meta.color} !important;
-                            `
-                        }
-                    }else{
-                        return css`
-                            color: ${props.css.color} !important;
-                        `
-                    }
-                }
-                 else {
+    ${props =>{
+        if(props.icon_props['font-size'] == ""){
+            if(props.css['font-size'] == ""){
+                if(props.meta['font-size'] == ""){
                     return css`
-                        color: ${props.css['background-color']} !important;
+                        font-size: "" !important;
+                    `
+                }else{
+                    return css`
+                        font-size: ${props.meta['font-size']} !important;
                     `
                 }
-            } else {
+            }else{
+                return css`
+                    font-size: ${props.icon_props['font-size']} !important;
+                `
+            }
+        }else{
+            return css`
+                font-size: ${props.icon_props['font-size']} !important;
+            `
+        }
+    }}
+    
+   
+    ${props => {
+        if (props.lay_sty == "grid3") {
+            // For grid 3
+            if((props.icon_props.color == "") || (props.icon_props.color == undefined)) {
                 if ((props.css['background-color'] == "") || (props.css['background-color'] == undefined)) {
-                    if((props.css.color == "") || (props.css.color == undefined)){
-                        if((props.meta.color == "") || (props.meta.color == undefined)){
-                            if((props.primary == "") || (props.primary == undefined)){
-                                if((props.cat_type.position != "") && (props.cat_type.style != 'style1')){
+                    if ((props.css.color == "") || (props.css.color == undefined)) {
+                        if ((props.meta.color == "") || (props.meta.color == undefined)) {
+                            if ((props.primary == "") || (props.primary == undefined)) {
+                                if ((props.cat_type.position != "") && (props.cat_type.style != 'style1')) {
                                     return css`
+                                    color: #1e73be !important;
+                                `
+                                } else {
+                                    if ((props.cat_type.position != "") && (props.cat_type.style === 'style1')) {
+                                        return css`
                                         color: #1e73be !important;
                                     `
-                                }else{
-                                    return css`
+                                    } else {
+                                        return css`
                                         color: #fff !important;
                                     `
+                                    }
                                 }
-                            }else{
+                            } else {
                                 return css`
-                                    color: ${props.primary} !important;
-                                `
-                            }
-                        }else{
-                            return css`
-                                color: ${props.meta.color} !important;
+                                color: ${props.primary} !important;
                             `
-                        }
-                    }else{
-                        return css`
-                            color: ${props.css.color} !important;
+                            }
+                        } else {
+                            return css`
+                            color: ${props.meta.color} !important;
                         `
-                    }
-                }
-                else {
-                    return css`
-                        color: ${props.css['background-color']} !important;
+                        }
+                    } else {
+                        return css`
+                        color: ${props.css.color} !important;
                     `
+                    }
+                } else {
+                    return css`
+                    color: ${props.css['background-color']} !important;
+                `
                 }
+            }else{
+                return css`
+                    color: ${props.icon_props.color} !important;
+                `
             }
-        }}
+        } else {
+            if((props.icon_props.color == "") || (props.icon_props.color == undefined)) {
+                if ((props.css['background-color'] == "") || (props.css['background-color'] == undefined)) {
+                    if ((props.css.color == "") || (props.css.color == undefined)) {
+                        if ((props.meta.color == "") || (props.meta.color == undefined)) {
+                            if ((props.primary == "") || (props.primary == undefined)) {
+                                if ((props.cat_type.position != "") && (props.cat_type.style != 'style1')) {
+                                    return css`
+                                    color: #1e73be !important;
+                                `
+                                } else {
+                                    return css`
+                                    color: #fff !important;
+                                `
+                                }
+                            } else {
+                                return css`
+                                color: ${props.primary} !important;
+                            `
+                            }
+                        } else {
+                            return css`
+                            color: ${props.meta.color} !important;
+                        `
+                        }
+                    } else {
+                        return css`
+                        color: ${props.css.color} !important;
+                    `
+                    }
+                } else {
+                    return css`
+                    color: ${props.css['background-color']} !important;
+                `
+                }
+            }else{
+                return css`
+                    color: ${props.icon_props.color} !important;
+                `
+            }
+        }
+    }}
         
     width: unset !important;
     &:hover{

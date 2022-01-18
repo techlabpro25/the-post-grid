@@ -278,6 +278,13 @@ const attributes = {
 			['transform']: ''
 		},
 	},
+	meta_icon:{
+		type: "object",
+		default:{
+			color: "",
+			['font-size']: ''
+		}
+	},
 	button: {
 		type: "object",
 		default: {

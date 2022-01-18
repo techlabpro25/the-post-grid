@@ -74,7 +74,7 @@ if ( ! class_exists( RtTpg::class ) ) {
             new Get_Title();
             new Isotope_Terms();
             new Get_Image_Sizes();
-            add_action( 'block_categories', [$this, 'rt_tpg_block_category'], 10, 2 );
+            add_action( 'block_categories_all', [$this, 'rt_tpg_block_category'], 10, 2 );
 
 		}
 
