@@ -221,7 +221,10 @@ class RtThePostGrid extends Block
             'status'  => [],
             'keyword_bool'  => false,
             'keyword'  => "",
-            'filter'=> true,
+            'filter' => true,
+            'date_bool' => false,
+            'date_from' => null,
+			'date_to' => null,
         ],
         'primary_color' =>'',
         'columns' =>[

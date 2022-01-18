@@ -697,6 +697,18 @@ svg.components-panel__arrow {
     margin-left: 16px;
 }
 
+.the_post_grid_blocks .rt-tpg-date-range-control .components-datetime .components-datetime__time fieldset:nth-child(2) {
+    display: none !important;
+}
+.the_post_grid_blocks .rt-tpg-date-range-control .components-datetime .components-datetime__time{
+    padding-bottom: 0px !important;
+    justify-content: center !important;
+}
+
+.the_post_grid_blocks .rt-tpg-date-range-control .components-datetime{
+    padding-top: 5px !important;
+}
+
 /*================= Control panel loader start ================*/
 .the_post_grid_blocks .rt-tpg-control-lds-ripple {
     display: inline-block;

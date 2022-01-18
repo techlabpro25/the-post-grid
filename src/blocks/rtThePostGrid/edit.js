@@ -183,7 +183,9 @@ export default function Edit(props) {
                 pagination: pagination.show,
                 limit: query.limit,
                 excerpt_type: excerpt.type,
-                imgsize: image.size
+                imgsize: image.size,
+                date_from: query.date_from,
+                date_to: query.date_to,
             }
         }).then((posts) => {
             if ('message' in posts) {

@@ -7,6 +7,7 @@ import {
 	__experimentalText as Text,
 	CheckboxControl,
 	RadioControl,
+	DateTimePicker,
 	ToggleControl,
 } from "@wordpress/components";
 import { useState, useEffect } from "@wordpress/element";
@@ -760,6 +761,51 @@ const Query = (props) => {
 						""
 					)}
 				</div>
+
+				{/*Date range*/}
+				<CheckboxControl
+					label={__( "Date Range", "the-post-grid")}
+					checked={query.date_bool}
+					onChange={(value) =>{
+						var date_from = query.date_from;
+						var date_to = query.date_to;
+						if(value == false){
+							date_from = null;
+							date_to = null;
+						}
+						props.attr.setAttributes({ query: { ...query, date_bool: value, date_from: date_from, date_to: date_to } })
+					}
+
+					}
+				/>
+
+				{
+					query.date_bool?(
+						<>
+							<div className='rt-tpg-query-checkbox-first-child rt-tpg-date-range-control'>
+								<Text className="rt-tpg-query-text">From:</Text>
+								<DateTimePicker
+									currentDate={ query.date_from }
+									onChange={ ( newDate ) => {
+										props.attr.setAttributes({ query: { ...query, date_from: newDate } })
+									} }
+									is12Hour={ true }
+								/>
+							</div>
+
+							<div className='rt-tpg-query-checkbox-first-child rt-tpg-date-range-control'>
+								<Text className="rt-tpg-query-text">To:</Text>
+								<DateTimePicker
+									currentDate={ query.date_to }
+									onChange={ ( newDate ) => {
+										props.attr.setAttributes({ query: { ...query, date_to: newDate } })
+									} }
+									is12Hour={ true }
+								/>
+							</div>
+						</>
+					):("")
+				}
 			</div>
 		</>
 	);

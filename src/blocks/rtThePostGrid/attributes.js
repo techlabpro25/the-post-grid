@@ -29,7 +29,10 @@ const attributes = {
 			filter: true,
 			tax_item: {},
 			pageindex: 1,
-			loader: false
+			loader: false,
+			date_bool: false,
+			date_from: null,
+			date_to: null
 		},
 	},
 	columns: {

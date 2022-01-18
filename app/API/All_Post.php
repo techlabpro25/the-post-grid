@@ -1,5 +1,6 @@
 <?php
 namespace RT\ThePostGrid\API;
+use Cassandra\Date;
 use WP_Query;
 
 class All_Post{
@@ -35,11 +36,35 @@ class All_Post{
         $size = explode('x', $request['imgsize']);
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
         $post_per_page =  (($request["post_per_page"] === "") || ($request["post_per_page"] === 0) )? -1: $request["post_per_page"];
+        $date_from = $request['date_from'];
+        $date_to = $request['date_to'];
+        $today  = getdate();
+
+
+
 
         $args = array(
             'post_type' => $post_type,
             'posts_per_page' => $post_per_page,
         );
+
+        if(isset($date_from) && isset($date_to)){
+            $d_from = date('F d, Y', strtotime($date_from));
+            $d_to = date('F d, Y', strtotime($date_to));
+
+            $args['date_query'] = [
+                'after' => $d_from,
+                'before' => $d_to
+            ];
+        }else{
+            if(isset($date_from) && !isset($date_to)){
+                $d_from = date('F d, Y', strtotime($date_from));
+                $args['date_query'] = [
+                    'after' => $d_from,
+                    'before' => $today['month']." ".$today['yday'].", ".$today['year']
+                ];
+            }
+        }
 
         if(empty(array_filter($include))){
             if($pagination && ($limit != -1)){
@@ -170,6 +195,7 @@ class All_Post{
         }
 
         return rest_ensure_response($data);
+
     }
 }
 ?>
