@@ -32,6 +32,9 @@ import $ from 'jquery';
 import {PredefaultAttr} from "./components/PredefaultAttr";
 import Pagination from "./components/style/Pagination";
 import {PaginationStyle, Pageprivnext} from "./Style_component";
+import Filter from "./components/layout/Filter";
+import Others from "./components/layout/Others";
+import Overlay from "./components/style/Style_Overlay";
 
 
 const {__} = wp.i18n;
@@ -186,6 +189,7 @@ export default function Edit(props) {
                 imgsize: image.size,
                 date_from: query.date_from,
                 date_to: query.date_to,
+                sticky: query.show_sticky,
             }
         }).then((posts) => {
             if ('message' in posts) {
@@ -331,6 +335,10 @@ export default function Edit(props) {
 
                                         <Layout attr={global_attr}/>
 
+                                        {/*Filters*/}
+
+                                        <Filter attr={global_attr}/>
+
                                         {/* Columns */}
 
                                         <Columns attr={global_attr}/>
@@ -339,6 +347,10 @@ export default function Edit(props) {
                                         {/* Linking */}
 
                                         <Linking attr={global_attr}/>
+
+                                        {/*Others*/}
+
+                                        <Others attr={global_attr}/>
                                     </>
                                 )
                             } else if (tab?.name == "advanced") {
@@ -512,6 +524,10 @@ export default function Edit(props) {
 
                                                             {/*Pagination*/}
                                                             <Pagination attr={global_attr}/>
+
+                                                            {/*Overlay*/}
+
+                                                            <Overlay attr={global_attr}/>
                                                         </>
                                                     )
                                                 }

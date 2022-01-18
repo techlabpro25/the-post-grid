@@ -40,14 +40,13 @@ function Title(props) {
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {title: {...title, "tag": value} } ) }
             />
-            {/*Pro Feature*/}
 
-            {/*<SelectControl*/}
-            {/*    label={__( "Title Position:", "the-post-grid")}*/}
-            {/*    value={ title.position }*/}
-            {/*    options={ title_position }*/}
-            {/*    onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }*/}
-            {/*/>*/}
+            <SelectControl
+                label={__( "Title Position:", "the-post-grid")}
+                value={ title.position }
+                options={ title_position }
+                onChange={ ( newAlignment ) => props.attr.setAttributes( {title: {...title, "position": newAlignment} }) }
+            />
 
             <NumberControl
                 className={'rt-tpg-numbercontrol title'}

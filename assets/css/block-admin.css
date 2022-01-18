@@ -697,6 +697,10 @@ a:hover {
   padding-top: 5px !important;
 }
 
+.the_post_grid_blocks .rt-tpg-filter-first-child {
+  margin-left: 20px;
+}
+
 /*================= Control panel loader start ================*/
 .the_post_grid_blocks .rt-tpg-control-lds-ripple {
   display: inline-block;

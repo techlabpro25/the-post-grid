@@ -12,6 +12,7 @@ function General(props) {
 	const [hasauthor, useHasauthor] = useState(true)
 	const [hasseemore, useHasseemore] = useState(true)
 	const [haspost_date, useHaspost_date] = useState(true)
+	const [hassocial_media, useHassocial_media] = useState(false)
 	const [hascommentcount, useHascommentcount] = useState(true)
 	const [hastag, useHastag] = useState(true)
 	
@@ -97,6 +98,16 @@ function General(props) {
                     props.attr.setAttributes({general: {...general, "see_more": val}})
                 } }
             />
+            <ToggleControl
+                className={"rt-tpg-togglecontrol general"}
+                label={__( "Social Share", "the-post-grid")}
+                checked={ general.social_share }
+                onChange={ (val) => {
+                    useHassocial_media( ( state ) => ! state );
+                    props.attr.setAttributes({general: {...general, "social_share": val}})
+                } }
+            />
+
         </PanelBody>
     );
 }

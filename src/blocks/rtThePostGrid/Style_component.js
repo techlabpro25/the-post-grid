@@ -113,7 +113,7 @@ export const Cat_style = styled.a`
                 if((props.meta.color == "") || (props.meta.color == undefined)){
                     if((props.primary == "") || (props.primary == undefined)){
                         return css`
-                        color: "" !important;
+                        color: #333 !important;
                     `
                     }else{
                         return css`
@@ -177,6 +177,25 @@ export const Cat_style = styled.a`
                     props.meta['h-color']: "#2973be"):
                 "#2973be" 
         } !important;
+        
+        ${props =>{
+            if((props.css['background-color-h'] === "") || (props.css['background-color-h'] === undefined)){
+                if((props.css['background-color'] === "") || (props.css['background-color'] === undefined)){
+                    return css`
+                        background-color: "" !important;
+                    `
+                }else{
+                    return css`
+                        background-color: #c1c1c1 !important;
+                    `
+                }
+                
+            }else{
+                return css`
+                    background-color: ${props.css['background-color-h']} !important;
+                `
+            }
+        }}
     }
 `;
 
@@ -273,18 +292,31 @@ export const Cat_style_non_default = styled.a`
 	}
 	&:hover{
          color: ${props =>
-    (props.css['h-color'] != "")?
-        (props.css['h-color'] != undefined?
-            props.css['h-color']: ((props.meta['h-color'] != "")?
-                (props.meta['h-color'] != undefined?
-                    props.meta['h-color']: "#2973be"):
-                "#2973be"))
-        :
-        (props.meta['h-color'] != "")?
-            (props.meta['h-color'] != undefined?
-                props.meta['h-color']: "#2973be"):
-            "#2973be"
-} !important;
+            (props.css['h-color'] != "")?
+                (props.css['h-color'] != undefined?
+                    props.css['h-color']: ((props.meta['h-color'] != "")?
+                        (props.meta['h-color'] != undefined?
+                            props.meta['h-color']: "#2973be"):
+                        "#2973be"))
+                :
+                (props.meta['h-color'] != "")?
+                    (props.meta['h-color'] != undefined?
+                        props.meta['h-color']: "#2973be"):
+                    "#2973be"
+        } !important;
+        
+        ${props =>{
+            if((props.css['background-color-h'] === "") || (props.css['background-color-h'] === undefined)){
+                return css`
+                    background-color: #c1c1c1 !important;
+                `
+        
+            }else{
+                return css`
+                    background-color: ${props.css['background-color-h']} !important;
+                `
+            }
+        }}
     }
 `;
 
@@ -1276,9 +1308,16 @@ export const MetaCatIcon = styled.div`
                                     color: #1e73be !important;
                                 `
                                 } else {
-                                    return css`
-                                    color: #fff !important;
-                                `
+                                    if((props.cat_type.position != "") && (props.cat_type.style === 'style1')){
+                                        return css`
+                                            color: #1e73be !important;
+                                        `
+                                    }else{
+                                        return css`
+                                            color: #333 !important;
+                                        `
+                                    }
+                                    
                                 }
                             } else {
                                 return css`

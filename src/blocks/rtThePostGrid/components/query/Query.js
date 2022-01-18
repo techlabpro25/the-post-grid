@@ -25,6 +25,7 @@ const Query = (props) => {
 	const [tax_warning, setTax_warning] = useState("");
 	const [authors, setAuthors] = useState([]);
 	const [haspagination, useHaspagination] = useState(true)
+	const [showsticky, useShowsticky] = useState(false)
 	const { query, pagination, loaders } = props.attr.attributes;
 
 	const operator = [
@@ -102,10 +103,6 @@ const Query = (props) => {
 	];
 
 	const pagination_type = [
-		{
-			label: __( "Pagination", "the-post-grid"),
-			value: "pagination"
-		},
 		{
 			label: __( "Ajax Number Pagination ( Only for Grid )", "the-post-grid"),
 			value: "pagination_ajax"
@@ -313,6 +310,19 @@ const Query = (props) => {
 				}
 			/>
 
+			<TextControl
+				label={__( "Not Found Text", "the-post-grid")}
+				value={query.not_found_text}
+				onChange={(value) =>{
+					props.attr.setAttributes({ query: {
+							...query,
+							not_found_text: value,
+						} })
+				}
+
+				}
+			/>
+
 			<NumberControl
 				className={"rt-tpg-numbercontrol query"}
 				label={__( "Offset", "the-post-grid")}
@@ -361,19 +371,18 @@ const Query = (props) => {
 								})}}
 						/>
 
-						{/*Pro Feature*/}
 
-						{/*<SelectControl*/}
-						{/*    label={__( "Pagination Type:", "the-post-grid")}*/}
-						{/*    options={pagination_type}*/}
-						{/*    value ={pagination.pagination_type}*/}
-						{/*    onChange={(val)=>props.attr.setAttributes( {*/}
-						{/*        pagination: {*/}
-						{/*            ...pagination,*/}
-						{/*            "pagination_type": val*/}
-						{/*        }*/}
-						{/*    })}*/}
-						{/*/>*/}
+						<SelectControl
+						    label={__( "Pagination Type:", "the-post-grid")}
+						    options={pagination_type}
+						    value ={pagination.pagination_type}
+						    onChange={(val)=>props.attr.setAttributes( {
+						        pagination: {
+						            ...pagination,
+						            "pagination_type": val
+						        }
+						    })}
+						/>
 					</>
 				):("")
 			}
@@ -807,6 +816,21 @@ const Query = (props) => {
 					):("")
 				}
 			</div>
+
+			<ToggleControl
+				label={__( "Hide Sticky Post At the Top", "the-post-grid")}
+				checked={ query.show_sticky }
+				onChange={ (val) => {
+					useShowsticky( ( state ) => ! state );
+					var ignore;
+					if(val){
+						ignore = 1;
+					}else{
+						ignore = 0
+					}
+					props.attr.setAttributes({query: {...query, "show_sticky": ignore}})
+				} }
+			/>
 		</>
 	);
 };

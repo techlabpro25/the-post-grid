@@ -22,11 +22,12 @@ class RtThePostGrid extends Block
             'post_date' => true,
             'comment_count' => true,
             'see_more' => true,
-            'presdefault' => false
+            'presdefault' => false,
+            'social_share' => false // Pro feature
         ],
         'title'=> [
             'tag'=> "3",
-            'position'=> "",
+            'position'=> "", // Pro feature
             'word_limit'=> "",
             'type'=> "full",
             'more_text'=> "",
@@ -45,6 +46,7 @@ class RtThePostGrid extends Block
             'color' => "",
             'h-color' => '',
             "background-color" => "",
+            "background-color-h" => "",
             'font-size' => '',
             'border-radius' => "",
             "font-weight" => '',
@@ -192,7 +194,9 @@ class RtThePostGrid extends Block
             'border-radius'=> "0",
             'img-column' => '',
 			'content-column' => '',
-            'gutter' => ''
+            'gutter' => '',
+            'source'=> "feature", // Pro feature
+			'type'=> "normal", // Pro feature
         ],
         'query' =>[
             'post_type'  => "post",
@@ -222,9 +226,11 @@ class RtThePostGrid extends Block
             'keyword_bool'  => false,
             'keyword'  => "",
             'filter' => true,
-            'date_bool' => false,
-            'date_from' => null,
-			'date_to' => null,
+            'date_bool' => false, // Pro feature
+            'date_from' => null,  // Pro feature
+			'date_to' => null,   // Pro feature
+            'not_found_text' => "No post found",  // Pro feature
+            'show_sticky' => 1,  // Pro feature
         ],
         'primary_color' =>'',
         'columns' =>[
@@ -234,13 +240,13 @@ class RtThePostGrid extends Block
         ],
         'linking'=> [
             'link_to_page'=> true,
-            'link_type'=> "",
+            'link_type'=> "", // Pro feature
             'target'=> "",
         ],
         'pagination'=> [
             'show'=> false,
             'post_per_page'=> 5,
-            'pagination_type'=> "",
+            'pagination_type'=> "", // Pro feature
         ],
         'pagination_style' =>[
             'color'=> '',
@@ -310,7 +316,37 @@ class RtThePostGrid extends Block
         // For Grid 3
         'grid_3' =>[
 			'content-background-color' => "",
+		],
+
+        // Pro Feature
+        'filters' =>[
+			'taxonomy_bool' => false,
+			'author_bool' => false,
+			'order_sort_by_bool'=> false,
+			'order_sort_bool'=> false,
+			'search_bool'=> false,
+			'taxonomy_filter'=> "",
+			'display_as_sub_cat_bool'=> false,
+			'taxonomy_filter_type'=> "dropdown",
+			'selected_filtered_item'=> "",
+			'hide_show_all_button'=> false,
+			'show_post_count'=> false,
+		],
+        'root_margin'=> "",
+        'grid_style' => "even",
+        'content_visible_permission'=> "",
+        'default_preview_image'=> "",
+        'overlay'=>[
+			'color'=> "",
+			'opacity'=> 1,
+		],
+        'overlay_padding'=>[
+			'top' => '',
+			'right' => '',
+			'left'=> '',
+			'bottom' => '',
 		]
+
 	];
 
 	public function __construct()

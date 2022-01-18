@@ -36,17 +36,18 @@ class All_Post{
         $size = explode('x', $request['imgsize']);
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
         $post_per_page =  (($request["post_per_page"] === "") || ($request["post_per_page"] === 0) )? -1: $request["post_per_page"];
+        $sticky = $request['sticky'];
         $date_from = $request['date_from'];
         $date_to = $request['date_to'];
         $today  = getdate();
-
-
-
 
         $args = array(
             'post_type' => $post_type,
             'posts_per_page' => $post_per_page,
         );
+        if(isset($sticky) && $sticky == 1){
+            $args['ignore_sticky_posts']  = 1;
+        }
 
         if(isset($date_from) && isset($date_to)){
             $d_from = date('F d, Y', strtotime($date_from));
@@ -195,7 +196,7 @@ class All_Post{
         }
 
         return rest_ensure_response($data);
-
+//        return $args;
     }
 }
 ?>

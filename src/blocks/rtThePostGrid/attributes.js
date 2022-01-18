@@ -30,9 +30,11 @@ const attributes = {
 			tax_item: {},
 			pageindex: 1,
 			loader: false,
-			date_bool: false,
-			date_from: null,
-			date_to: null
+			date_bool: false, // Pro feature
+			date_from: null,  // Pro feature
+			date_to: null,  // Pro feature
+			not_found_text : "No post found",  // Pro feature
+			show_sticky : 1,  // Pro feature
 		},
 	},
 	columns: {
@@ -48,7 +50,7 @@ const attributes = {
 		default: {
 			show: false,
 			post_per_page: 5,
-			pagination_type: "",
+			pagination_type: "", // Pro feature
 		},
 	},
 
@@ -109,7 +111,7 @@ const attributes = {
 		type: "object",
 		default: {
 			link_to_page: true,
-			link_type: "",
+			link_type: "new_page", // Pro feature
 			target: "",
 		},
 	},
@@ -124,7 +126,8 @@ const attributes = {
 			post_date: true,
 			comment_count: true,
 			see_more: true,
-			presdefault: false
+			presdefault: false,
+			social_share: false // Pro feature
 		},
 	},
 	heading: {
@@ -181,7 +184,7 @@ const attributes = {
 		type: "object",
 		default: {
 			tag: "3",
-			position: "",
+			position: "", // Pro feature
 			word_limit: "",
 			type: "full",
 			more_text: "",
@@ -234,6 +237,7 @@ const attributes = {
 			color: "",
 			['h-color']: '',
 			["background-color"]: "",
+			["background-color-h"]: "",
 			["font-size"]: "",
 			["border-radius"]: "",
 			["font-weight"]: '',
@@ -339,7 +343,9 @@ const attributes = {
 			["border-radius"]: "",
 			['img-column']: '',
 			['content-column']: '',
-			gutter: ""
+			gutter: "",
+			source: "feature", // Pro feature
+			type: "normal", // Pro feature
 		},
 	},
 	primary_color: {
@@ -425,9 +431,50 @@ const attributes = {
 	grid_3:{
 		type: "object",
 		default:{
-			['content-background-color']: ""
+			['content-background-color']: "",
+		}
+	},
+
+
+	// Pro Feature
+	filters:{
+		type: "object",
+		default:{
+			taxonomy_bool: false,
+			author_bool: false,
+			order_sort_by_bool: false,
+			order_sort_bool: false,
+			search_bool: false,
+			taxonomy_filter: "",
+			display_as_sub_cat_bool: false,
+			taxonomy_filter_type: "dropdown",
+			selected_filtered_item: "",
+			hide_show_all_button: false,
+			show_post_count: false,
+		}
+	},
+
+	root_margin: "",
+	grid_style: "even",
+	content_visible_permission: "",
+	default_preview_image: "",
+	overlay:{
+		type: "object",
+		default: {
+			color: "",
+			opacity: 1,
+		}
+	},
+	overlay_padding:{
+		type: "object",
+		default:{
+			top : '',
+			right : '',
+			left: '',
+			bottom : '',
 		}
 	}
+
 };
 
 export default attributes;

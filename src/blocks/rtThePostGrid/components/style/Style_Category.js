@@ -43,13 +43,23 @@ function Category(props) {
             />
 
             <Text>
-                {__( "Background-Color:", "the-post-grid")}
+                {__( "Background Color:", "the-post-grid")}
             </Text>
             <ColorPalette
                 className={"rt-tpg-colorcontrol terms"}
                 colors={ props.attr.colors }
                 value={ category_style["background-color"] }
                 onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, "background-color": color}} ) }
+            />
+
+            <Text>
+                {__( "Background Hover Color:", "the-post-grid")}
+            </Text>
+            <ColorPalette
+                className={"rt-tpg-colorcontrol terms"}
+                colors={ props.attr.colors }
+                value={ category_style["background-color-h"] }
+                onChange={ ( color ) => props.attr.setAttributes( {category_style: {...category_style, "background-color-h": color}} ) }
             />
             {
                 layout.value === "grid2"?(

@@ -64,6 +64,7 @@ const RtThePostGrid = (props) => {
                 imgsize: image.size,
                 date_from: query.date_from,
                 date_to: query.date_to,
+                sticky: query.show_sticky,
             }
         }).then((posts) => {
             if('message' in posts){
