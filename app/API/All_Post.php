@@ -40,6 +40,15 @@ class All_Post{
         $date_from = $request['date_from'];
         $date_to = $request['date_to'];
         $today  = getdate();
+        $filter_taxonomy = $request['filter_taxonomy'];
+        $filter_author = $request['filter_author'];
+        $filter_order_by = $request['filter_order_by'];
+        $filter_order = $request['filter_order'];
+        $filter_search = $request['filter_search'];
+        $filter_active = $request['filter_active'];
+        $filter_taxonomy_taxonomy = $request['filter_taxonomy_taxonomy'];
+
+
 
         $args = array(
             'post_type' => $post_type,
@@ -95,19 +104,35 @@ class All_Post{
         }
 
         if(isset($order) && $order){
-            $args['order'] = $order;
+            if(!empty($filter_order)){
+                $args['order'] = $filter_order;  // For filter
+            }else{
+                $args['order'] = $order;
+            }
         }
 
         if(isset($order_by) && $order_by){
-            $args['orderby'] = $order_by;
+            if(!empty($filter_order_by)){
+                $args['orderby'] = $filter_order_by;  // For filter
+            }else{
+                $args['orderby'] = $order_by;
+            }
         }
 
         if(isset($keyword) && $keyword){
-            $args['s'] = $keyword;
+            if(!empty($filter_search)){
+                $args['s'] = $keyword."+".$filter_search;  // For filter
+            }else{
+                $args['s'] = $keyword;
+            }
         }
 
         if(!empty($author) && isset($author) && array_filter($author)){
-            $args['author__in'] = $author;
+            if(!empty($filter_author)){
+                $args['author__in'] = $filter_author;  // For filter
+            }else{
+                $args['author__in'] = $author;
+            }
         }
 
         if(!empty($status) && isset($status) && array_filter($status)){
@@ -117,23 +142,51 @@ class All_Post{
         if(!empty($terms)){
             if(sizeof($terms) > 0){
                 foreach ($terms as $key => $term){
-                   $term_val = [];
-                   foreach ($term['data'] as $term_value){
-                       array_push($term_val, $term_value['value']);
-                   }
+                    $term_val = [];
+                    foreach ($term['data'] as $term_value){
+                        array_push($term_val, $term_value['value']);
+                    }
                     $operator = (!empty($term['operator']))? $term['operator']: "IN";
                     if(!empty($term['data'])){
-                        $args['tax_query'][]= array(
-                          'taxonomy' => esc_html($key),
-                          'field' => esc_html('term_id'),
-                          'terms' => $term_val,
-                          'operator' => esc_html($operator),
-                        );
+                        if(empty($filter_taxonomy) || ($filter_taxonomy_taxonomy === $key)){
+                            $args['tax_query'][]= array(
+                                'taxonomy' => esc_html($key),
+                                'field' => esc_html('term_id'),
+                                'terms' => $term_val,
+                                'operator' => esc_html($operator),
+                            );
+                        }
+
                     }
                 }
                 if(isset($relation) && $relation){
-                    $args['tax_query']['relation'] = $relation;
+                    if(!empty($filter_taxonomy)){
+                        $args['tax_query']['relation'] = "AND";  // For filter
+                    }else{
+                        $args['tax_query']['relation'] = $relation;
+                    }
+
                 }
+
+                // For filter
+                if(!empty($filter_taxonomy) && !empty($filter_taxonomy_taxonomy)){
+                    $args['tax_query'][]= array(
+                        'taxonomy' => $filter_taxonomy_taxonomy,
+                        'field' => esc_html('term_id'),
+                        'terms' => $filter_taxonomy,
+                    );
+                }
+
+            }
+        }else{
+
+            // For filter
+            if(!empty($filter_taxonomy) && !empty($filter_taxonomy_taxonomy)){
+                $args['tax_query'][]= array(
+                    'taxonomy' => $filter_taxonomy_taxonomy,
+                    'field' => esc_html('term_id'),
+                    'terms' => $filter_taxonomy,
+                );
             }
         }
 
@@ -186,6 +239,7 @@ class All_Post{
                         "post_link" => esc_url_raw(get_post_permalink()),
                         "total_post" => esc_html($query->found_posts),
                         "terms" => $items,
+                        'args' => $args,
                     ];
                 }
             } else {
@@ -196,7 +250,6 @@ class All_Post{
         }
 
         return rest_ensure_response($data);
-//        return $args;
     }
 }
 ?>

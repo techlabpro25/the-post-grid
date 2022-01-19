@@ -52,6 +52,7 @@ export const List1 = (props) =>{
         columns,
         linking,
         layout,
+        meta_icon,
         heading_dot_margin,
         className
     } = props
@@ -78,26 +79,7 @@ export const List1 = (props) =>{
 
     return(
         <>
-            <div className={`${(className != undefined)? className: ""} rt-container-fluid rt-tpg-container`}>
-                {
-                    general.heading?(
-                        <Head_border css={heading_style} css_head={heading} className={`tpg-widget-heading-wrapper heading-style${heading.style} ${heading_style['text-align']}`}>
-
-                            {
-                                (heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line line-left"></Head_border_style1>) : ("")
-                            }
-                            <Head_title css={heading_style} head_sty={heading} primary={primary_color} css_pad={heading_padding_object} css_mar={heading_margin_object} as={Heading} className="tpg-widgets-heading">
-                                <Head_color as={(heading.link.length > 0)? 'a': 'span'} css={heading_style} primary={primary_color} href={heading.link}>{heading_title}</Head_color>
-                            </Head_title>
-                            <Dot_style css={heading_style} css_mar={heading_dot_margin} className="heading_dot"></Dot_style>
-                            {
-                                (heading.style == "1") ? (<Head_border_style1 css={heading_style} className="tpg-widget-heading-line"></Head_border_style1>) : ("")
-                            }
-
-                        </Head_border>
-                    ):("")
-                }
-                <div className={`rt-row rt-content-loader layout2 list1 layout_parent tpg-even`}>
+            <div className={`rt-row rt-content-loader layout2 list1 layout_parent tpg-even`}>
                     {
                         data.length && data.map((post) => {
                             var postexcerpt = (excerpt.type == "fullex")? post.excerpt : post.content;
@@ -385,7 +367,6 @@ export const List1 = (props) =>{
                         })
                     }
                 </div>
-            </div>
         </>
     )
 }

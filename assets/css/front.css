@@ -770,3 +770,30 @@ html {
 .rt-tpg-container .grid-layout3 .rt-grid-item .rt-holder .rt-content-wrapper-flex .rt-img-holder a .rt-img-responsive {
   height: 100%;
 }
+
+.rt-tpg-container .rt-tpg-layout-filter-input {
+  width: 200px;
+  margin: 4px;
+}
+
+.rt-tpg-container .rt-tpg-layout-filter-panel {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rt-tpg-container .rt-tpg-layout-filter-panel select, .rt-tpg-container .rt-tpg-layout-filter-panel input {
+  min-height: 48px !important;
+}
+
+.rt-tpg-container button.rt-tpg-filter-reset-button {
+  height: 48px !important;
+  margin: 4px;
+  width: 175px;
+  border-radius: 5px;
+  color: white;
+  background-color: #4c6fff;
+}
+
+.rt-tpg-container button.rt-tpg-filter-reset-button:hover {
+  background-color: #3859df;
+}

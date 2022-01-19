@@ -9,6 +9,7 @@ class RtThePostGrid extends Block
 	protected $name = 'rt-tpg/thepostgrid';
 
 	protected $attributes = [
+        'haspro' => true,
         'layout'=>[
             'type'=> 'grid',
             'value'=> "grid1",
@@ -246,7 +247,7 @@ class RtThePostGrid extends Block
         'pagination'=> [
             'show'=> false,
             'post_per_page'=> 5,
-            'pagination_type'=> "", // Pro feature
+            'pagination_type'=> "pagination_ajax", // Pro feature
         ],
         'pagination_style' =>[
             'color'=> '',
@@ -332,6 +333,14 @@ class RtThePostGrid extends Block
 			'hide_show_all_button'=> false,
 			'show_post_count'=> false,
 		],
+        'filter_value'=>[
+			'taxonomy'=> "",
+			'author'=> "",
+			'order'=> "ASC",
+			'order_by'=> "title",
+			'search'=> ""
+		],
+
         'root_margin'=> "",
         'grid_style' => "even",
         'content_visible_permission'=> "",

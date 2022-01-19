@@ -40,6 +40,7 @@ const Filter = (props) =>{
                         }
                         return false;
                     })
+                    taxonomy_loop.unshift({label: "-- Select--", value: ""})
                     setTaxonomy(taxonomy_loop.filter(e => e))
                 }
                 setTaxloader(false)

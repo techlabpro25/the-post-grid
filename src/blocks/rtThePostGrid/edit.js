@@ -5,6 +5,7 @@ import {
     ColorPalette,
     TextControl,
     TabPanel,
+    SelectControl,
     __experimentalText as Text
 } from '@wordpress/components';
 
@@ -35,6 +36,8 @@ import {PaginationStyle, Pageprivnext} from "./Style_component";
 import Filter from "./components/layout/Filter";
 import Others from "./components/layout/Others";
 import Overlay from "./components/style/Style_Overlay";
+import Header_Title from "./Header_Title";
+
 
 
 const {__} = wp.i18n;
@@ -53,7 +56,20 @@ export default function Edit(props) {
     const [changestate, setChangestate] = useState(true);
     const [maxlimit, setMaxlimit] = useState(5);
     const [minlimit, setMinlimit] = useState(1);
-    const {query, columns, general, parent_class, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, loaders, layout, pagination_style} = attributes
+
+    // Filter State Start
+    const [terms, setTerms] = useState([]);
+    const [authors, setAuthors] = useState([]);
+    const [filter_taxonomy, setFilter_taxonomy] = useState("");
+    const [filter_author, setFilter_author] = useState("");
+    const [filter_order_by, setFilter_order_by] = useState("");
+    const [filter_order, setFilter_order] = useState("");
+    const [filter_search, setFilter_search] = useState("");
+    const [filter_active, setFilter_active] = useState(false);
+    // Filter State end
+
+
+    const {query, columns, general, filter_value, filters, className, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, loaders, layout, pagination_style} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -115,6 +131,29 @@ export default function Edit(props) {
         {value: 'inset', label: __('Inset', 'the-post-grid')},
         {value: 'outset', label: __('Outset', 'the-post-grid')},
     ]
+    const order_by_type = [
+        {
+            label: __( "-- Select --", "the-post-grid"),
+            value: "",
+        },
+        {
+            label: __( "Title", "the-post-grid"),
+            value: "title",
+        },
+        {
+            label: __( "ID", "the-post-grid"),
+            value: "ID",
+        },
+
+        {
+            label: __( "Date", "the-post-grid"),
+            value: "date",
+        },
+        {
+            label: __( "Menu Order", "the-post-grid"),
+            value: "menu_order",
+        },
+    ];
 
     const transform = [
         {
@@ -190,6 +229,13 @@ export default function Edit(props) {
                 date_from: query.date_from,
                 date_to: query.date_to,
                 sticky: query.show_sticky,
+                filter_taxonomy_taxonomy: filters.taxonomy_filter,
+                filter_taxonomy: filter_taxonomy,
+                filter_author:filter_author,
+                filter_order_by: filter_order_by,
+                filter_order: filter_order,
+                filter_search:filter_search,
+                filter_active:filter_active
             }
         }).then((posts) => {
             if ('message' in posts) {
@@ -205,16 +251,15 @@ export default function Edit(props) {
             $('.layout_parent').css('opacity', 1.0);
             setIsloading(false);
             setIsrootloading(false);
-
+            setFilter_active(false)
         });
     }
 
     useEffect(() => {
         call_all_post(query, pagination, image, excerpt)
-    }, [ query, pageindex, pagination, image.size]);
+    }, [ query, pageindex, pagination, image.size, filter_taxonomy, filter_author, filter_order_by, filter_order, filter_search]);
 
     const executeScroll = () => listingWrapRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
 
     useEffect(() => {
         var url_string = window.location.href
@@ -294,6 +339,55 @@ export default function Edit(props) {
     }
 
     const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform, border_style}
+
+
+    // For Filter Start
+
+    // Filter Get Terms
+    useEffect(()=>{
+        if(filters.taxonomy_filter !== ""){
+            apiFetch({ path: "/rt/v1/categories?tax_type="+filters.taxonomy_filter }).then((terms) => {
+                const tempterms = terms.map((item_key) => {
+                    return {
+                        label: item_key.name,
+                        value: item_key.id,
+                    };
+                })
+                tempterms.unshift({label: __("Show All", "the-post-grid"), value: ""})
+                setTerms(tempterms);
+            });
+        }else{
+            setTerms([{label: __("-- Select --", "the-post-grid"), value: ""}])
+        }
+
+    }, [filters.taxonomy_filter])
+
+    // Filter Get Author
+    useEffect(() => {
+        apiFetch({ path: "/wp/v2/users" }).then((user) => {
+            const tempauthor = user.map((item_key) => {
+                return {
+                    label: item_key.name,
+                    value: item_key.id,
+                };
+            })
+
+            tempauthor.unshift({label: __("Any", "the-post-grid"), value: ""})
+            setAuthors(tempauthor)
+        });
+    }, []);
+
+
+    const resetfilter = () =>{
+        setFilter_taxonomy("");
+        setFilter_author("");
+        setFilter_order_by("");
+        setFilter_order("");
+        setFilter_search("");
+    }
+
+    // For Filter End
+
     return (
         <>
             <InspectorControls>
@@ -551,35 +645,154 @@ export default function Edit(props) {
                         </div>
                     ):(
                         <>
-                            {
-                                (message.length) ? (
-                                    <div className={"no_notice"}>
-                                        {message}
+                            <>
+                                {
+                                    isloading ? (
+                                        <div className="loader-wrapper2">
+                                            <div className="lds-ripple2">
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                    ):("")
+                                }
+                                {/*Layout Render Parts start*/}
+                                <>
+                                    <div className={`${(className != undefined)? className: ""} rt-container-fluid rt-tpg-container`}>
+                                        <Header_Title {...attributes}/>
+                                        {/*Filters*/}
+                                        <div className="rt-tpg-layout-filter-panel">
+                                            {
+                                                // Taxonomy Filter Start
+                                                filters.taxonomy_bool?(
+                                                    <>
+                                                        <div className="rt-tpg-layout-taxonomy-filter rt-tpg-layout-filter-input">
+                                                            <SelectControl
+                                                                options={terms}
+                                                                value ={filter_taxonomy}
+                                                                disabled={loaders.disable}
+                                                                onChange={(val)=>{
+                                                                    setFilter_taxonomy(val)
+                                                                    setFilter_active(true)
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    </>
+                                                ):("")
+                                                // Taxonomy Filter end
+                                            }
+
+                                            {
+                                                // Author Filter Start
+                                                filters.author_bool?(
+                                                    <>
+                                                        <div className="rt-tpg-layout-author-filter rt-tpg-layout-filter-input">
+                                                            <SelectControl
+                                                                options={authors}
+                                                                value ={filter_author}
+                                                                disabled={loaders.disable}
+                                                                onChange={(val)=>{
+                                                                    setFilter_author(val)
+                                                                    setFilter_active(true)
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    </>
+                                                ):("")
+                                                // Author Filter End
+                                            }
+
+                                            {
+                                                // Order Sort By
+                                                filters.order_sort_by_bool?(
+                                                    <>
+                                                        <div className="rt-tpg-layout-order-by-filter rt-tpg-layout-filter-input">
+                                                            <SelectControl
+                                                                options={order_by_type}
+                                                                value ={filter_order_by}
+                                                                disabled={loaders.disable}
+                                                                onChange={(val)=>{
+                                                                    setFilter_order_by(val)
+                                                                    setFilter_active(true)
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    </>
+                                                ):("")
+                                            }
+
+                                            {
+                                                // Order Sort
+                                                filters.order_sort_bool?(
+                                                    <>
+                                                        <div className="rt-tpg-layout-order-filter rt-tpg-layout-filter-input">
+                                                            <SelectControl
+                                                                options={[
+                                                                    { label: "-- Select --", value: "" },
+                                                                    { label: "Ascending", value: "ASC" },
+                                                                    { label: "Descending", value: "DESC" },
+                                                                ]}
+                                                                value ={filter_order}
+                                                                disabled={loaders.disable}
+                                                                onChange={(val)=>{
+                                                                    setFilter_order(val)
+                                                                    setFilter_active(true)
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    </>
+                                                ):("")
+                                            }
+
+                                            {
+                                                // Search
+                                                filters.search_bool?(
+                                                    <>
+                                                        <div className="rt-tpg-layout-search-filter rt-tpg-layout-filter-input">
+                                                            <TextControl
+                                                                value={filter_search}
+                                                                disabled={loaders.disable}
+                                                                onChange={(val)=>{
+                                                                    setFilter_search(val)
+                                                                    setFilter_active(true)
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    </>
+                                                ):("")
+                                            }
+
+                                            {/*Reset Button*/}
+                                            {
+                                                (filters.taxonomy_bool || filters.author_bool || filters.order_sort_by_bool || filters.order_sort_bool || filters.search_bool)?(
+                                                    <>
+                                                        <button className="rt-tpg-filter-reset-button" onClick={resetfilter}>{__("Reset", "the-post-grid")}</button>
+                                                    </>
+                                                ):("")
+                                            }
+                                        </div>
+                                        {/*Filters end*/}
+                                        {
+                                            (message.length) ? (
+                                                <div className={"no_notice"}>
+                                                    {query.not_found_text}
+                                                </div>
+
+                                            ) : (
+                                                <RenderView {...attributes} setattr = {setAttributes} data={data}/>
+                                            )
+                                        }
+
                                     </div>
 
-                                ) : (
-                                    <>
-                                        {
-                                            isloading ? (
-                                                <div className="loader-wrapper2">
-                                                    <div className="lds-ripple2">
-                                                        <div></div>
-                                                        <div></div>
-                                                    </div>
-                                                </div>
-                                            ):("")
-                                        }
-                                        <RenderView {...attributes} setattr = {setAttributes} data={data}/>
-                                    </>
-
-                                )
-                            }
+                                </>
+                                {/*Layout Render Parts end*/}
+                            </>
 
                             {
                                 pagination.show ? (
                                     <div className={"pagination"}>
                                         {
-                                            //Here paginationNumber = 3
                                             (paginationNumber > 1) ?(
                                                 <>
                                                     {prevbtn(paginationNumber)}

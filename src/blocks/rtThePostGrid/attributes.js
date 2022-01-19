@@ -1,4 +1,5 @@
 const attributes = {
+	haspro: "true",
 	query: {
 		type: "object",
 		default: {
@@ -50,7 +51,7 @@ const attributes = {
 		default: {
 			show: false,
 			post_per_page: 5,
-			pagination_type: "", // Pro feature
+			pagination_type: "pagination_ajax", // Pro feature
 		},
 	},
 
@@ -453,7 +454,16 @@ const attributes = {
 			show_post_count: false,
 		}
 	},
-
+	filter_value:{
+		type: "object",
+		default:{
+			taxonomy: "",
+			author: "",
+			order: "ASC",
+			order_by: "title",
+			search: ""
+		}
+	},
 	root_margin: "",
 	grid_style: "even",
 	content_visible_permission: "",
