@@ -347,20 +347,26 @@ export default function Edit(props) {
     useEffect(()=>{
         if(filters.taxonomy_filter !== ""){
             apiFetch({ path: "/rt/v1/categories?tax_type="+filters.taxonomy_filter }).then((terms) => {
-                const tempterms = terms.map((item_key) => {
+                const tempterms = terms.map((item_key, i) => {
                     return {
                         label: item_key.name,
                         value: item_key.id,
                     };
                 })
-                tempterms.unshift({label: __("Show All", "the-post-grid"), value: ""})
+                if(filters.hide_show_all_button === false){
+                    setFilter_taxonomy("")
+                    tempterms.unshift({label: __("Show All", "the-post-grid"), value: ""})
+                }else{
+                    setFilter_taxonomy(tempterms[0].value)  // When Show all button disabled set the first item for filter
+                }
+
                 setTerms(tempterms);
             });
         }else{
             setTerms([{label: __("-- Select --", "the-post-grid"), value: ""}])
         }
 
-    }, [filters.taxonomy_filter])
+    }, [filters.taxonomy_filter, filters.hide_show_all_button])
 
     // Filter Get Author
     useEffect(() => {
@@ -371,11 +377,15 @@ export default function Edit(props) {
                     value: item_key.id,
                 };
             })
-
-            tempauthor.unshift({label: __("Any", "the-post-grid"), value: ""})
+            if(filters.hide_show_all_button === false){
+                setFilter_author("")
+                tempauthor.unshift({label: __("Any", "the-post-grid"), value: ""})
+            }else{
+                setFilter_author(tempauthor[0].value)  // When Show all button disabled set the first item for filter
+            }
             setAuthors(tempauthor)
         });
-    }, []);
+    }, [filters.hide_show_all_button]);
 
 
     const resetfilter = () =>{

@@ -152,7 +152,9 @@ const RtThePostGrid = (props) => {
                                             </div>
                                         ):("")
                                     }
-                                    <RenderView {...props} data={data}/>
+                                    <div className="rt-container-fluid rt-tpg-container">
+                                        <RenderView {...props} data={data}/>
+                                    </div>
                                 </>
 
                             )
