@@ -3,6 +3,7 @@ import {PaginationStyle, Pageprivnext} from "./Style_component";
 const {render, useState, useEffect, useRef} = wp.element;
 import apiFetch from '@wordpress/api-fetch';
 import $ from "jquery";
+import Header_Title from "./Header_Title";
 const {__} = wp.i18n;
 const RtThePostGrid = (props) => {
     const [data, setData] = useState([]);
@@ -153,6 +154,7 @@ const RtThePostGrid = (props) => {
                                         ):("")
                                     }
                                     <div className="rt-container-fluid rt-tpg-container">
+                                        <Header_Title {...props}/>
                                         <RenderView {...props} data={data}/>
                                     </div>
                                 </>
