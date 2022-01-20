@@ -26,7 +26,7 @@ const Query = (props) => {
 	const [authors, setAuthors] = useState([]);
 	const [haspagination, useHaspagination] = useState(true)
 	const [showsticky, useShowsticky] = useState(false)
-	const { query, pagination, loaders } = props.attr.attributes;
+	const { query, pagination, loaders, filters } = props.attr.attributes;
 
 	const operator = [
 		{
@@ -246,7 +246,12 @@ const Query = (props) => {
 								filter: true,
 								pageindex: 1,
 								loader: true
-							} })
+							},
+							filters: {
+								...filters,
+								taxonomy_filter: "",
+							}
+						})
 					}
 					}
 				/>

@@ -9,6 +9,8 @@ import {
     __experimentalText as Text
 } from '@wordpress/components';
 
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCalendarAlt, faUndoAlt} from "@fortawesome/free-solid-svg-icons";
 import Query from './components/query/Query';
 import Layout from './components/layout/Layout';
 import Columns from './components/layout/Columns';
@@ -277,11 +279,9 @@ export default function Edit(props) {
 
     useEffect(() => {
         $('.layout_parent').css('opacity', 0.2);
-        if(scrolltop){
-            executeScroll();
-        }
+        executeScroll();
         setIsloading(true);
-    }, [pageindex])
+    }, [pageindex, filters.hide_show_all_button, filters.selected_filtered_item])
 
     //Set pageindex 0 when query change
     useEffect(()=>{
@@ -345,28 +345,47 @@ export default function Edit(props) {
 
     // Filter Get Terms
     useEffect(()=>{
+        var total_count = 0;
         if(filters.taxonomy_filter !== ""){
             apiFetch({ path: "/rt/v1/categories?tax_type="+filters.taxonomy_filter }).then((terms) => {
                 const tempterms = terms.map((item_key, i) => {
-                    return {
-                        label: item_key.name,
-                        value: item_key.id,
-                    };
+                    if(filters.show_post_count){
+                        total_count += parseInt(item_key.count)
+                        return {
+                            label: item_key.name+" ("+item_key.count+")",
+                            value: item_key.id,
+                        };
+                    }else{
+                        return {
+                            label: item_key.name,
+                            value: item_key.id,
+                        };
+                    }
                 })
                 if(filters.hide_show_all_button === false){
-                    setFilter_taxonomy("")
-                    tempterms.unshift({label: __("Show All", "the-post-grid"), value: ""})
-                }else{
-                    setFilter_taxonomy(tempterms[0].value)  // When Show all button disabled set the first item for filter
+                    if(filters.show_post_count){
+                        tempterms.unshift({label: __("Show All ("+total_count+")", "the-post-grid"), value: ""})
+                    }else {
+                        tempterms.unshift({label: __("Show All", "the-post-grid"), value: ""})
+                    }
                 }
 
-                setTerms(tempterms);
+                if(tempterms.length === 0){
+                    setTerms([{label: __("No Terms Available", "the-post-grid"), value: ""}])
+                }else{
+                    if(filters.selected_filtered_item === ""){
+                        setFilter_taxonomy(tempterms[0].value)
+                    }else{
+                        setFilter_taxonomy(filters.selected_filtered_item)
+                    }
+                    setTerms(tempterms);
+                }
             });
         }else{
             setTerms([{label: __("-- Select --", "the-post-grid"), value: ""}])
         }
 
-    }, [filters.taxonomy_filter, filters.hide_show_all_button])
+    }, [filters.taxonomy_filter, filters.hide_show_all_button, filters.selected_filtered_item, filters.show_post_count])
 
     // Filter Get Author
     useEffect(() => {
@@ -395,6 +414,7 @@ export default function Edit(props) {
         setFilter_order("");
         setFilter_search("");
     }
+
 
     // For Filter End
 
@@ -776,7 +796,7 @@ export default function Edit(props) {
                                             {
                                                 (filters.taxonomy_bool || filters.author_bool || filters.order_sort_by_bool || filters.order_sort_bool || filters.search_bool)?(
                                                     <>
-                                                        <button className="rt-tpg-filter-reset-button" onClick={resetfilter}>{__("Reset", "the-post-grid")}</button>
+                                                        <button className="rt-tpg-filter-reset-button" onClick={resetfilter}><FontAwesomeIcon icon={faUndoAlt}/></button>
                                                     </>
                                                 ):("")
                                             }

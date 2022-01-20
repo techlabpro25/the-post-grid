@@ -6,6 +6,7 @@ import {
 } from "@wordpress/components";
 import { useState, useEffect } from "@wordpress/element";
 import $ from "jquery";
+import apiFetch from "@wordpress/api-fetch";
 
 const Filter = (props) =>{
     const {__} = wp.i18n;
@@ -16,6 +17,8 @@ const Filter = (props) =>{
     const [hasshowall, useHasshowall] = useState(false)
     const [showpostcount, useShowpostcount] = useState(false)
     const [filter_tax_warning, setFilter_tax_warning] = useState("");
+    const [filter_term_list, setFilter_term_list] = useState([]);
+
     const ignoretypefilter = ["wp_template", "attachment", "wp_block", "post_format", "product_type", "product_visibility", "product_shipping_class"];
     useEffect(()=>{
         $.ajax({
@@ -41,7 +44,17 @@ const Filter = (props) =>{
                         return false;
                     })
                     taxonomy_loop.unshift({label: "-- Select--", value: ""})
-                    setTaxonomy(taxonomy_loop.filter(e => e))
+                    const post_taxonomy = taxonomy_loop.filter(e => e)
+                    // // Check if previus taxonoy exist or not
+                    // const current_filter_category = filters.taxonomy_filter;
+                    // const found = post_taxonomy.some((item) => item.value === current_filter_category)
+                    // if(found === false){
+                    //     props.attr.setAttributes({ filters: {
+                    //             ...filters,
+                    //             taxonomy_filter: "",
+                    //         } })
+                    // }
+                    setTaxonomy(post_taxonomy)
                 }
                 setTaxloader(false)
             },
@@ -50,6 +63,26 @@ const Filter = (props) =>{
             }
         })
     }, [query.post_type])
+
+
+    // get Terms
+    useEffect(()=>{
+        if(filters.taxonomy_filter !== ""){
+            apiFetch({ path: "/rt/v1/categories?tax_type="+filters.taxonomy_filter }).then((terms) => {
+                const tempterms = terms.map((item_key, i) => {
+                    return {
+                        label: item_key.name,
+                        value: item_key.id,
+                    };
+                })
+                tempterms.unshift({label: __("Show All", "the-post-grid"), value: ""})
+                setFilter_term_list(tempterms);
+            });
+        }else{
+            setFilter_term_list([{label: __("-- Select --", "the-post-grid"), value: ""}])
+        }
+
+    }, [filters.taxonomy_filter])
 
     return (
         <PanelBody title={__( "Filter", "the-post-grid")} initialOpen={false}>
@@ -170,12 +203,7 @@ const Filter = (props) =>{
                             className="rt-tpg-filter-selectcontrol rt-tpg-filter-selected-filter-term"
                             label={__( "Selected Filter Term:", "the-post-grid")}
                             value={filters.selected_filtered_item}
-                            options={[
-                                {
-                                    label: "-- Show All --",
-                                    value: ""
-                                },
-                            ]}
+                            options={filter_term_list}
                             onChange={(value) =>{
                                 props.attr.setAttributes({ filters: {
                                         ...filters,

@@ -18,7 +18,7 @@ class Get_Categories{
     public function get_posts_categories($request){
         $taxonomy = sanitize_text_field($request["tax_type"]);
         $term_objects = get_terms( $taxonomy );
-        
+
         $data = [];
 
         if(!empty($term_objects)){
@@ -26,7 +26,8 @@ class Get_Categories{
                 $data[]=[
                     "id"=> esc_html($newterms->term_id),
                     "name"=> esc_html($newterms->name),
-                    "slug"=> esc_html($newterms->slug)
+                    "slug"=> esc_html($newterms->slug),
+                    "count" => esc_html($newterms->count)
                 ];
             }
         }
