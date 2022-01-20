@@ -45,15 +45,6 @@ const Filter = (props) =>{
                     })
                     taxonomy_loop.unshift({label: "-- Select--", value: ""})
                     const post_taxonomy = taxonomy_loop.filter(e => e)
-                    // // Check if previus taxonoy exist or not
-                    // const current_filter_category = filters.taxonomy_filter;
-                    // const found = post_taxonomy.some((item) => item.value === current_filter_category)
-                    // if(found === false){
-                    //     props.attr.setAttributes({ filters: {
-                    //             ...filters,
-                    //             taxonomy_filter: "",
-                    //         } })
-                    // }
                     setTaxonomy(post_taxonomy)
                 }
                 setTaxloader(false)

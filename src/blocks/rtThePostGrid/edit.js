@@ -696,16 +696,46 @@ export default function Edit(props) {
                                                 // Taxonomy Filter Start
                                                 filters.taxonomy_bool?(
                                                     <>
-                                                        <div className="rt-tpg-layout-taxonomy-filter rt-tpg-layout-filter-input">
-                                                            <SelectControl
-                                                                options={terms}
-                                                                value ={filter_taxonomy}
-                                                                disabled={loaders.disable}
-                                                                onChange={(val)=>{
-                                                                    setFilter_taxonomy(val)
-                                                                    setFilter_active(true)
-                                                                }}
-                                                            />
+                                                        <div className="rt-tpg-layout-taxonomy-filter">
+                                                            {
+                                                                (filters.taxonomy_filter_type === "dropdown")?(
+                                                                    <div className="rt-tpg-layout-filter-input">
+                                                                        {/*Dropdown Type*/}
+                                                                        <SelectControl
+                                                                            options={terms}
+                                                                            value ={filter_taxonomy}
+                                                                            disabled={loaders.disable}
+                                                                            onChange={(val)=>{
+                                                                                setFilter_taxonomy(val)
+                                                                                setFilter_active(true)
+                                                                            }}
+                                                                        />
+                                                                    </div>
+                                                                ):(
+                                                                    <>
+                                                                        {/*Button Type*/}
+                                                                        <div className="rt-tpg-layout-taxonomy-filter-button">
+                                                                            {
+                                                                                terms.map((el) =>{
+                                                                                    const filter_active = el.value == filter_taxonomy? "active": "";
+                                                                                    return(
+                                                                                        <button
+                                                                                            className={`rt-tpg-filter-button ${filter_active}`}
+                                                                                            value={el.value}
+                                                                                            onClick={()=>{
+                                                                                                setFilter_taxonomy(el.value)
+                                                                                                setFilter_active(true)
+                                                                                            }}
+                                                                                        >
+                                                                                            {el.label}
+                                                                                        </button>
+                                                                                    )
+                                                                                })
+                                                                            }
+                                                                        </div>
+                                                                    </>
+                                                                )
+                                                            }
                                                         </div>
                                                     </>
                                                 ):("")
