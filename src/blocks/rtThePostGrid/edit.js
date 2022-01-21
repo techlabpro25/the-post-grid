@@ -950,7 +950,7 @@ export default function Edit(props) {
                                                 <>
                                                     {
                                                         // If pagination type load more button
-                                                        ((pagination.pagination_type === "load_more") && (paginationNumber > pageindex))?(
+                                                        ((pagination.pagination_type === "load_more") && (paginationNumber >= pageindex))?(
                                                             <>
                                                                 <div className="rt-tpg-pagination-load-more">
                                                                     <PaginationStyle
