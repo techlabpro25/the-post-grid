@@ -51,7 +51,9 @@
 		"@wordpress/api-fetch": "^5.2.4",
 		"isotope-layout": "^3.0.6",
 		"jquery": "^3.6.0",
+		"masonry-layout": "^4.2.2",
 		"react-datepicker": "^4.6.0",
+		"react-modal": "^3.14.4",
 		"react-select": "^5.2.1",
 		"select2": "^4.0.13",
 		"styled-components": "^5.3.3"

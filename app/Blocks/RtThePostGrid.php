@@ -241,7 +241,8 @@ class RtThePostGrid extends Block
         ],
         'linking'=> [
             'link_to_page'=> true,
-            'link_type'=> "", // Pro feature
+            'link_type'=> "new_page", // Pro feature
+            'popup_type'=> "single", // Pro feature
             'target'=> "",
         ],
         'pagination'=> [

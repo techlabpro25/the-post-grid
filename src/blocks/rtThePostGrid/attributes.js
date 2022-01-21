@@ -122,6 +122,7 @@ const attributes = {
 		default: {
 			link_to_page: true,
 			link_type: "new_page", // Pro feature
+			popup_type: "single", // Pro feature
 			target: "",
 		},
 	},

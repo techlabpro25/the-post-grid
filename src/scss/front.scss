@@ -704,6 +704,9 @@ html{
     width: 200px;
     margin: 4px;
 }
+.rt-tpg-container .rt-tpg-layout-filter-input select{
+    cursor: pointer;
+}
 
 .rt-tpg-container .rt-tpg-layout-filter-panel {
     display: flex;
@@ -721,6 +724,7 @@ html{
     border-radius: 5px;
     color: white;
     background-color: #4c6fff;
+    cursor: pointer;
 }
 
 .rt-tpg-container button.rt-tpg-filter-reset-button:hover{
@@ -731,6 +735,7 @@ html{
     margin: 5px;
     color: #333;
     border-radius: 5px;
+    cursor: pointer;
 }
 .rt-tpg-container .rt-tpg-layout-taxonomy-filter-button button.rt-tpg-filter-button.active,
 .rt-tpg-container .rt-tpg-layout-taxonomy-filter-button button.rt-tpg-filter-button:hover
@@ -777,6 +782,119 @@ html{
         transform: rotate(360deg);
     }
 }
+
+//Modal CSS Start
+
+.rt-tpg-modal-overlay{
+    position: fixed;
+    inset: 0px;
+    background-color: rgba(30, 30, 30, 0.75);
+}
+.rt-tpg-modal-content-root{
+    position: relative;
+}
+.rt-tpg-modal-content-root .rt-tpg-modal-close-button {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    border: solid 1px darkgray;
+    background-color: transparent;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+// Mobile device
+@media (max-width: 576px) {
+    .rt-tpg-modal-overlay .ReactModal__Content--after-open{
+        width: 80%;
+        background-color: #4c6fff !important;
+        max-height: 90vh;
+        overflow-x: hidden;
+    }
+}
+
+// Tablet device
+@media (min-width: 577px) and (max-width: 991px) {
+    .rt-tpg-modal-overlay .ReactModal__Content--after-open{
+        width: 90%;
+        background-color: #4c6fff !important;
+        max-height: 90vh;
+        overflow-x: hidden;
+    }
+}
+
+
+// Desktop device
+@media (min-width: 992px) {
+    .rt-tpg-modal-overlay .ReactModal__Content--after-open{
+        width: 50%;
+        background-color: #4c6fff !important;
+        max-height: 90vh;
+        overflow-x: hidden;
+    }
+}
+
+.rt-tpg-modal-content-root .rt-tpg-modal-content-panel .rt-tpg-modal-body .rt-tpg-modal-image img {
+    width: 100%;
+}
+.rt-tpg-modal-content-root .rt-tpg-modal-header h2.rt-tpg-modal-title {
+    font-size: 32px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    font-weight: 800;
+}
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.author a,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.date,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.categories-links svg,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.categories-links a,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.comment-count a
+{
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+}
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.author,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.date,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.categories-links,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.comment-count
+{
+    margin-right: 10px;
+}
+
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.author a:hover,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.categories-links a:hover,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.comment-count a:hover
+{
+    color: #bebebe !important;
+}
+
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.author a svg,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.date svg,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.categories-links svg,
+.rt-tpg-modal-content-root .rt-tpg-modal-header .rt-tpg-modal-meta span.comment-count svg
+{
+    margin-right: 5px;
+}
+
+.rt-tpg-modal-content-root .rt-tpg-modal-body .rt-tpg-modal-excerpt {
+    color: #fff;
+    font-size: 16px;
+    line-height: 30px;
+    margin: 15px 0;
+}
+
+
+
+
+//Modal CSS End
 
 
 

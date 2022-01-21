@@ -38,6 +38,21 @@ function Linking(props) {
                             ] }
                             onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "link_type": val}}) }
                         />
+                        {
+                            (linking.link_type === "popup")?(
+                                <>
+                                    <RadioControl
+                                        label={__( "Popup Type:", "the-post-grid")}
+                                        selected={ linking.popup_type }
+                                        options={ [
+                                            { label: __( 'Single PopUp', "the-post-grid"), value: 'single' },
+                                            { label: __( "Multi POpup", "the-post-grid"), value: 'multi' },
+                                        ] }
+                                        onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "popup_type": val}}) }
+                                    />
+                                </>
+                            ):("")
+                        }
 
                         <RadioControl
                             label={__( "Link Target:", "the-post-grid")}

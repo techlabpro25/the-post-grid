@@ -73,8 +73,25 @@ export default function Edit(props) {
     const [load_more_ppp, setLoad_more_ppp] = useState(1);
 
 
-
-    const {query, columns, general, pagination_spinner_margin, pagination_spinner_color, filters, className, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, loaders, layout, pagination_style} = attributes
+    const {
+        query,
+        columns,
+        general,
+        pagination_spinner_margin,
+        pagination_spinner_color,
+        filters,
+        className,
+        primary_color,
+        heading_title,
+        pagination,
+        pagination_padding,
+        pagination_margin,
+        excerpt,
+        image,
+        loaders,
+        layout,
+        pagination_style
+    } = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -337,6 +354,14 @@ export default function Edit(props) {
         }
     },[layout.value])
 
+    //
+    //
+    // useEffect(()=>{
+    //     window.addEventListener('scroll', function (){
+    //         console.log('apple')
+    //     });
+    // }, [])
+
     const nextbtn = (pageval) =>{
         if(maxlimit <pageval){
             return <Pageprivnext css={pagination_style} css_pad={pagination_padding} css_mar={pagination_margin} className={`pagination_number next`} onClick={nextpageset}>Next</Pageprivnext>
@@ -359,15 +384,6 @@ export default function Edit(props) {
         setMinlimit((prev) => prev - 1)
         setPageindex((prev) => prev - 1)
     }
-
-    // const load_more_by_scroll = (paginationNumber) =>{
-    //     console.log("hello")
-    //     // window.onscroll = function(ev) {
-    //     //     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-    //     //         alert("you're at the bottom of the page");
-    //     //     }
-    //     // };
-    // }
 
     const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform, border_style}
 
@@ -448,8 +464,6 @@ export default function Edit(props) {
         setPageindex(1);
     }
 
-
-    // For Filter End
 
     return (
         <>
