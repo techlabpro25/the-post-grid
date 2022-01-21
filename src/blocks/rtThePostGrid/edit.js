@@ -34,13 +34,11 @@ import Style_Content_wrap from './components/style/Style_Content_wrap';
 import $ from 'jquery';
 import {PredefaultAttr} from "./components/PredefaultAttr";
 import Pagination from "./components/style/Pagination";
-import {PaginationStyle, Pageprivnext} from "./Style_component";
+import {PaginationStyle, Pageprivnext, Load_more_spinner} from "./Style_component";
 import Filter from "./components/layout/Filter";
 import Others from "./components/layout/Others";
 import Overlay from "./components/style/Style_Overlay";
 import Header_Title from "./Header_Title";
-
-
 
 const {__} = wp.i18n;
 const {InspectorControls} = wp.blockEditor
@@ -73,10 +71,10 @@ export default function Edit(props) {
     // 2nd Pagination loader
     const [page_loader_second, setPage_loader_second] = useState(false);
     const [load_more_ppp, setLoad_more_ppp] = useState(1);
-    const [load_more_disable, setLoad_more_disable] = useState(1);
 
 
-    const {query, columns, general, filter_value, filters, className, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, loaders, layout, pagination_style} = attributes
+
+    const {query, columns, general, pagination_spinner_margin, pagination_spinner_color, filters, className, primary_color, heading_title, pagination, pagination_padding, pagination_margin, excerpt, image, loaders, layout, pagination_style} = attributes
 
     const colors = [
         {name: 'red', color: '#f00'},
@@ -255,6 +253,16 @@ export default function Edit(props) {
                 setPaginationNumber(0)
             } else {
                 setMessage("")
+                // if(pagination.pagination_type === "load_more"){
+                //     setData(prev =>{
+                //         if(JSON.stringify(prev) !== JSON.stringify(posts) ){
+                //             prev + posts
+                //         }else{
+                //             return prev
+                //         }
+                //     });
+                // }
+
                 setData(posts);
 
                 setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
@@ -352,6 +360,15 @@ export default function Edit(props) {
         setPageindex((prev) => prev - 1)
     }
 
+    // const load_more_by_scroll = (paginationNumber) =>{
+    //     console.log("hello")
+    //     // window.onscroll = function(ev) {
+    //     //     if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+    //     //         alert("you're at the bottom of the page");
+    //     //     }
+    //     // };
+    // }
+
     const global_attr = {attributes, setAttributes, colors, matrix_position, units, transform, border_style}
 
 
@@ -422,11 +439,13 @@ export default function Edit(props) {
 
 
     const resetfilter = () =>{
-        setFilter_taxonomy("");
+        setFilter_taxonomy(filters.selected_filtered_item);
         setFilter_author("");
         setFilter_order_by("");
         setFilter_order("");
         setFilter_search("");
+        setLoad_more_ppp(1); // For load more pagination when reset filter make ppp initial number
+        setPageindex(1);
     }
 
 
@@ -723,6 +742,7 @@ export default function Edit(props) {
                                                                                 setFilter_taxonomy(val)
                                                                                 setFilter_active(true)
                                                                                 setPageindex(1)
+                                                                                setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                             }}
                                                                         />
                                                                     </div>
@@ -741,6 +761,7 @@ export default function Edit(props) {
                                                                                                 setFilter_taxonomy(el.value)
                                                                                                 setFilter_active(true)
                                                                                                 setPageindex(1)
+                                                                                                setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                                             }}
                                                                                         >
                                                                                             {el.label}
@@ -770,6 +791,8 @@ export default function Edit(props) {
                                                                 onChange={(val)=>{
                                                                     setFilter_author(val)
                                                                     setFilter_active(true)
+                                                                    setPageindex(1)
+                                                                    setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                 }}
                                                             />
                                                         </div>
@@ -790,6 +813,8 @@ export default function Edit(props) {
                                                                 onChange={(val)=>{
                                                                     setFilter_order_by(val)
                                                                     setFilter_active(true)
+                                                                    setPageindex(1)
+                                                                    setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                 }}
                                                             />
                                                         </div>
@@ -813,6 +838,8 @@ export default function Edit(props) {
                                                                 onChange={(val)=>{
                                                                     setFilter_order(val)
                                                                     setFilter_active(true)
+                                                                    setPageindex(1)
+                                                                    setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                 }}
                                                             />
                                                         </div>
@@ -831,6 +858,8 @@ export default function Edit(props) {
                                                                 onChange={(val)=>{
                                                                     setFilter_search(val)
                                                                     setFilter_active(true)
+                                                                    setPageindex(1)
+                                                                    setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                 }}
                                                             />
                                                         </div>
@@ -903,34 +932,50 @@ export default function Edit(props) {
                                                     }
                                                 </>
                                             ):(
-                                                // If pagination type load more button
+
                                                 <>
                                                     {
-                                                        ((pagination.pagination_type === "load_more") && (paginationNumber > load_more_disable))?(
+                                                        // If pagination type load more button
+                                                        ((pagination.pagination_type === "load_more") && (paginationNumber > pageindex))?(
                                                             <>
                                                                 <div className="rt-tpg-pagination-load-more">
-                                                                    <button
+                                                                    <PaginationStyle
+                                                                        css={pagination_style}
+                                                                        css_pad={pagination_padding}
+                                                                        css_mar={pagination_margin}
                                                                         className="rt-tpg-pagination-button"
                                                                         onClick={()=>{
                                                                             setPage_loader_second(true)
                                                                             setPageindex((prev) => prev + 1)
                                                                             setLoad_more_ppp(prev=> prev+ 1)
-                                                                            setLoad_more_disable(prev => prev+1)
                                                                         }}
                                                                     >
                                                                         {__("Load More", "the-post-grid")}
                                                                         {
                                                                             (page_loader_second)? (
                                                                                 <>
-                                                                                    <div className="rt-tpg-load-more-lds-dual-ring"></div>
+                                                                                    <Load_more_spinner
+                                                                                        className="rt-tpg-load-more-lds-dual-ring"
+                                                                                        css={pagination_spinner_color}
+                                                                                        css_mar={pagination_spinner_margin}
+                                                                                    ></Load_more_spinner>
                                                                                 </>
                                                                             ):("")
                                                                         }
-                                                                    </button>
+                                                                    </PaginationStyle>
                                                                 </div>
                                                             </>
                                                         ):("")
                                                     }
+
+                                                    {/*{*/}
+                                                    {/*    // If pagination type load more button*/}
+                                                    {/*        (pagination.pagination_type === "load_on_scroll")?(*/}
+                                                    {/*            <>*/}
+                                                    {/*                {load_more_by_scroll(paginationNumber)}*/}
+                                                    {/*            </>*/}
+                                                    {/*    ):("")*/}
+                                                    {/*}*/}
                                                 </>
                                             )
                                         }

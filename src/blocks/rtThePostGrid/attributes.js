@@ -108,6 +108,15 @@ const attributes = {
 			left: '1px',
 		}
 	},
+	pagination_spinner_margin:{
+		default:{
+			top: '0px',
+			right: '8px',
+			bottom: '8px',
+			left: '25px',
+		}
+	},
+	pagination_spinner_color : "#fff",
 	linking: {
 		type: "object",
 		default: {

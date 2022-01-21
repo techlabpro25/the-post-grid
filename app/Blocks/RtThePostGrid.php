@@ -296,6 +296,13 @@ class RtThePostGrid extends Block
             'bottom' => '1px',
             'left' => '1px',
         ],
+        'pagination_spinner_margin'=>[
+			'top'=> '0px',
+			'right'=> '8px',
+			'bottom'=> '8px',
+			'left'=> '25px',
+		],
+        'pagination_spinner_color' => "#fff",
         'loaders' =>[
             'excerpt' => false
         ],

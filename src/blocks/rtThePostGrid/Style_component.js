@@ -1398,6 +1398,27 @@ export const PaginationStyle = styled.button`
 	
 `
 
+export const Load_more_spinner = styled.div`
+    &::after{
+        border-color: ${props => ((props.css == "") || (props.css == undefined))? "#fff transparent #fff transparent": props.css+" transparent "+props.css+" transparent"} !important;
+        
+        ${(props)=>{
+            if(((props.css_mar.top == "") || (props.css_mar.top == null)) && 
+                ((props.css_mar.right == "") || (props.css_mar.right == null)) &&
+                ((props.css_mar.bottom == "") || (props.css_mar.bottom == null)) &&
+                ((props.css_mar.left == "") || (props.css_mar.left == null))){
+                return css`
+                    margin: 0px 8px 8px 25px !important;
+                `
+            }else{
+                return css`
+                    margin: ${props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left} !important;
+                `
+            }
+        }}
+    }
+`
+
 export const Pageprivnext = styled.button`
     color: ${props => (props.css.color)? props.css.color: "#fff"} !important;
     background-color: ${props => (props.css['bg-color'])? props.css['bg-color']: "#4c6fff"} !important;

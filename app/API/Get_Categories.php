@@ -17,8 +17,7 @@ class Get_Categories{
 
     public function get_posts_categories($request){
         $taxonomy = sanitize_text_field($request["tax_type"]);
-        $term_objects = get_terms( $taxonomy );
-
+        $term_objects = get_terms( $taxonomy);
         $data = [];
 
         if(!empty($term_objects)){

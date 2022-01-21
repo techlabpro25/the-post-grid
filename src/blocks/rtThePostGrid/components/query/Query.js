@@ -14,6 +14,8 @@ import { useState, useEffect } from "@wordpress/element";
 import apiFetch from "@wordpress/api-fetch";
 import $ from "jquery";
 import Select from "react-select";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Query = (props) => {
 	const {__} = wp.i18n;
@@ -214,8 +216,6 @@ const Query = (props) => {
 
 		});
 	}
-
-
 	return (
 		<>
 			{posttypeloading?(
@@ -256,6 +256,7 @@ const Query = (props) => {
 					}
 				/>
 			)}
+
 
 
 			<NumberControl
@@ -798,23 +799,24 @@ const Query = (props) => {
 						<>
 							<div className='rt-tpg-query-checkbox-first-child rt-tpg-date-range-control'>
 								<Text className="rt-tpg-query-text">From:</Text>
-								<DateTimePicker
-									currentDate={ query.date_from }
-									onChange={ ( newDate ) => {
-										props.attr.setAttributes({ query: { ...query, date_from: newDate } })
-									} }
-									is12Hour={ true }
+								<DatePicker
+									classname="rt-tpg-query-date-range rt-tpg-date-from"
+									selected={query.date_from}
+									onChange={(date) => {
+										console.log(date)
+										props.attr.setAttributes({ query: { ...query, date_from: date } })
+									}}
 								/>
 							</div>
 
 							<div className='rt-tpg-query-checkbox-first-child rt-tpg-date-range-control'>
 								<Text className="rt-tpg-query-text">To:</Text>
-								<DateTimePicker
-									currentDate={ query.date_to }
-									onChange={ ( newDate ) => {
-										props.attr.setAttributes({ query: { ...query, date_to: newDate } })
-									} }
-									is12Hour={ true }
+								<DatePicker
+									classname="rt-tpg-query-date-range rt-tpg-date-from"
+									selected={query.date_to}
+									onChange={(date) => {
+										props.attr.setAttributes({ query: { ...query, date_to: date } })
+									}}
 								/>
 							</div>
 						</>

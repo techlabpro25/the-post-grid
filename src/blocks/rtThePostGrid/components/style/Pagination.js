@@ -16,7 +16,7 @@ import {
 import { useState, useEffect } from '@wordpress/element';
 
 function Pagination(props) {
-    const { pagination_style, pagination_padding, pagination_margin} = props.attr.attributes
+    const { pagination_style, pagination_padding, pagination_margin, pagination, pagination_spinner_margin, pagination_spinner_color} = props.attr.attributes
     const {__} = wp.i18n;
 
     return (
@@ -546,6 +546,32 @@ function Pagination(props) {
                     props.attr.setAttributes({pagination_margin: val})
                 }}
             />
+
+            {/*If load more button pagination*/}
+            {
+                (pagination.pagination_type == "load_more")?(
+                    <>
+                        <Text>
+                            {__( "Spinner Color:", "the-post-grid")}
+                        </Text>
+                        <ColorPalette
+                            className={"rt-colorcontrol"}
+                            colors={ props.attr.colors }
+                            value={ pagination_spinner_color }
+                            onChange={ ( color ) => props.attr.setAttributes( {pagination_spinner_color: color} ) }
+                        />
+
+                        <BoxControl
+                            label={__( "Spinner Margin:", "the-post-grid")}
+                            values={ pagination_spinner_margin }
+                            splitOnAxis={true}
+                            onChange={ ( val ) => {
+                                props.attr.setAttributes({pagination_spinner_margin: val})
+                            }}
+                        />
+                    </>
+                ):("")
+            }
         
         </PanelBody>
     );
