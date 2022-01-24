@@ -48,6 +48,8 @@ class All_Post{
         $filter_active = $request['filter_active'];
         $filter_taxonomy_taxonomy = $request['filter_taxonomy_taxonomy'];
 
+        $filter_subterms = $request['filter_subterms'];
+
 
 
         $args = array(
@@ -169,13 +171,22 @@ class All_Post{
         }else{
 
             // For filter
-            if(!empty($filter_taxonomy) && !empty($filter_taxonomy_taxonomy)){
+            if(!empty($filter_subterms) && !empty($filter_taxonomy_taxonomy)){
                 $args['tax_query'][]= array(
                     'taxonomy' => $filter_taxonomy_taxonomy,
                     'field' => esc_html('term_id'),
-                    'terms' => $filter_taxonomy,
+                    'terms' => $filter_subterms,
                 );
+            }else{
+                if(!empty($filter_taxonomy) && !empty($filter_taxonomy_taxonomy)){
+                    $args['tax_query'][]= array(
+                        'taxonomy' => $filter_taxonomy_taxonomy,
+                        'field' => esc_html('term_id'),
+                        'terms' => $filter_taxonomy,
+                    );
+                }
             }
+
         }
 
         if(empty(array_filter($include))){

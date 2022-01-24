@@ -70,7 +70,7 @@ const Filter = (props) =>{
                 setFilter_term_list(tempterms);
             });
         }else{
-            setFilter_term_list([{label: __("-- Select --", "the-post-grid"), value: ""}])
+            setFilter_term_list([{label: __("-- Select Terms --", "the-post-grid"), value: ""}])
         }
 
     }, [filters.taxonomy_filter])

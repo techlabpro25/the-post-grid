@@ -165,16 +165,16 @@ function Image(props) {
                 ] }
                 onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "source": value} } ) }
             />
-            <SelectControl
-                className={"rt-tpg-selectcontrol image"}
-                label={__( "Media Source:", "the-post-grid")}
-                value={ image.type }
-                options={ [
-                    { label: __( 'Normal', "the-post-grid"), value: "normal" },
-                    { label: __( 'Circle', "the-post-grid"), value: 'circle'},
-                ] }
-                onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "type": value} } ) }
-            />
+            {/*<SelectControl*/}
+            {/*    className={"rt-tpg-selectcontrol image"}*/}
+            {/*    label={__( "Media Source:", "the-post-grid")}*/}
+            {/*    value={ image.type }*/}
+            {/*    options={ [*/}
+            {/*        { label: __( 'Normal', "the-post-grid"), value: "normal" },*/}
+            {/*        { label: __( 'Circle', "the-post-grid"), value: 'circle'},*/}
+            {/*    ] }*/}
+            {/*    onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "type": value} } ) }*/}
+            {/*/>*/}
 
 
         </PanelBody>

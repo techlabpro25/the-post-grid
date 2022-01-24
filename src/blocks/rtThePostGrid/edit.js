@@ -59,8 +59,10 @@ export default function Edit(props) {
 
     // Filter State Start
     const [terms, setTerms] = useState([]);
+    const [subterms, setSubterms] = useState([]);
     const [authors, setAuthors] = useState([]);
     const [filter_taxonomy, setFilter_taxonomy] = useState("");
+    const [filter_subterms, setFilter_subterms] = useState("");
     const [filter_author, setFilter_author] = useState("");
     const [filter_order_by, setFilter_order_by] = useState("");
     const [filter_order, setFilter_order] = useState("");
@@ -155,7 +157,7 @@ export default function Edit(props) {
     ]
     const order_by_type = [
         {
-            label: __( "-- Select --", "the-post-grid"),
+            label: __( "-- Select Order By --", "the-post-grid"),
             value: "",
         },
         {
@@ -221,10 +223,12 @@ export default function Edit(props) {
         var post_per_page = 0;
         var testoffset = 0;
         if (pagination.show) {
-            post_per_page = load_more_ppp * pagination.post_per_page  // For load more pagination index will be always 1 and ppp will increase
+
             if(pagination.pagination_type === "load_more"){
                 testoffset = ((post_per_page * 1) - post_per_page) + query.offset
+                post_per_page = load_more_ppp * pagination.post_per_page  // For load more pagination index will be always 1 and ppp will increase
             }else{
+                post_per_page = pagination.post_per_page
                 testoffset = ((post_per_page * pageindex) - post_per_page) + query.offset
             }
 
@@ -262,7 +266,8 @@ export default function Edit(props) {
                 filter_order_by: filter_order_by,
                 filter_order: filter_order,
                 filter_search:filter_search,
-                filter_active:filter_active
+                filter_active:filter_active,
+                filter_subterms: filter_subterms
             }
         }).then((posts) => {
             if ('message' in posts) {
@@ -271,8 +276,12 @@ export default function Edit(props) {
             } else {
                 setMessage("")
                 setData(posts);
+                if(pagination.pagination_type === "load_more"){
+                    setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((pagination.post_per_page == 0) || (pagination.post_per_page == -1) ? 1 : pagination.post_per_page)))
+                }else{
+                    setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
+                }
 
-                setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
             }
 
             setAttributes({loaders: {...loaders, "image":false, 'disable': false}})
@@ -314,6 +323,7 @@ export default function Edit(props) {
 
     //Set pageindex 0 when query change
     useEffect(()=>{
+        setLoad_more_ppp(1);  // For limit change load more pagination reset
         $('.layout_parent').css('opacity', 0.2);
         setIsloading(true);
         setTimeout(() => {
@@ -419,10 +429,47 @@ export default function Edit(props) {
                 }
             });
         }else{
-            setTerms([{label: __("-- Select --", "the-post-grid"), value: ""}])
+            setTerms([{label: __("-- Select Terms --", "the-post-grid"), value: ""}])
         }
 
     }, [filters.taxonomy_filter, filters.hide_show_all_button, filters.selected_filtered_item, filters.show_post_count])
+
+    // Filter Get Sub Term
+    useEffect(()=>{
+        var total_count = 0;
+        if(filter_taxonomy !== "")
+            apiFetch({ path: "/rt/v1/sub_categories?tax_type="+filters.taxonomy_filter+"&term_id="+filter_taxonomy }).then((sub_terms) => {
+                const tempsubterms = sub_terms.map((item_key, i) => {
+                    if(filters.show_post_count){
+                        total_count += parseInt(item_key.count)
+                        return {
+                            label: item_key.name+" ("+item_key.count+")",
+                            value: item_key.id,
+                        };
+                    }else{
+                        return {
+                            label: item_key.name,
+                            value: item_key.id,
+                        };
+                    }
+                })
+                if(filters.hide_show_all_button === false){
+                    if(tempsubterms?.length > 0) {
+                        if (filters.show_post_count) {
+                            tempsubterms.unshift({
+                                label: __("Show All (" + total_count + ")", "the-post-grid"),
+                                value: ""
+                            })
+                        } else {
+                            tempsubterms.unshift({label: __("Show All", "the-post-grid"), value: ""})
+                        }
+                    }
+                }
+                setSubterms(tempsubterms);
+            }
+            );
+    },[filter_taxonomy])
+
 
     // Filter Get Author
     useEffect(() => {
@@ -446,6 +493,7 @@ export default function Edit(props) {
 
     const resetfilter = () =>{
         setFilter_taxonomy(filters.selected_filtered_item);
+        setFilter_subterms("");
         setFilter_author("");
         setFilter_order_by("");
         setFilter_order("");
@@ -788,6 +836,68 @@ export default function Edit(props) {
                                                 ):("")
                                                 // Taxonomy Filter end
                                             }
+                                            {
+                                                // Taxonomy Sub filter
+                                                (filters.taxonomy_bool && filters.display_as_sub_cat_bool)?(
+                                                    <>
+                                                        {
+                                                            (subterms?.length > 0)?(
+                                                                <>
+                                                                    {
+                                                                        (filters.taxonomy_filter_type === "dropdown")?(
+                                                                            <div className="rt-tpg-layout-filter-input">
+                                                                                {/*Dropdown Type*/}
+                                                                                <SelectControl
+                                                                                    options={subterms}
+                                                                                    value ={filter_subterms}
+                                                                                    disabled={loaders.disable}
+                                                                                    onChange={(val)=>{
+                                                                                        setFilter_subterms(val)
+                                                                                        setFilter_active(true)
+                                                                                        setPageindex(1)
+                                                                                        setMinlimit(1)
+                                                                                        setMaxlimit(5)
+                                                                                        setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
+                                                                                    }}
+                                                                                />
+                                                                            </div>
+                                                                        ):(
+                                                                            <>
+                                                                                {/*Button Type*/}
+                                                                                <div className="rt-tpg-layout-taxonomy-filter-button">
+                                                                                    {
+                                                                                        subterms.map((el) =>{
+                                                                                            const subfilter_active = el.value == filter_subterms? "active": "";
+                                                                                            return(
+                                                                                                <button
+                                                                                                    className={`rt-tpg-filter-button ${subfilter_active}`}
+                                                                                                    value={el.value}
+                                                                                                    onClick={()=>{
+                                                                                                        setFilter_subterms(el.value)
+                                                                                                        setFilter_active(true)
+                                                                                                        setPageindex(1)
+                                                                                                        setMinlimit(1)
+                                                                                                        setMaxlimit(5)
+                                                                                                        setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
+                                                                                                    }}
+                                                                                                >
+                                                                                                    {el.label}
+                                                                                                </button>
+                                                                                            )
+                                                                                        })
+                                                                                    }
+                                                                                </div>
+                                                                            </>
+                                                                        )
+                                                                    }
+                                                                </>
+                                                            ):("")
+                                                        }
+                                                    </>
+                                                ):("")
+                                            }
+
+
 
                                             {
                                                 // Author Filter Start
@@ -843,7 +953,7 @@ export default function Edit(props) {
                                                         <div className="rt-tpg-layout-order-filter rt-tpg-layout-filter-input">
                                                             <SelectControl
                                                                 options={[
-                                                                    { label: "-- Select --", value: "" },
+                                                                    { label: "-- Select Order --", value: "" },
                                                                     { label: "Ascending", value: "ASC" },
                                                                     { label: "Descending", value: "DESC" },
                                                                 ]}
@@ -954,7 +1064,8 @@ export default function Edit(props) {
                                                 <>
                                                     {
                                                         // If pagination type load more button
-                                                        ((pagination.pagination_type === "load_more") && (paginationNumber >= pageindex))?(
+
+                                                        ((pagination.pagination_type === "load_more") && (paginationNumber > pageindex))?(
                                                             <>
                                                                 <div className="rt-tpg-pagination-load-more">
                                                                     <PaginationStyle
