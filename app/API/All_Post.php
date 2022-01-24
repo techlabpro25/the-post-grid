@@ -76,19 +76,7 @@ class All_Post{
             }
         }
 
-        if(empty(array_filter($include))){
-            if($pagination && ($limit != -1)){
-                $tempArgs                   = $args;
-                $tempArgs['posts_per_page'] = $limit;
-                $tempArgs['fields']         = 'ids';
-                $tempQ                      = new WP_Query( $tempArgs );
-                if ( ! empty( $tempQ->posts ) ) {
-                    $args['post__in'] = $tempQ->posts;
-                }
-            }
-        }else{
-            $args['post__in'] = $include;
-        }
+
 
         if(!empty($exclude) && isset($exclude) && array_filter($exclude)){
             unset($args['post__in']);
@@ -189,6 +177,24 @@ class All_Post{
                 );
             }
         }
+
+        if(empty(array_filter($include))){
+            if($pagination && ($limit != -1)){
+                $tempArgs                   = $args;
+                $tempArgs['posts_per_page'] = $limit;
+                $tempArgs['fields']         = 'ids';
+                $tempArgs['offset']         = 0;
+                $tempQ                      = new WP_Query( $tempArgs );
+//                print_r($tempArgs);
+                if ( ! empty( $tempQ->posts ) ) {
+                    $args['post__in'] = $tempQ->posts;
+                }
+            }
+        }else{
+            $args['post__in'] = $include;
+
+        }
+
 
 
         $query = new WP_Query($args);

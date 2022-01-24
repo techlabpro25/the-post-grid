@@ -270,16 +270,6 @@ export default function Edit(props) {
                 setPaginationNumber(0)
             } else {
                 setMessage("")
-                // if(pagination.pagination_type === "load_more"){
-                //     setData(prev =>{
-                //         if(JSON.stringify(prev) !== JSON.stringify(posts) ){
-                //             prev + posts
-                //         }else{
-                //              prev
-                //         }
-                //     });
-                // }
-
                 setData(posts);
 
                 setPaginationNumber(Math.ceil((posts?.[0]?.total_post - query.offset) / ((post_per_page == 0) || (post_per_page == -1) ? 1 : post_per_page)))
