@@ -117,7 +117,9 @@ export const List2 = (props) =>{
                             image,
                             image_url: post.image_url,
                             layout: layout.value,
-                            loaders: loaders.image
+                            loaders: loaders.image,
+                            first_image:post.first_img,
+                            img_source: image.source,
                         }
                         const author_props = {
                             meta,

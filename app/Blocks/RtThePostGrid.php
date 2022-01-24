@@ -198,6 +198,9 @@ class RtThePostGrid extends Block
             'gutter' => '',
             'source'=> "feature", // Pro feature
 			'type'=> "normal", // Pro feature
+            'width' => "", // Pro feature
+            'height' => "", // Pro feature
+            'crop' => "" // Pro feature
         ],
         'query' =>[
             'post_type'  => "post",

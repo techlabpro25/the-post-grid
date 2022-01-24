@@ -46,6 +46,10 @@ class Get_Image_Sizes{
                     'value' => "{$img['width']}x{$img['height']}"
                 ];
             }
+            $data[] =[
+                'label' => __("Custom Image Size", "the-post-grid"),
+                'value' => "custom"
+            ];
         }
 
         return rest_ensure_response($data);

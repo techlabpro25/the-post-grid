@@ -275,7 +275,7 @@ export default function Edit(props) {
                 //         if(JSON.stringify(prev) !== JSON.stringify(posts) ){
                 //             prev + posts
                 //         }else{
-                //             return prev
+                //              prev
                 //         }
                 //     });
                 // }
@@ -462,6 +462,8 @@ export default function Edit(props) {
         setFilter_search("");
         setLoad_more_ppp(1); // For load more pagination when reset filter make ppp initial number
         setPageindex(1);
+        setMinlimit(1)
+        setMaxlimit(5)
     }
 
 
@@ -756,6 +758,8 @@ export default function Edit(props) {
                                                                                 setFilter_taxonomy(val)
                                                                                 setFilter_active(true)
                                                                                 setPageindex(1)
+                                                                                setMinlimit(1)
+                                                                                setMaxlimit(5)
                                                                                 setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                             }}
                                                                         />
@@ -775,6 +779,8 @@ export default function Edit(props) {
                                                                                                 setFilter_taxonomy(el.value)
                                                                                                 setFilter_active(true)
                                                                                                 setPageindex(1)
+                                                                                                setMinlimit(1)
+                                                                                                setMaxlimit(5)
                                                                                                 setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                                             }}
                                                                                         >
@@ -806,6 +812,8 @@ export default function Edit(props) {
                                                                     setFilter_author(val)
                                                                     setFilter_active(true)
                                                                     setPageindex(1)
+                                                                    setMinlimit(1)
+                                                                    setMaxlimit(5)
                                                                     setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                 }}
                                                             />
@@ -828,6 +836,8 @@ export default function Edit(props) {
                                                                     setFilter_order_by(val)
                                                                     setFilter_active(true)
                                                                     setPageindex(1)
+                                                                    setMinlimit(1)
+                                                                    setMaxlimit(5)
                                                                     setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                 }}
                                                             />
@@ -853,6 +863,8 @@ export default function Edit(props) {
                                                                     setFilter_order(val)
                                                                     setFilter_active(true)
                                                                     setPageindex(1)
+                                                                    setMinlimit(1)
+                                                                    setMaxlimit(5)
                                                                     setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                 }}
                                                             />
@@ -873,6 +885,8 @@ export default function Edit(props) {
                                                                     setFilter_search(val)
                                                                     setFilter_active(true)
                                                                     setPageindex(1)
+                                                                    setMinlimit(1)
+                                                                    setMaxlimit(5)
                                                                     setLoad_more_ppp(1) // For load more pagination when reset filter make ppp initial number
                                                                 }}
                                                             />

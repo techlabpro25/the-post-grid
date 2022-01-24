@@ -866,6 +866,23 @@ html {
     transform: rotate(360deg);
   }
 }
+.rt-tpg-container .rt-tpg-social-share-links a.rt-tpg-share-icon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.rt-tpg-container .rt-tpg-social-share-links {
+  margin-bottom: 15px;
+}
+
+.rt-tpg-container .rt-tpg-social-share-links .linkedin-share {
+  color: #2b7bb6 !important;
+}
+
+.rt-tpg-container .rt-tpg-social-share-links .twitter-share {
+  color: #3eaced !important;
+}
+
 .rt-tpg-modal-overlay {
   position: fixed;
   inset: 0px;

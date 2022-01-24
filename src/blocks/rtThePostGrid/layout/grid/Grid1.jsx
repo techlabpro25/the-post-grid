@@ -18,6 +18,7 @@ import Modal from 'react-modal';
 const {useState} = wp.element;
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarAlt, faFolderOpen, faUser, faComments} from "@fortawesome/free-solid-svg-icons";
+import {Social} from "../elements/Social";
 
 const customStyles = {
 	content: {
@@ -109,7 +110,7 @@ const Grid1 = (props) => {
 						}
 
 						// Title
-						const image_props = { id:post.id, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value, loaders: loaders.image }
+						const image_props = { id:post.id, link: post.post_link, target:linking.target, image, image_url:post.image_url, first_image:post.first_img, img_source: image.source, layout: layout.value, loaders: loaders.image }
 						const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name, layout: layout.value, meta_icon}
 						const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value, meta_icon}
 						const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value, meta_icon}
@@ -119,6 +120,33 @@ const Grid1 = (props) => {
 							<>
 								<Colgut lay_sty={layout.value} css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 even-grid-item ${image.animation}`}>
 									<Content_wrap css={content_wrap} layout={layout} css_pad={constent_box_padding} className="rt-holder">
+										{
+											(title.position === "above-image")?(
+												<div className="rt-detail rt-tpg-above-title">
+													{
+														general.title ? (
+															<Titletag as={Title} css={title_style} lay_sty={layout.value} className="tpg-post-title">
+																<Titlea
+																	css={title_style}
+																	primary={primary_color}
+																	data-id={post.id}
+																	target={linking.target}
+																	href={post.post_link}
+																	dangerouslySetInnerHTML={{__html: post_title}}
+																	onClick={(e)=> {
+																		if((linking.link_type === "popup") && (linking.popup_type === "single")){
+																			e.preventDefault();
+																			post_modal(post)
+																		}
+																	}}
+																>
+																</Titlea>
+															</Titletag>
+														) : ('')
+													}
+												</div>
+											):("")
+										}
 										<div className={`rt-img-holder ${loaders.image? "show_loader": ""}`}>
 											{
 												image.show_hide?(
@@ -190,25 +218,31 @@ const Grid1 = (props) => {
 											}
 
 											{
-												general.title ? (
-													<Titletag as={Title} css={title_style} lay_sty={layout.value} className="tpg-post-title">
-														<Titlea
-															css={title_style}
-															primary={primary_color}
-															data-id={post.id}
-															target={linking.target}
-															href={post.post_link}
-															dangerouslySetInnerHTML={{__html: post_title}}
-															onClick={(e)=> {
-																if((linking.link_type === "popup") && (linking.popup_type === "single")){
-																	e.preventDefault();
-																	post_modal(post)
-																}
-															}}
-														>
-														</Titlea>
-													</Titletag>
-												) : ('')
+												((title.position === "") || (title.position === "below-image"))?(
+													<>
+														{
+															general.title ? (
+																<Titletag as={Title} css={title_style} lay_sty={layout.value} className="tpg-post-title">
+																	<Titlea
+																		css={title_style}
+																		primary={primary_color}
+																		data-id={post.id}
+																		target={linking.target}
+																		href={post.post_link}
+																		dangerouslySetInnerHTML={{__html: post_title}}
+																		onClick={(e)=> {
+																			if((linking.link_type === "popup") && (linking.popup_type === "single")){
+																				e.preventDefault();
+																				post_modal(post)
+																			}
+																		}}
+																	>
+																	</Titlea>
+																</Titletag>
+															) : ('')
+														}
+													</>
+												):("")
 											}
 
 											{
@@ -295,6 +329,14 @@ const Grid1 = (props) => {
 
 													</MetaStyle_align>
 												) : ('')
+											}
+
+											{
+												general.social_share?(
+													<>
+														<Social data={post.post_link}/>
+													</>
+												):("")
 											}
 
 											{/*See more button*/}

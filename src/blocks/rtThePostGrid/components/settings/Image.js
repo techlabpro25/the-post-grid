@@ -4,7 +4,7 @@ import {
 	__experimentalNumberControl as NumberControl,
     SelectControl,
     ToggleControl ,
-    RangeControl
+    TextControl
 } from "@wordpress/components";
 import { useState, useEffect } from '@wordpress/element';
 import apiFetch from "@wordpress/api-fetch";
@@ -52,6 +52,55 @@ function Image(props) {
                         }
                     />
 
+                ):("")
+            }
+
+            {
+                (image.size === "custom")?(
+                    <>
+                        <div className="rt-tpg-image-size">
+                        <TextControl
+                            className="rt-tpg-image-size-control"
+                            label={__( "Width", "the-post-grid")}
+                            value={image.width}
+                            onChange={(value) =>{
+
+                                props.attr.setAttributes({ image: {
+                                        ...image,
+                                        width: value
+                                    } })
+                            }
+
+                            }
+                        />
+                        <TextControl
+                            className="rt-tpg-image-size-control"
+                            label={__( "Height", "the-post-grid")}
+                            value={image.height}
+                            onChange={(value) =>{
+
+                                props.attr.setAttributes({ image: {
+                                        ...image,
+                                        height: value
+                                    } })
+                            }
+
+                            }
+                        />
+
+                    </div>
+                        <SelectControl
+                            className={"rt-tpg-selectcontrol crop-image"}
+                            label={__( "Image Crop:", "the-post-grid")}
+                            value={ image.crop }
+                            options={ [
+                                { label: __( '-- Select --', "the-post-grid"), value: '' },
+                                { label: __( 'Hard Crop', "the-post-grid"), value: 'hard' },
+                                { label: __( 'Soft Crop', "the-post-grid"), value: 'soft' },
+                            ] }
+                            onChange={ ( value ) => props.attr.setAttributes( {image: {...image, "crop": value} } ) }
+                        />
+                    </>
                 ):("")
             }
 

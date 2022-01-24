@@ -716,6 +716,17 @@ svg.components-panel__arrow {
 .the_post_grid_blocks .rt-tpg-date-range-control {
     margin-bottom: 15px;
 }
+.the_post_grid_blocks .rt-tpg-image-size{
+    display: flex;
+}
+.the_post_grid_blocks .rt-tpg-image-size-control {
+    margin: 4px;
+}
+
+.the_post_grid_blocks .rt-tpg-selectcontrol.crop-image {
+    margin-top: -10px !important;
+    margin-left: 4px;
+}
 
 /*================= Control panel loader start ================*/
 .the_post_grid_blocks .rt-tpg-control-lds-ripple {

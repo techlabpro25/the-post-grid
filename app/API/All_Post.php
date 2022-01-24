@@ -33,7 +33,7 @@ class All_Post{
         $pagination = $request['pagination'];
         $limit = (($request['limit'] == '') || ($request['limit'] == 0))? -1 : $request['limit'];
         $excerpt_type = $request['excerpt_type'];
-        $size = explode('x', $request['imgsize']);
+        $size = explode('x', ($request['imgsize'] === "custom")? "1024x1024": $request['imgsize']);
         $post_type =  ($request["post_type"] === null )? "post": $request["post_type"];
         $post_per_page =  (($request["post_per_page"] === "") || ($request["post_per_page"] === 0) )? -1: $request["post_per_page"];
         $sticky = $request['sticky'];
@@ -198,6 +198,7 @@ class All_Post{
 
         if ($query->found_posts == 0){
             $data['message'] = "No Post Found";
+            $data['args'] = $args;
         }else{
             if ( $query->have_posts() ) {
                 while ( $query->have_posts() ) {
@@ -224,7 +225,13 @@ class All_Post{
                         $items[]=$tempterms;
                     }
 
-
+                    // First image from the post
+                    preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
+                    if(empty($first_img)){ //Defines a default image
+                        $first_img = RT_THE_POST_GRID_PLUGIN_PATH."/images/default.png";
+                    }else{
+                        $first_img = $matches [1] [0];
+                    }
 
                     $data[]=[
                         'id' => $id,
@@ -239,6 +246,7 @@ class All_Post{
                         "post_link" => esc_url_raw(get_post_permalink()),
                         "total_post" => esc_html($query->found_posts),
                         "terms" => $items,
+                        "first_img" => $first_img,
                         'args' => $args,
                     ];
                 }

@@ -13,7 +13,7 @@ function Title(props) {
     const title_position = [
         {
             label: __("Default", "the-post-grid"),
-            value: "default"
+            value: ""
         },
         {
             label: __("Above Image", "the-post-grid"),

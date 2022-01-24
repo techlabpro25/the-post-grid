@@ -357,6 +357,9 @@ const attributes = {
 			gutter: "",
 			source: "feature", // Pro feature
 			type: "normal", // Pro feature
+			width: "",  // Pro feature
+			height: "",   // Pro feature
+			corp: ""   // Pro feature
 		},
 	},
 	primary_color: {

@@ -1099,7 +1099,40 @@ export const Content_padding = styled.div`
 `;
 
 export const ImgAnimation = styled.img`
-	border-radius: ${props => (props.css['border-radius'] == 0)? ((props.layout == "list2")? "50%" : '0px') : props.css['border-radius']} !important;
+    ${props =>{
+        if(props.css.type === "circle"){
+            if((props.css.size == "custom") && (props.css.crop == "hard")){
+                return css`
+                    width: 100% !important;
+                    max-width: ${props.width}px !important;
+                    height: ${props.height}px !important;
+                    object-fit: cover !important;
+                    border-radius: 50% !important;
+                `
+            }else{
+                return css`
+                    border-radius: 50% !important;
+                `
+            }
+        }else{
+            if((props.css.size == "custom") && (props.css.crop == "hard")){
+                return css`
+                    width: 100% !important;
+                    max-width: ${props.width}px !important;
+                    height: ${props.height}px !important;
+                    object-fit: cover !important;
+                    border-radius: ${props => (props.css['border-radius'] == 0)? ((props.layout == "list2")? "50%" : '0px') : props.css['border-radius']} !important;
+                `
+            }else{
+                return css`
+                    border-radius: ${props => (props.css['border-radius'] == 0)? ((props.layout == "list2")? "50%" : '0px') : props.css['border-radius']} !important;
+                `
+            }
+            
+        }
+    }}
+    
+	
 `;
 
 export const MetaIcona = styled.div`
