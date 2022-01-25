@@ -798,3 +798,37 @@ a:hover {
   }
 }
 /*================= Control panel loader end ================*/
+.the_post_grid_blocks .rt-tpg-image-review-panel {
+  width: 100%;
+  height: auto;
+  margin: 10px 0;
+}
+
+.the_post_grid_blocks .rt-tpg-no-preview-image {
+  width: 100%;
+  background-color: #e5e5e5;
+  height: 100px;
+  text-align: center;
+  border-radius: 5px;
+  line-height: 100px;
+}
+
+.the_post_grid_blocks .rt-tpg-default-image-preview img {
+  border-radius: 5px;
+}
+
+.the_post_grid_blocks .rt-tpg-media-button {
+  border: solid 1px #4c6fff;
+  color: #4c6fff;
+  width: 48%;
+}
+
+.the_post_grid_blocks .rt-tpg-media-button:hover {
+  background-color: #4c6fff;
+  color: #fff !important;
+}
+
+.the_post_grid_blocks .rt-tpg-media-upload {
+  display: flex;
+  justify-content: space-evenly;
+}

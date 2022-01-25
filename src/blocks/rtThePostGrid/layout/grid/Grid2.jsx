@@ -68,7 +68,8 @@ const Grid2 = (props) => {
 		social_style,
 		social_style_padding,
 		social_style_margin,
-		social_style_icon_margin
+		social_style_icon_margin,
+		default_preview_image
 	} = props
 
 	let Heading = "";
@@ -119,7 +120,7 @@ const Grid2 = (props) => {
 						}
 
 						// Title
-						const image_props = { id:post.id, first_image:post.first_img, img_source: image.source, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value, loaders: loaders.image }
+						const image_props = { default_preview_image, id:post.id, first_image:post.first_img, img_source: image.source, link: post.post_link, target:linking.target, image, image_url:post.image_url, layout: layout.value, loaders: loaders.image }
 						const author_props = { meta, author_url: post.author_url, meta_style, primary_color, name:post.author_name, layout: layout.value, meta_icon}
 						const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value, meta_icon}
 						const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value, meta_icon}

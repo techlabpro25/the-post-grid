@@ -480,7 +480,10 @@ const attributes = {
 	root_margin: "",
 	grid_style: "even",
 	content_visible_permission: "",
-	default_preview_image: "",
+	default_preview_image: {
+		id: 0,
+		url: ""
+	},
 	overlay:{
 		type: "object",
 		default: {

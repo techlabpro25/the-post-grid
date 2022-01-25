@@ -1,15 +1,19 @@
 import {
     PanelBody,
-    CheckboxControl,
+    __experimentalText as Text,
     SelectControl,
-    ToggleControl
+    Button
 } from "@wordpress/components";
+import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+
 import { useState, useEffect } from "@wordpress/element";
 import $ from "jquery";
+const ALLOWED_MEDIA_TYPES = [ 'image' ];
+
 
 const Others = (props) =>{
     const {__} = wp.i18n;
-    const {root_margin, grid_style, content_visible_permission, default_preview_image,overlay } = props.attr.attributes
+    const {root_margin, grid_style, content_visible_permission, default_preview_image } = props.attr.attributes
 
     return (
         <PanelBody title={__( "Others", "the-post-grid")} initialOpen={false}>
@@ -51,6 +55,73 @@ const Others = (props) =>{
                 }
                 }
             />
+
+            <Text>
+                {__("Default Preview Image", "the-post-grid")}
+            </Text>
+            <div className="rt-tpg-image-review-panel">
+                {
+                    (default_preview_image?.url !== "") && (default_preview_image?.url != undefined)?(
+                        <div className="rt-tpg-default-image-preview">
+                            <img src={default_preview_image?.url}/>
+                        </div>
+                    ):(
+                        <div className="rt-tpg-no-preview-image">
+                            {__("No Image Available", "the-post-grid")}
+                        </div>
+                    )
+                }
+            </div>
+            <MediaUploadCheck>
+                <MediaUpload
+                    onSelect={ ( media ) =>
+                        {
+                            props.attr.setAttributes({
+                                default_preview_image:
+                                    {
+                                        ...default_preview_image,
+                                        'id': media.id,
+                                        'url': media.url
+                                    }
+                            })
+                        }
+
+                    }
+                    allowedTypes={ ALLOWED_MEDIA_TYPES }
+                    value={ (default_preview_image?.id === undefined)? 0: default_preview_image.id }
+                    render={ ( { open } ) => (
+                        <div className="rt-tpg-media-upload">
+                            <Button
+                                className="rt-tpg-media-button upload"
+                                icon="upload"
+                                onClick={ open }
+                            >{__("Upload", 'the-post-grid')}</Button>
+                            {
+                                (default_preview_image?.url !== "") && (default_preview_image?.url != undefined)?(
+                                    <>
+                                        <Button
+                                            className="rt-tpg-media-button remove"
+                                            icon="trash"
+                                            onClick={ ()=>{
+                                                props.attr.setAttributes({
+                                                    default_preview_image:
+                                                        {
+                                                            ...default_preview_image,
+                                                            'id': 0,
+                                                            'url': ""
+                                                        }
+                                                })
+                                            } }
+                                        >{__("Remove", 'the-post-grid')}</Button>
+                                    </>
+                                ):("")
+                            }
+                        </div>
+
+                    ) }
+                />
+            </MediaUploadCheck>
+
 
         </PanelBody>
     );

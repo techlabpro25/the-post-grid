@@ -355,7 +355,10 @@ class RtThePostGrid extends Block
         'root_margin'=> "",
         'grid_style' => "even",
         'content_visible_permission'=> "",
-        'default_preview_image'=> "",
+        'default_preview_image'=> [
+            'id'=>0,
+            'url' => ""
+        ],
         'overlay'=>[
 			'color'=> "",
 			'opacity'=> 1,

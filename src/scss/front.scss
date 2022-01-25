@@ -922,17 +922,81 @@ html{
     margin-right: 5px;
 }
 
-.rt-tpg-modal-content-root .rt-tpg-modal-body .rt-tpg-modal-excerpt {
+.rt-tpg-modal-content-root .rt-tpg-modal-body .rt-tpg-modal-excerpt,
+.rt-tpg-modal-content-root .rt-tpg-modal-body .rt-tpg-modal-excerpt p
+{
     color: #fff;
     font-size: 16px;
     line-height: 30px;
     margin: 15px 0;
 }
 
-
-
-
 //Modal CSS End
+
+
+// Multi Modal CSS Start
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-header {
+    background-color: #4c6fff;
+    display: flex;
+    justify-content: center;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-header .modal-button {
+    margin: 10px;
+    font-size: 28px;
+    color: #fff;
+    background-color: transparent;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    padding: 10px 17px;
+    line-height: 28px;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-img-holder {
+    width: 35%!important;
+    float: left !important;
+    overflow: hidden;
+}
+.rt-tpg-multi-modal-root .rt-tpg-modal-img-holder img{
+    width: 100% !important;
+}
+.rt-tpg-multi-modal-root .rt-tpg-multi-modal-content-panel {
+    padding: 35px;
+}
+
+
+.rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt p, .rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt{
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder {
+    width: 61%;
+    float: left;
+    padding-left: 30px;
+}
+.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder h2.rt-tpg-modal-title {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta {
+    margin-bottom: 20px;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta span {
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta svg {
+    margin-right: 4px;
+}
+
+
+
+// Multi Modal CSS End
 
 
 

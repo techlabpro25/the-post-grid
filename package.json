@@ -57,6 +57,7 @@
 		"react-modal": "^3.14.4",
 		"react-select": "^5.2.1",
 		"select2": "^4.0.13",
-		"styled-components": "^5.3.3"
+		"styled-components": "^5.3.3",
+		"swiper": "^7.4.1"
 	}
 }

@@ -67,7 +67,8 @@ export const List2 = (props) =>{
         social_style,
         social_style_padding,
         social_style_margin,
-        social_style_icon_margin
+        social_style_icon_margin,
+        default_preview_image
     } = props
 
 
@@ -116,6 +117,7 @@ export const List2 = (props) =>{
 
                         // Title
                         const image_props = {
+                            default_preview_image,
                             id: post.id,
                             link: post.post_link,
                             target: linking.target,
