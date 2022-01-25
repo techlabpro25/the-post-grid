@@ -365,6 +365,28 @@ class RtThePostGrid extends Block
 			'right' => '',
 			'left'=> '',
 			'bottom' => '',
+		],
+        'social_style'=>[
+			'color'=> "",
+			'h_color'=> ""
+		],
+		'social_style_padding'=>[
+			'top'=> "",
+			'right'=>"",
+			'bottom'=>"",
+			'left'=> ""
+		],
+        'social_style_margin'=>[
+            'top'=> "",
+			'right'=>"",
+			'bottom'=>"",
+			'left'=> ""
+		],
+        'social_style_icon_margin'=>[
+            'top'=> "",
+			'right'=>"",
+			'bottom'=>"",
+			'left'=> ""
 		]
 
 	];

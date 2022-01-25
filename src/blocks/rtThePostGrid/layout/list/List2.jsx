@@ -19,6 +19,7 @@ import Modal from 'react-modal';
 const {useState} = wp.element;
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarAlt, faFolderOpen, faUser, faComments} from "@fortawesome/free-solid-svg-icons";
+import {Social} from "../elements/Social";
 
 const customStyles = {
     content: {
@@ -63,6 +64,10 @@ export const List2 = (props) =>{
         linking,
         layout,
         meta_icon,
+        social_style,
+        social_style_padding,
+        social_style_margin,
+        social_style_icon_margin
     } = props
 
 
@@ -152,6 +157,14 @@ export const List2 = (props) =>{
                             layout: layout.value,
                             meta_icon
                         }
+                        const social_props = {
+                            link:post.post_link,
+                            social_style,
+                            social_style_padding,
+                            social_style_margin,
+                            social_style_icon_margin
+                        }
+
 
 
                         return(
@@ -364,6 +377,14 @@ export const List2 = (props) =>{
                                                             </MetaStyle_align>
                                                         ) : ('')
                                                     }
+                                                    {
+                                                        general.social_share?(
+                                                            <>
+                                                                <Social data={social_props}/>
+                                                            </>
+                                                        ):("")
+                                                    }
+
 
                                                     {/*See more button*/}
                                                     {

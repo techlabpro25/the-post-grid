@@ -496,7 +496,42 @@ const attributes = {
 			left: '',
 			bottom : '',
 		}
+	},
+	social_style:{
+		type: "object",
+		default: {
+			color: "",
+			h_color: ""
+		}
+	},
+	social_style_padding:{
+		type: "object",
+		default:{
+			top: "",
+			right:"",
+			bottom:"",
+			left: ""
+		}
+	},
+	social_style_margin:{
+		type: "object",
+		default:{
+			top: "",
+			right:"",
+			bottom:"",
+			left: ""
+		}
+	},
+	social_style_icon_margin:{
+		type: "object",
+		default:{
+			top: "",
+			right:"",
+			bottom:"",
+			left: ""
+		}
 	}
+
 
 };
 

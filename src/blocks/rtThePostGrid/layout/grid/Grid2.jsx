@@ -17,6 +17,7 @@ import Modal from 'react-modal';
 const {useState} = wp.element;
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarAlt, faFolderOpen, faUser, faComments} from "@fortawesome/free-solid-svg-icons";
+import {Social} from "../elements/Social";
 
 const customStyles = {
 	content: {
@@ -63,7 +64,11 @@ const Grid2 = (props) => {
 		layout,
 		loaders,
 		grid_2_body_hover,
-		meta_icon
+		meta_icon,
+		social_style,
+		social_style_padding,
+		social_style_margin,
+		social_style_icon_margin
 	} = props
 
 	let Heading = "";
@@ -119,7 +124,7 @@ const Grid2 = (props) => {
 						const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value, meta_icon}
 						const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value, meta_icon}
 						const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin, layout: layout.value, meta_icon }
-
+						const social_props = { link:post.post_link, social_style, social_style_padding, social_style_margin, social_style_icon_margin }
 						return (
 							<>
 								<Colgut lay_sty={layout.value} css={content_wrap} className={`rt-col-md-${columns.desktop} rt-col-sm-${(columns.tablet == "24")? "2":columns.tablet} rt-col-xs-${(columns.mobile == "24")? "2":columns.mobile} grid1 even-grid-item ${image.animation}`}>
@@ -340,6 +345,14 @@ const Grid2 = (props) => {
 													</MetaStyle_align>
 												) : ('')
 											}
+											{
+												general.social_share?(
+													<>
+														<Social data={social_props}/>
+													</>
+												):("")
+											}
+
 
 											{/*See more button*/}
 											{

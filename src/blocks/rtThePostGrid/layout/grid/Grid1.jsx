@@ -62,7 +62,11 @@ const Grid1 = (props) => {
 		linking,
 		layout,
 		loaders,
-		meta_icon
+		meta_icon,
+		social_style,
+		social_style_padding,
+		social_style_margin,
+		social_style_icon_margin
 	} = props
 
 	let Title = "";
@@ -115,6 +119,7 @@ const Grid1 = (props) => {
 						const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value, meta_icon}
 						const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value, meta_icon}
 						const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin, layout: layout.value, meta_icon }
+						const social_props = { link:post.post_link, social_style, social_style_padding, social_style_margin, social_style_icon_margin }
 
 						return (
 							<>
@@ -334,7 +339,7 @@ const Grid1 = (props) => {
 											{
 												general.social_share?(
 													<>
-														<Social data={post.post_link}/>
+														<Social data={social_props}/>
 													</>
 												):("")
 											}

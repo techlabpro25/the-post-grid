@@ -1515,3 +1515,60 @@ export const Colgut = styled.div`
 `
 
 
+export const Social_Style = styled.div`
+    ${props => {
+        if(((props.css_pad.top == "") || (props.css_pad.top == null)) && 
+            ((props.css_pad.right == "") || (props.css_pad.right == null)) &&
+            ((props.css_pad.bottom == "") || (props.css_pad.bottom == null)) &&
+            ((props.css_pad.left == "") || (props.css_pad.left == null))
+        ){
+            return css`
+                padding: 0px !important;
+            `
+        }else{
+            return css`
+                padding: ${props.css_pad.top+" "+props.css_pad.right+" "+props.css_pad.bottom+" "+props.css_pad.left} !important;
+            `
+        }
+    }}
+    
+    ${props => {
+    if(((props.css_mar.top == "") || (props.css_mar.top == null)) &&
+        ((props.css_mar.right == "") || (props.css_mar.right == null)) &&
+        ((props.css_mar.bottom == "") || (props.css_mar.bottom == null)) &&
+        ((props.css_mar.left == "") || (props.css_mar.left == null))
+    ){
+        return css`
+                margin: 0px 0px 15px 0px !important;
+            `
+    }else{
+        return css`
+                margin: ${props.css_mar.top+" "+props.css_mar.right+" "+props.css_mar.bottom+" "+props.css_mar.left} !important;
+            `
+    }
+}}
+`
+export const Social_Style_Icon = styled.a`
+    ${props => {
+        if (((props.css_mar.top == "") || (props.css_mar.top == null)) &&
+            ((props.css_mar.right == "") || (props.css_mar.right == null)) &&
+            ((props.css_mar.bottom == "") || (props.css_mar.bottom == null)) &&
+            ((props.css_mar.left == "") || (props.css_mar.left == null))
+        ) {
+            return css`
+                    margin: 0px 10px 0px 0px !important;
+                `
+        } else {
+            return css`
+                    margin: ${props.css_mar.top + " " + props.css_mar.right + " " + props.css_mar.bottom + " " + props.css_mar.left} !important;
+                `
+        }
+    }}
+    color: ${props => ((props.css.color == "") || (props.css.color == undefined))?"": props.css.color} !important;
+    &:hover{
+        color: ${props => ((props.css.h_color == "") || (props.css.h_color == undefined))?"": props.css.h_color} !important;
+    }
+`
+
+
+

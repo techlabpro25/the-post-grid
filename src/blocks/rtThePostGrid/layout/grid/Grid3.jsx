@@ -17,6 +17,7 @@ import Modal from 'react-modal';
 const {useState} = wp.element;
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarAlt, faFolderOpen, faUser, faComments} from "@fortawesome/free-solid-svg-icons";
+import {Social} from "../elements/Social";
 
 const customStyles = {
 	content: {
@@ -63,6 +64,10 @@ const Grid3 = (props) => {
 		loaders,
 		grid_3,
 		meta_icon,
+		social_style,
+		social_style_padding,
+		social_style_margin,
+		social_style_icon_margin
 	} = props
 
 
@@ -116,7 +121,7 @@ const Grid3 = (props) => {
 						const date_props = { meta, meta_style, primary_color, date: post.post_date, layout: layout.value, meta_icon}
 						const comment_count_props = { meta, meta_style, primary_color, count: post.comment_count, link:post.post_link, layout: layout.value, meta_icon}
 						const category_props = { meta, meta_style, primary_color, category, post_terms: post?.terms, category_style, category_padding, category_margin, layout: layout.value, meta_icon }
-						// const tag_props = { meta, meta_style, primary_color, post_tags: post?.tags }
+						const social_props = { link:post.post_link, social_style, social_style_padding, social_style_margin, social_style_icon_margin }
 
 						return (
 							<>
@@ -301,6 +306,14 @@ const Grid3 = (props) => {
 
 														</MetaStyle_align>
 													) : ('')
+												}
+
+												{
+													general.social_share?(
+														<>
+															<Social data={social_props}/>
+														</>
+													):("")
 												}
 
 												{/*See more button*/}

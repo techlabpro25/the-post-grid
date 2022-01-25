@@ -39,6 +39,7 @@ import Filter from "./components/layout/Filter";
 import Others from "./components/layout/Others";
 import Overlay from "./components/style/Style_Overlay";
 import Header_Title from "./Header_Title";
+import Style_Social_Share from "./components/style/Style_Social_Share";
 
 const {__} = wp.i18n;
 const {InspectorControls} = wp.blockEditor
@@ -739,6 +740,15 @@ export default function Edit(props) {
                                                             {/*Overlay*/}
 
                                                             <Overlay attr={global_attr}/>
+
+                                                            {/*Social Share*/}
+
+                                                            {
+                                                                general.social_share?(
+                                                                    <Style_Social_Share attr={global_attr}/>
+                                                                ):("")
+                                                            }
+
                                                         </>
                                                     )
                                                 }

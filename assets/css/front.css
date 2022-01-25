@@ -876,11 +876,32 @@ html {
 }
 
 .rt-tpg-container .rt-tpg-social-share-links .linkedin-share {
-  color: #2b7bb6 !important;
+  color: #2b7bb6;
 }
 
 .rt-tpg-container .rt-tpg-social-share-links .twitter-share {
-  color: #3eaced !important;
+  color: #3eaced;
+}
+
+.rt-tpg-container .rt-tpg-social-share-links .facebook-share:hover {
+  color: #0c598c;
+}
+
+.rt-tpg-container .rt-tpg-social-share-links .linkedin-share:hover {
+  color: #154d76;
+}
+
+.rt-tpg-container .rt-tpg-social-share-links .twitter-share:hover {
+  color: #296486;
+}
+
+.rt-tpg-container .grid-layout-2 .rt-tpg-social-share-links .facebook-share,
+.rt-tpg-container .grid-layout3 .rt-tpg-social-share-links .facebook-share,
+.rt-tpg-container .grid-layout-2 .rt-tpg-social-share-links .linkedin-share,
+.rt-tpg-container .grid-layout3 .rt-tpg-social-share-links .linkedin-share,
+.rt-tpg-container .grid-layout-2 .rt-tpg-social-share-links .twitter-share,
+.rt-tpg-container .grid-layout3 .rt-tpg-social-share-links .twitter-share {
+  color: #fff;
 }
 
 .rt-tpg-modal-overlay {
