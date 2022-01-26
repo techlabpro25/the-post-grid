@@ -46,23 +46,28 @@ function Linking(props) {
                                         selected={ linking.popup_type }
                                         options={ [
                                             { label: __( 'Single PopUp', "the-post-grid"), value: 'single' },
-                                            { label: __( "Multi POpup", "the-post-grid"), value: 'multi' },
+                                            { label: __( "Multi Popup", "the-post-grid"), value: 'multi' },
                                         ] }
                                         onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "popup_type": val}}) }
                                     />
                                 </>
                             ):("")
                         }
-
-                        <RadioControl
-                            label={__( "Link Target:", "the-post-grid")}
-                            selected={ linking.target }
-                            options={ [
-                                { label: __( "Same Window", "the-post-grid"), value: '' },
-                                { label: __( "New Window", "the-post-grid"), value: '_blank' },
-                            ] }
-                            onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "target": val}}) }
-                        />
+                        {
+                            (linking.link_type === "new_page")?(
+                                <>
+                                    <RadioControl
+                                        label={__( "Link Target:", "the-post-grid")}
+                                        selected={ linking.target }
+                                        options={ [
+                                            { label: __( "Same Window", "the-post-grid"), value: '' },
+                                            { label: __( "New Window", "the-post-grid"), value: '_blank' },
+                                        ] }
+                                        onChange={ ( val ) => props.attr.setAttributes({linking: {...linking, "target": val}}) }
+                                    />
+                                </>
+                            ):("")
+                        }
                     </>
                 ):("")
             }
