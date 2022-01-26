@@ -422,6 +422,10 @@ html {
   content: none;
 }
 
+.rt-tpg-container .read-more .see_more_button:focus {
+  box-shadow: none !important;
+}
+
 .rt-tpg-root .lds-ripple {
   display: inline-block;
   position: absolute;
@@ -1006,27 +1010,144 @@ html {
 
 .rt-tpg-multi-modal-root .rt-tpg-modal-header {
   background-color: #4c6fff;
-  display: flex;
-  justify-content: center;
+  text-align: center;
 }
 
-.rt-tpg-multi-modal-root .rt-tpg-modal-header .modal-button {
-  margin: 10px;
-  font-size: 28px;
-  color: #fff;
-  background-color: transparent;
-  border: solid 1px #fff;
-  border-radius: 50%;
-  padding: 10px 17px;
-  line-height: 28px;
-}
+@media (max-width: 576px) {
+  .rt-tpg-multi-modal-root .rt-tpg-modal-img-holder {
+    width: 100% !important;
+    float: left !important;
+    overflow: hidden;
+  }
 
-.rt-tpg-multi-modal-root .rt-tpg-modal-img-holder {
-  width: 35% !important;
-  float: left !important;
-  overflow: hidden;
-}
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder {
+    width: 100%;
+    float: left;
+  }
 
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder h2.rt-tpg-modal-title {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 40px;
+    margin: 15px 0px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta span {
+    margin-right: 15px;
+    font-size: 14px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt p, .rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt {
+    font-size: 16px;
+    line-height: 35px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta {
+    margin-bottom: 10px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-header .modal-button {
+    margin: 15px 5px;
+    font-size: 22px;
+    color: #fff;
+    background-color: transparent;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    padding: 1px 10px;
+    line-height: 28px;
+  }
+}
+@media (min-width: 577px) and (max-width: 991px) {
+  .rt-tpg-multi-modal-root .rt-tpg-modal-img-holder {
+    width: 45% !important;
+    float: left !important;
+    overflow: hidden;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder {
+    width: 50%;
+    float: left;
+    padding-left: 30px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder h2.rt-tpg-modal-title {
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 40px;
+    margin-top: 0px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta span {
+    margin-right: 15px;
+    font-size: 14px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta {
+    margin-bottom: 15px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt p, .rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt {
+    font-size: 16px;
+    line-height: 35px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-header .modal-button {
+    margin: 12px 5px;
+    font-size: 24px;
+    color: #fff;
+    background-color: transparent;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    padding: 4px 12px;
+    line-height: 28px;
+  }
+}
+@media (min-width: 992px) {
+  .rt-tpg-multi-modal-root .rt-tpg-modal-img-holder {
+    width: 35% !important;
+    float: left !important;
+    overflow: hidden;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder {
+    width: 60%;
+    float: left;
+    padding-left: 30px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder h2.rt-tpg-modal-title {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 40px;
+    margin-top: 0px !important;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta span {
+    margin-right: 15px;
+    font-size: 16px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt p, .rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt {
+    font-size: 18px;
+    line-height: 35px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta {
+    margin-bottom: 20px;
+  }
+
+  .rt-tpg-multi-modal-root .rt-tpg-modal-header .modal-button {
+    margin: 10px;
+    font-size: 28px;
+    color: #fff;
+    background-color: transparent;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    padding: 10px 17px;
+    line-height: 28px;
+  }
+}
 .rt-tpg-multi-modal-root .rt-tpg-modal-img-holder img {
   width: 100% !important;
 }
@@ -1035,31 +1156,22 @@ html {
   padding: 35px;
 }
 
-.rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt p, .rt-tpg-multi-modal-root .rt-tpg-multi-modal-excerpt {
-  font-size: 18px;
-  line-height: 35px;
-}
-
-.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder {
-  width: 61%;
-  float: left;
-  padding-left: 30px;
-}
-
-.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder h2.rt-tpg-modal-title {
-  font-size: 32px;
-  font-weight: 500;
-}
-
-.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta {
-  margin-bottom: 20px;
-}
-
-.rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta span {
-  margin-right: 15px;
-  font-size: 16px;
-}
-
 .rt-tpg-multi-modal-root .rt-tpg-modal-content-holder .rt-tpg-modal-meta svg {
   margin-right: 4px;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-header .modal-button {
+  cursor: pointer;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-modal-header .modal-button:hover {
+  color: #4c6fff;
+  background-color: #fff;
+}
+
+.rt-tpg-multi-modal-root .rt-tpg-multi-modal-counter {
+  float: right;
+  margin-right: 25px;
+  line-height: 65px;
+  color: #fff;
 }

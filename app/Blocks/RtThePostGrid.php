@@ -351,8 +351,6 @@ class RtThePostGrid extends Block
 			'order_by'=> "title",
 			'search'=> ""
 		],
-
-        'root_margin'=> "",
         'grid_style' => "even",
         'content_visible_permission'=> "",
         'default_preview_image'=> [

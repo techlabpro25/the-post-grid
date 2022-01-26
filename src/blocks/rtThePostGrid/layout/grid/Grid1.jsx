@@ -20,6 +20,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarAlt, faFolderOpen, faUser, faComments} from "@fortawesome/free-solid-svg-icons";
 import {Social} from "../elements/Social";
 
+// For multi modal
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Navigation } from 'swiper';
@@ -40,8 +41,8 @@ const customStyles = {
 
 const multimodalstyle = {
 	content:{
-		width: "100%",
-		height: '100%',
+		width: "100vw",
+		height: '100vh',
 		top: '0',
 		left: '0',
 		padding: '0'
@@ -51,10 +52,24 @@ const multimodalstyle = {
 Modal.setAppElement('body');
 const Grid1 = (props) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
+	const [modaldata, setModaldata] = useState({});
 	const [multimodalopen, setMultimodalopen] = useState(false);
 	const [multicurrentindex, setMulticurrentindex] = useState(0);
-	const [modaldata, setModaldata] = useState({});
+	const [multiactiveindex, setMultiactiveindex] = useState(0);
+	const swiperRef = useRef(null);
 
+
+	const params = {
+		modules: [Navigation],
+		spaceBetween:50,
+		slidesPerView:1,
+		loop:true,
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev"
+		},
+		initialSlide: multicurrentindex
+	}
 	const {
 		title,
 		title_style,
@@ -116,8 +131,28 @@ const Grid1 = (props) => {
 		setMultimodalopen(false);
 	}
 
-	const navigationPrevRef = useRef(null)
-	const navigationNextRef = useRef(null)
+
+	const goNext = () => {
+		if (swiperRef.current && swiperRef.current.swiper) {
+			swiperRef.current.swiper.slideNext();
+			if(swiperRef.current.swiper.activeIndex > data?.length){
+				setMultiactiveindex(1)
+			}else{
+				setMultiactiveindex(swiperRef.current.swiper.activeIndex)
+			}
+		}
+	};
+
+	const goPrev = () => {
+		if (swiperRef.current && swiperRef.current.swiper) {
+			swiperRef.current.swiper.slidePrev();
+			if(swiperRef.current.swiper.activeIndex == 0){
+				setMultiactiveindex(data?.length)
+			}else{
+				setMultiactiveindex(swiperRef.current.swiper.activeIndex)
+			}
+		}
+	};
 
 
 	return (
@@ -174,6 +209,11 @@ const Grid1 = (props) => {
 																		if((linking.link_type === "popup") && (linking.popup_type === "single")){
 																			e.preventDefault();
 																			post_modal(post)
+																		}else if((linking.link_type === "popup") && (linking.popup_type === "multi")){
+																			e.preventDefault();
+																			setMulticurrentindex(i)
+																			post_multi_modal(post)
+																			setMultiactiveindex(i+1)
 																		}
 																	}}
 																>
@@ -271,6 +311,11 @@ const Grid1 = (props) => {
 																			if((linking.link_type === "popup") && (linking.popup_type === "single")){
 																				e.preventDefault();
 																				post_modal(post)
+																			}else if((linking.link_type === "popup") && (linking.popup_type === "multi")){
+																				e.preventDefault();
+																				setMulticurrentindex(i)
+																				post_multi_modal(post)
+																				setMultiactiveindex(i+1)
 																			}
 																		}}
 																	>
@@ -400,6 +445,7 @@ const Grid1 = (props) => {
 																		e.preventDefault();
 																		setMulticurrentindex(i)
 																		post_multi_modal(post)
+																		setMultiactiveindex(i+1)
 																	}
 																}}
 															>
@@ -429,7 +475,7 @@ const Grid1 = (props) => {
 						<button className="rt-tpg-modal-close-button" onClick={closeModal}>x</button>
 						<div class="rt-tpg-modal-content-panel">
 							<div className="rt-tpg-modal-header">
-								<h2 className="rt-tpg-modal-title">{modaldata.title}</h2>
+								<h2 className="rt-tpg-modal-title" dangerouslySetInnerHTML={{__html: modaldata.title}}></h2>
 								<div className="rt-tpg-modal-meta">
 									<span className="author">
 										<a href={modaldata.author_url}>
@@ -497,6 +543,7 @@ const Grid1 = (props) => {
 					</div>
 				</Modal>
 
+
 				{/*Multi Modal*/}
 
 				<Modal
@@ -508,27 +555,16 @@ const Grid1 = (props) => {
 				>
 					<div className="rt-tpg-multi-modal-root">
 						<div className="rt-tpg-modal-header">
-							{/*<button className="rt-tpg-modal-prev-post modal-button" >{"<"}</button>*/}
+							<button className="rt-tpg-modal-prev-post modal-button" onClick={goPrev}>{"<"}</button>
 							<button className="rt-tpg-modal-close-modal modal-button" onClick={closeMultiModal}>x</button>
-							{/*<button className="rt-tpg-modal-next-post modal-button">{">"}</button>*/}
+							<button className="rt-tpg-modal-next-post modal-button" onClick={goNext}>{">"}</button>
+							<div className="rt-tpg-multi-modal-counter">{multiactiveindex} of {data?.length}</div>
 						</div>
 
 						<div className="rt-tpg-multi-modal-content-panel">
 							<Swiper
-								modules={[Navigation]}
-								spaceBetween={50}
-								slidesPerView={1}
-								// navigation={{
-								// 	prevEl: navigationPrevRef.current,
-								// 	nextEl: navigationNextRef.current,
-								// }}
-								// onBeforeInit={(swiper) => {
-								// 	swiper.params.navigation.prevEl = navigationPrevRef.current;
-								// 	swiper.params.navigation.nextEl = navigationNextRef.current;
-								// }}
-								navigation
-
-								initialSlide={multicurrentindex}
+								{...params}
+								ref={swiperRef}
 							>
 								{
 									data?.map((el, i) =>{
@@ -542,7 +578,7 @@ const Grid1 = (props) => {
 													):("")
 												}
 												<div className="rt-tpg-modal-content-holder">
-													<h2 className="rt-tpg-modal-title">{el.title}</h2>
+													<h2 className="rt-tpg-modal-title" dangerouslySetInnerHTML={{__html: el.title}}></h2>
 													<div className="rt-tpg-modal-meta">
 														<span className="author">
 															<a href={el.author_url}>

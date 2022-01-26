@@ -477,7 +477,6 @@ const attributes = {
 			search: ""
 		}
 	},
-	root_margin: "",
 	grid_style: "even",
 	content_visible_permission: "",
 	default_preview_image: {

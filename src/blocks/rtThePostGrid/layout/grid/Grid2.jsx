@@ -14,10 +14,17 @@ import {CommentCount} from "../elements/CommentCount";
 import {Category_Default, Non_Category_Default} from "../elements/Category";
 
 import Modal from 'react-modal';
-const {useState} = wp.element;
+const {useState, useRef} = wp.element;
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarAlt, faFolderOpen, faUser, faComments} from "@fortawesome/free-solid-svg-icons";
 import {Social} from "../elements/Social";
+
+// For multi modal
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { Navigation } from 'swiper';
+import 'swiper/css/navigation';
+
 
 const customStyles = {
 	content: {
@@ -31,11 +38,39 @@ const customStyles = {
 	},
 };
 
+const multimodalstyle = {
+	content:{
+		width: "100vw",
+		height: '100vh',
+		top: '0',
+		left: '0',
+		padding: '0'
+	}
+}
+
+
 Modal.setAppElement('body');
 
 const Grid2 = (props) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
 	const [modaldata, setModaldata] = useState({});
+	const [multimodalopen, setMultimodalopen] = useState(false);
+	const [multicurrentindex, setMulticurrentindex] = useState(0);
+	const [multiactiveindex, setMultiactiveindex] = useState(0);
+	const swiperRef = useRef(null);
+
+	const params = {
+		modules: [Navigation],
+		spaceBetween:50,
+		slidesPerView:1,
+		loop:true,
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev"
+		},
+		initialSlide: multicurrentindex
+	}
+
 	const {
 		title,
 		title_style,
@@ -86,6 +121,7 @@ const Grid2 = (props) => {
 		Title = 'h' + title.tag
 	}
 
+	// Single Modal
 	const post_modal = (post) =>{
 		setModaldata(post)
 		setIsOpen(true);
@@ -94,11 +130,43 @@ const Grid2 = (props) => {
 		setIsOpen(false);
 	}
 
+	// Multi Modal
+	const post_multi_modal = (post) =>{
+		setModaldata(post)
+		setMultimodalopen(true)
+	}
+	function closeMultiModal() {
+		setMultimodalopen(false);
+	}
+
+
+	const goNext = () => {
+		if (swiperRef.current && swiperRef.current.swiper) {
+			swiperRef.current.swiper.slideNext();
+			if(swiperRef.current.swiper.activeIndex > data?.length){
+				setMultiactiveindex(1)
+			}else{
+				setMultiactiveindex(swiperRef.current.swiper.activeIndex)
+			}
+		}
+	};
+
+	const goPrev = () => {
+		if (swiperRef.current && swiperRef.current.swiper) {
+			swiperRef.current.swiper.slidePrev();
+			if(swiperRef.current.swiper.activeIndex == 0){
+				setMultiactiveindex(data?.length)
+			}else{
+				setMultiactiveindex(swiperRef.current.swiper.activeIndex)
+			}
+		}
+	};
+
 	return (
 		<>
 			<div className={`rt-row rt-content-loader layout1 tpg-even grid-layout-2 layout_parent`}>
 				{
-					data.length && data.map((post) => {
+					data.length && data.map((post, i) => {
 
 						var postexcerpt = (excerpt.type == "fullex")? post.excerpt : post.content;
 						var post_title = post.title;
@@ -153,6 +221,11 @@ const Grid2 = (props) => {
 																		if((linking.link_type === "popup") && (linking.popup_type === "single")){
 																			e.preventDefault();
 																			post_modal(post)
+																		}else if((linking.link_type === "popup") && (linking.popup_type === "multi")){
+																			e.preventDefault();
+																			setMulticurrentindex(i)
+																			post_multi_modal(post)
+																			setMultiactiveindex(i+1)
 																		}
 																	}}
 																>
@@ -250,6 +323,11 @@ const Grid2 = (props) => {
 																			if((linking.link_type === "popup") && (linking.popup_type === "single")){
 																				e.preventDefault();
 																				post_modal(post)
+																			}else if((linking.link_type === "popup") && (linking.popup_type === "multi")){
+																				e.preventDefault();
+																				setMulticurrentindex(i)
+																				post_multi_modal(post)
+																				setMultiactiveindex(i+1)
 																			}
 																		}}
 																	>
@@ -375,6 +453,11 @@ const Grid2 = (props) => {
 																	if((linking.link_type === "popup") && (linking.popup_type === "single")){
 																		e.preventDefault();
 																		post_modal(post)
+																	}else if((linking.link_type === "popup") && (linking.popup_type === "multi")){
+																		e.preventDefault();
+																		setMulticurrentindex(i)
+																		post_multi_modal(post)
+																		setMultiactiveindex(i+1)
 																	}
 																}}
 															>
@@ -392,7 +475,7 @@ const Grid2 = (props) => {
 					})
 				}
 
-				{/*Modal*/}
+				{/* Single Modal */}
 				<Modal
 					classname={"rt-tpg-modal-root"}
 					overlayClassName={"rt-tpg-modal-overlay"}
@@ -468,6 +551,106 @@ const Grid2 = (props) => {
 							</div>
 
 							<div className="rt-tpg-modal-footer"></div>
+						</div>
+					</div>
+				</Modal>
+
+				{/*Multi Modal*/}
+
+				<Modal
+					classname={"rt-tpg-multi-modal-root"}
+					overlayClassName={"rt-tpg-multi_modal-overlay"}
+					isOpen={multimodalopen}
+					onRequestClose={closeMultiModal}
+					style={multimodalstyle}
+				>
+					<div className="rt-tpg-multi-modal-root">
+						<div className="rt-tpg-modal-header">
+							<button className="rt-tpg-modal-prev-post modal-button" onClick={goPrev}>{"<"}</button>
+							<button className="rt-tpg-modal-close-modal modal-button" onClick={closeMultiModal}>x</button>
+							<button className="rt-tpg-modal-next-post modal-button" onClick={goNext}>{">"}</button>
+							<div className="rt-tpg-multi-modal-counter">{multiactiveindex} of {data?.length}</div>
+						</div>
+
+						<div className="rt-tpg-multi-modal-content-panel">
+							<Swiper
+								{...params}
+								ref={swiperRef}
+							>
+								{
+									data?.map((el, i) =>{
+										return(
+											<SwiperSlide className='rt-tpg-multi-modal-post'>
+												{
+													el.image_url !== ""?(
+														<div className="rt-tpg-modal-img-holder">
+															<img src={el.image_url}/>
+														</div>
+													):("")
+												}
+												<div className="rt-tpg-modal-content-holder">
+													<h2 className="rt-tpg-modal-title" dangerouslySetInnerHTML={{__html: el.title}}></h2>
+													<div className="rt-tpg-modal-meta">
+														<span className="author">
+															<a href={el.author_url}>
+																<FontAwesomeIcon icon={faUser}/>
+																{el.author_name}
+															</a>
+														</span>
+
+														<span className="date">
+															<FontAwesomeIcon icon={faCalendarAlt}/>
+															{el.author_name}
+														</span>
+
+														<span className="categories-links">
+															<FontAwesomeIcon icon={faFolderOpen}/>
+															{
+																el.terms?.length && el.terms.map((term_item, i) => {
+																	if(term_item.length > 0){
+																		return(
+																			<>
+																				{(i > 0) ? ", " : "   "}
+																				{
+																					term_item?.length && term_item?.map((items,i) =>{
+																						return (
+																							<>
+																								{/*=*/}
+																								{(i > 0) ? ", " : "   "}
+																								<a href={items.term_link} className={"terms"} rel="category">
+																									{items.term_name}
+																								</a>
+																							</>
+
+																						)
+																					})
+																				}
+																			</>
+																		)
+
+																	}
+
+																})
+															}
+
+														</span>
+
+														<span className="comment-count">
+															<a href={el.author_url}>
+																<FontAwesomeIcon icon={faComments}/>
+																{el.comment_count}
+															</a>
+														</span>
+													</div>
+													<div className="rt-tpg-multi-modal-excerpt" dangerouslySetInnerHTML={{__html: el.content}}>
+													</div>
+												</div>
+
+											</SwiperSlide>
+										)
+									})
+								}
+							</Swiper>
 						</div>
 					</div>
 				</Modal>

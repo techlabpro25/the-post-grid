@@ -18,19 +18,6 @@ const Others = (props) =>{
     return (
         <PanelBody title={__( "Others", "the-post-grid")} initialOpen={false}>
             <SelectControl
-                className="rt-tpg-others-selectcontrol rt-tpg-others-margin"
-                label={__( "Margin", "the-post-grid")}
-                value={root_margin}
-                options={[
-                    {label: __('Bootstrap Default', 'the-post-grid'), value: ""},
-                    {label: __('No Margin', 'the-post-grid'), value: "no_margin"}
-                ]}
-                onChange={(value) =>{
-                    props.attr.setAttributes({ root_margin: value })
-                }
-                }
-            />
-            <SelectControl
                 className="rt-tpg-others-selectcontrol rt-tpg-others-grid-style"
                 label={__( "Grid style", "the-post-grid")}
                 value={grid_style}
